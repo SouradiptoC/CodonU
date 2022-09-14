@@ -37,6 +37,7 @@ nest-asyncio==1.5.5
 notebook==6.4.12
 numpy==1.23.3
 packaging==21.3
+pandas==1.4.4
 pandocfilters==1.5.0
 parso==0.8.3
 pexpect==4.8.0
@@ -52,6 +53,7 @@ Pygments==2.13.0
 pyparsing==3.0.9
 pyrsistent==0.18.1
 python-dateutil==2.8.2
+pytz==2022.2.1
 pyzmq==23.2.1
 qtconsole==5.3.2
 QtPy==2.2.0
