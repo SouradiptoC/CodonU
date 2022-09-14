@@ -1,0 +1,92 @@
+LOCUS       AF335109                1938 bp    DNA     linear   PRI 22-JAN-2002
+DEFINITION  Homo sapiens small proline rich protein 4 (SPRR4) gene, complete
+            cds.
+ACCESSION   AF335109
+VERSION     AF335109.1
+KEYWORDS    .
+SOURCE      Homo sapiens (human)
+  ORGANISM  Homo sapiens
+            Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+            Mammalia; Eutheria; Euarchontoglires; Primates; Haplorrhini;
+            Catarrhini; Hominidae; Homo.
+REFERENCE   1  (bases 1 to 1938)
+  AUTHORS   Cabral,A., Voskamp,P., Cleton-Jansen,A.M., South,A., Nizetic,D. and
+            Backendorf,C.
+  TITLE     Structural organization and regulation of the small proline-rich
+            family of cornified envelope precursors suggest a role in adaptive
+            barrier function
+  JOURNAL   J. Biol. Chem. 276 (22), 19231-19237 (2001)
+   PUBMED   11279051
+REFERENCE   2  (bases 1 to 1938)
+  AUTHORS   Cabral,A., Sayin,A., de Winter,S., Fischer,D.F., Pavel,S. and
+            Backendorf,C.
+  TITLE     SPRR4, a novel cornified envelope precursor: UV-dependent epidermal
+            expression and selective incorporation into fragile envelopes
+  JOURNAL   J. Cell. Sci. 114 (Pt 21), 3837-3843 (2001)
+   PUBMED   11719550
+REFERENCE   3  (bases 1 to 1938)
+  AUTHORS   Cabral,A. and Backendorf,C.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (10-JAN-2001) Molecular Genetics, University Leiden,
+            Einsteinweg 55, Leiden 2333 CC, Netherlands
+FEATURES             Location/Qualifiers
+     source          1..1938
+                     /organism="Homo sapiens"
+                     /mol_type="genomic DNA"
+                     /db_xref="taxon:9606"
+                     /chromosome="1"
+                     /map="1q21"
+     gene            1..1938
+                     /gene="SPRR4"
+     mRNA            join(1..43,1216..1938)
+                     /gene="SPRR4"
+                     /product="small proline rich protein 4"
+     exon            1..43
+                     /gene="SPRR4"
+                     /number=1
+     exon            1216..1938
+                     /gene="SPRR4"
+                     /number=2
+     CDS             1236..1475
+                     /gene="SPRR4"
+                     /codon_start=1
+                     /product="small proline rich protein 4"
+                     /protein_id="AAK96400.1"
+                     /translation="MSSQQQQRQQQQCPPQRAQQQQVKQPCQPPPVKCQETCAPKTKD
+                     PCAPQVKKQCPPKGTIIPAQQKCPSAQQASKSKQK"
+ORIGIN      
+        1 aagggctcag cctcctctcc tggggtccag cttgtcgcct ctggtaagtg agaactcatc
+       61 tgttctcctg ggatttgtgg ggcgctttcc ttctccttta actcctttga gccgctaggc
+      121 caagatcctc ttccatcctt gggtaatcag ggaagtgaca caagtcttct gacaattgcg
+      181 gaaatggcac actaatcggt acttagaaag tttaatctcc attccgcacc attgctcagt
+      241 atgacttatt ttctgatcat gggtttgact ccccagaaag aagattttta ttgttgaaga
+      301 aggagatatt tagagctaca ggattttgta gcaattccga gccctgttta aaggtttctc
+      361 acaccctatt ctgcattttg cttaccagta agctttaaac ttttcttcca ggtgtatgca
+      421 aacaggtata ttgaacattt tattcaatcc tatgcagctc tcatgcttcc ctattctgat
+      481 tgccacctct ttacttcctg aggcctgcac ttcccatcta taatcattaa cttagaccat
+      541 aaggaacact gcctacaaag atagccagag accctcatca gagctgggaa ggcttcaggg
+      601 aacttcctga ccagcatcct tctaataagg gtgctgagac ccacagaagg aaggttgccc
+      661 atgaagttaa tggcaggatg gacctagaac caatgtctga gccttcttgg ctagcgctct
+      721 ttcctttgaa catcctcctg acatcctttg gctccagtga tctatttggc tggccctcaa
+      781 gcttcccagt tctttgtaga gggctggaac cactatcctg tagccacata ggacttgcct
+      841 tagtctccca tggtgagtca ggggtggagc agggattaga gatcaggcct ctgcattctt
+      901 atacacccct tctccagccc gatctctcac acacacacac acacacacac acacacactc
+      961 acacacacac catgatgctt acctgtaaga cagagactgt ttttgtcctc tcctcatgcc
+     1021 cctatatcct tgcccattct cattgtctgc attatcaaag ggagccagtt gacattgtcc
+     1081 agatctgtca gctaagatgg catgctttga ccttgtaaaa tgtctgggct actttttaac
+     1141 catcttttta aaaagggtgt taaaaggcta ctttttaaca cccttctcat ggtgtccctg
+     1201 cccggtttcc tttaggctca cctgttccta gagcaatgtc ttcccagcag cagcagcggc
+     1261 agcagcagca gtgcccaccc cagagggccc agcagcagca agtgaagcag ccttgtcagc
+     1321 caccccctgt taaatgtcaa gagacatgtg cacccaaaac caaggatcca tgtgctcccc
+     1381 aggtcaagaa gcaatgccca ccgaaaggca ccatcattcc agcccagcag aagtgtccct
+     1441 cagcccagca agcctccaag agtaaacaga agtaaggatg gactggatat taccatcatc
+     1501 caccatcctg gctaccagat ggaaccttct cttcttcctt ctcctcttcc ctccagctct
+     1561 tgagcctacc ctcctctcac atctcctcct gcccaagatg taaggaagca ttgtaaggat
+     1621 ttcttcccat cgtacccttc cccacacata ccaccttggc ttcttctata tcccaccccg
+     1681 atgctctccc aggtgggtgt gagagagacc tcattctctg caggctccag cgtggccaca
+     1741 gctaaggccc atccatttcc caaagtgagg aaagtgtctg ggcttcttct ggggttccac
+     1801 cctgacaagt agggtcacag aggctggtgc acagtttctg cctcattcct ctccatgatg
+     1861 ccccctgctc tgggcttctc tcctgttttc cccaataaat atgtgcctca tgtaataaat
+     1921 gtgtctgctt cctgggct
+//
+
