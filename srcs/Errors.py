@@ -19,3 +19,13 @@ class FileNotEmpty(CodonUsageError):
         self.file_name = file_name
         self.msg = f"{self.file_name} is not empty. Choose an empty file."
         super().__init__(self.msg)
+
+
+class NoEmailError(CodonUsageError):
+    """
+    Occurs when no email is provided for Bio.Entrez.email parameter
+    """
+
+    def __init__(self):
+        self.msg = f"No email provided for accessing NCBI utilities. Provide a valid email to access."
+        super().__init__(self.msg)
