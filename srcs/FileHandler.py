@@ -1,8 +1,41 @@
 import os
+from Bio import Entrez
 from Bio.SeqIO import write
 from Bio.SeqRecord import SeqRecord
 from CdsExtractor import extract_cds, extract_prot
-from Errors import FileNotEmpty
+from Errors import FileNotEmpty, NoEmailError
+
+
+def set_entrez_email(email: str | None) -> None:
+    """
+    Sets Bio.Entrez.email parameter to given email
+    :param email: Email of user
+    """
+    if not email:
+        print('Setting provided email to entrez.email')
+        Entrez.email = email
+    else:
+        raise NoEmailError
+
+
+def set_entrez_api_key(api_key: str | None) -> None:
+    """
+    Sets Bio.Entrez.api_key parameter to given api_key
+    :param api_key: API key of the user
+    """
+    if not api_key:
+        print('Setting provided API key to entrez.api_key')
+        Entrez.api_key = api_key
+
+
+def set_entrez_param(email: str | None = None, api_key: str | None = None) -> None:
+    """
+    Sets entrez parameters
+    :param email: Email of the user
+    :param api_key: API key of the user (optional)
+    """
+    set_entrez_email(email)
+    set_entrez_api_key(api_key)
 
 
 def make_dir(path: str) -> None:
