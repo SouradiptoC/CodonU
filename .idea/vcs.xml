@@ -2,5 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/bioinformatics_freecodecamp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/codonw-slim" vcs="Git" />
   </component>
 </project>
