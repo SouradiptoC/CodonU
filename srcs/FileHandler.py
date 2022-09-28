@@ -58,7 +58,6 @@ def make_dir(path: str) -> None:
     Makes a directory if not present already
     :param path: Path of the directory
     """
-    path = os.path.join('..', path)
     if not os.path.isdir(path):
         os.mkdir(path)
         name = path.split('/')
@@ -91,49 +90,35 @@ def read_file(file_name: str) -> pd.DataFrame:
     return df
 
 
-def write_nucleotide_fasta(file_name: str, folder_name: str, cds_lst: tuple, record: SeqRecord) -> None:
+def write_nucleotide_fasta(file_name: str, cds_lst: tuple, record: SeqRecord) -> None:
     """
     Creates a fasta file of nucleotides if not exists previously or is empty
     :param file_name: The name of the file
-    :param folder_name: The name of the folder
     :param cds_lst: The tuple of FeatureLocation objects
     :param record: The SeqRecord object containing whole sequence
     """
-    file_name = f"{file_name}_nucleotide.fasta"
-    file_name = os.path.join('..', folder_name, file_name)
     if not is_file(file_name) or is_file_empty(file_name):
         with open(file_name, 'w') as out_file:
             for i in range(len(cds_lst)):
                 cds = extract_cds(record, cds_lst[i], i + 1)
                 write(cds, out_file, 'fasta')
-    name = file_name.split('/')
-    print(f"{name[-1]} created successfully")
+    print(f"{file_name.split('/')[-1]} created successfully")
 
 
-def write_protein_fasta(file_name: str, folder_name: str, cds_lst: tuple, organism_name: str) -> None:
+def write_protein_fasta(file_name: str, cds_lst: tuple, organism_name: str) -> None:
     """
     Creates a fasta file of proteins if not exists previously or is empty
     :param file_name: The name of the file
-    :param folder_name: The name of the folder
     :param cds_lst:
     :param organism_name:
     :return:
     """
-    # """
-    # Creates a fasta file of proteins if not exists previously or is empty
-    # :param file_name: The name or path of the file
-    # :param cds_lst: The tuple of FeatureLocation objects
-    # :param organism_name: Name of the organism
-    # """
-    file_name = f"{file_name}_protein.fasta"
-    file_name = os.path.join('..', folder_name, file_name)
     if not is_file(file_name) or is_file_empty(file_name):
         with open(file_name, 'w') as out_file:
             for i in range(len(cds_lst)):
                 cds = extract_prot(cds_lst[i], organism_name, i + 1)
                 write(cds, out_file, 'fasta')
-    name = file_name.split('/')
-    print(f"{name[-1]} created successfully")
+    print(f"{file_name.split('/')[-1]} created successfully")
 
 
 if __name__ == '__main__':
