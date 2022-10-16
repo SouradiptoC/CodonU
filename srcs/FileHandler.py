@@ -4,7 +4,7 @@ from Bio import Entrez
 from Bio.SeqIO import write, read
 from Bio.SeqRecord import SeqRecord
 from CdsExtractor import extract_cds, extract_prot
-from Errors import FileNotEmpty, NoEmailError
+from Errors import FileNotEmptyError, NoEmailError
 
 
 def set_entrez_email(email: str | None) -> None:
@@ -16,8 +16,7 @@ def set_entrez_email(email: str | None) -> None:
         print('Setting provided email to entrez.email')
         Entrez.email = email
     else:
-        pass
-        # raise NoEmailError
+        raise NoEmailError
 
 
 def set_entrez_api_key(api_key: str | None) -> None:
@@ -73,7 +72,7 @@ def is_file_empty(path: str) -> bool:
     if os.stat(path).st_size == 0:
         return True
     else:
-        raise FileNotEmpty(path)
+        raise FileNotEmptyError(path)
 
 
 def is_file(path: str):
@@ -109,8 +108,8 @@ def write_protein_fasta(file_name: str, cds_lst: tuple, organism_name: str) -> N
     """
     Creates a fasta file of proteins if not exists previously or is empty
     :param file_name: The name of the file
-    :param cds_lst:
-    :param organism_name:
+    :param cds_lst: The tuple of FeatureLocation objects
+    :param organism_name: Name of the organism
     :return:
     """
     if not is_file(file_name) or is_file_empty(file_name):
