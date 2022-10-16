@@ -29,3 +29,17 @@ class NoEmailError(CodonUsageError):
     def __init__(self):
         self.msg = f"No email provided for accessing NCBI utilities. Provide a valid email to access."
         super().__init__(self.msg)
+
+
+class TerSeqError(CodonUsageError):
+    """
+    Occurs when terminal codons are not valid
+    """
+
+    def __init__(self, code):
+        msg_dict = {
+            1: 'The first codon is not a valid starting codon',
+            -1: 'The last codon is not a valid ending codon'
+        }
+        self.msg = msg_dict[code]
+        super().__init__(self.msg)
