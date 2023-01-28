@@ -1,0 +1,271 @@
+#!/bin/sh
+# Adapted from the SRS5 srsinstall script
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# analyse command line and print usage if wrong
+#
+
+ERR='codonWinstall: Stopping due to Error'
+
+if [ "$#" = 0 ]; then
+  option="all"
+elif [ "$1" = "all" ]; then
+  option="all"
+elif [ "$1" = "clean" ]; then
+  option="clean"
+elif [ "$1" = "codonw" ]; then
+  option="codonw"
+elif [ "$1" = "links" ]; then
+  option="links"
+elif [ "$1" = "cleanall" ]; then
+  option="cleanall"
+elif [ "$1" = "realclean" ]; then
+  option="cleanall"
+else
+  option="usage"
+  echo "unknown option '$1'"
+fi
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# print "usage"
+#
+
+if [ "$option" = 'usage' ]; then
+  cat << END
+
+  Usage: ./codonWinstall option
+
+  Options:
+
+  all        does a complete installation
+  codonw     compile codonw only .. no linked programmes
+  links      generate links to pseudo programmes
+  clean      removes all object files
+  cleanall   removes all the object files, codonW, linked files and Makefile
+  realclean  removes all the object files, codonW, linked files and Makefile
+  
+END
+  exit 1
+fi
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+if [ "$option" = 'all' ]; then
+  echo "... starting installation of codonW"
+fi
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# put correct "make" and "cc" commands 
+#
+
+OS=`uname`
+
+if [ "$OS" = "SunOS" ]; then
+    case "`uname -r`" in
+	[56]*)   OS='Solaris' ;;
+    esac
+fi
+
+# some echo commands do not support -n
+# generally /usr/bin/echo doesn't but /usr/ucb/echo does, so one can hardwire
+# to be independent of users path.
+if [ -r /usr/ucb/echo ]; then
+  ECHON="/usr/ucb/echo -n"
+else
+  ECHON="echo -n"
+fi
+
+# OSF/1 v4.0 /usr/ucb is symlink to /usr/bin, but /bin/sh has builtin -n
+if [ "$OS" = "OSF1" ]; then
+  case "`uname -r`" in
+    V[4]*)  ECHON="echo -n"
+	    # or can
+	    #CMD_ENV=bsd ; export CMD_ENV
+    ;;
+  esac
+fi
+
+# we did our best, but now let's test
+ECHONT="`$ECHON | wc -c`"
+if [ $ECHONT != 0 ]; then
+  ECHONEND="\c"
+  ECHON=echo
+else
+  ECHONEND=""
+fi
+
+
+if [ ! -f "Makefile" ]; then
+
+  $ECHON "enter the make command [make]: $ECHONEND"
+  read makeCom
+  if [ "$makeCom" = "" ]; then makeCom='make' ; fi
+
+  # for OSF1 need to know if it is osf1 make or gnu make
+  if [ "$OS" = "OSF1" ]; then
+	$ECHON "is this OSF1 make [y]: $ECHONEND"
+	read OSFmake
+	if [ "$OSFmake" = "" ]; then OSFmake='y' ; fi
+  fi
+
+  if [ "$OS" = "SunOS" -o "$OS" = "Solaris" ]; then
+    ccComDef='gcc'
+  else
+    ccComDef='cc'    
+  fi
+
+  $ECHON "enter the cc command [${ccComDef}]: $ECHONEND"
+  read ccCom
+
+  if [ "$ccCom" = "" ]; then ccCom="$ccComDef" ; fi
+
+  echo 'choose between optimised code, or code for debugging'
+  $ECHON "optimised code [y]: $ECHONEND"
+  read optimCom
+  if [ "$optimCom" = "" ]; then optimCom="y" ; fi
+
+
+  $ECHON "enter the link command [ln]: $ECHONEND"
+  read ccLn
+
+  if [ "$ccLn" = "" ]; then ccLn="ln -f" ; fi
+
+
+  $ECHON "Do you want hard or soft links [hard]: $ECHONEND"
+  read ccLnflag
+
+  if [ "$ccLnflag" = "" ]; then ccLnflag="hard" ; fi
+
+  echo 'choose between optimised code, or code for debugging'
+  $ECHON "optimised code [y]: $ECHONEND"
+  read optimCom
+  if [ "$optimCom" = "" ]; then optimCom="y" ; fi
+
+
+
+  echo "...creating makefile for '$OS'"
+
+#better rename the old makefiles
+  if [ -f  "Makefile" ]; then \mv  Makefile Makefile.pre ; fi
+  if [ -f  "makefile" ]; then \mv  makefile makefile.pre ; fi
+  touch Makefile
+
+# Add the logical parts of the make file
+
+  if [ "$OS" = "OSF1" ]; then
+    echo "override cflags  = $(CFLAGS) -g" >> Makefile;
+  fi
+
+  if [ "$optimCom" = "y" ]; then
+    cflags="-O";
+  else
+    cflags="-g -DDEBUG" ;
+  fi
+
+  if [ "$ccLnflag" = "hard" ]; then
+    lncmd=$ccLn;
+  else
+    lncmd="$ccLn -s";
+  fi
+
+ link_prog="rscu cu aau raau tidy reader cutab cutot transl bases base3s dinuc cai fop gc3s gc cbi enc" 
+
+cat <<EOF >> Makefile
+
+objects  = codon_us.o codons.o open_fil.o commline.o menu.o tester.o coresp.o
+linked   = $link_prog
+
+CC=$ccComDef
+CFLAGS= $cflags -DBSD
+LN=$lncmd
+
+
+all: codonw links   
+
+codonw: $(objects)
+	$(CC) $(CFLAGS)  $(objects) -o codonw -lm
+
+clean:
+	\rm -f $(objects)
+
+cleanall:
+	\rm -f $(objects) codonw Makefile $(linked)
+
+realclean:
+	\rm -f $(objects) codonw Makefile $(linked)
+
+codon_us.o: codon_us.c codonW.h 
+	$(CC) -c $(CFLAGS) codon_us.c  
+
+menu.o: menu.c codonW.h 
+	$(CC) -c $(CFLAGS) menu.c
+
+codons.o: codons.c codonW.h 
+	$(CC) -c $(CFLAGS) codons.c
+
+coresp.o: coresp.c codonW.h 
+	$(CC) -c $(CFLAGS) coresp.c
+
+open_fil.o:    open_fil.c codonW.h
+	$(CC) -c $(CFLAGS) open_fil.c
+
+commline.o:    commline.c codonW.h 
+	$(CC) -c $(CFLAGS) commline.c
+
+tester.o:      tester.c codonW.h
+	$(CC) -c $(CFLAGS) tester.c
+
+links: codonw
+EOF
+
+
+for file in $link_prog 
+do
+ echo "\t\t$(LN) codonw $file"  >> Makefile
+done
+
+ echo >> Makefile
+
+fi
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# cleans the object
+#
+
+if [ "$option" = 'clean' ]; then
+  echo '...cleaning the old object files '
+  echo '...make clean'
+  make clean
+fi
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+if [ "$option" = 'cleanall' -o "$option" = 'realclean' ]; then
+  echo '...cleaning the old object files, linked files and executables'
+  echo '...make realclean '
+  make realclean
+fi
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+if [ "$option" = 'all' ]; then
+  echo '...Starting to make codonW, with auxillary programs '
+  echo '...make all'
+  make all
+fi
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+if [ "$option" = 'codonw' ]; then
+  echo '...checking codonW is up to date'
+  echo '...make codonw'
+  make codonw
+fi
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+if [ "$option" = 'links' ]; then
+  echo '... Linking auxilliary programs to  '
+  echo '...make links'
+  make links
+fi
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+

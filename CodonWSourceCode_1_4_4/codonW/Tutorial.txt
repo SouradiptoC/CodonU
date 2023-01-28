@@ -1,0 +1,373 @@
+Tutorial 
+
+Codon usage analysis
+
+Included with this distribution of codonW should be a test dataset of 
+sequences (input.dat). We will use this set of sequence as a typical example 
+of a codon usage analysis. This test dataset is derived from the open 
+reading frames (ORFs) of Saccharomyces cerevisiae chromosome III as 
+annotated in the EMBL feature table for the sequence entry SCCHRIII 
+(accession number X59720). In the current EMBL (Release 51 June 1997) the 
+number of annotated ORFs was 172. The file input.dat contains 111 of these 
+ORFs. The rational and why some ORFs where removed is explained below.
+
+The commandline syntax of codonW will be used in this tutorial, all options 
+selected from the commandline are also selectable using the menu system. For 
+more information please read the command line help (codonw -help) or just 
+type "codonw" and use the menu specific online. 
+
+Build your dataset of genes carefully.
+Always remember that as in any analysis, but particularly with codon usage, 
+GIGO (garbage in, garbage out). Examine as many sources of information about 
+the data as possible, particularly the original publication and sequence 
+annotations. It is important that the sequences are a representative sample. 
+Five ORFs where removed from the dataset because they where annotated (and 
+had sequence identity) with genes within the previously identified 
+transposable elements Ty2 and Ty5.  These ORFs where annotated at positions 
+1537-2127, 2118-2558, 2816-3742, 84714-86030, 84714-90384. The codon usage 
+of transposable element genes differs from that of chromosomal genes. 
+
+Further checks of sequence annotation was carried out, those sequences which 
+had not been assigned gene names or SwissProt accession numbers where 
+removed. The SwissProt annotation was also checked, genes described as 
+hypothetical but which did not have any sequence identity with other 
+proteins where removed. 
+Check basic sequence integrity  
+Sequences should be checked to confirm that they match some basic gene 
+characteristics. Each sequence might reasonably be expected to have an 
+initiation codon and a translation termination codon, and no internal stop 
+codons. Those sequences that do not match these characteristics, or 
+sequences that have partial codons or untranslatable codons are flagged by 
+codonw with warning messages.
+
+To make a first pass of the input data to check for simple sequence 
+problems: 
+codonw input.dat   -nomenu 		
+
+By default codonw will report the codon usage of each gene to the file 
+input.blk. As there are no problems with this dataset there should be no 
+warning messages. However analysis of a previous version of this dataset 
+based on EMBL Release 50 where SCCHRIII had 230 annotated ORFs, generated 
+these typical warning messages.  
+
+Warning: Sequence 178 "SCCHRIII.PE178______" does not begin with a 
+recognised start codon
+Warning: Sequence 178 "SCCHRIII.PE178______" is not terminated by a stop 
+codon
+Warning: Sequence 202 "SCCHRIII.PE202______" does not begin with a 
+recognised start codon
+Warning: Sequence 202 "SCCHRIII.PE202______" has 1 internal stop codon(s)
+Warning: Sequence 202 "SCCHRIII.PE202______" is not terminated by a stop 
+codon
+
+Each sequence is labelled by its numerical occurrence in the input file 
+(i.e. these are the 178th and 202nd sequences in the input file) and its 
+sequence header line.
+
+Sequences that generate warning messages should be examined closely to 
+ascertain why. Some sequences may be annotated as partial sequences and 
+therefore the absence of a start or stop codon or the presence of a 3' 
+partial codon is to be expected. Note the presence of a 5' partial codon 
+would cause a frame shift, it is ESSENTIAL that 5' partial codons are 
+removed. Unless the frame shift that they produce, results in a (incorrect) 
+reading frame that contains internal stop codons, codonw cannot detect this 
+problem. The codon usage of a frame shifted gene sequence could adversely 
+affect the correspondence analysis  (COA) (though such genes are often 
+recognisable as being outliers on the COA plots).
+
+If a sequence warning is due to incorrect annotation this should be 
+corrected manually. Sequences that produce warnings that cannot be explained 
+or justified (e.g. a gene with internal stop codon) should be excluded. 
+These warning are informational only and do not exclude sequences from the 
+analysis.
+
+Codon usage indices 
+Once the initial quality checks have been made for the data we can then 
+proceed with the codon usage analysis (strictly speaking we can generate COA 
+and codon usage indices tasks at the same time). Some of the indices of 
+codon usage bias that CodonW calculates (i.e. Fop, CAI and CBI) use 
+information about a preferred set of codons for highly expressed genes. This 
+information is species specific and does not apply to all species (most 
+eukaryotes and many prokaryotes appear to display no codon preference in 
+highly expressed genes). Therefore care must be taken that the appropriate 
+set of optimal codons are used. For most species the optimal codons are not 
+know and therefore the indices should not be calculated at this stage. 
+However this information is known for Saccharomyces cerevisiae, so we can 
+immediately calculate these indices of codon usage. Later we will see how 
+codonW identifies optimal codons and can generate this information for your 
+species.  
+ 
+The default optimal codons and codon adaptation values are those of E. coli. 
+To select an alternative choice we use the c_type (for CAI values ) and 
+f_type (for FOP/CBI) commandline arguments. These switches requires an 
+integer values, this value is the same as the option number if we where 
+using the menu system to change the codon information. 
+
+Example       "-c_type 2" is equivalent to 
+Choose "Main Menu"
+Choose "Changes Defaults Menu"
+Choose "Change the CAI values"
+Choose "(2) Saccharomyces cerevisiae"
+
+Example       "-f_type 4" is equivalent to 
+Choose "Main Menu"
+Choose "Changes Defaults Menu"
+Choose "Change the Fop/CBI values"
+Choose "(4) Saccharomyces cerevisiae"
+
+
+Therefore to select all the codon usage indices calculated by codonw and to 
+use the optimal codons of Saccharomyces cerevisiae type:
+
+codonw input.dat  -all_indices  -c_type 2 -f_type 4 -nomenu
+
+See below for the output of this command  
+The commandline flag -nomenu by passes the menu system, the -all_indices 
+indicates to codonw that you wish to calculate all the codon and amino acid 
+usage indices. These indices areT3s, C3s, A3s, G3s, CAI, CBI, Fop, Nc, GC3s, 
+GC, L_sym, L_aa, Gravy and Aromaticity. For a fuller explanation of what 
+these indices are see Readme.indices. These indices can also be used to 
+check whether there are any identical or almost identical sequences in the 
+input file. If we sort the result file "input.out" we it is much easier to 
+identify the sequences which are similar. 
+
+sort -k 2n  input.out                 (unix for "sort using the second 
+numerical field") 
+
+The sorted output reveals the presence of two pairs of identical sequences 
+(Mating type proteins)
+ALPHA2____________63   0.3636  0.2273  0.4939  0.2177  0.109
+MATALPHA2_________63   0.3636  0.2273  0.4939  0.2177  0.109
+and 
+ALPHA1____________52   0.4361  0.2180  0.4228  0.2589  0.112   
+MATALPHA1_________52   0.4361  0.2180  0.4228  0.2589  0.112   
+
+Sequences which appear to be multiple copies of the same gene are normally 
+removed from our codon usage datasets, even if the sequences are not 
+identical but where the differences can be attributed to sequencing error or 
+allelic polymorphism.  However different sequences that appear to be members 
+of the same multigene family are retained, even if identical.  As we know 
+these ORFs are from different regions of the chromosome and are not the same 
+sequence they where not removed from the sample dataset.
+
+Tabulation of Overall Codon Usage 
+A common representation of codon usage is a tabular format of the total 
+codon usage of a dataset. CodonW can automatically generate this table for 
+you.
+
+codonw input.dat  -cutot 
+
+The tabulated total codon usage is stored in the output file input.blk.
+
+See Tabulated codon usage below. 
+
+
+
+Preliminary codon usage analysis
+The effective number of codons index, is a very useful preliminary tool for 
+codon usage analysis [Wright, 1990 #24]. It is a simple measure of codon 
+bias, analogous to the effective number of allele measure used in population 
+genetics. It gives the number of equally used codon that would generate the 
+same codon usage bias as observed, lower values indicate stronger bias. A 
+useful feature of ENc is that the affect of GC biases have on the index can 
+be estimated. This allows the comparison of GC3s and ENc against the 
+theoretical values if codon bias was simply caused due to GC mutational 
+bias. A plot of ENc vs. GC3s can be seen at 
+http://www.molbiol.ox.ac.uk/cu/EncVsGC3s.gif. Although the majority of genes 
+in this plot have a degree of codon bias that can be explained in terms of 
+GC mutation, the cluster of genes (six genes with ENc <40) which have much 
+stronger codon bias than be simply explained in terms of mutational biases. 
+These genes are good candidates as genes whose codon usage has been 
+determined by natural selection, probably selection for translational 
+efficiency. 
+
+Correspondence Analysis (COA)
+We are now ready to generate a correspondence analysis of the codon usage of 
+SCCHRIII genes. We have a choice about how much information is generated. In 
+this example we will use the default values.
+
+codonw input.dat -coa_cu  -nomenu -silent		(-silent stops all 
+prompting)
+
+This generates a COA of codon usage. The summary file is "summary.coa" and 
+contains most of the data generated by the COA. One of the first sections is 
+the "Explanation of the variation by axis"  also stored in eigen.coa. 
+
+The total inertia of the data was 0.263176
+Num. Eigenval.   R.Iner.  R.Sum    |Num. Eigenval.   R.Iner.  R.Sum  |
+01   +4.5755E-02 +0.1739 +0.1739   |02   +3.2372E-02 +0.1230 +0.2969 |
+03   +1.8405E-02 +0.0699 +0.3668   |04   +1.2499E-02 +0.0475 +0.4143 |
+
+The relative inertia explained by the first axis  is 17.4%, the 2nd axis 
+explains 12.3%, the 3rd 7.0%, etc.  (17.45% is not remarkably high for 
+relative inertia explained by the first axis, but as there are ORFs included 
+which are described as hypothetical there may be random noise present in the 
+data if they are not real). 
+
+The next two sections report position of each gene and codon on the trends. 
+
+label                    Axis1      Axis2      Axis3      Axis4
+1_YCG9_Probable_____    0.00904    0.13153    0.34028   -0.05372
+2_YCG8________573_re    0.07429   -0.24652   -0.05502   -0.39837
+3_ALPHA2________633_    0.30675    0.04259   -0.22864   -0.03878
+4_ALPHA1________528_    0.16444    0.00399   -0.02000    0.00937
+5_CHA1_________1083_   -0.00322    0.10387    0.07137    0.11896
+
+this information is best viewed graphically, an example of the location of 
+the genes on the two principal axes can be seen here 
+http://www.molbiol.ox.ac.uk/cu/axes.gif.
+
+Automatic Identification of Putative Optimal Codons 
+Codonw automatically tries to identify the optimal codons in your data, or 
+more precisely identify the codons which contribute to the major trend (if 
+the main trend is selection for translational optimality these should be the 
+optimal codons). It does this by comparing the codon usage of groups of 
+genes taken from each extreme of the principle trend (axis 1). It identifies 
+the set of genes with the highest bias (using the effective number of codons 
+index) and tests for significant differences in the codon usage of between 
+the higher bias set with a two way Chi-squared contingency test. The 
+putative optimal codons are listed in summary.coa and hilo.coa.  It is the 
+responsibility of the user to confirm that the major codon usage trend is 
+selection for translational optimality, and not due to some other mutational 
+pressure (see GC variation).  The number of genes included in the two groups 
+can be selected using the command line switch ( -coa_num ) as an absolute 
+number of genes, of a percentage of the total genes in the dataset (by 
+default 5%).  
+
+The analysis of this dataset identified 19 codons that appeared to be 
+optimal. 18 of these agree with optimal codon identified previously using a 
+larger dataset set of 575 genes [Sharp, 1991 #46]. The codon identified in 
+this analysis as being optimal but not in the previous analysis, was GCC; 
+this codon has been previously suggested as being an optimal codon in S. 
+cerevisiae [Bennetzen, 1982 #92]. The U ending codons, AUU, GUU and UGU, 
+which have been previously identified as optimal [Sharp, 1991 #46], where 
+not identified here at p<0.01; although UGU was identified as potentially 
+optimal with a p<0.02. The main reason that the U ending codons where not 
+identified from this dataset was their much higher usage in the lower biased 
+dataset. 
+
+
+Caveats
+1) The codons identified by codonw, as being optimal will be dependent on 
+the strength of the trend and the size of the datasets. 
+2) The composition of the genes from chromosome III is quite different from 
+the 575-gene dataset used by Sharp and Cowe. Only one of the 30 genes they 
+considered to be highly expressed, and none of the genes they considered 
+lowly expressed are present in this dataset. The reader is reminded that 
+there are approximately 15,000 yeast genes, so just a little over 1% are 
+located on chromosome III.
+
+Codonw generated personal choice of codons 
+On the assumption that the principle trend identified by codonw is selection 
+for translational optimality, and that the genes assigned to the highly bias 
+codon usage group are highly expressed, codonw outputs files with the 
+"optimal codons" and "CAI adaptation fitness values". These files are 
+fop.coa, cbi.coa and cai.coa, their filenames are related to the index they 
+have been formatted for.  These files can be used to calculate the indices 
+in species where the preferred codon usage has not been hardwired into 
+codonW.
+
+codonw input.dat  -fop_file fop.coa 
+codonw input.day -cai_file cai.coa -cbi_file cbi.coa
+
+Caveats 
+1) The original CAI paper calculated fitness values from experimentally 
+determined highly expressed genes.  The fitness values that are internal 
+to codonW where derived from these criteria. CAI indices calculated using 
+fitness values derived from genes identified solely by COA, as being 
+highly expressed should not be regarded as true CAI values.
+2) The optimal codons stored in the files cbi.coa and fop.coa where 
+identified by codonw using a statistical test of significance, this test 
+is dependent on sample size. 
+3) The size of the sample taken from the extremes of the axis will affect 
+the identified optimal codons. 
+4) The principle trend in the variation of codon usage may not be 
+translation optimality. 
+
+When we calculate the indexes CAI, CBI and Fop using the "codonw" generated 
+optimal codons and fitness values based on this small dataset, as we would 
+expect differ from when these indices are calculated using the codonw 
+internal codon usage information for S. cerevisiae. The internal values are 
+more accurate because the datasets used to generate them where larger, and 
+contained experimentally verified gene sequences.
+
+Although the two sets of indices differ, they remain highly correlated, all 
+three indices have correlation coefficients greater than 0.96. Therefore if 
+comparisons between the index values are internally consistent (i.e. they 
+where both calculated using the same optimal codon information) relative 
+comparisons of codon usage and bias can be made. Based on a dataset of 111 
+genes we have been able to identify optimal codons, which give us some 
+insight into the codon usage of S. cerevisiae. 
+
+
+Axis2 is highly correlated with GC3s content
+Alternative datasets could have been chosen that would present a much 
+simpler analyses of codon usage  (i.e. where the optimal codons identified 
+better matched those previously published). This dataset was specifically 
+chosen as the codon usage variation for genes from this chromosome is know 
+to have a second trend,  GC3s varies with chromosomal location in a 
+systematic fashion [Sharp, 1993 #39]. When we examine correlation 
+coefficients between the first 4 axes the correlation coefficient between 
+axis2 and GC3s is highly significant (r=0.89). Interestingly the bias is most 
+strong among the U ending codons it is possible that the presence of this 
+trend contributed to why the three U ending codons where not identified here 
+as optimal codons. This trend is quite strong accounting for 12.3% of the 
+relative inertia of the data, the principle trend (apparently selection for 
+translation optimality) accounted for 17.4%. We therefore see how it is 
+possible that the strongest influence on the choice of codon usage might not 
+be translation optimality but mutation biases.
+
+
+
+
+Typical output from codonw -all_indices -nomenu 
+======================= Output ======================================
+
+Genetic code is currently set to Universal Genetic code TGA=* TAA=* TAG=*
+
+ Welcome to CodonW  1.3  for Help type h
+
+Using Saccharomyces cerevisiae (Sharp and Cowe (1991) Yeast 7:657-678) 
+w values to calculate CAI 
+Using Saccharomyces cerevisiae  (Sharp and Cowe (1991) Yeast 7:657-678) 
+optimal codons to calculate CBI
+Using Saccharomyces cerevisiae  (Sharp and Cowe (1991) Yeast 7:657-678)
+optimal codons to calculate Fop
+..................................................................
+
+                Number of sequences: 111
+
+Files used:
+ Input  file was         input.dat 
+ Output file was         input.out  (codon usage indices, e.g. gc3s)
+ Output file was         input.blk  (bulk output e.g. raw codon usage)
+
+ CodonW has finished
+         ======================================================
+Tabulation of total codon usage
+
+Phe UUU 1483 1.14 Ser UCU 1094 1.47 Tyr UAU 1000 1.12 Cys UGU  434 1.18 
+    UUC 1117 0.86     UCC  773 1.04     UAC  789 0.88     UGC  303 0.82 
+Leu UUA 1349 1.55     UCA  882 1.19 TER UAA   47 1.27 TER UGA   36 0.97 
+    UUG 1549 1.78     UCG  487 0.66     UAG   28 0.76 Trp UGG  665 1.00 
+
+    CUU  698 0.80 Pro CCU  747 1.27 His CAU  677 1.15 Arg CGU  328 0.86 
+    CUC  364 0.42     CCC  415 0.71     CAC  499 0.85     CGC  171 0.45 
+    CUA  671 0.77     CCA  911 1.55 Gln CAA 1388 1.35     CGA  151 0.39 
+    CUG  604 0.69     CCG  281 0.48     CAG  668 0.65     CGG  103 0.27 
+
+Ile AUU 1612 1.35 Thr ACU 1052 1.38 Asn AAU 1778 1.17 Ser AGU  717 0.97 
+    AUC 1018 0.85     ACC  660 0.87     AAC 1262 0.83     AGC  500 0.67 
+    AUA  943 0.79     ACA  883 1.16 Lys AAA 2118 1.13 Arg AGA 1038 2.71 
+Met AUG 1156 1.00     ACG  444 0.58     AAG 1645 0.87     AGG  504 1.32 
+
+Val GUU 1184 1.49 Ala GCU 1055 1.40 Asp GAU 1905 1.25 Gly GGU 1284 1.87 
+    GUC  674 0.85     GCC  765 1.01     GAC 1145 0.75     GGC  552 0.80 
+    GUA  622 0.78     GCA  836 1.11 Glu GAA 2371 1.41     GGA  557 0.81 
+    GUG  690 0.87     GCG  368 0.49     GAG  995 0.59     GGG  355 0.52 
+
+53400 codons (used Universal Genetic code)
+ 
+======================================================
+
+
