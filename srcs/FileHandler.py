@@ -128,7 +128,7 @@ def write_protein_fasta(file_name: str, cds_lst: tuple, organism_name: str) -> N
     print(f"Protein file for {organism_name} created successfully")
 
 
-def write_exome_fasta(file_name: str, nuc_file_path: str, organism_name: str):
+def write_exome_fasta(file_name: str, nuc_file_path: str, organism_name: str) -> None:
     """
     Creates a fasta file of exome if not exists previously or is empty
     :param file_name: The name of the file
