@@ -1,10 +1,11 @@
 import os
 import pandas as pd
+import warnings
 from Bio import Entrez
-from Bio.SeqIO import write, read
+from Bio.SeqIO import write, read, parse
 from Bio.SeqRecord import SeqRecord
-from Analyzer import extract_cds, extract_prot
-from Errors import FileNotEmptyError, NoEmailError
+from Extractor import extract_cds, extract_prot, extract_exome
+from Errors import FileNotEmptyError, NoEmailError, EmailWarning, ApiWarning
 
 
 def set_entrez_email(email: str | None) -> None:
@@ -16,7 +17,8 @@ def set_entrez_email(email: str | None) -> None:
         print('Setting provided email to entrez.email')
         Entrez.email = email
     else:
-        raise NoEmailError
+        warning = EmailWarning()
+        warning.warn()
 
 
 def set_entrez_api_key(api_key: str | None) -> None:
@@ -27,6 +29,9 @@ def set_entrez_api_key(api_key: str | None) -> None:
     if api_key:
         print('Setting provided API key to entrez.api_key')
         Entrez.api_key = api_key
+    else:
+        warning = ApiWarning()
+        warning.warn()
 
 
 def set_entrez_param(email: str | None = None, api_key: str | None = None) -> None:
@@ -124,9 +129,13 @@ def write_protein_fasta(file_name: str, cds_lst: tuple, organism_name: str) -> N
     print(f"Protein file for {file_name.split('/')[-1]} created successfully")
 
 
+def write_exome_fasta(file_name: str, nuc_file_path: str, organism_name: str):
+    if not is_file(file_name) or is_file_empty(file_name):
+        with open(file_name, 'w') as out_file:
+            exome = extract_exome(nuc_file_path, organism_name)
+
+
 if __name__ == '__main__':
-    print(is_file_empty('temp2.py'))
-    # email = 'sourochaudhuri@gmail.com'
-    # api_key = 'f8aaf28ce944b3a659da3553951cef0e6608'
-    # set_entrez_param(email, api_key)
-    # print(get_gb('CP045927.1'))
+    # print(is_file_empty('temp2.py'))
+    x = None
+    print(set_entrez_email(x))

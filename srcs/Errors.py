@@ -1,3 +1,6 @@
+import warnings
+
+
 class CodonUsageError(Exception):
     """
     Accounts for all error that can happen during executing the files
@@ -74,3 +77,39 @@ class TerSeqError(CodonUsageError):
         }
         self.msg = msg_dict[code]
         super().__init__(self.msg)
+
+
+##############################################################################################
+class CodonUsageWarning(Exception):
+    """
+    Accounts for all warnings while executing the srcs
+    """
+
+    def __init__(self, msg=None):
+        self.msg = msg
+
+
+class EmailWarning(CodonUsageWarning):
+    """
+    Occurs when no email id is provided
+    """
+
+    def __init__(self):
+        self.msg = 'No Email provided. Providing email will increase the speed'
+        super().__init__(self.msg)
+
+    def warn(self):
+        warnings.warn(self.msg)
+
+
+class ApiWarning(CodonUsageWarning):
+    """
+    Occurs when no API key is provided
+    """
+
+    def __init__(self):
+        self.msg = 'No API key provided. Providing NCBI API key will increase the speed'
+        super().__init__(self.msg)
+
+    def warn(self):
+        warnings.warn(self.msg)
