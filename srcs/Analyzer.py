@@ -9,7 +9,8 @@ def extract_cds_lst(record: SeqRecord) -> tuple:
     :param record: Original Sequence Record object from where the CDS is to be extracted
     :return: A tuple of FeatureLocation objects
     """
-    cds_lst = [cds for cds in record.features if cds.type == 'CDS']
+    # TODO implement len of gene >= 300 or find 25% of median
+    cds_lst = [cds for cds in record.features if cds.type == 'CDS' and 'pseudo' not in cds.qualifiers.keys()]
     return tuple(cds_lst)
 
 
@@ -45,11 +46,15 @@ def extract_prot_seq(feature: SeqFeature) -> Seq:
 
 
 def extract_prot(feature: SeqFeature, organism_name: str, cds_no: int = 0) -> SeqRecord:
+    if 'product' in feature.qualifiers.keys():
+        description = f"{feature.qualifiers['product'][0]} CDS_{cds_no}"
+    else:
+        description = f"{feature.qualifiers['note'][0]} CDS_{cds_no}"
     prot = SeqRecord(
         seq=extract_prot_seq(feature),
         id=f"{feature.qualifiers['protein_id'][0]}",
-        name=f"{organism_name} {feature.qualifiers['product'][0]}",
-        description=f"{organism_name} {feature.qualifiers['product'][0]} CDS_{cds_no}"
+        name=f"{organism_name}",
+        description=description
     )
     return prot
 

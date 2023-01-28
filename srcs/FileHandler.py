@@ -3,7 +3,7 @@ import pandas as pd
 from Bio import Entrez
 from Bio.SeqIO import write, read
 from Bio.SeqRecord import SeqRecord
-from CdsExtractor import extract_cds, extract_prot
+from Analyzer import extract_cds, extract_prot
 from Errors import FileNotEmptyError, NoEmailError
 
 
@@ -72,6 +72,10 @@ def is_file_empty(path: str) -> bool:
     if os.stat(path).st_size == 0:
         return True
     else:
+        name = path.split('/')
+        dec = input(f"{name[-1]} already exists. Want to re-write (y/n): ")
+        if dec == 'y':
+            return True
         raise FileNotEmptyError(path)
 
 
@@ -101,7 +105,7 @@ def write_nucleotide_fasta(file_name: str, cds_lst: tuple, record: SeqRecord) ->
             for i in range(len(cds_lst)):
                 cds = extract_cds(record, cds_lst[i], i + 1)
                 write(cds, out_file, 'fasta')
-    print(f"{file_name.split('/')[-1]} created successfully")
+    print(f"Nucleotide file for {file_name.split('/')[-1]} created successfully")
 
 
 def write_protein_fasta(file_name: str, cds_lst: tuple, organism_name: str) -> None:
@@ -117,11 +121,11 @@ def write_protein_fasta(file_name: str, cds_lst: tuple, organism_name: str) -> N
             for i in range(len(cds_lst)):
                 cds = extract_prot(cds_lst[i], organism_name, i + 1)
                 write(cds, out_file, 'fasta')
-    print(f"{file_name.split('/')[-1]} created successfully")
+    print(f"Protein file for {file_name.split('/')[-1]} created successfully")
 
 
 if __name__ == '__main__':
-    pass
+    print(is_file_empty('temp2.py'))
     # email = 'sourochaudhuri@gmail.com'
     # api_key = 'f8aaf28ce944b3a659da3553951cef0e6608'
     # set_entrez_param(email, api_key)
