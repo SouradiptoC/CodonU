@@ -43,10 +43,22 @@ def extract_cds(record: SeqRecord, feature_location: FeatureLocation, cds_no: in
 
 
 def extract_prot_seq(feature: SeqFeature) -> Seq:
+    """
+    Returns the protein sequence reported in the report for the provided cds
+    :param feature: The CDS
+    :return: The protein sequence
+    """
     return Seq(feature.qualifiers['translation'][0])
 
 
 def extract_prot(feature: SeqFeature, organism_name: str, cds_no: int = 0) -> SeqRecord:
+    """
+    Extracts protein sequences and return them for writing
+    :param feature: The CDS
+    :param organism_name: Name of the organism
+    :param cds_no: Number of the CDS
+    :return: The protein sequence suitable for being written is fasta format
+    """
     if 'product' in feature.qualifiers.keys():
         description = f"{feature.qualifiers['product'][0]} CDS_{cds_no}"
     else:
@@ -60,7 +72,14 @@ def extract_prot(feature: SeqFeature, organism_name: str, cds_no: int = 0) -> Se
     return prot
 
 
-def extract_exome(nuc_file_path: str, organism_name: str, threshold: int = 0):
+def extract_exome(nuc_file_path: str, organism_name: str, threshold: int = 0) -> SeqRecord:
+    """
+    Extracts the exome from given nucleotides
+    :param nuc_file_path: The path to the nucleotide file
+    :param organism_name: Name of the organism
+    :param threshold: Minimum length of the CDS for being considered as contributing
+    :return: The exome
+    """
     records = parse(nuc_file_path, 'fasta')
     m_seq = MutableSeq('')
     for record in records:
@@ -73,9 +92,8 @@ def extract_exome(nuc_file_path: str, organism_name: str, threshold: int = 0):
         seq=m_seq,
         id=lst_record.id,
         name=organism_name,
-        description='whole exome of organism'
+        description=f'whole exome of {organism_name}'
     )
-
     return exome
 
 

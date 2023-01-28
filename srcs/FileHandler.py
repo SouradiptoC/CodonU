@@ -1,11 +1,10 @@
 import os
 import pandas as pd
-import warnings
 from Bio import Entrez
-from Bio.SeqIO import write, read, parse
+from Bio.SeqIO import write, read
 from Bio.SeqRecord import SeqRecord
 from Extractor import extract_cds, extract_prot, extract_exome
-from Errors import FileNotEmptyError, NoEmailError, EmailWarning, ApiWarning
+from Errors import FileNotEmptyError, EmailWarning, ApiWarning
 
 
 def set_entrez_email(email: str | None) -> None:
@@ -98,19 +97,20 @@ def read_file(file_name: str) -> pd.DataFrame:
     return df
 
 
-def write_nucleotide_fasta(file_name: str, cds_lst: tuple, record: SeqRecord) -> None:
+def write_nucleotide_fasta(file_name: str, cds_lst: tuple, record: SeqRecord, organism_name: str) -> None:
     """
     Creates a fasta file of nucleotides if not exists previously or is empty
     :param file_name: The name of the file
     :param cds_lst: The tuple of FeatureLocation objects
     :param record: The SeqRecord object containing whole sequence
+    :param organism_name: Name of the organism
     """
     if not is_file(file_name) or is_file_empty(file_name):
         with open(file_name, 'w') as out_file:
             for i in range(len(cds_lst)):
                 cds = extract_cds(record, cds_lst[i], i + 1)
                 write(cds, out_file, 'fasta')
-    print(f"Nucleotide file for {file_name.split('/')[-1]} created successfully")
+    print(f"Nucleotide file for {organism_name} created successfully")
 
 
 def write_protein_fasta(file_name: str, cds_lst: tuple, organism_name: str) -> None:
@@ -119,23 +119,31 @@ def write_protein_fasta(file_name: str, cds_lst: tuple, organism_name: str) -> N
     :param file_name: The name of the file
     :param cds_lst: The tuple of FeatureLocation objects
     :param organism_name: Name of the organism
-    :return:
     """
     if not is_file(file_name) or is_file_empty(file_name):
         with open(file_name, 'w') as out_file:
             for i in range(len(cds_lst)):
                 cds = extract_prot(cds_lst[i], organism_name, i + 1)
                 write(cds, out_file, 'fasta')
-    print(f"Protein file for {file_name.split('/')[-1]} created successfully")
+    print(f"Protein file for {organism_name} created successfully")
 
 
 def write_exome_fasta(file_name: str, nuc_file_path: str, organism_name: str):
+    """
+    Creates a fasta file of exome if not exists previously or is empty
+    :param file_name: The name of the file
+    :param nuc_file_path: The path of nucleotide file
+    :param organism_name: Name of the organism
+    """
     if not is_file(file_name) or is_file_empty(file_name):
         with open(file_name, 'w') as out_file:
+            # TODO provide threshold value
             exome = extract_exome(nuc_file_path, organism_name)
+            write(exome, out_file, 'fasta')
+    print(f"Exome file for {organism_name} created successfully")
 
 
 if __name__ == '__main__':
     # print(is_file_empty('temp2.py'))
-    x = None
-    print(set_entrez_email(x))
+    write_exome_fasta('../Results/Exons/temp_2.fasta', '../Results/Nucleotide/Staphylococcus_agnetis_nucleotide.fasta',
+                      'Staphylococcus agnetis')
