@@ -23,16 +23,6 @@ class FileNotEmptyError(CodonUsageError):
         super().__init__(self.msg)
 
 
-class NoEmailError(CodonUsageError):
-    """
-    Occurs when no email is provided for Bio.Entrez.email parameter
-    """
-
-    def __init__(self):
-        self.msg = f"No email provided for accessing NCBI utilities. Provide a valid email to access."
-        super().__init__(self.msg)
-
-
 class InternalStopCodonError(CodonUsageError):
     """
     Occurs when internal stop codon is present in the genome
@@ -76,6 +66,16 @@ class TerSeqError(CodonUsageError):
             -1: 'The last codon is not a valid ending codon.'
         }
         self.msg = msg_dict[code]
+        super().__init__(self.msg)
+
+
+class ThresholdError(CodonUsageError):
+    """
+    Occurs when the provided threshold is not in limit
+    """
+
+    def __init__(self):
+        self.msg = 'The threshold value must be in limit 0 to 1 (inclusively).'
         super().__init__(self.msg)
 
 

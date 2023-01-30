@@ -1,16 +1,17 @@
+from typing import Tuple, Any
+
 from Bio.SeqIO import parse
 from Bio.Seq import Seq, MutableSeq
 from Bio.SeqFeature import FeatureLocation, SeqFeature
 from Bio.SeqRecord import SeqRecord
 
 
-def extract_cds_lst(record: SeqRecord) -> tuple:
+def extract_cds_lst(record: SeqRecord) -> tuple[Any, ...]:
     """
     Extracts the list of features if their type if CDS
     :param record: Original Sequence Record object from where the CDS is to be extracted
     :return: A tuple of FeatureLocation objects
     """
-    # TODO implement len of gene >= 300 or find 25% of median
     cds_lst = [cds for cds in record.features if cds.type == 'CDS' and 'pseudo' not in cds.qualifiers.keys()]
     return tuple(cds_lst)
 
@@ -72,19 +73,17 @@ def extract_prot(feature: SeqFeature, organism_name: str, cds_no: int = 0) -> Se
     return prot
 
 
-def extract_exome(nuc_file_path: str, organism_name: str, threshold: int = 0) -> SeqRecord:
+def extract_exome(nuc_file_path: str, organism_name: str) -> SeqRecord:
     """
     Extracts the exome from given nucleotides
     :param nuc_file_path: The path to the nucleotide file
     :param organism_name: Name of the organism
-    :param threshold: Minimum length of the CDS for being considered as contributing
     :return: The exome
     """
     records = parse(nuc_file_path, 'fasta')
     m_seq = MutableSeq('')
     for record in records:
-        if len(record.seq) >= threshold:
-            m_seq += record.seq[:-3]
+        m_seq += record.seq[:-3]
     records = parse(nuc_file_path, 'fasta')
     *_, lst_record = records
     m_seq += lst_record.seq[-3:]

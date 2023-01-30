@@ -137,7 +137,6 @@ def write_exome_fasta(file_name: str, nuc_file_path: str, organism_name: str) ->
     """
     if not is_file(file_name) or is_file_empty(file_name):
         with open(file_name, 'w') as out_file:
-            # TODO provide threshold value
             exome = extract_exome(nuc_file_path, organism_name)
             write(exome, out_file, 'fasta')
     print(f"Exome file for {organism_name} created successfully")
