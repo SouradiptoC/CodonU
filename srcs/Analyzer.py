@@ -1,13 +1,16 @@
+from math import nan
 from statistics import median
 from Bio.Seq import Seq
 from Bio.SeqIO import parse
 from Bio.Data.CodonTable import unambiguous_dna_by_id, NCBICodonTableDNA
 
-from Bio.SeqUtils import GC123
+from Bio.SeqUtils import GC123, seq3
 from CAI import CAI, RSCU
+from itertools import chain
+from collections import Counter
 
 from warnings import filterwarnings
-from Errors import ThresholdError, MissingCodonError
+from Errors import ThresholdError, MissingCodonWarning, NoSynonymousCodonWarning
 
 
 def syn_codons(codon_table: NCBICodonTableDNA) -> dict[str, list[str]]:
@@ -41,27 +44,35 @@ def sf_vals(codon_table: NCBICodonTableDNA) -> dict[int, list[str]]:
     return sf_dic
 
 
-def cbi(prot_seq: Seq | str, exome: Seq | str, genetic_code: int) -> tuple[float, Seq]:
-    if not isinstance(exome, Seq):
-        exome = Seq(exome)
+def cbi(prot_seq: Seq | str, reference: list[Seq], genetic_code: int) -> tuple[float, str | None]:
+    sequences = ((sequence[i:i + 3].upper() for i in range(0, len(sequence), 3)) for sequence in reference)
+    codons = chain.from_iterable(sequences)
+    counts = Counter(codons)
     syn_codon_dict = syn_codons(unambiguous_dna_by_id[genetic_code])
     sf_val_dict = sf_vals(unambiguous_dna_by_id[genetic_code])
-    cbi_val, opt_codon = None, None
-    for num, aa_lst in sf_val_dict.items():
+    sorted_keys = sorted(sf_val_dict.keys(), reverse=True)
+    sorted_sf_dict = {key: sf_val_dict[key] for key in sorted_keys}
+    cbi_val, opt_codon = nan, None
+    for num, aa_lst in sorted_sf_dict.items():
+        if num == 1:
+            warn = NoSynonymousCodonWarning(seq3(prot_seq))
+            warn.warn()
+            break
         if prot_seq in aa_lst:
             codon_lst = syn_codon_dict[prot_seq]
-            count_lst = [exome.count(codon) for codon in codon_lst]
+            count_lst = [counts[codon] for codon in codon_lst]
             tot_count = sum(count_lst)
             ran_count = tot_count / num
             opt_count = max(count_lst)
             try:
                 cbi_val = (opt_count - ran_count) / (tot_count - ran_count)
+                opt_codon = codon_lst[count_lst.index(max(count_lst))]
             except ZeroDivisionError:
-                raise MissingCodonError
-            opt_codon = codon_lst[count_lst.index(max(count_lst))]
+                warn = MissingCodonWarning(seq3(prot_seq))
+                warn.warn()
             break
 
-    return cbi_val, Seq(opt_codon)
+    return cbi_val, opt_codon
 
 
 def gc_123(seq: Seq | str) -> tuple[float, float | int, float | int, float | int]:
@@ -122,28 +133,19 @@ def calculate_rscu(records, genetic_code_num: int, threshold: float = 0.1) -> di
     return RSCU(reference, genetic_code_num)
 
 
-def calculate_cbi():
-    pass
+def calculate_cbi(records, genetic_code_num: int, threshold: float = 0.1) -> dict[str, tuple[float, str | None]]:
+    reference = filter_reference(records, threshold)
+    filterwarnings('ignore')
+    cbi_dict = dict()
+    for aa in unambiguous_dna_by_id[genetic_code_num].protein_alphabet:
+        cbi_val = cbi(aa, reference, genetic_code_num)
+        cbi_dict.update({aa: cbi_val})
+    return cbi_dict
 
 
 if __name__ == '__main__':
-    lst = ['TTT' for i in range(5)]
-    lst_1 = ['TTT' for i in range(5)]
-    seq = ''
-    for i, j in zip(lst, lst_1):
-        seq += i + j
-    seq += 'TAA'
-    reference = Seq(seq)
-    print(cbi('V', reference, 11))
-    # print(gc_123('GGG'))
-    # handle = '/home/souro/Projects/final_yr/Results/Nucleotide/Staphylococcus_agnetis_nucleotide.fasta'
-    # lst = []
-    # records = parse(handle, 'fasta')
-    # # print(len(rscu(records, 1)))
-    # # for record in records:
-    # #     lst.append(record.seq)
-    # cai_dct = calculate_cai(records, 11)
-    # print(cai_dct['ATG'])
-    # # print(cai_dct.keys())
-    # # seq_lst = [record.seq for record in records]
-    # # filter_reference(records, 4.5)
+    handle = '/home/souro/Projects/final_yr/Results/Nucleotide/Staphylococcus_agnetis_nucleotide.fasta'
+    records = parse(handle, 'fasta')
+    cbi_dict = calculate_cbi(records, 11)
+    for i, j in cbi_dict.items():
+        print(seq3(i), j)
