@@ -15,7 +15,7 @@ def syn_codons(codon_table: NCBICodonTableDNA) -> dict[str, list[str]]:
     Creates the protein, codon dictionary where protein is key
 
     :param codon_table: The codon table
-    :return: The dict containing protein as key
+    :return: The dict having protein as key
     """
     codon_dict = codon_table.forward_table
     syn_dict = dict()
@@ -23,6 +23,22 @@ def syn_codons(codon_table: NCBICodonTableDNA) -> dict[str, list[str]]:
         syn_dict[aa] = syn_dict.get(aa, [])
         syn_dict[aa].append(codon)
     return syn_dict
+
+
+def sf_vals(codon_table: NCBICodonTableDNA) -> dict[int, list[str]]:
+    """
+    Creates the sf value and protein dictionary where sf value is key
+
+    :param codon_table: The codon table
+    :return: The dict having sf values as key
+    """
+    syn_codon_dict = syn_codons(codon_table)
+    sf_dic = dict()
+    for aa, codons in syn_codon_dict.items():
+        sf = len(codons)
+        sf_dic[sf] = sf_dic.get(sf, [])
+        sf_dic[sf].append(aa)
+    return sf_dic
 
 
 def cbi():
@@ -89,9 +105,6 @@ def calculate_rscu(records, genetic_code_num: int, threshold: float = 0.1) -> di
 
 def calculate_cbi():
     pass
-
-
-#     6144 * 3456
 
 
 if __name__ == '__main__':
