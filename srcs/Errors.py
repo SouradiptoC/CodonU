@@ -79,6 +79,12 @@ class ThresholdError(CodonUsageError):
         super().__init__(self.msg)
 
 
+class LengthError(CodonUsageError):
+    def __init__(self):
+        self.msg = 'The length of the codon is not equal to 3'
+        super().__init__(self.msg)
+
+
 ##############################################################################################
 class CodonUsageWarning(Exception):
     """
