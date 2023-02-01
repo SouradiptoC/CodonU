@@ -79,12 +79,6 @@ class ThresholdError(CodonUsageError):
         super().__init__(self.msg)
 
 
-class MissingCodonError(CodonUsageError):
-    def __init__(self):
-        self.msg = 'No codon in the given reference sequence list translates to provided protein'
-        super().__init__(self.msg)
-
-
 ##############################################################################################
 class CodonUsageWarning(Exception):
     """
@@ -116,6 +110,23 @@ class ApiWarning(CodonUsageWarning):
     def __init__(self):
         self.msg = 'No API key provided. Providing NCBI API key will increase the speed'
         super().__init__(self.msg)
+
+    def warn(self):
+        warnings.warn(self.msg)
+
+
+class MissingCodonWarning(CodonUsageWarning):
+    def __init__(self, aa):
+        self.msg = f'No codon in the given reference sequence list translates to {aa}'
+        super().__init__(self.msg)
+
+    def warn(self):
+        warnings.warn(self.msg)
+
+
+class NoSynonymousCodonWarning(CodonUsageWarning):
+    def __init__(self, aa):
+        self.msg = f'There is only one codon for {aa}'
 
     def warn(self):
         warnings.warn(self.msg)
