@@ -1,13 +1,32 @@
 from statistics import median
 from Bio.Seq import Seq
 from Bio.SeqIO import parse
-from Bio.Data.CodonTable import unambiguous_dna_by_id
+from Bio.Data.CodonTable import unambiguous_dna_by_id, NCBICodonTableDNA
 
 from Bio.SeqUtils import GC123
 from CAI import CAI, RSCU
 
 from warnings import filterwarnings
 from Errors import ThresholdError
+
+
+def syn_codons(codon_table: NCBICodonTableDNA) -> dict[str, list[str]]:
+    """
+    Creates the protein, codon dictionary where protein is key
+
+    :param codon_table: The codon table
+    :return: The dict containing protein as key
+    """
+    codon_dict = codon_table.forward_table
+    syn_dict = dict()
+    for codon, aa in codon_dict.items():
+        syn_dict[aa] = syn_dict.get(aa, [])
+        syn_dict[aa].append(codon)
+    return syn_dict
+
+
+def cbi():
+    pass
 
 
 def gc_123(seq: Seq | str) -> tuple[float, float | int, float | int, float | int]:
@@ -37,14 +56,14 @@ def filter_reference(records, threshold: float) -> list[Seq]:
     return filtered_lst
 
 
-def cai(records, genetic_code_num: int, threshold: float = 0.1) -> dict[str, float]:
+def calculate_cai(records, genetic_code_num: int, threshold: float = 0.1) -> dict[str, float]:
     """
     Calculates cai for each codon
 
     :param records: The generator object containing sequence object
     :param genetic_code_num: Genetic table number for codon table
     :param threshold: Threshold value for filter
-    :return:
+    :return: The dictionary containing codon and cai value pairs
     """
     reference = filter_reference(records, threshold)
     filterwarnings('ignore')
@@ -55,16 +74,21 @@ def cai(records, genetic_code_num: int, threshold: float = 0.1) -> dict[str, flo
     return cai_dict
 
 
-def rscu(records, genetic_code_num: int, threshold: float = 0.1) -> dict[str, float]:
+def calculate_rscu(records, genetic_code_num: int, threshold: float = 0.1) -> dict[str, float]:
     """
     Calculates rscu values for each codon
+
     :param records: The generator object containing sequence object
     :param genetic_code_num: Genetic table number for codon table
     :param threshold: Threshold value for filter
-    :return:
+    :return: The dictionary containing codon and rscu value pairs
     """
     reference = filter_reference(records, threshold)
     return RSCU(reference, genetic_code_num)
+
+
+def calculate_cbi():
+    pass
 
 
 #     6144 * 3456
@@ -78,7 +102,7 @@ if __name__ == '__main__':
     # print(len(rscu(records, 1)))
     # for record in records:
     #     lst.append(record.seq)
-    cai_dct = cai(records, 11)
+    cai_dct = calculate_cai(records, 11)
     print(cai_dct['ATG'])
     # print(cai_dct.keys())
     # seq_lst = [record.seq for record in records]
