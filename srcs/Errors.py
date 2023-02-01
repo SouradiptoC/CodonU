@@ -79,9 +79,9 @@ class ThresholdError(CodonUsageError):
         super().__init__(self.msg)
 
 
-class LengthError(CodonUsageError):
+class MissingCodonError(CodonUsageError):
     def __init__(self):
-        self.msg = 'The length of the codon is not equal to 3'
+        self.msg = 'No codon in the given reference sequence list translates to provided protein'
         super().__init__(self.msg)
 
 
