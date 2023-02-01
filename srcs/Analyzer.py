@@ -7,7 +7,7 @@ from Bio.SeqUtils import GC123
 from CAI import CAI, RSCU
 
 from warnings import filterwarnings
-from Errors import ThresholdError
+from Errors import ThresholdError, MissingCodonError
 
 
 def syn_codons(codon_table: NCBICodonTableDNA) -> dict[str, list[str]]:
@@ -41,8 +41,27 @@ def sf_vals(codon_table: NCBICodonTableDNA) -> dict[int, list[str]]:
     return sf_dic
 
 
-def cbi():
-    pass
+def cbi(prot_seq: Seq | str, exome: Seq | str, genetic_code: int) -> tuple[float, Seq]:
+    if not isinstance(exome, Seq):
+        exome = Seq(exome)
+    syn_codon_dict = syn_codons(unambiguous_dna_by_id[genetic_code])
+    sf_val_dict = sf_vals(unambiguous_dna_by_id[genetic_code])
+    cbi_val, opt_codon = None, None
+    for num, aa_lst in sf_val_dict.items():
+        if prot_seq in aa_lst:
+            codon_lst = syn_codon_dict[prot_seq]
+            count_lst = [exome.count(codon) for codon in codon_lst]
+            tot_count = sum(count_lst)
+            ran_count = tot_count / num
+            opt_count = max(count_lst)
+            try:
+                cbi_val = (opt_count - ran_count) / (tot_count - ran_count)
+            except ZeroDivisionError:
+                raise MissingCodonError
+            opt_codon = codon_lst[count_lst.index(max(count_lst))]
+            break
+
+    return cbi_val, Seq(opt_codon)
 
 
 def gc_123(seq: Seq | str) -> tuple[float, float | int, float | int, float | int]:
@@ -108,15 +127,23 @@ def calculate_cbi():
 
 
 if __name__ == '__main__':
-    print(gc_123('GGG'))
-    handle = '/home/souro/Projects/final_yr/Results/Nucleotide/Staphylococcus_agnetis_nucleotide.fasta'
-    lst = []
-    records = parse(handle, 'fasta')
-    # print(len(rscu(records, 1)))
-    # for record in records:
-    #     lst.append(record.seq)
-    cai_dct = calculate_cai(records, 11)
-    print(cai_dct['ATG'])
-    # print(cai_dct.keys())
-    # seq_lst = [record.seq for record in records]
-    # filter_reference(records, 4.5)
+    lst = ['TTT' for i in range(5)]
+    lst_1 = ['TTT' for i in range(5)]
+    seq = ''
+    for i, j in zip(lst, lst_1):
+        seq += i + j
+    seq += 'TAA'
+    reference = Seq(seq)
+    print(cbi('V', reference, 11))
+    # print(gc_123('GGG'))
+    # handle = '/home/souro/Projects/final_yr/Results/Nucleotide/Staphylococcus_agnetis_nucleotide.fasta'
+    # lst = []
+    # records = parse(handle, 'fasta')
+    # # print(len(rscu(records, 1)))
+    # # for record in records:
+    # #     lst.append(record.seq)
+    # cai_dct = calculate_cai(records, 11)
+    # print(cai_dct['ATG'])
+    # # print(cai_dct.keys())
+    # # seq_lst = [record.seq for record in records]
+    # # filter_reference(records, 4.5)
