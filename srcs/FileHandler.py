@@ -7,10 +7,13 @@ from Extractor import extract_cds, extract_prot, extract_exome
 from Errors import FileNotEmptyError, EmailWarning, ApiWarning
 
 
+# TODO add raise in function comments
 def set_entrez_email(email: str | None) -> None:
     """
     Sets Bio.Entrez.email parameter to given email
+
     :param email: Email of user
+    :raises EmailWarning: If no email is provided
     """
     if email:
         print('Setting provided email to entrez.email')
