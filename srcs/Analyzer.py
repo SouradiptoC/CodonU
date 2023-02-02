@@ -44,7 +44,17 @@ def sf_vals(codon_table: NCBICodonTableDNA) -> dict[int, list[str]]:
     return sf_dic
 
 
-def cbi(prot_seq: Seq | str, reference: list[Seq], genetic_code: int) -> tuple[float, str | None]:
+def cbi(prot_seq: Seq | str, reference: list[Seq], genetic_code: int) -> tuple[float, str]:
+    """
+    Calculates codon bias index (CBI) for a given protein seq
+
+    :param prot_seq: The Amino Acid
+    :param reference: List of reference nucleotide sequences
+    :param genetic_code: Genetic table number for codon table
+    :return: A tuple of CBI val and the optimal codon
+    :raises NoSynonymousCodonWarning: When there is no synonymous codons
+    :raises MissingCodonWarning: When no codons translate to provided Amino acid
+    """
     sequences = ((sequence[i:i + 3].upper() for i in range(0, len(sequence), 3)) for sequence in reference)
     codons = chain.from_iterable(sequences)
     counts = Counter(codons)
@@ -55,6 +65,7 @@ def cbi(prot_seq: Seq | str, reference: list[Seq], genetic_code: int) -> tuple[f
     cbi_val, opt_codon = nan, None
     for num, aa_lst in sorted_sf_dict.items():
         if num == 1:
+            opt_codon = syn_codon_dict[prot_seq][0]
             warn = NoSynonymousCodonWarning(seq3(prot_seq))
             warn.warn()
             break
@@ -133,9 +144,17 @@ def calculate_rscu(records, genetic_code_num: int, threshold: float = 0.1) -> di
     return RSCU(reference, genetic_code_num)
 
 
-def calculate_cbi(records, genetic_code_num: int, threshold: float = 0.1) -> dict[str, tuple[float, str | None]]:
+def calculate_cbi(records, genetic_code_num: int, threshold: float = 0.1) -> dict[str, tuple[float, str]]:
+    """
+    Calculates cbi values for each amino acid
+
+    :param records: The generator object containing sequence object
+    :param genetic_code_num: Genetic table number for codon table
+    :param threshold: Threshold value for filter
+    :return: The dictionary containing amino acid and cbi value, optimal codon pairs
+    """
     reference = filter_reference(records, threshold)
-    filterwarnings('ignore')
+    # filterwarnings('ignore')
     cbi_dict = dict()
     for aa in unambiguous_dna_by_id[genetic_code_num].protein_alphabet:
         cbi_val = cbi(aa, reference, genetic_code_num)
@@ -144,7 +163,13 @@ def calculate_cbi(records, genetic_code_num: int, threshold: float = 0.1) -> dic
 
 
 if __name__ == '__main__':
-    handle = '/home/souro/Projects/final_yr/Results/Nucleotide/Staphylococcus_agnetis_nucleotide.fasta'
+    # handle = '/home/souro/Projects/final_yr/Results/Nucleotide/Staphylococcus_agnetis_nucleotide.fasta'
+    handle = '/home/souro/Projects/final_yr/Results/Nucleotide/temp.fasta'
+    # records = parse(handle, 'fasta')
+    # cai_dict = calculate_cai(records, 11)
+    # for i, j in cai_dict.items():
+    #     print(i, j)
+    print('#####################################################')
     records = parse(handle, 'fasta')
     cbi_dict = calculate_cbi(records, 11)
     for i, j in cbi_dict.items():
