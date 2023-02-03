@@ -116,7 +116,11 @@ class ApiWarning(CodonUsageWarning):
 
 
 class MissingCodonWarning(CodonUsageWarning):
-    def __init__(self, aa):
+    """
+    Occurs when no codon in the given reference sequence list translates to a certain amino acid
+    """
+
+    def __init__(self, aa: str):
         self.msg = f'No codon in the given reference sequence list translates to {aa}'
         super().__init__(self.msg)
 
@@ -125,6 +129,10 @@ class MissingCodonWarning(CodonUsageWarning):
 
 
 class NoSynonymousCodonWarning(CodonUsageWarning):
+    """
+    Occurs when only one codon in the given reference sequence list translates to a certain amino acid
+    """
+
     def __init__(self, aa):
         self.msg = f'There is only one codon for {aa}'
 
