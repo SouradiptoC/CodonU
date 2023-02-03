@@ -122,27 +122,34 @@ def enc(references: list, genetic_code: int) -> float:
                     warn = MissingCodonWarning(seq3(aa))
                     warn.warn()
                     F = nan
+                    break
             if not isnan(F):
-                F = ((tot_count * p_2) - 1) / (tot_count - 1)
+                try:
+                    F = ((tot_count * p_2) - 1) / (tot_count - 1)
+                except ZeroDivisionError:
+                    F = 1.0  # lim(x->0) x/x = 1 and tot_count = 0
             F_val_lst = F_val_dict.get(num)
             F_val_lst[aa_lst.index(aa)] = F
             F_val_dict.update({num: F_val_lst})
     for num, val_lst in F_val_dict.items():
-        if nan not in val_lst:
+        if nan not in val_lst and num != 3:
             F_val_avg_lst.append(mean(val_lst))
         elif nan in val_lst and num != 3:
             refined_lst = [val for val in val_lst if val is not nan]
             F_val_avg_lst.append(mean(refined_lst))
         else:
             F_val_avg_lst.append(nan)
-    if nan in F_val_avg_lst:
+    if F_val_avg_lst[2] in [0, nan]:
         f_2, f_4, f_6 = F_val_avg_lst[3], F_val_avg_lst[1], F_val_avg_lst[0]
-        f_3 = ((((2 / f_2) - 1) ** -1) + (((2 / (3 * f_4)) + (1 / 3)) ** -1) + (
-                ((2 / (5 * f_6)) + (3 / 5)) ** -1)) / 3.0
+        if 0 not in [f_2, f_4, f_6]:
+            f_3 = ((((2 / f_2) - 1) ** -1) + (((2 / (3 * f_4)) + (1 / 3)) ** -1) + (
+                    ((2 / (5 * f_6)) + (3 / 5)) ** -1)) / 3.0
+        else:
+            raise ThresholdError(references[0])
         F_val_avg_lst[2] = f_3
     # [sf_6 avg, sf_4 avg, sf_3 avg, sf_2 avg, sf_1 avg]
+    # enc_val = 0.0
     enc_val = 2 + (9 / F_val_avg_lst[3]) + (1 / F_val_avg_lst[2]) + (5 / F_val_avg_lst[1]) + (3 / F_val_avg_lst[0])
-
     return enc_val if enc_val < 61 else 61.00
 
 
@@ -156,33 +163,35 @@ def gc_123(seq: Seq | str) -> tuple[float, float | int, float | int, float | int
     return GC123(seq)
 
 
-def filter_reference(records, threshold: float) -> list[Seq]:
+def filter_reference(records, min_len_threshold: int) -> list[Seq]:
     """
     Filters the list of reference based on given threshold of length
 
     :param records: A generator object holding the sequence objects
-    :param threshold: Used to calculate minimum length required
+    :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
     :return: The list of usable sequences
     """
-    if not 0 <= threshold <= 1:
-        raise ThresholdError
+    # if not 0 <= threshold <= 1:
+    #     raise ThresholdError
     reference = [record.seq for record in records]
-    seq_len_lst = [len(seq) for seq in reference]
-    min_len = median(seq_len_lst) * threshold
-    filtered_lst = [seq for seq in reference if len(seq) >= min_len]
+    # seq_len_lst = [len(seq) for seq in reference]
+    # min_len = median(seq_len_lst) * threshold
+    # print(median(seq_len_lst))
+    # print(min_len)
+    filtered_lst = [seq for seq in reference if len(seq) >= min_len_threshold]
     return filtered_lst
 
 
-def calculate_cai(records, genetic_code_num: int, threshold: float = 0.1) -> dict[str, float]:
+def calculate_cai(records, genetic_code_num: int, min_len_threshold: int = 200) -> dict[str, float]:
     """
     Calculates cai for each codon
 
     :param records: The generator object containing sequence object
     :param genetic_code_num: Genetic table number for codon table
-    :param threshold: Threshold value for filter
+    :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
     :return: The dictionary containing codon and cai value pairs
     """
-    reference = filter_reference(records, threshold)
+    reference = filter_reference(records, min_len_threshold)
     filterwarnings('ignore')
     cai_dict = dict()
     for codon in unambiguous_dna_by_id[genetic_code_num].forward_table:
@@ -191,29 +200,29 @@ def calculate_cai(records, genetic_code_num: int, threshold: float = 0.1) -> dic
     return cai_dict
 
 
-def calculate_rscu(records, genetic_code_num: int, threshold: float = 0.1) -> dict[str, float]:
+def calculate_rscu(records, genetic_code_num: int, min_len_threshold: int) -> dict[str, float]:
     """
     Calculates rscu values for each codon
 
     :param records: The generator object containing sequence object
     :param genetic_code_num: Genetic table number for codon table
-    :param threshold: Threshold value for filter
+    :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
     :return: The dictionary containing codon and rscu value pairs
     """
-    reference = filter_reference(records, threshold)
+    reference = filter_reference(records, min_len_threshold)
     return RSCU(reference, genetic_code_num)
 
 
-def calculate_cbi(records, genetic_code_num: int, threshold: float = 0.1) -> dict[str, tuple[float, str]]:
+def calculate_cbi(records, genetic_code_num: int, min_len_threshold: int) -> dict[str, tuple[float, str]]:
     """
     Calculates cbi values for each amino acid
 
     :param records: The generator object containing sequence object
     :param genetic_code_num: Genetic table number for codon table
-    :param threshold: Threshold value for filter
+    :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
     :return: The dictionary containing amino acid and cbi value, optimal codon pairs
     """
-    reference = filter_reference(records, threshold)
+    reference = filter_reference(records, min_len_threshold)
     filterwarnings('ignore')
     cbi_dict = dict()
     for aa in unambiguous_dna_by_id[genetic_code_num].protein_alphabet:
