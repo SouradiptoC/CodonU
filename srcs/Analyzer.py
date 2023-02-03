@@ -1,5 +1,5 @@
-from math import nan
-from statistics import median
+from math import nan, isnan
+from statistics import median, mean
 from Bio.Seq import Seq
 from Bio.SeqIO import parse
 from Bio.Data.CodonTable import unambiguous_dna_by_id, NCBICodonTableDNA
@@ -41,12 +41,14 @@ def sf_vals(codon_table: NCBICodonTableDNA) -> dict[int, list[str]]:
         sf = len(codons)
         sf_dic[sf] = sf_dic.get(sf, [])
         sf_dic[sf].append(aa)
-    return sf_dic
+    sorted_keys = sorted(sf_dic.keys(), reverse=True)
+    sorted_sf_dict = {key: sf_dic[key] for key in sorted_keys}
+    return sorted_sf_dict
 
 
 def cbi(prot_seq: Seq | str, reference: list[Seq], genetic_code: int) -> tuple[float, str]:
     """
-    Calculates codon bias index (CBI) for a given protein seq
+    Calculates codon bias index (CBI) for a given protein seq based on Bennetzen and Hall (1982)
 
     :param prot_seq: The Amino Acid
     :param reference: List of reference nucleotide sequences
@@ -60,10 +62,8 @@ def cbi(prot_seq: Seq | str, reference: list[Seq], genetic_code: int) -> tuple[f
     counts = Counter(codons)
     syn_codon_dict = syn_codons(unambiguous_dna_by_id[genetic_code])
     sf_val_dict = sf_vals(unambiguous_dna_by_id[genetic_code])
-    sorted_keys = sorted(sf_val_dict.keys(), reverse=True)
-    sorted_sf_dict = {key: sf_val_dict[key] for key in sorted_keys}
     cbi_val, opt_codon = nan, None
-    for num, aa_lst in sorted_sf_dict.items():
+    for num, aa_lst in sf_val_dict.items():
         if num == 1:
             opt_codon = syn_codon_dict[prot_seq][0]
             warn = NoSynonymousCodonWarning(seq3(prot_seq))
@@ -84,6 +84,66 @@ def cbi(prot_seq: Seq | str, reference: list[Seq], genetic_code: int) -> tuple[f
             break
 
     return cbi_val, opt_codon
+
+
+def enc(references: list, genetic_code: int) -> float:
+    """
+    Calculates Effective number of codons (Enc) based on Wright (1989) and Fuglsang (2004)
+
+    :param references: List of reference nucleotide sequences
+    :param genetic_code: Genetic table number for codon table
+    :return: Calculated Enc value for the sequence(s)
+    :raises MissingCodonWarning: If there is no codon for a certain amino acid
+    """
+    sequences = ((sequence[i: i + 3].upper() for i in range(0, len(sequence), 3)) for sequence in references)
+    codons = chain.from_iterable(sequences)
+    counts = Counter(codons)
+    syn_dct = syn_codons(unambiguous_dna_by_id[genetic_code])
+    sf_dct = sf_vals(unambiguous_dna_by_id[genetic_code])
+    F_val_dict = dict()
+    for num, aa_lst in sf_dct.items():
+        F_val_dict.update({num: [0.0 for _ in range(len(aa_lst))]})
+    # [sf_6 avg, sf_4 avg, sf_3 avg, sf_2 avg, sf_1 avg] for F_val_avg_lst
+    F_val_avg_lst = list()
+    for num, aa_lst in sf_dct.items():
+        if num == 1:
+            F_val_dict.update({num: [1.0, 1.0]})
+            break
+        for aa in aa_lst:
+            codon_lst = syn_dct[aa]
+            count_lst = [counts[codon] for codon in codon_lst]
+            tot_count = float(sum(count_lst))
+            p_2 = 0.0
+            F = 0.0
+            for count in count_lst:
+                try:
+                    p_2 += (count / tot_count) ** 2
+                except ZeroDivisionError:
+                    warn = MissingCodonWarning(seq3(aa))
+                    warn.warn()
+                    F = nan
+            if not isnan(F):
+                F = ((tot_count * p_2) - 1) / (tot_count - 1)
+            F_val_lst = F_val_dict.get(num)
+            F_val_lst[aa_lst.index(aa)] = F
+            F_val_dict.update({num: F_val_lst})
+    for num, val_lst in F_val_dict.items():
+        if nan not in val_lst:
+            F_val_avg_lst.append(mean(val_lst))
+        elif nan in val_lst and num != 3:
+            refined_lst = [val for val in val_lst if val is not nan]
+            F_val_avg_lst.append(mean(refined_lst))
+        else:
+            F_val_avg_lst.append(nan)
+    if nan in F_val_avg_lst:
+        f_2, f_4, f_6 = F_val_avg_lst[3], F_val_avg_lst[1], F_val_avg_lst[0]
+        f_3 = ((((2 / f_2) - 1) ** -1) + (((2 / (3 * f_4)) + (1 / 3)) ** -1) + (
+                ((2 / (5 * f_6)) + (3 / 5)) ** -1)) / 3.0
+        F_val_avg_lst[2] = f_3
+    # [sf_6 avg, sf_4 avg, sf_3 avg, sf_2 avg, sf_1 avg]
+    enc_val = 2 + (9 / F_val_avg_lst[3]) + (1 / F_val_avg_lst[2]) + (5 / F_val_avg_lst[1]) + (3 / F_val_avg_lst[0])
+
+    return enc_val if enc_val < 61 else 61.00
 
 
 def gc_123(seq: Seq | str) -> tuple[float, float | int, float | int, float | int]:
@@ -154,7 +214,7 @@ def calculate_cbi(records, genetic_code_num: int, threshold: float = 0.1) -> dic
     :return: The dictionary containing amino acid and cbi value, optimal codon pairs
     """
     reference = filter_reference(records, threshold)
-    # filterwarnings('ignore')
+    filterwarnings('ignore')
     cbi_dict = dict()
     for aa in unambiguous_dna_by_id[genetic_code_num].protein_alphabet:
         cbi_val = cbi(aa, reference, genetic_code_num)
