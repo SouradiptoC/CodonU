@@ -143,9 +143,3 @@ def write_exome_fasta(file_name: str, nuc_file_path: str, organism_name: str) ->
             exome = extract_exome(nuc_file_path, organism_name)
             write(exome, out_file, 'fasta')
     print(f"Exome file for {organism_name} created successfully")
-
-
-if __name__ == '__main__':
-    # print(is_file_empty('temp2.py'))
-    write_exome_fasta('../Results/Exons/temp_2.fasta', '../Results/Nucleotide/Staphylococcus_agnetis_nucleotide.fasta',
-                      'Staphylococcus agnetis')

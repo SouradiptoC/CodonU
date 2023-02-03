@@ -94,8 +94,3 @@ def extract_exome(nuc_file_path: str, organism_name: str) -> SeqRecord:
         description=f'whole exome of {organism_name}'
     )
     return exome
-
-
-if __name__ == '__main__':
-    # records = parse()
-    print(extract_exome('../Results/Nucleotide/Staphylococcus_agnetis_nucleotide.fasta', 'st'))

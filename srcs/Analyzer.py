@@ -223,17 +223,3 @@ def calculate_cbi(records, genetic_code_num: int, min_len_threshold: int) -> dic
         cbi_val = cbi(aa, reference, genetic_code_num)
         cbi_dict.update({aa: cbi_val})
     return cbi_dict
-
-
-if __name__ == '__main__':
-    # handle = '/home/souro/Projects/final_yr/Results/Nucleotide/Staphylococcus_agnetis_nucleotide.fasta'
-    handle = '/home/souro/Projects/final_yr/Results/Nucleotide/temp.fasta'
-    # records = parse(handle, 'fasta')
-    # cai_dict = calculate_cai(records, 11)
-    # for i, j in cai_dict.items():
-    #     print(i, j)
-    print('#####################################################')
-    records = parse(handle, 'fasta')
-    cbi_dict = calculate_cbi(records, 11)
-    for i, j in cbi_dict.items():
-        print(seq3(i), j)
