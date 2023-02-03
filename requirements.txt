@@ -15,3 +15,4 @@ six==1.16.0
 tomli==2.0.1
 
 CAI~=1.0.3
+matplotlib~=3.6.3
