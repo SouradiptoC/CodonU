@@ -10,7 +10,7 @@ from itertools import chain
 from collections import Counter
 
 from warnings import filterwarnings
-from Errors import ThresholdError, MissingCodonWarning, NoSynonymousCodonWarning
+from Errors import MissingCodonWarning, NoSynonymousCodonWarning, NoProteinError
 
 
 def syn_codons(codon_table: NCBICodonTableDNA) -> dict[str, list[str]]:
@@ -94,6 +94,7 @@ def enc(references: list, genetic_code: int) -> float:
     :param genetic_code: Genetic table number for codon table
     :return: Calculated Enc value for the sequence(s)
     :raises MissingCodonWarning: If there is no codon for a certain amino acid
+    :raises NoProteinError: If there is no codon for a certain set of amino acid
     """
     sequences = ((sequence[i: i + 3].upper() for i in range(0, len(sequence), 3)) for sequence in references)
     codons = chain.from_iterable(sequences)
@@ -145,10 +146,9 @@ def enc(references: list, genetic_code: int) -> float:
             f_3 = ((((2 / f_2) - 1) ** -1) + (((2 / (3 * f_4)) + (1 / 3)) ** -1) + (
                     ((2 / (5 * f_6)) + (3 / 5)) ** -1)) / 3.0
         else:
-            raise ThresholdError(references[0])
+            raise NoProteinError(references[0])
         F_val_avg_lst[2] = f_3
     # [sf_6 avg, sf_4 avg, sf_3 avg, sf_2 avg, sf_1 avg]
-    # enc_val = 0.0
     enc_val = 2 + (9 / F_val_avg_lst[3]) + (1 / F_val_avg_lst[2]) + (5 / F_val_avg_lst[1]) + (3 / F_val_avg_lst[0])
     return enc_val if enc_val < 61 else 61.00
 
@@ -171,13 +171,7 @@ def filter_reference(records, min_len_threshold: int) -> list[Seq]:
     :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
     :return: The list of usable sequences
     """
-    # if not 0 <= threshold <= 1:
-    #     raise ThresholdError
     reference = [record.seq for record in records]
-    # seq_len_lst = [len(seq) for seq in reference]
-    # min_len = median(seq_len_lst) * threshold
-    # print(median(seq_len_lst))
-    # print(min_len)
     filtered_lst = [seq for seq in reference if len(seq) >= min_len_threshold]
     return filtered_lst
 
