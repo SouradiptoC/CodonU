@@ -69,9 +69,9 @@ class TerSeqError(CodonUsageError):
         super().__init__(self.msg)
 
 
-class ThresholdError(CodonUsageError):
+class NoProteinError(CodonUsageError):
     """
-    Occurs when the provided threshold is not in limit
+    Occurs when a complete category of amino acid based on sf values is not translated by the provided sequence
     """
 
     def __init__(self, seq):
