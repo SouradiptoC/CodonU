@@ -1,14 +1,11 @@
 from math import nan, isnan
-from statistics import median, mean
+from statistics import mean
 from Bio.Seq import Seq
-from Bio.SeqIO import parse
 from Bio.Data.CodonTable import unambiguous_dna_by_id, NCBICodonTableDNA
-
 from Bio.SeqUtils import GC123, seq3
 from CAI import CAI, RSCU
 from itertools import chain
 from collections import Counter
-
 from warnings import filterwarnings
 from Errors import MissingCodonWarning, NoSynonymousCodonWarning, NoProteinError
 

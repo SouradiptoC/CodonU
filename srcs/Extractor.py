@@ -1,5 +1,4 @@
-from typing import Tuple, Any
-
+from typing import Any
 from Bio.SeqIO import parse
 from Bio.Seq import Seq, MutableSeq
 from Bio.SeqFeature import FeatureLocation, SeqFeature
@@ -8,7 +7,8 @@ from Bio.SeqRecord import SeqRecord
 
 def extract_cds_lst(record: SeqRecord) -> tuple[Any, ...]:
     """
-    Extracts the list of features if their type if CDS
+    Extracts the list of features if their type is CDS
+
     :param record: Original Sequence Record object from where the CDS is to be extracted
     :return: A tuple of FeatureLocation objects
     """
@@ -19,6 +19,7 @@ def extract_cds_lst(record: SeqRecord) -> tuple[Any, ...]:
 def extract_cds_seq(seq: Seq, feature_location: FeatureLocation) -> Seq:
     """
     Extracts the CDS from a given sequence
+
     :param seq: Sequence
     :param feature_location: Feature location
     :return: The extracted feature
@@ -29,6 +30,7 @@ def extract_cds_seq(seq: Seq, feature_location: FeatureLocation) -> Seq:
 def extract_cds(record: SeqRecord, feature_location: FeatureLocation, cds_no: int = 0) -> SeqRecord:
     """
     Returns the CDS as a Sequence Record object
+
     :param record: Original Sequence Record object from where the CDS is to be extracted
     :param feature_location: The location of CDS
     :param cds_no: Number of CDS
@@ -46,6 +48,7 @@ def extract_cds(record: SeqRecord, feature_location: FeatureLocation, cds_no: in
 def extract_prot_seq(feature: SeqFeature) -> Seq:
     """
     Returns the protein sequence reported in the report for the provided cds
+
     :param feature: The CDS
     :return: The protein sequence
     """
@@ -55,6 +58,7 @@ def extract_prot_seq(feature: SeqFeature) -> Seq:
 def extract_prot(feature: SeqFeature, organism_name: str, cds_no: int = 0) -> SeqRecord:
     """
     Extracts protein sequences and return them for writing
+
     :param feature: The CDS
     :param organism_name: Name of the organism
     :param cds_no: Number of the CDS
@@ -76,6 +80,7 @@ def extract_prot(feature: SeqFeature, organism_name: str, cds_no: int = 0) -> Se
 def extract_exome(nuc_file_path: str, organism_name: str) -> SeqRecord:
     """
     Extracts the exome from given nucleotides
+
     :param nuc_file_path: The path to the nucleotide file
     :param organism_name: Name of the organism
     :return: The exome

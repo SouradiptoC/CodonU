@@ -26,6 +26,7 @@ def set_entrez_email(email: str | None) -> None:
 def set_entrez_api_key(api_key: str | None) -> None:
     """
     Sets Bio.Entrez.api_key parameter to given api_key
+
     :param api_key: API key of the user
     """
     if api_key:
@@ -39,6 +40,7 @@ def set_entrez_api_key(api_key: str | None) -> None:
 def set_entrez_param(email: str | None = None, api_key: str | None = None) -> None:
     """
     Sets entrez parameters
+
     :param email: Email of the user
     :param api_key: API key of the user (optional)
     """
@@ -49,6 +51,7 @@ def set_entrez_param(email: str | None = None, api_key: str | None = None) -> No
 def get_gb(accession_id: str) -> SeqRecord:
     """
     Gets the Sequence Record object from a given accession number
+
     :param accession_id: Provided accession number
     :return: The Sequence Record object
     """
@@ -62,6 +65,7 @@ def get_gb(accession_id: str) -> SeqRecord:
 def make_dir(path: str) -> None:
     """
     Makes a directory if not present already
+
     :param path: Path of the directory
     """
     if not os.path.isdir(path):
@@ -73,6 +77,7 @@ def make_dir(path: str) -> None:
 def is_file_empty(path: str) -> bool:
     """
     Checks if an existing file is empty
+
     :param path: Path to the file
     :return: True if empty else false
     """
@@ -93,6 +98,7 @@ def is_file(path: str):
 def read_file(file_name: str) -> pd.DataFrame:
     """
     Returns a dataframe from given csv file
+
     :param file_name: Name or path to csv file
     :return: The data frame object
     """
@@ -103,6 +109,7 @@ def read_file(file_name: str) -> pd.DataFrame:
 def write_nucleotide_fasta(file_name: str, cds_lst: tuple, record: SeqRecord, organism_name: str) -> None:
     """
     Creates a fasta file of nucleotides if not exists previously or is empty
+
     :param file_name: The name of the file
     :param cds_lst: The tuple of FeatureLocation objects
     :param record: The SeqRecord object containing whole sequence
@@ -119,6 +126,7 @@ def write_nucleotide_fasta(file_name: str, cds_lst: tuple, record: SeqRecord, or
 def write_protein_fasta(file_name: str, cds_lst: tuple, organism_name: str) -> None:
     """
     Creates a fasta file of proteins if not exists previously or is empty
+
     :param file_name: The name of the file
     :param cds_lst: The tuple of FeatureLocation objects
     :param organism_name: Name of the organism
@@ -134,6 +142,7 @@ def write_protein_fasta(file_name: str, cds_lst: tuple, organism_name: str) -> N
 def write_exome_fasta(file_name: str, nuc_file_path: str, organism_name: str) -> None:
     """
     Creates a fasta file of exome if not exists previously or is empty
+
     :param file_name: The name of the file
     :param nuc_file_path: The path of nucleotide file
     :param organism_name: Name of the organism
