@@ -10,6 +10,28 @@ from warnings import filterwarnings
 from Errors import MissingCodonWarning, NoSynonymousCodonWarning, NoProteinError
 
 
+def g3(seq: Seq | str) -> float:
+    g3_val = 0
+    for i in range(0, len(seq), 3):
+        codon = seq[i: i + 3]
+        if len(codon) < 3:
+            codon += '  '
+        if codon[-1] in 'Gg':
+            g3_val += 1
+    return g3_val / (len(seq) / 3) * 100
+
+
+def a3(seq: Seq | str):
+    a3_val = 0
+    for i in range(0, len(seq), 3):
+        codon = seq[i: i + 3]
+        if len(codon) < 3:
+            codon += '  '
+        if codon[-1] in 'Aa':
+            a3_val += 1
+    return a3_val / (len(seq) / 3) * 100
+
+
 def syn_codons(codon_table: NCBICodonTableDNA) -> dict[str, list[str]]:
     """
     Creates the protein, codon dictionary where protein is key
@@ -150,16 +172,6 @@ def enc(references: list, genetic_code: int) -> float:
     return enc_val if enc_val < 61 else 61.00
 
 
-def gc_123(seq: Seq | str) -> tuple[float, float | int, float | int, float | int]:
-    """
-    Calculate G+C content: total, for first, second and third positions
-
-    :param seq: Provided sequence
-    :return: The tuple containing the result
-    """
-    return GC123(seq)
-
-
 def filter_reference(records, min_len_threshold: int) -> list[Seq]:
     """
     Filters the list of reference based on given threshold of length
@@ -171,6 +183,27 @@ def filter_reference(records, min_len_threshold: int) -> list[Seq]:
     reference = [record.seq for record in records]
     filtered_lst = [seq for seq in reference if len(seq) >= min_len_threshold]
     return filtered_lst
+
+
+def gc_123(seq: Seq | str) -> tuple[float, float | int, float | int, float | int]:
+    """
+    Calculate G+C content: total, for first, second and third positions
+
+    :param seq: Provided sequence
+    :return: The G+C percentage for the entire sequence, and the three codon positions
+    """
+    return GC123(seq)
+
+
+def at_123(seq: Seq | str) -> tuple[float, float | int, float | int, float | int]:
+    """
+    Calculate G+C content: total, for first, second and third positions
+
+    :param seq: Provided sequence
+    :return: The A+T percentage for the entire sequence, and the three codon positions
+    """
+    gc_tot, gc_1, gc_2, gc_3 = gc_123(seq)
+    return 100 - gc_tot, 100 - gc_1, 100 - gc_2, 100 - gc_3
 
 
 def calculate_cai(records, genetic_code_num: int, min_len_threshold: int = 200) -> dict[str, float]:
