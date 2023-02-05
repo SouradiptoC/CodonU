@@ -165,7 +165,7 @@ Returns a tuple of CBI vals and the optimal codons
 
 Calculates Effective number of codons (Enc) for a given list of sequences based on Wright (1989)
 ([click here](https://doi.org/10.1016/0378-1119(90)90491-9)) and Fuglsang
-(2004) ([click here](https://doi.org/10.1016/j.bbrc.2004.03.138))
+(2004) ([click here](https://doi.org/10.1016/j.bbrc.2004.03.138)).
 
 - `references`: List of reference nucleotide sequences
 - `genetic_code`: Genetic table number for codon table
