@@ -1,13 +1,14 @@
+from collections import Counter
+from itertools import chain
 from math import nan, isnan
 from statistics import mean
+
+from Bio.Data.CodonTable import NCBICodonTableDNA, unambiguous_dna_by_id
 from Bio.Seq import Seq
-from Bio.Data.CodonTable import unambiguous_dna_by_id, NCBICodonTableDNA
-from Bio.SeqUtils import GC123, seq3
-from CAI import CAI, RSCU
-from itertools import chain
-from collections import Counter
-from warnings import filterwarnings
-from Errors import MissingCodonWarning, NoSynonymousCodonWarning, NoProteinError
+from Bio.SeqUtils import seq3, GC123
+
+from srcs.cua_warnings import NoSynonymousCodonWarning, MissingCodonWarning
+from srcs.cua_errors import NoProteinError
 
 
 def g3(seq: Seq | str) -> float:
@@ -216,103 +217,3 @@ def enc(references: list[Seq | str], genetic_code: int) -> float:
     # [sf_6 avg, sf_4 avg, sf_3 avg, sf_2 avg, sf_1 avg]
     enc_val = 2 + (9 / F_val_avg_lst[3]) + (1 / F_val_avg_lst[2]) + (5 / F_val_avg_lst[1]) + (3 / F_val_avg_lst[0])
     return enc_val if enc_val < 61 else 61.00
-
-
-def calculate_cai(records, genetic_code_num: int, min_len_threshold: int = 200, gene_analysis: bool = False) -> \
-        dict[str, float] | dict[str, dict[str, float]]:
-    """
-    Calculates cai values for each codon
-
-    :param records: The generator object containing sequence object
-    :param genetic_code_num: Genetic table number for codon table
-    :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
-    :param gene_analysis: Option if gene analysis (True) or genome analysis (False) (optional)
-    :return: The dictionary containing codon and cai value pairs
-    """
-    filterwarnings('ignore')
-    cai_dict = dict()
-    reference = filter_reference(records, min_len_threshold)
-    if gene_analysis:
-        for i, seq in enumerate(reference):
-            cai_val_dict = dict()
-            for codon in unambiguous_dna_by_id[genetic_code_num].forward_table:
-                cai_val = CAI(codon, reference=[seq], genetic_code=genetic_code_num)
-                cai_val_dict.update({codon: cai_val})
-            cai_dict.update({f'gene_{i + 1}': cai_val_dict})
-    else:
-        for codon in unambiguous_dna_by_id[genetic_code_num].forward_table:
-            cai_val = CAI(codon, reference=reference, genetic_code=genetic_code_num)
-            cai_dict.update({codon: cai_val})
-    return cai_dict
-
-
-def calculate_rscu(records, genetic_code_num: int, min_len_threshold: int = 200, gene_analysis: bool = False) -> \
-        dict[str, float] | dict[str, dict[str, float]]:
-    """
-    Calculates rscu values for each codon
-
-    :param records: The generator object containing sequence object
-    :param genetic_code_num: Genetic table number for codon table
-    :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
-    :param gene_analysis: Option if gene analysis (True) or genome analysis (False) (optional)
-    :return: The dictionary containing codon and rscu value pairs
-    """
-    references = filter_reference(records, min_len_threshold)
-    if gene_analysis:
-        rscu_dict = dict()
-        for i, seq in enumerate(references):
-            rscu_dict.update({f'gene_{i + 1}': RSCU([seq], genetic_code_num)})
-        return rscu_dict
-    else:
-        reference = filter_reference(records, min_len_threshold)
-        return RSCU(reference, genetic_code_num)
-
-
-def calculate_cbi(records, genetic_code_num: int, min_len_threshold: int = 200, gene_analysis: bool = False) -> \
-        dict[str, tuple[float, str]] | dict[str, dict[str, tuple[float, str]]]:
-    """
-    Calculates cbi values for each amino acid
-
-    :param records: The generator object containing sequence object
-    :param genetic_code_num: Genetic table number for codon table
-    :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
-    :param gene_analysis: Option if gene analysis (True) or genome analysis (False) (optional)
-    :return: The dictionary containing amino acid and cbi value, optimal codon pairs
-    """
-    reference = filter_reference(records, min_len_threshold)
-    filterwarnings('ignore')
-    cbi_dict = dict()
-    if gene_analysis:
-        for i, seq in enumerate(reference):
-            cbi_val_dict = dict()
-            for codon in unambiguous_dna_by_id[genetic_code_num].forward_table:
-                cbi_val = cbi(codon, reference=[seq], genetic_code=genetic_code_num)
-                cbi_val_dict.update({codon: cbi_val})
-            cbi_dict.update({f'gene_{i + 1}': cbi_val_dict})
-    else:
-        for aa in unambiguous_dna_by_id[genetic_code_num].protein_alphabet:
-            cbi_val = cbi(aa, reference, genetic_code_num)
-            cbi_dict.update({aa: cbi_val})
-    return cbi_dict
-
-
-def calculate_enc(records, genetic_code_num: int, min_len_threshold=200, gene_analysis: bool = False) -> \
-        float | dict[str, float]:
-    """
-    Calculates ENc value for a given sequences
-
-    :param records: The generator object containing sequence object
-    :param genetic_code_num: Genetic table number for codon table
-    :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
-    :param gene_analysis: Option if gene analysis (True) or genome analysis (False) (optional)
-    :return: The ENc value or a dictionary containing gene number and corresponding ENc value
-    """
-    references = filter_reference(records, min_len_threshold)
-    filterwarnings('ignore')
-    if gene_analysis:
-        enc_dict = dict()
-        for i, seq in enumerate(references):
-            enc_dict.update({f'gene_{i + 1}': enc([seq], genetic_code_num)})
-        return enc_dict
-    else:
-        return enc(references, genetic_code_num)
