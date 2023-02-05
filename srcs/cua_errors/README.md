@@ -4,10 +4,10 @@ This package holds all the warnings used in other srcs. The list of errors are g
 
 - [CodonUsageError](#codonusageerror)
 - [FileNotEmptyError](#filenotemptyerror)
-- [internal_stop_codon_err](#internalstopcodonerror)
-- [no_protein_err](#noproteinerror)
-- [nucleotide_err](#nucleotideerror)
-- [ter_seq_err](#terseqerror)
+- [InternalStopCodonError](#internalstopcodonerror)
+- [NoProteinError](#noproteinerror)
+- [NucleotideError](#nucleotideerror)
+- [TerSeqError](#terseqerror)
 
 # Detailed Description
 
