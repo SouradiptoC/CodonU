@@ -189,3 +189,5 @@ Returns calculated Enc value for the sequence(s)
   1281–1295. Available at: https://doi.org/10.1093/nar/15.3.1281
 - Wright, F. (1990) “The ‘effective number of codons’ used
   in a gene,” Gene, 87(1), pp. 23–29. Available at: https://doi.org/10.1016/0378-1119(90)90491-9.
+
+<p align="center">&copy; 2023 Souradipto Choudhuri</p>

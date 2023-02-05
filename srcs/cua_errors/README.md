@@ -45,3 +45,5 @@ Occurs when an ambiguous or invalid nucleotide is present in genome
 Occurs when terminal codons are not valid
 
 - `code`: error code (1 for starting, -1 for ending)
+
+<p align="center">&copy; 2023 Souradipto Choudhuri</p>

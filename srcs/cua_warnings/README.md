@@ -33,3 +33,5 @@ Occurs when no codon in the given reference sequence list translates to a certai
 Occurs when only one codon in the given reference sequence list translates to a certain amino acid
 
 - `aa`: The amino acid which is translated from one codon
+
+<p align="center">&copy; 2023 Souradipto Choudhuri</p>
