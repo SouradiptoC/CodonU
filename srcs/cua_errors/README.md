@@ -1,6 +1,6 @@
 # Codon Usage Analysis Errors
 
-This package holds all the warnings used in other srcs. The list of errors are given below.
+This package holds all the errors used in other srcs. The list of errors are given below.
 
 - [CodonUsageError](#codonusageerror)
 - [FileNotEmptyError](#filenotemptyerror)
