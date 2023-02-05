@@ -2,11 +2,9 @@ from collections import Counter
 from itertools import chain
 from math import nan, isnan
 from statistics import mean
-
 from Bio.Data.CodonTable import NCBICodonTableDNA, unambiguous_dna_by_id
 from Bio.Seq import Seq
 from Bio.SeqUtils import seq3, GC123
-
 from srcs.cua_warnings import NoSynonymousCodonWarning, MissingCodonWarning
 from srcs.cua_errors import NoProteinError
 
