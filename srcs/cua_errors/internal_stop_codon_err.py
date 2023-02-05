@@ -1,4 +1,4 @@
-from .codon_usage_error import CodonUsageError
+from .codon_usage_err import CodonUsageError
 
 
 class InternalStopCodonError(CodonUsageError):
