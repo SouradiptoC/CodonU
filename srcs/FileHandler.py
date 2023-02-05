@@ -4,10 +4,10 @@ from Bio import Entrez
 from Bio.SeqIO import write, read
 from Bio.SeqRecord import SeqRecord
 from Extractor import extract_cds, extract_prot, extract_exome
-from Errors import FileNotEmptyError, EmailWarning, ApiWarning
+from Errors import EmailWarning, ApiWarning
+from errors import FileNotEmptyError
 
 
-# TODO add raise in function comments
 def set_entrez_email(email: str | None) -> None:
     """
     Sets Bio.Entrez.email parameter to given email
@@ -28,6 +28,7 @@ def set_entrez_api_key(api_key: str | None) -> None:
     Sets Bio.Entrez.api_key parameter to given api_key
 
     :param api_key: API key of the user
+    :raises ApiWarning: If no API key is provided
     """
     if api_key:
         print('Setting provided API key to entrez.api_key')
@@ -80,6 +81,7 @@ def is_file_empty(path: str) -> bool:
 
     :param path: Path to the file
     :return: True if empty else false
+    :raises FileNotEmptyError: If the given file to write is not empty
     """
     if os.stat(path).st_size == 0:
         return True
@@ -91,7 +93,13 @@ def is_file_empty(path: str) -> bool:
         raise FileNotEmptyError(path)
 
 
-def is_file(path: str):
+def is_file(path: str) -> bool:
+    """
+    Checks if file exists or not
+
+    :param path: Path to the file
+    :return: True if exists else False
+    """
     return os.path.isfile(path)
 
 

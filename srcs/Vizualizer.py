@@ -30,8 +30,9 @@ def plot_enc(enc_val_lst: list, gc_val_lst: list, organism_name: None | str = No
     N = len(enc_val_lst)
     color = enc_val_lst
     plt.figure(figsize=(9, 5.25))
-    plt.plot(x, y, color='red', label=r"$EN_c = 2 + s + \frac{29}{s^2 + (1 - s^2)}$")
-    plt.scatter(gc_val_lst, enc_val_lst, s=5, label=r"Measured $EN_c$ values", c=color, cmap='viridis', alpha=0.5)
+    plt.plot(x, y, color='red', label=r"$EN_c = 2 + s + \frac{29}{s^2 + (1 - s^2)}$", zorder=3)
+    plt.scatter(gc_val_lst, enc_val_lst, s=5, label=r"Measured $EN_c$ values", c=color, cmap='viridis', alpha=0.5,
+                zorder=2)
     suptitle = r'$EN_c$ plot' if organism_name is None else f"$EN_c$ plot for {organism_name}"
     plt.suptitle(suptitle, fontsize=16)
     title = f'Total genes: {N}' if gene_analysis else f'Total genome: {N}'
@@ -39,6 +40,7 @@ def plot_enc(enc_val_lst: list, gc_val_lst: list, organism_name: None | str = No
     plt.legend()
     plt.xlabel(r"$GC_3$ Value")
     plt.ylabel(r"$EN_c$ Value")
+    plt.grid(True, linestyle=':')
     c_bar = plt.colorbar()
     c_bar.set_label(r'$EN_c values$')
     if save_image:
