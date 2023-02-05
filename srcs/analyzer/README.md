@@ -176,3 +176,16 @@ This function may raise the following warnings and errors
 - `NoProteinError`: If there is no codon for a certain set of amino acid
 
 Returns calculated Enc value for the sequence(s)
+
+## References
+
+- Bennetzen, J.L. and Hall, B.D. (1982) “Codon selection in yeast.,” Journal of Biological Chemistry, 257(6), pp.
+  3026–3031. Available at: https://doi.org/10.1016/s0021-9258(19)81068-2
+- Fuglsang, A. (2004) “The ‘effective number of
+  codons’ revisited,” Biochemical and Biophysical Research Communications, 317(3), pp. 957–964. Available
+  at: https://doi.org/10.1016/j.bbrc.2004.03.138
+- Sharp, P.M. and Li, W.-H. (1987) “The codon adaptation index-a measure
+  of directional synonymous codon usage bias, and its potential applications,” Nucleic Acids Research, 15(3), pp.
+  1281–1295. Available at: https://doi.org/10.1093/nar/15.3.1281
+- Wright, F. (1990) “The ‘effective number of codons’ used
+  in a gene,” Gene, 87(1), pp. 23–29. Available at: https://doi.org/10.1016/0378-1119(90)90491-9.
