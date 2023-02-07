@@ -1,4 +1,4 @@
-# Extractor
+# File Handler
 
 The package is designed for reading and writing the data. This is documentation for file handler package.
 Functions for general use:
