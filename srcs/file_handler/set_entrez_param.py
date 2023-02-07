@@ -5,7 +5,7 @@ def set_entrez_param(email: str | None = None, api_key: str | None = None) -> No
     """
     Sets entrez parameters
 
-    :param email: Email of the user
+    :param email: Email of the user (optional)
     :param api_key: API key of the user (optional)
     :raises EmailWarning: If no email is provided
     :raises ApiWarning: If no API key is provided
