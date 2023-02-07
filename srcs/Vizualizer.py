@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from os.path import join
+from scipy.stats import linregress
 
 
 def _enc(x: int) -> float:
@@ -130,6 +131,53 @@ def plot_pr2(gc_val_lst: list, at_val_lst: list, g3_val_lst: list, a3_val_lst: l
     plt.title(title, fontsize=12)
     if save_image:
         name = 'PR2_plot.png' if organism_name is None else f"PR2_plot_{organism_name}.png"
+        file_name = join(folder_path, name)
+        plt.savefig(file_name, dpi=500)
+    plt.show()
+    plt.close()
+
+
+def plot_neutrality(gc12_lst: list, gc3_lst: list, organism_name: None | str = None, save_image: bool = False,
+                    folder_path: str = '', gene_analysis: bool = True):
+    """
+    Plots the neutrality plot
+
+    :param gc12_lst: The list containing values of G or C at 1 or 2 positions
+    :param gc3_lst: The list containing values of G or C ar 3 positions
+    :param organism_name: Name of organism (optional)
+    :param save_image: Options for saving the image (optional)
+    :param folder_path: Folder path where image should be saved (optional)
+    :param gene_analysis: Option if gene analysis (True) or genome analysis (False) (optional)
+    """
+    N = len(gc3_lst)
+    if max(gc12_lst) - min(gc12_lst) > max(gc3_lst) - min(gc3_lst):
+        color = gc12_lst
+        label = r'$GC_{12}$ Value'
+    else:
+        color = gc3_lst
+        label = r"$GC_3$ Value"
+    slope, intercept, r, p, se = linregress(gc3_lst, gc12_lst)
+    fig = plt.figure(figsize=(9, 5.25))
+    ax = fig.add_subplot()
+    ax.set_aspect('equal', adjustable='box')
+    plt.scatter(gc3_lst, gc12_lst, s=12, c=color, cmap='viridis', alpha=0.5, label='Observed Values', zorder=1)
+    x_lim = max(gc3_lst) + min(gc3_lst)
+    x = np.linspace(0.0, x_lim, 201)
+    y = [slope * _x + intercept for _x in x]
+    _label = f"$y = {round(slope, 4)}x+{round(intercept, 4)}$" if intercept >= 0 else f"$y = {round(slope, 4)}x{round(intercept, 4)}$"
+    plt.plot(x, y, color='red', label=_label, zorder=2)
+    plt.grid(True, linestyle=":")
+    plt.legend()
+    plt.xlabel('$GC_3$ Value')
+    plt.ylabel('$GC_{12}$ Value')
+    c_bar = plt.colorbar()
+    c_bar.set_label(label)
+    suptitle = r'Neutrality Plot' if organism_name is None else f"Neutrality plot for {organism_name}"
+    plt.suptitle(suptitle, fontsize=16)
+    title = f'Total genes: {N}, $R^2$ value: {round(r ** 2, 4)}' if gene_analysis else f'Total genome: {N}, $R^2$ value: {round(r ** 2, 4)}'
+    plt.title(title, fontsize=14)
+    if save_image:
+        name = 'Neutrality_plot.png' if organism_name is None else f"Neutrality_plot_{organism_name}.png"
         file_name = join(folder_path, name)
         plt.savefig(file_name, dpi=500)
     plt.show()
