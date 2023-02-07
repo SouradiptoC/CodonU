@@ -54,6 +54,7 @@ This function can show the following warning
 - `ApiWarning`: If no API key is provided
 
 **Note**
+
 It is advised to add your email to [NCBI](https://www.ncbi.nlm.nih.gov/) before using the function. You can have your
 own API key. For details about how to get API
 key [click here](https://support.nlm.nih.gov/knowledgebase/article/KA-05317/en-us).
