@@ -4,3 +4,5 @@
 This is a python project for analysing the codon usage for genes or genomes.
 <br>
 Updates will be done on a regular basis.
+
+A complete doumentation is available [here](https://github.com/SouradiptoC/codon_usage.wiki)
