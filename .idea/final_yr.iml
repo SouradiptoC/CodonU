@@ -9,7 +9,7 @@
       <excludeFolder url="file://$MODULE_DIR$/srcs/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/srcs/.ipynb_checkpoints" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.10 (final_yr)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.10 (CodonU)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="ReSTService">
