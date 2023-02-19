@@ -125,7 +125,7 @@ def _plot_pr2(gc_val_lst: list, at_val_lst: list, g3_val_lst: list, a3_val_lst: 
     plt.axhline(0.5, color='grey', zorder=1)
     plt.xlabel(r"$G_3/GC_3$ Values")
     plt.ylabel(r"$A_3/AT_3$ Values")
-    suptitle = r'Pairty Rule 2 plot' if organism_name is None else f"Pairty Rule 2 plot for {organism_name}"
+    suptitle = r'Parity Rule 2 plot' if organism_name is None else f"Parity Rule 2 plot for {organism_name}"
     plt.suptitle(suptitle, fontsize=16)
     title = f'Total genes: {N}' if gene_analysis else f'Total genome: {N}'
     plt.title(title, fontsize=12)
