@@ -1,4 +1,3 @@
-/papers/
 /srcs/.idea/
 /srcs/.ipynb_checkpoints/
 /srcs/.venv/
@@ -7,7 +6,6 @@
 /srcs/temp2.py
 /srcs/Result.fasta
 /srcs/result.fasta
-/meta/
 /srcs/temp_3.ipynb
 /Staphylococcus_species_1.csv
 /Results/
