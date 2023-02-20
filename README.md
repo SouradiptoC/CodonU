@@ -1,7 +1,7 @@
 # README
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![DOI](https://zenodo.org/badge/536583655.svg)](https://zenodo.org/badge/latestdoi/536583655)
 
-This is a python project for analysing the codon usage for genes or genomes.
+The package can easily can help in various ways from fetching genebank files from NCBI with the help of accession id to calculating cai, cbi, rscu, enc values and also can generate good quality graphics such as enc plot, or correspondence analysis plot
 <br>
 Updates will be done on a regular basis.
 
