@@ -1,7 +1,7 @@
 from typing import Any
 from Bio.SeqIO import parse
 from .plot_funcs import _plot_enc
-from srcs.analyzer.internal_comp import filter_reference, enc, gc_123
+from CodonU.analyzer.internal_comp import filter_reference, enc, gc_123
 from warnings import filterwarnings
 
 

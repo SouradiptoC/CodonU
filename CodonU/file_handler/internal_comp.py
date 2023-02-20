@@ -1,7 +1,7 @@
 import os
 from Bio import Entrez
-from srcs.cua_errors import FileNotEmptyError
-from srcs.cua_warnings import EmailWarning, ApiWarning
+from CodonU.cua_errors import FileNotEmptyError
+from CodonU.cua_warnings import EmailWarning, ApiWarning
 
 
 def set_entrez_email(email: str | None) -> None:

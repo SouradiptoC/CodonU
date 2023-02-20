@@ -1,6 +1,6 @@
 from Bio.SeqIO import write
 from .internal_comp import is_file, is_file_empty
-from srcs.extractor import extract_exome
+from CodonU.extractor import extract_exome
 
 
 def write_exome_fasta(file_name: str, nuc_file_path: str, organism_name: str) -> None:

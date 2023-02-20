@@ -5,8 +5,8 @@ from statistics import mean
 from Bio.Data.CodonTable import NCBICodonTableDNA, unambiguous_dna_by_id
 from Bio.Seq import Seq
 from Bio.SeqUtils import seq3, GC123
-from srcs.cua_warnings import NoSynonymousCodonWarning, MissingCodonWarning
-from srcs.cua_errors import NoProteinError
+from CodonU.cua_warnings import NoSynonymousCodonWarning, MissingCodonWarning
+from CodonU.cua_errors import NoProteinError
 
 
 def g3(seq: Seq | str) -> float:

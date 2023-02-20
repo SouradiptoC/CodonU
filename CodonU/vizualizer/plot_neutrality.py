@@ -2,7 +2,7 @@ from typing import Any
 from warnings import filterwarnings
 from Bio.SeqIO import parse
 from .plot_funcs import _plot_neutrality
-from srcs.analyzer.internal_comp import gc_123, filter_reference
+from CodonU.analyzer.internal_comp import gc_123, filter_reference
 
 
 def plot_neutrality(handle: str | Any, min_len_threshold: int, organism_name: str | None = None,

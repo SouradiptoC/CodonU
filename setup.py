@@ -47,11 +47,15 @@ setup(
     keywords=['bioinformatics', 'bioinformatics-analysis', 'bioinformatics-tool', 'codon-usage', 'codon', 'codon-bias',
               'genomic-analysis', 'genome', 'souradipto choudhuri'],
     classifiers=[
-        "Intended Audience :: Developers",
-        "Intended Audience :: Bioinformaticians",
+        "Topic :: Scientific/Engineering :: Bio-Informatics",
+        "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
         "Operating System :: Unix",
         "Operating System :: MacOS :: MacOS X",
-        "Operating System :: Microsoft :: Windows"
+        "Operating System :: Microsoft :: Windows",
+        "Intended Audience :: Developers",
+        "Intended Audience :: Education",
+        "Intended Audience :: Healthcare Industry",
+        "Intended Audience :: Science/Research"
     ]
 )

@@ -2,7 +2,7 @@ from typing import Any
 from warnings import filterwarnings
 from Bio.SeqIO import parse
 from .plot_funcs import _plot_pr2
-from srcs.analyzer.internal_comp import filter_reference, gc_123, at_123, g3, a3
+from CodonU.analyzer.internal_comp import filter_reference, gc_123, at_123, g3, a3
 
 
 def plot_pr2(handle: str | Any, min_len_threshold: int, organism_name: str | None = None, save_image: bool = False,
