@@ -24,7 +24,7 @@ Detailed description of functions are given below.
 
 Plots ENc curve from given fasta file
 
-- `handle`: handle to the file, or the filename as a string
+- `handle`: Handle to the file, or the filename as a string
 - `genetic_table_num`: Genetic table number for codon table
 - `min_len_threshold`: Minimum length of nucleotide sequence to be considered as gene
 - `organism_name`: Name of organism (optional)
@@ -40,7 +40,7 @@ See [example](#enc-plot).
 
 Plots A3/AT3 values against G3/GC3 values from given fasta file
 
-- `handle`: handle to the file, or the filename as a string
+- `handle`: Handle to the file, or the filename as a string
 - `min_len_threshold`: Minimum length of nucleotide sequence to be considered as gene
 - `organism_name`: Name of organism (optional)
 - `save_image`: Options for saving the image (optional)
@@ -55,7 +55,7 @@ counts can be seen in the lower left side. See [example](#pr2-plot).
 
 Plots neutrality plot from given fasta file
 
-- `handle`: handle to the file, or the filename as a string
+- `handle`: Handle to the file, or the filename as a string
 - `min_len_threshold`: Minimum length of nucleotide sequence to be considered as gene
 - `organism_name`: Name of organism (optional)
 - `save_image`: Options for saving the image (optional)

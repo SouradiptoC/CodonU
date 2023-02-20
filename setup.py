@@ -28,11 +28,8 @@ def read_requirements(path):
 PACK_NAME = 'CodonU'
 AUTHOR_NAME = 'Souradipto Choudhuri'
 AUTHOR_EMAIL = 'sourochaudhuri@gmail.com'
-VERSION = '1.0.0'
+VERSION = '0.0.2'
 DESC = 'This package is designed for helping in genomic analysis'
-LONG_DESC = 'The package can easily can help in various ways from fetching genebank files from NCBI with the help of ' \
-            'accession id to calculating cai, cbi, rscu, enc values and also can generate good quality graphics ' \
-            'such as enc plot, or correspondence analysis plot'
 
 setup(
     name='CodonU',
@@ -51,7 +48,7 @@ setup(
     packages=find_packages(exclude=["tests", ".github"]),
     install_requirements=read_requirements('requirements.txt'),
     keywords=['bioinformatics', 'bioinformatics-analysis', 'bioinformatics-tool', 'codon-usage', 'codon', 'codon-bias',
-              'genomic-analysis', 'genome', 'souradipto choudhuri'],
+              'genomic-analysis', 'genome', 'codonW'],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Natural Language :: English",
