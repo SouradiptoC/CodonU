@@ -10,7 +10,7 @@ def plot_enc(handle: str | Any, genetic_table_num: int, min_len_threshold: int =
     """
     Plots ENc curve from given fasta file
 
-    :param handle: handle to the file, or the filename as a string
+    :param handle: Handle to the file, or the filename as a string
     :param genetic_table_num: Genetic table number for codon table
     :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
     :param organism_name: Name of organism (optional)

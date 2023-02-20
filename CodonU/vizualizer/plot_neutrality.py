@@ -10,7 +10,7 @@ def plot_neutrality(handle: str | Any, min_len_threshold: int, organism_name: st
     """
     Plots neutrality plot from given fasta file
 
-    :param handle: handle to the file, or the filename as a string
+    :param handle: Handle to the file, or the filename as a string
     :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
     :param organism_name: Name of organism (optional)
     :param save_image: Options for saving the image (optional)

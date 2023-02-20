@@ -10,7 +10,7 @@ def plot_pr2(handle: str | Any, min_len_threshold: int, organism_name: str | Non
     """
     Plots A3/AT3 values against G3/GC3 values from given fasta file
 
-    :param handle: handle to the file, or the filename as a string
+    :param handle: Handle to the file, or the filename as a string
     :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
     :param organism_name: Name of organism (optional)
     :param save_image: Options for saving the image (optional)
