@@ -1,0 +1,1 @@
+from prince import MCA
