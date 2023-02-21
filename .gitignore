@@ -9,3 +9,7 @@
 /CodonU.egg-info/
 /dist/
 /share/
+/bin/
+/build/
+/lib/
+/.venv/
