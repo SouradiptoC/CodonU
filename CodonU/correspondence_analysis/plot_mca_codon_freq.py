@@ -1,5 +1,6 @@
 from collections import Counter
 from itertools import chain
+from os.path import join
 import pandas as pd
 import matplotlib.pyplot as plt
 from prince import PCA
@@ -9,16 +10,18 @@ from CodonU.analyzer.internal_comp import filter_reference
 from CodonU.cua_warnings import NoCodonWarning
 
 
-def plot_mca_codon_freq(handle: str, genetic_table_num: int, organism_name: str | None = None,
-                        min_len_threshold: int = 200, n_components: int = 59):
+def plot_mca_codon_freq(handle: str, genetic_table_num: int, min_len_threshold: int = 200, n_components: int = 59,
+                        organism_name: str | None = None, save_image: bool = False, folder_path: str = ''):
     """
     Plots the principal component analysis
 
     :param handle: Handle to the file, or the filename as a string
     :param genetic_table_num: Genetic table number for codon table
-    :param organism_name: Name of organism (optional)
     :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene (optional)
     :param n_components: The number of principal components to compute (optional)
+    :param organism_name: Name of organism (optional)
+    :param save_image: Options for saving the image (optional)
+    :param folder_path: Folder path where image should be saved (optional)
     """
     records = parse(handle, 'fasta')
     references = filter_reference(records, min_len_threshold)
@@ -56,4 +59,9 @@ def plot_mca_codon_freq(handle: str, genetic_table_num: int, organism_name: str 
     plt.title(f'Total genes: {len(references)}')
     sup_title = f'Multivariate analysis of {organism_name}' if organism_name else 'Multivariate analysis'
     plt.suptitle(sup_title)
+    if save_image:
+        name = f'Multivariate_analysis_{organism_name}.png' if organism_name else 'Multivariate_analysis.png'
+        file_name = join(folder_path, name)
+        plt.savefig(file_name, dpi=500)
     plt.show()
+    plt.close()
