@@ -1,9 +1,34 @@
-cff-version: 1.1.0
-message: "If you use this software, please cite it as below."
-authors:
-  - family-names: Choudhuri
-    given-names: Souradipto
-    orcid: https://orcid.org/0000-0002-4927-6556
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
 title: CodonU
-version: v0.0.1
-date-released: 2023-02-20
+message: 'If you use this software, please cite it as below.'
+type: software
+authors:
+  - given-names: Souradipto
+    family-names: Choudhuri
+    email: sourochaudhuri@gmail.com
+    affiliation: >-
+      Deptartment of Biotechnology, Haldia Institute of
+      Technology
+    orcid: 'https://orcid.org/0000-0002-4927-6556'
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.7658828
+    description: Initial Release
+repository-code: 'https://github.com/SouradiptoC/codon_usage'
+abstract: >-
+  The package can easily can help in various ways from
+  fetching genebank files from NCBI with the help of
+  accession id to calculating cai, cbi, rscu, enc values and
+  also can generate good quality graphics such as enc plot,
+  or correspondence analysis plot .
+keywords:
+  - Bioinformatics-tools
+  - genome-analysis
+  - CodonW
+license: MIT
+commit: Inital Release
+version: 0.0.1
+date-released: '2023-02-20'
