@@ -1,4 +1,4 @@
-# README
+[//]: # (# CodonU)
 
 [![PyPI - License](https://img.shields.io/pypi/l/CodonU)](https://opensource.org/licenses/MIT)
 [![DOI](https://zenodo.org/badge/536583655.svg)](https://zenodo.org/badge/latestdoi/536583655)
@@ -7,7 +7,6 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/SouradiptoC/codon_usage)
 [![PyPI - Format](https://img.shields.io/pypi/format/CodonU)](https://pypi.org/project/CodonU)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/CodonU?label=PyPI-downloads)
-
 
 The package can easily can help in various ways from fetching genebank files from NCBI with the help of accession id to
 calculating cai, cbi, rscu, enc values and also can generate good quality graphics such as enc plot, or correspondence
@@ -29,3 +28,10 @@ Please cite the work as
       doi          = {10.5281/zenodo.7657797},
       url          = {https://doi.org/10.5281/zenodo.7657797}
     }
+
+---
+**NOTE**
+
+This package is under heavy development now. Soon more functionalities and examples will be added!!
+
+---
