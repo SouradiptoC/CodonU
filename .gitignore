@@ -1,10 +1,6 @@
 /CodonU/.idea/
 /CodonU/.ipynb_checkpoints/
-/CodonU/temp.py
-/CodonU/temp2.py
-/CodonU/temp_3.ipynb
 /Results/
-/CodonU/temp3.py
 /pyvenv.cfg
 /CodonU.egg-info/
 /dist/
@@ -13,4 +9,4 @@
 /build/
 /lib/
 /.venv/
-/docs/
+/temp/
