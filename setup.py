@@ -45,6 +45,7 @@ setup(
     description=DESC,
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
+    license='MIT License',
     packages=find_packages(exclude=["tests", ".github"]),
     install_requirements=read_requirements('requirements.txt'),
     keywords=['bioinformatics', 'bioinformatics-analysis', 'bioinformatics-tool', 'codon-usage', 'codon', 'codon-bias',
