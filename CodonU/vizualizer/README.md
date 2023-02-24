@@ -117,21 +117,21 @@ Plots the neutrality plot
 
 #### ENc plot for _Staphylococcus agnetis_
 
-![ENc plot for Staphylococcus agnetis](https://github.com/SouradiptoC/codon_usage/blob/master/srcs/images/ENc_plot_Staphylococcus%20agnetis.png)
+![ENc plot for Staphylococcus agnetis](https://github.com/SouradiptoC/CodonU/blob/master/CodonU/images/ENc_plot_Staphylococcus%20agnetis.png)
 
 #### ENc plot for Human chromosome 2
 
-![ENc plot for human chromosome 2](https://github.com/SouradiptoC/codon_usage/blob/master/srcs/images/ENc_plot_Human%20Cr%202.png)
+![ENc plot for human chromosome 2](https://github.com/SouradiptoC/CodonU/blob/master/CodonU/images/ENc_plot_Human%20Cr%202.png)
 
 ### PR2 Plot
 
 #### PR2 plot for _Staphylococcus agnetis_
 
-![PR2 plot for Staphylococcus agnetis](https://github.com/SouradiptoC/codon_usage/blob/master/srcs/images/PR2_plot_Staphylococcus%20agnetis.png)
+![PR2 plot for Staphylococcus agnetis](https://github.com/SouradiptoC/CodonU/blob/master/CodonU/images/PR2_plot_Staphylococcus%20agnetis.png)
 
 #### PR2 plot for Human chromosome 2
 
-![PR2 plot for human chromosome 2](https://github.com/SouradiptoC/codon_usage/blob/master/srcs/images/PR2_plot_Human%20Cr%202.png)
+![PR2 plot for human chromosome 2](https://github.com/SouradiptoC/CodonU/blob/master/CodonU/images/PR2_plot_Human%20Cr%202.png)
 
 ### Neutrality Plot
 
@@ -140,14 +140,14 @@ of GC3 whereas for _argenteus_ it is based on span of GC12.
 
 #### Neutrality plot for _Staphylococcus agnetis_
 
-![Neutrality plot for Staphylococcus agnetis](https://github.com/SouradiptoC/codon_usage/blob/master/srcs/images/Neutrality_plot_Staphylococcus%20agnetis.png)
+![Neutrality plot for Staphylococcus agnetis](https://github.com/SouradiptoC/CodonU/blob/master/CodonU/images/Neutrality_plot_Staphylococcus%20agnetis.png)
 
 #### Neutrality plot for _Staphylococcus argenteus_
 
-![Neutrality plot for Staphylococcus argenteus](https://github.com/SouradiptoC/codon_usage/blob/master/srcs/images/Neutrality_plot_Staphylococcus%20argenteus.png)
+![Neutrality plot for Staphylococcus argenteus](https://github.com/SouradiptoC/CodonU/blob/master/CodonU/images/Neutrality_plot_Staphylococcus%20argenteus.png)
 
 #### Neutrality plot for Human chromosome 2
 
-![Neutrality plot for human chromosome 2](https://github.com/SouradiptoC/codon_usage/blob/master/srcs/images/Neutrality_plot_Human%20Cr%202.png)
+![Neutrality plot for human chromosome 2](https://github.com/SouradiptoC/CodonU/blob/master/CodonU/images/Neutrality_plot_Human%20Cr%202.png)
 
 <p align="center">&copy; 2023 Souradipto Choudhuri</p>
