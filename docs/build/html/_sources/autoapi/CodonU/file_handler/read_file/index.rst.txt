@@ -1,0 +1,27 @@
+:py:mod:`CodonU.file_handler.read_file`
+=======================================
+
+.. py:module:: CodonU.file_handler.read_file
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   CodonU.file_handler.read_file.read_file
+
+
+
+.. py:function:: read_file(file_name: str) -> pandas.DataFrame
+
+   Returns a dataframe from given csv file
+
+   :param file_name: Name or path to csv file
+   :return: The data frame object
+
+
