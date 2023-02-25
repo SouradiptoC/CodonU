@@ -1,0 +1,29 @@
+:py:mod:`CodonU.file_handler.write_protein_fasta`
+=================================================
+
+.. py:module:: CodonU.file_handler.write_protein_fasta
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   CodonU.file_handler.write_protein_fasta.write_protein_fasta
+
+
+
+.. py:function:: write_protein_fasta(file_name: str, cds_lst: tuple, organism_name: str) -> None
+
+   Creates a fasta file of proteins if not exists previously or is empty
+
+   :param file_name: The name of the file
+   :param cds_lst: The tuple of FeatureLocation objects
+   :param organism_name: Name of the organism
+   :raises FileNotEmptyError: If the given file to write is not empty
+
+

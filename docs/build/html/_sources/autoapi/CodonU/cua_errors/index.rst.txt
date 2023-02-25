@@ -1,0 +1,72 @@
+:py:mod:`CodonU.cua_errors`
+===========================
+
+.. py:module:: CodonU.cua_errors
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   codon_usage_err/index.rst
+   file_not_empty_err/index.rst
+   internal_stop_codon_err/index.rst
+   no_prot_err/index.rst
+   nucleotide_err/index.rst
+   ter_seq_err/index.rst
+
+
+Package Contents
+----------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   CodonU.cua_errors.FileNotEmptyError
+   CodonU.cua_errors.NoProteinError
+   CodonU.cua_errors.NucleotideError
+   CodonU.cua_errors.InternalStopCodonError
+   CodonU.cua_errors.TerSeqError
+
+
+
+
+.. py:class:: FileNotEmptyError(file_name=None)
+
+   Bases: :py:obj:`CodonU.cua_errors.codon_usage_err.CodonUsageError`
+
+   Occurs when a given file to write is not empty
+
+
+.. py:class:: NoProteinError(seq)
+
+   Bases: :py:obj:`CodonU.cua_errors.codon_usage_err.CodonUsageError`
+
+   Occurs when a complete category of amino acid based on sf values is not translated by the provided sequence
+
+
+.. py:class:: NucleotideError(code, position)
+
+   Bases: :py:obj:`CodonU.cua_errors.codon_usage_err.CodonUsageError`
+
+   Occurs when an ambiguous or invalid nucleotide is present in genome
+
+
+.. py:class:: InternalStopCodonError(position)
+
+   Bases: :py:obj:`CodonU.cua_errors.codon_usage_err.CodonUsageError`
+
+   Occurs when internal stop codon is present in the genome
+
+
+.. py:class:: TerSeqError(code)
+
+   Bases: :py:obj:`CodonU.cua_errors.codon_usage_err.CodonUsageError`
+
+   Occurs when terminal codons are not valid
+
+

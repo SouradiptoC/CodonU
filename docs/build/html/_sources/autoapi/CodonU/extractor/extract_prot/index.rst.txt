@@ -1,0 +1,29 @@
+:py:mod:`CodonU.extractor.extract_prot`
+=======================================
+
+.. py:module:: CodonU.extractor.extract_prot
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   CodonU.extractor.extract_prot.extract_prot
+
+
+
+.. py:function:: extract_prot(feature: Bio.SeqFeature.SeqFeature, organism_name: str, cds_no: int = 0) -> Bio.SeqRecord.SeqRecord
+
+   Extracts protein sequences and return them for writing
+
+   :param feature: The CDS
+   :param organism_name: Name of the organism
+   :param cds_no: Number of the CDS
+   :return: The protein sequence suitable for being written is fasta format
+
+
