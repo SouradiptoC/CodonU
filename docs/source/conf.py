@@ -20,7 +20,8 @@ release = '0.0.1'
 
 extensions = [
     "sphinx.ext.autodoc",
-    "autoapi.extension"
+    "autoapi.extension",
+    "myst_parser"
 ]
 
 autoapi_file_patterns = ['*.py']
