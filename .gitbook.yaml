@@ -1,0 +1,4 @@
+root: ./docs/source
+
+structure:
+  readme: index.md
