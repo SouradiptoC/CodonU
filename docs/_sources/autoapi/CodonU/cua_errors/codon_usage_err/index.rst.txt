@@ -1,0 +1,21 @@
+:py:mod:`CodonU.cua_errors.codon_usage_err`
+===========================================
+
+.. py:module:: CodonU.cua_errors.codon_usage_err
+
+
+Module Contents
+---------------
+
+.. py:exception:: CodonUsageError(msg=None)
+
+   Bases: :py:obj:`Exception`
+
+   Accounts for all error that can happen during executing the files
+
+   .. py:method:: __str__()
+
+      Return str(self).
+
+
+

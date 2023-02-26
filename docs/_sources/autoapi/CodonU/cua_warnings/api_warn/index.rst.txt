@@ -1,0 +1,19 @@
+:py:mod:`CodonU.cua_warnings.api_warn`
+======================================
+
+.. py:module:: CodonU.cua_warnings.api_warn
+
+
+Module Contents
+---------------
+
+.. py:exception:: ApiWarning
+
+   Bases: :py:obj:`CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning`
+
+   Occurs when no API key is provided
+
+   .. py:method:: warn()
+
+
+

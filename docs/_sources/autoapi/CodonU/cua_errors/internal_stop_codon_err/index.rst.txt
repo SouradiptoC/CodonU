@@ -1,0 +1,16 @@
+:py:mod:`CodonU.cua_errors.internal_stop_codon_err`
+===================================================
+
+.. py:module:: CodonU.cua_errors.internal_stop_codon_err
+
+
+Module Contents
+---------------
+
+.. py:exception:: InternalStopCodonError(position)
+
+   Bases: :py:obj:`CodonU.cua_errors.codon_usage_err.CodonUsageError`
+
+   Occurs when internal stop codon is present in the genome
+
+

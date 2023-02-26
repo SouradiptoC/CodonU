@@ -1,0 +1,16 @@
+:py:mod:`CodonU.cua_errors.file_not_empty_err`
+==============================================
+
+.. py:module:: CodonU.cua_errors.file_not_empty_err
+
+
+Module Contents
+---------------
+
+.. py:exception:: FileNotEmptyError(file_name=None)
+
+   Bases: :py:obj:`CodonU.cua_errors.codon_usage_err.CodonUsageError`
+
+   Occurs when a given file to write is not empty
+
+

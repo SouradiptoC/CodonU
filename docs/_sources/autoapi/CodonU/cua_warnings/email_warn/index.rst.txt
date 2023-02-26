@@ -1,0 +1,19 @@
+:py:mod:`CodonU.cua_warnings.email_warn`
+========================================
+
+.. py:module:: CodonU.cua_warnings.email_warn
+
+
+Module Contents
+---------------
+
+.. py:exception:: EmailWarning
+
+   Bases: :py:obj:`CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning`
+
+   Occurs when no email id is provided
+
+   .. py:method:: warn()
+
+
+

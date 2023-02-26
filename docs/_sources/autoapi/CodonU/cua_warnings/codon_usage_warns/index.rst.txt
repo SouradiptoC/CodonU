@@ -1,0 +1,16 @@
+:py:mod:`CodonU.cua_warnings.codon_usage_warns`
+===============================================
+
+.. py:module:: CodonU.cua_warnings.codon_usage_warns
+
+
+Module Contents
+---------------
+
+.. py:exception:: CodonUsageWarning(msg=None)
+
+   Bases: :py:obj:`Warning`
+
+   Accounts for all warnings while executing the CodonU
+
+
