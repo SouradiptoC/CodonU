@@ -37,7 +37,7 @@ setup(
     url='https://github.com/SouradiptoC/codon_usage',
     project_urls={
         "Bug Tracker": "https://github.com/SouradiptoC/codon_usage/issues",
-        "Documentation": "https://github.com/SouradiptoC/codon_usage/wiki",
+        "Documentation": "https://souradiptoc.github.io/CodonU/",
         "Source Code": "https://github.com/SouradiptoC/codon_usage"
     },
     author=AUTHOR_NAME,
