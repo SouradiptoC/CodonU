@@ -7,7 +7,7 @@
 [![PyPI - Format](https://img.shields.io/pypi/format/CodonU)](https://pypi.org/project/CodonU)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/CodonU?label=PyPI-downloads)
 [![CodeFactor](https://www.codefactor.io/repository/github/souradiptoc/codonu/badge/master)](https://www.codefactor.io/repository/github/souradiptoc/codonu/overview/master)
-[![Docs][https://img.shields.io/badge/docs-passing-brightgreen](https://souradiptoc.github.io/CodonU/)]
+[![Docs](https://img.shields.io/badge/docs-passing-brightgreen)](https://souradiptoc.github.io/CodonU/)
 
 The package can easily can help in various ways from fetching genebank files from NCBI with the help of accession id to
 calculating cai, cbi, rscu, enc values and also can generate good quality graphics such as enc plot, or correspondence
