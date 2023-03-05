@@ -18,7 +18,7 @@ def mca_codon_freq(handle: str, genetic_table_num: int, min_len_threshold: int =
     :param genetic_table_num: Genetic table number for codon table
     :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene (optional)
     :param n_components: The number of principal components to compute (optional)
-    :return: The contingency table and inertia
+    :return: The contingency table and inertia [inertia values lying between 0 and 1]
     """
     records = parse(handle, 'fasta')
     references = filter_reference(records, min_len_threshold)
