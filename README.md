@@ -1,5 +1,7 @@
 [//]: # (# CodonU)
 
+![CodonU](https://github.com/SouradiptoC/CodonU/blob/master/images/CODON_U_Background.png)
+
 [![PyPI - License](https://img.shields.io/pypi/l/CodonU)](https://opensource.org/licenses/MIT)
 [![DOI](https://zenodo.org/badge/536583655.svg)](https://zenodo.org/badge/latestdoi/536583655)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/CodonU)](https://pypi.org/project/CodonU)
