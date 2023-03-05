@@ -13,7 +13,7 @@ from CodonU.cua_warnings import NoCodonWarning
 def plot_mca_codon_freq(handle: str, genetic_table_num: int, min_len_threshold: int = 200, n_components: int = 59,
                         organism_name: str | None = None, save_image: bool = False, folder_path: str = ''):
     """
-    Plots the principal component analysis
+    Plots the principal component analysis based on codon frequency
 
     :param handle: Handle to the file, or the filename as a string
     :param genetic_table_num: Genetic table number for codon table
@@ -48,6 +48,7 @@ def plot_mca_codon_freq(handle: str, genetic_table_num: int, min_len_threshold: 
     plot_df = pca.row_coordinates(contingency_table)
     x = plot_df.iloc[:, 0]
     y = plot_df.iloc[:, 1]
+    plt.figure(figsize=(9, 5.25))
     plt.scatter(x, y, s, alpha=0.5, c=len_lst, cmap='viridis', zorder=2)
     plt.grid(True, linestyle=':')
     plt.axvline(0, color='red', zorder=1)
@@ -57,10 +58,10 @@ def plot_mca_codon_freq(handle: str, genetic_table_num: int, min_len_threshold: 
     c_bar = plt.colorbar()
     c_bar.set_label('Length of gene')
     plt.title(f'Total genes: {len(references)}')
-    sup_title = f'Multivariate analysis of {organism_name}' if organism_name else 'Multivariate analysis'
+    sup_title = f'Multivariate analysis of Codon Frequency of {organism_name}' if organism_name else 'Multivariate analysis of Codon Frequency'
     plt.suptitle(sup_title)
     if save_image:
-        name = f'Multivariate_analysis_{organism_name}.png' if organism_name else 'Multivariate_analysis.png'
+        name = f'Multivariate_analysis_codon_freq_{organism_name}.png' if organism_name else 'Multivariate_analysis_codon_freq.png'
         file_name = join(folder_path, name)
         plt.savefig(file_name, dpi=500)
     plt.show()
