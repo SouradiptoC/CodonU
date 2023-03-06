@@ -9,6 +9,7 @@ from CodonU.cua_warnings import NoSynonymousCodonWarning, MissingCodonWarning
 from CodonU.cua_errors import NoProteinError
 
 
+# TODO implement gravy and aromaticity
 def g3(seq: Seq | str) -> float:
     """
     Calculates percentage of G content for third position
