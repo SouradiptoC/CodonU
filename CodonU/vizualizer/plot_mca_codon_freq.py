@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from prince import PCA
 from Bio.SeqIO import parse
 from CodonU.analyzer.internal_comp import filter_reference
-from .mca_codon_freq import mca_codon_freq
+from CodonU.correspondence_analysis.mca_codon_freq import mca_codon_freq
 
 
 def plot_mca_codon_freq(handle: str, genetic_table_num: int, min_len_threshold: int = 200, n_components: int = 59,

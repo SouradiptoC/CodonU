@@ -3,7 +3,7 @@ from Bio.SeqIO import parse
 from prince import PCA
 from CodonU.analyzer.internal_comp import filter_reference
 import matplotlib.pyplot as plt
-from .mca_codon_rscu import mca_codon_rscu
+from CodonU.correspondence_analysis.mca_codon_rscu import mca_codon_rscu
 
 
 def plot_mca_rscu(handle: str, genetic_table_num: int, min_len_threshold: int = 200, n_components: int = 59,
