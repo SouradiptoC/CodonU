@@ -1,15 +1,16 @@
 from os.path import join
 import matplotlib.pyplot as plt
+from Bio.SeqUtils.ProtParam import ProteinAnalysis
 from prince import PCA
 from Bio.SeqIO import parse
 from CodonU.analyzer.internal_comp import filter_reference
 from CodonU.correspondence_analysis.mca_aa_freq import mca_aa_freq
 
 
-def plot_mca_aa_freq(handle: str, genetic_table_num: int, min_len_threshold: int = 66, n_components: int = 20,
-                     organism_name: str | None = None, save_image: bool = False, folder_path: str = ''):
+def plot_mca_aa_gravy(handle: str, genetic_table_num: int, min_len_threshold: int = 66, n_components: int = 20,
+                      organism_name: str | None = None, save_image: bool = False, folder_path: str = ''):
     """
-    Plots the principal component analysis based on amino acid frequency
+    Plots the principal component analysis based on amino acid frequency with GRAVY score scale
 
     :param handle: Handle to the file, or the filename as a string
     :param genetic_table_num: Genetic table number for codon table
@@ -21,9 +22,8 @@ def plot_mca_aa_freq(handle: str, genetic_table_num: int, min_len_threshold: int
     """
     records = parse(handle, 'fasta')
     references = filter_reference(records, min_len_threshold)
-    len_lst = [len(prot_seq) for prot_seq in references]
-    max_len = max(len_lst)
-    s = [len(prot_seq) / max_len * 100 for prot_seq in references]
+    gravy = [ProteinAnalysis(str(prot_seq)).gravy() for prot_seq in references]
+    s = [(g ** 2) * 20 for g in gravy]
     contingency_table, _ = mca_aa_freq(handle, genetic_table_num, min_len_threshold, n_components)
     pca = PCA(random_state=42, n_components=n_components)
     pca.fit(contingency_table)
@@ -31,14 +31,14 @@ def plot_mca_aa_freq(handle: str, genetic_table_num: int, min_len_threshold: int
     x = plot_df.iloc[:, 0]
     y = plot_df.iloc[:, 1]
     plt.figure(figsize=(9, 5.25))
-    plt.scatter(x, y, s, alpha=0.5, c=len_lst, cmap='viridis', zorder=2)
+    plt.scatter(x, y, s, alpha=0.5, c=gravy, cmap='viridis', zorder=2)
     plt.grid(True, linestyle=':')
     plt.axvline(0, color='red', zorder=1)
     plt.axhline(0, color='red', zorder=1)
     plt.xlabel(f'Axis 0 (inertia: {round(pca.explained_inertia_[0] * 100, 4)}%)')
     plt.ylabel(f'Axis 1 (inertia: {round(pca.explained_inertia_[1] * 100, 4)}%)')
     c_bar = plt.colorbar()
-    c_bar.set_label('Length of gene')
+    c_bar.set_label('GRAVY score')
     plt.title(f'Total genes: {len(references)}')
     sup_title = f'Multivariate analysis of Amino Acid Frequency of {organism_name}' if organism_name else 'Multivariate analysis of Amino Acid Frequency'
     plt.suptitle(sup_title)
