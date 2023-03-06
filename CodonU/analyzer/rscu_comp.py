@@ -3,11 +3,11 @@ from .internal_comp import filter_reference
 
 
 def calculate_rscu(records, genetic_code_num: int, min_len_threshold: int = 200, gene_analysis: bool = False) -> \
-        dict[str, float] | dict[str, dict[str, float]]:
+        dict[str, float | dict[str, float]]:
     """
     Calculates rscu values for each codon
 
-    :param records: The generator object containing sequence object
+    :param records: The generator object containing nucleotide sequence object
     :param genetic_code_num: Genetic table number for codon table
     :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
     :param gene_analysis: Option if gene analysis (True) or genome analysis (False) (optional)

@@ -3,12 +3,12 @@ from warnings import filterwarnings
 from Bio.Data.CodonTable import unambiguous_dna_by_id
 
 
-def calculate_cbi(records, genetic_code_num: int, min_len_threshold: int = 200, gene_analysis: bool = False) -> \
-        dict[str, tuple[float, str]] | dict[str, dict[str, tuple[float, str]]]:
+def calculate_cbi(records, genetic_code_num: int, min_len_threshold: int = 66, gene_analysis: bool = False) -> \
+        dict[str, tuple[float, str] | dict[str, tuple[float, str]]]:
     """
     Calculates cbi values for each amino acid
 
-    :param records: The generator object containing sequence object
+    :param records: The generator object containing protein sequence object
     :param genetic_code_num: Genetic table number for codon table
     :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
     :param gene_analysis: Option if gene analysis (True) or genome analysis (False) (optional)

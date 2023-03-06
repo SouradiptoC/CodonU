@@ -3,11 +3,11 @@ from .internal_comp import filter_reference, enc
 
 
 def calculate_enc(records, genetic_code_num: int, min_len_threshold=200, gene_analysis: bool = False) -> \
-        float | dict[str, float]:
+        float or dict[str, float]:
     """
     Calculates ENc value for a given sequences
 
-    :param records: The generator object containing sequence object
+    :param records: The generator object containing nucleotide sequence object
     :param genetic_code_num: Genetic table number for codon table
     :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
     :param gene_analysis: Option if gene analysis (True) or genome analysis (False) (optional)
