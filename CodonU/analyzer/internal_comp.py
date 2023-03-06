@@ -5,6 +5,7 @@ from statistics import mean
 from Bio.Data.CodonTable import NCBICodonTableDNA, unambiguous_dna_by_id
 from Bio.Seq import Seq
 from Bio.SeqUtils import seq3, GC123
+from Bio.SeqUtils.ProtParam import ProteinAnalysis
 from CodonU.cua_warnings import NoSynonymousCodonWarning, MissingCodonWarning
 from CodonU.cua_errors import NoProteinError
 
@@ -115,7 +116,7 @@ def cbi(prot_seq: Seq | str, reference: list[Seq], genetic_code: int) -> tuple[f
     """
     Calculates codon bias index (CBI) for a given protein seq based on Bennetzen and Hall (1982)
 
-    :param prot_seq: The Amino Acid
+    :param prot_seq: The Protein Sequence
     :param reference: List of reference nucleotide sequences
     :param genetic_code: Genetic table number for codon table
     :return: A tuple of CBI val and the optimal codon
@@ -216,3 +217,29 @@ def enc(references: list[Seq | str], genetic_code: int) -> float:
     # [sf_6 avg, sf_4 avg, sf_3 avg, sf_2 avg, sf_1 avg]
     enc_val = 2 + (9 / F_val_avg_lst[3]) + (1 / F_val_avg_lst[2]) + (5 / F_val_avg_lst[1]) + (3 / F_val_avg_lst[0])
     return enc_val if enc_val < 61 else 61.00
+
+
+def gravy(references: list[Seq | str]) -> float:
+    """
+    Computes the GRAVY score according to Kyte and Doolittle (1982)
+
+    :param references: List of reference protein sequences
+    :return: The GRAVY score
+    """
+    if not isinstance(references[0], str):
+        _references = [str(seq) for seq in references]
+        references = _references
+    return ProteinAnalysis(references[0]).gravy()
+
+
+def aromaticity(references: list[Seq | str]) -> float:
+    """
+    Calculate the aromaticity score according to Lobry (1994).
+
+    :param references: List of reference protein sequences
+    :return: The aromaticity score
+    """
+    if not isinstance(references[0], str):
+        _references = [str(seq) for seq in references]
+        references = _references
+    return ProteinAnalysis(references[0]).aromaticity()
