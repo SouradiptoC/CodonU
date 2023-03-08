@@ -1,15 +1,16 @@
 from CAI import CAI
 from warnings import filterwarnings
 from Bio.Data.CodonTable import unambiguous_dna_by_id
+from Bio.SeqIO import parse
 from .internal_comp import filter_reference
 
 
-def calculate_cai(records, genetic_code_num: int, min_len_threshold: int = 200, gene_analysis: bool = False) -> \
+def calculate_cai(handle: str, genetic_code_num: int, min_len_threshold: int = 200, gene_analysis: bool = False) -> \
         dict[str, float | dict[str, float]]:
     """
     Calculates cai values for each codon
 
-    :param records: The generator object containing nucleotide sequence object
+    :param handle: Handle to the file, or the filename as a string
     :param genetic_code_num: Genetic table number for codon table
     :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
     :param gene_analysis: Option if gene analysis (True) or genome analysis (False) (optional)
@@ -18,6 +19,7 @@ def calculate_cai(records, genetic_code_num: int, min_len_threshold: int = 200, 
     """
     filterwarnings('ignore')
     cai_dict = dict()
+    records = parse(handle, 'fasta')
     reference = filter_reference(records, min_len_threshold)
     if gene_analysis:
         for i, seq in enumerate(reference):
