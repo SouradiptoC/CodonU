@@ -43,7 +43,7 @@ def plot_mca_rscu(handle: str, genetic_table_num: int, min_len_threshold: int = 
     sup_title = f'Multivariate analysis of Codon RSCU of {organism_name}' if organism_name else 'Multivariate analysis of Codon RSCU'
     plt.suptitle(sup_title)
     if save_image:
-        name = f'Multivariate_analysis_codon_freq_{organism_name}.png' if organism_name else 'Multivariate_analysis_codon_freq.png'
+        name = f'Multivariate_analysis_rscu_{organism_name}.png' if organism_name else 'Multivariate_analysis_rscu.png'
         file_name = join(folder_path, name)
         plt.savefig(file_name, dpi=500)
     plt.show()

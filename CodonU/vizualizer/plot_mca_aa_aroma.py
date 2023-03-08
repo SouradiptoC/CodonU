@@ -38,12 +38,12 @@ def plot_mca_aa_aroma(handle: str, genetic_table_num: int, min_len_threshold: in
     plt.xlabel(f'Axis 0 (inertia: {round(pca.explained_inertia_[0] * 100, 4)}%)')
     plt.ylabel(f'Axis 1 (inertia: {round(pca.explained_inertia_[1] * 100, 4)}%)')
     c_bar = plt.colorbar()
-    c_bar.set_label('GRAVY score')
+    c_bar.set_label('Aromaticity score')
     plt.title(f'Total genes: {len(references)}')
     sup_title = f'Multivariate analysis of Amino Acid Frequency of {organism_name}' if organism_name else 'Multivariate analysis of Amino Acid Frequency'
     plt.suptitle(sup_title)
     if save_image:
-        name = f'Multivariate_analysis_aa_freq_{organism_name}.png' if organism_name else 'Multivariate_analysis_aa_freq.png'
+        name = f'Multivariate_analysis_aa_aroma_{organism_name}.png' if organism_name else 'Multivariate_analysis_aa_aroma.png'
         file_name = join(folder_path, name)
         plt.savefig(file_name, dpi=500)
     plt.show()
