@@ -23,8 +23,3 @@ def calculate_gravy(handle: str, min_len_threshold: int = 66, gene_analysis: boo
     else:
         seq = ''.join([str(_seq) for _seq in references])
         return gravy(seq)
-
-
-if __name__ == '__main__':
-    handle = '/home/souro/Projects/CodonU/Results/Proteins/temp.fasta'
-    print(calculate_gravy(handle, gene_analysis=False))
