@@ -19,7 +19,8 @@ def calculate_aromaticity(handle: str, min_len_threshold: int = 66, gene_analysi
     if gene_analysis:
         gravy_dict = dict()
         for i, seq in enumerate(references):
-            gravy_dict.update({f'prot_seq{i + 1}': aromaticity([seq])})
+            gravy_dict.update({f'prot_seq{i + 1}': aromaticity(seq)})
         return gravy_dict
     else:
-        return aromaticity(references)
+        seq = ''.join([str(_seq) for _seq in references])
+        return aromaticity(seq)

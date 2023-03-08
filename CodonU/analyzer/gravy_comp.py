@@ -18,7 +18,13 @@ def calculate_gravy(handle: str, min_len_threshold: int = 66, gene_analysis: boo
     if gene_analysis:
         gravy_dict = dict()
         for i, seq in enumerate(references):
-            gravy_dict.update({f'prot_seq{i + 1}': gravy([seq])})
+            gravy_dict.update({f'prot_seq{i + 1}': gravy(seq)})
         return gravy_dict
     else:
-        return gravy(references)
+        seq = ''.join([str(_seq) for _seq in references])
+        return gravy(seq)
+
+
+if __name__ == '__main__':
+    handle = '/home/souro/Projects/CodonU/Results/Proteins/temp.fasta'
+    print(calculate_gravy(handle, gene_analysis=False))
