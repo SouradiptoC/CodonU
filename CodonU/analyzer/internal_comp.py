@@ -219,27 +219,27 @@ def enc(references: list[Seq | str], genetic_code: int) -> float:
     return enc_val if enc_val < 61 else 61.00
 
 
-def gravy(references: list[Seq | str]) -> float:
+def gravy(seq: Seq | str) -> float:
     """
     Computes the GRAVY score according to Kyte and Doolittle (1982)
 
-    :param references: List of reference protein sequences
+    :param seq: Protein sequence
     :return: The GRAVY score
     """
-    if not isinstance(references[0], str):
-        _references = [str(seq) for seq in references]
-        references = _references
-    return ProteinAnalysis(references[0]).gravy()
+    if not isinstance(seq, str):
+        _seq = str(seq)
+        seq = _seq
+    return ProteinAnalysis(seq).gravy()
 
 
-def aromaticity(references: list[Seq | str]) -> float:
+def aromaticity(seq: Seq | str) -> float:
     """
     Calculate the aromaticity score according to Lobry (1994).
 
-    :param references: List of reference protein sequences
+    :param seq: Protein sequence
     :return: The aromaticity score
     """
-    if not isinstance(references[0], str):
-        _references = [str(seq) for seq in references]
-        references = _references
-    return ProteinAnalysis(references[0]).aromaticity()
+    if not isinstance(seq, str):
+        _seq = str(seq)
+        seq = _seq
+    return ProteinAnalysis(seq).aromaticity()
