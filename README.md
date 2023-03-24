@@ -11,13 +11,66 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/souradiptoc/codonu/badge/master)](https://www.codefactor.io/repository/github/souradiptoc/codonu/overview/master)
 [![Docs](https://img.shields.io/badge/docs-passing-brightgreen)](https://souradiptoc.github.io/CodonU/)
 
-The package can easily can help in various ways from fetching genebank files from NCBI with the help of accession id to
-calculating cai, cbi, rscu, enc values and also can generate good quality graphics such as enc plot, or correspondence
-analysis plot
-<br>
-Updates will be done on a regular basis.
+# Introduction
 
-A complete doumentation is available [here](https://github.com/SouradiptoC/codon_usage/wiki).
+Welcome to CodonU!
+
+This is an integrated package for codon usage analysis.
+
+# Functionalities
+
+Various functionalities can be found below. For gene/genome analysis, this package can:
+
+- For Nucleotide sequences
+    - Calculate RSCU
+    - Calculate CAI
+    - Calculate CBI
+    - Calculate ENc
+- For Protein sequences
+    - Calculate Aromaticity
+    - Calculate gravy
+
+One can also can calculate the multivariate analysis, popularly known as correspondence analysis (COA) for the codons
+easily.
+Supported calculations are:
+
+- For Nucleotide sequences
+    - COA using codon frequency with scale set to length of gene
+    - COA using codon RSCU values with scale set to length of gene
+- For Protein sequences
+    - COA using amino acid frequency with scale set to gravy score
+    - COA using amino acid frequency with scale set to aromaticity score
+
+Detailed instructions on how to use the functions can be found in
+the [examples](https://github.com/SouradiptoC/CodonU/tree/master/Examples)
+
+# Graphics!!
+
+Also, can generate beautiful graphics for publication purpose or otherwise. Some plots are:
+
+ENc plot for human chromosome 2
+
+![ENc plot for human chromosome 2](https://github.com/SouradiptoC/CodonU/blob/master/images/ENc_plot_Human%20Cr%202.png)
+
+Neutrality plot for human chromosome 2
+
+![Neutrality plot for human chromosome 2](https://github.com/SouradiptoC/CodonU/blob/master/images/Neutrality_plot_Human%20Cr%202.png)
+
+Correspondence analysis of protein frequency using gravy score
+
+![Correspondence analysis of protein frequency using gravy score](https://github.com/SouradiptoC/CodonU/blob/master/images/Multivariate_analysis_aa_gravy_agnetis.png)
+
+Examples for other plots cans be found in the [images](https://github.com/SouradiptoC/CodonU/tree/master/images)
+
+# Installation
+
+    pip install CodonU
+
+# Future Plans
+
+Currently, am implementing phylogenetic tree construction
+
+# Citation
 
 Please cite the work as
 
