@@ -12,7 +12,7 @@ def calculate_rscu(handle: str, genetic_code_num: int, min_len_threshold: int = 
     :param genetic_code_num: Genetic table number for codon table
     :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
     :param gene_analysis: Option if gene analysis (True) or genome analysis (False) (optional)
-    :return: The dictionary containing codon and rscu value pairs
+    :return: The dictionary containing codon and rscu value pairs if gene_analysis is false, otherwise the dictionary containing the gene name and the codon & rscu value pairs
     """
     records = parse(handle, 'fasta')
     references = filter_reference(records, min_len_threshold)

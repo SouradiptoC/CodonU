@@ -12,7 +12,7 @@ def calculate_enc(handle: str, genetic_code_num: int, min_len_threshold=200, gen
     :param genetic_code_num: Genetic table number for codon table
     :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
     :param gene_analysis: Option if gene analysis (True) or genome analysis (False) (optional)
-    :return: The ENc value or a dictionary containing gene number and corresponding ENc value
+    :return: The ENc value if gene_analysis is false, else a dictionary containing gene number and corresponding ENc value
     """
     records = parse(handle, 'fasta')
     references = filter_reference(records, min_len_threshold)

@@ -1,4 +1,3 @@
-from warnings import filterwarnings
 from CodonU.analyzer.internal_comp import filter_reference, aromaticity
 from Bio.SeqIO import parse
 
@@ -15,7 +14,6 @@ def calculate_aromaticity(handle: str, min_len_threshold: int = 66, gene_analysi
     """
     records = parse(handle, 'fasta')
     references = filter_reference(records, min_len_threshold)
-    filterwarnings('ignore')
     if gene_analysis:
         gravy_dict = dict()
         for i, seq in enumerate(references):
