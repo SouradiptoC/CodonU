@@ -8,6 +8,9 @@ from Bio.SeqUtils import seq3
 
 
 def _print_msg(_type: str, output, tot_gene: int):
+    """
+    Prints the upper message
+    """
     print('The report is generated with the help of package CodonU created by Souradipto C.',
           file=output)
     print('_' * 80, file=output)
@@ -42,7 +45,7 @@ def _print_msg(_type: str, output, tot_gene: int):
 def generate_report(handle: str, _type: str, genetic_code_num: int, min_len_threshold: int,
                     res_folder_path: str = 'Report'):
     """
-    Generate the report for given sequence
+    Generate the report for given sequence **[best for genome analysis]**
 
     For nucleotide sequence, this generates reports of:
         - RSCU
