@@ -45,7 +45,7 @@ def _print_msg(_type: str, output, tot_gene: int):
 def generate_report(handle: str, _type: str, genetic_code_num: int, min_len_threshold: int,
                     res_folder_path: str = 'Report'):
     """
-    Generate the report for given sequence **[best for genome analysis]**
+    Generate the report for given sequence **[best for gene analysis]**
 
     For nucleotide sequence, this generates reports of:
         - RSCU
