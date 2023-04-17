@@ -22,17 +22,17 @@ def calculate_aromaticity(handle: str, min_len_threshold: int = 66, gene_analysi
     records = parse(handle, 'fasta')
     references = filter_reference(records, min_len_threshold)
     if gene_analysis:
-        gravy_dict = dict()
+        aroma_dict = dict()
         for i, seq in enumerate(references):
-            gravy_dict.update({f'prot_seq{i + 1}': aromaticity(seq)})
+            aroma_dict.update({f'prot_seq{i + 1}': aromaticity(seq)})
         if save_file:
             name = file_name + '.xlsx'
             file_path = join(folder_path, name)
             if is_file_empty(file_path):
-                df = pd.DataFrame(gravy_dict, columns=['Protein_name', 'Aroma_score'])
+                df = pd.DataFrame(aroma_dict, columns=['Protein_name', 'Aroma_score'])
                 df.to_excel(file_path, float_format='%.4f', columns=df.columns)
             print(f'The Aromaticity score file can be found at: {abspath(file_path)}')
-        return gravy_dict
+        return aroma_dict
     else:
         seq = ''.join([str(_seq) for _seq in references])
         if save_file:
