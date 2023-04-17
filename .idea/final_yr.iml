@@ -9,8 +9,9 @@
       <excludeFolder url="file://$MODULE_DIR$/CodonU/.venv/bin" />
       <excludeFolder url="file://$MODULE_DIR$/CodonU/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/_venv" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.10 (CodonU)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.11 (CodonU)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="ReSTService">
