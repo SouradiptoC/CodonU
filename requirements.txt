@@ -1,4 +1,4 @@
-CAI2~=1.0.5
+cai2~=1.0.5
 biopython~=1.79
 numpy~=1.24.2
 pandas~=2.0.0
