@@ -1,4 +1,4 @@
-from CAI import CAI
+from cai2 import CAI
 from warnings import filterwarnings
 from Bio.Data.CodonTable import unambiguous_dna_by_id
 from Bio.SeqIO import parse
