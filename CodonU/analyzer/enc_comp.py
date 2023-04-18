@@ -1,9 +1,13 @@
 from warnings import filterwarnings
 from .internal_comp import filter_reference, enc
 from Bio.SeqIO import parse
+import pandas as pd
+from os.path import join, abspath
+from CodonU.file_handler.internal_comp import is_file_empty
 
 
-def calculate_enc(handle: str, genetic_code_num: int, min_len_threshold=200, gene_analysis: bool = False) -> \
+def calculate_enc(handle: str, genetic_code_num: int, min_len_threshold=200, gene_analysis: bool = False,
+                  save_file: bool = False, file_name: str = 'ENc_report', folder_path: str = 'Report') -> \
         float or dict[str, float]:
     """
     Calculates ENc value for a given sequences
@@ -12,6 +16,9 @@ def calculate_enc(handle: str, genetic_code_num: int, min_len_threshold=200, gen
     :param genetic_code_num: Genetic table number for codon table
     :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
     :param gene_analysis: Option if gene analysis (True) or genome analysis (False) (optional)
+    :param save_file: Option for saving the values in xlsx format (Optional)
+    :param file_name: Intended file name (Optional)
+    :param folder_path: Folder path where image should be saved (optional)
     :return: The ENc value if gene_analysis is false, else a dictionary containing gene number and corresponding ENc value
     """
     records = parse(handle, 'fasta')
@@ -21,6 +28,21 @@ def calculate_enc(handle: str, genetic_code_num: int, min_len_threshold=200, gen
         enc_dict = dict()
         for i, seq in enumerate(references):
             enc_dict.update({f'gene_{i + 1}': enc([seq], genetic_code_num)})
+        if save_file:
+            name = file_name + '.xlsx'
+            file_path = join(folder_path, name)
+            if is_file_empty(file_path):
+                df = pd.DataFrame(enc_dict, columns=['Gene', 'ENc_val'])
+                df.to_excel(file_path, float_format='%.4f', columns=df.columns)
+            print(f'The ENc score file can be found at: {abspath(file_path)}')
         return enc_dict
     else:
+        if save_file:
+            name = file_name + '.xlsx'
+            file_path = join(folder_path, name)
+            if is_file_empty(file_path):
+                df = pd.DataFrame({'Nucleotide_seq': enc(references, genetic_code_num)},
+                                  columns=['Nucleotide_name', 'ENc_score'])
+                df.to_excel(file_path, float_format='%.4f', columns=df.columns)
+            print(f'The ENc score file can be found at: {abspath(file_path)}')
         return enc(references, genetic_code_num)

@@ -17,7 +17,8 @@ def calculate_aromaticity(handle: str, min_len_threshold: int = 66, gene_analysi
     :param save_file: Option for saving the values in xlsx format (Optional)
     :param file_name: Intended file name (Optional)
     :param folder_path: Folder path where image should be saved (optional)
-    :return: The aromaticity score of given sequence if gene_analysis is false, else the dictionary containing gene number and corresponding GRAVY score
+    :return: The aromaticity score of given sequence if gene_analysis is false, else the dictionary containing
+    gene number and corresponding GRAVY score
     """
     records = parse(handle, 'fasta')
     references = filter_reference(records, min_len_threshold)

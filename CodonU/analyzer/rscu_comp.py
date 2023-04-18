@@ -1,4 +1,4 @@
-from CAI import RSCU
+from cai2 import RSCU
 from .internal_comp import filter_reference
 from Bio.SeqIO import parse
 

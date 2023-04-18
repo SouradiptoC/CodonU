@@ -2,9 +2,13 @@ from .internal_comp import filter_reference, cbi
 from warnings import filterwarnings
 from Bio.Data.CodonTable import unambiguous_dna_by_id
 from Bio.SeqIO import parse
+import pandas as pd
+from os.path import join, abspath
+from CodonU.file_handler.internal_comp import is_file_empty
 
 
-def calculate_cbi(handle: str, genetic_code_num: int, min_len_threshold: int = 66, gene_analysis: bool = False) -> \
+def calculate_cbi(handle: str, genetic_code_num: int, min_len_threshold: int = 66, gene_analysis: bool = False,
+                  save_file: bool = False, file_name: str = 'CBI_report', folder_path: str = 'Report') -> \
         dict[str, tuple[float, str] | dict[str, tuple[float, str]]]:
     """
     Calculates cbi values for each amino acid
@@ -13,7 +17,12 @@ def calculate_cbi(handle: str, genetic_code_num: int, min_len_threshold: int = 6
     :param genetic_code_num: Genetic table number for codon table
     :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
     :param gene_analysis: Option if gene analysis (True) or genome analysis (False) (optional)
-    :return: The dictionary containing amino acid and cbi value, optimal codon pairs if gene_analysis is false, otherwise returns the dictionary containing gene name and dictionary containing amino acid and cbi value, optimal codon pairs
+    :param save_file: Option for saving the values in xlsx format (Optional)
+    :param file_name: Intended file name (Optional)
+    :param folder_path: Folder path where image should be saved (optional)
+    :return: The dictionary containing amino acid and cbi value, optimal codon pairs if gene_analysis is false,
+    otherwise returns the dictionary containing gene name and dictionary containing amino acid and cbi value,
+    optimal codon pairs
      """
     records = parse(handle, 'fasta')
     reference = filter_reference(records, min_len_threshold)
@@ -26,8 +35,22 @@ def calculate_cbi(handle: str, genetic_code_num: int, min_len_threshold: int = 6
                 cbi_val = cbi(aa, reference=[seq], genetic_code=genetic_code_num)
                 cbi_val_dict.update({aa: cbi_val})
             cbi_dict.update({f'gene_{i + 1}': cbi_val_dict})
+        if save_file:
+            name = file_name + '.xlsx'
+            file_path = join(folder_path, name)
+            if is_file_empty(file_path):
+                df = pd.DataFrame(cbi_dict, columns=['Gene', 'Codon', 'CBI_val'])
+                df.to_excel(file_path, float_format='%.4f', columns=df.columns)
+            print(f'The CBI score file can be found at: {abspath(file_path)}')
     else:
         for aa in unambiguous_dna_by_id[genetic_code_num].protein_alphabet:
             cbi_val = cbi(aa, reference, genetic_code_num)
             cbi_dict.update({aa: cbi_val})
+        if save_file:
+            name = file_name + '.xlsx'
+            file_path = join(folder_path, name)
+            if is_file_empty(file_path):
+                df = pd.DataFrame(cbi_dict, columns=['Codon', 'CBI_val'])
+                df.to_excel(file_path, float_format='%.4f', columns=df.columns)
+            print(f'The CBI score file can be found at: {abspath(file_path)}')
     return cbi_dict
