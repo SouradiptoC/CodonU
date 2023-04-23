@@ -1,0 +1,28 @@
+:py:mod:`CodonU.phylogenetic_analysis.clustal_w`
+================================================
+
+.. py:module:: CodonU.phylogenetic_analysis.clustal_w
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   CodonU.phylogenetic_analysis.clustal_w.phy_clustal_w
+
+
+
+.. py:function:: phy_clustal_w(bin_path: str, handle: str, res_folder_path: str = 'Report')
+
+   Makes the multiple sequence alignment with ClustalW. For details visit http://www.clustal.org/clustal2
+
+   :param bin_path: Path to the binary file of ClustalW
+   :param handle: Handle to the file, or the filename as a string
+   :param res_folder_path: The path of folder where the file will be saved
+
+

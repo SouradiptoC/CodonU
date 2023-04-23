@@ -1,0 +1,26 @@
+:py:mod:`CodonU.file_handler.make_dir`
+======================================
+
+.. py:module:: CodonU.file_handler.make_dir
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   CodonU.file_handler.make_dir.make_dir
+
+
+
+.. py:function:: make_dir(path: str) -> None
+
+   Makes a directory if not present already
+
+   :param path: Path of the directory
+
+

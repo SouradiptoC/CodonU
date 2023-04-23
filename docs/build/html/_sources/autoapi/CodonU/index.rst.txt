@@ -1,0 +1,22 @@
+:py:mod:`CodonU`
+================
+
+.. py:module:: CodonU
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   analyzer/index.rst
+   correspondence_analysis/index.rst
+   cua_errors/index.rst
+   cua_warnings/index.rst
+   extractor/index.rst
+   file_handler/index.rst
+   phylogenetic_analysis/index.rst
+   vizualizer/index.rst
+
+

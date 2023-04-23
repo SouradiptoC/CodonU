@@ -1,0 +1,24 @@
+:py:mod:`CodonU.cua_errors.unsupported_type`
+============================================
+
+.. py:module:: CodonU.cua_errors.unsupported_type
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   CodonU.cua_errors.unsupported_type.UnsupportedType
+
+
+
+
+.. py:class:: UnsupportedType
+
+   Bases: :py:obj:`CodonU.cua_errors.codon_usage_err.CodonUsageError`
+
+

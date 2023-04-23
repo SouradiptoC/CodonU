@@ -1,0 +1,29 @@
+:py:mod:`CodonU.file_handler.write_exome_fasta`
+===============================================
+
+.. py:module:: CodonU.file_handler.write_exome_fasta
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   CodonU.file_handler.write_exome_fasta.write_exome_fasta
+
+
+
+.. py:function:: write_exome_fasta(file_name: str, nuc_file_path: str, organism_name: str) -> None
+
+   Creates a fasta file of exome if not exists previously or is empty
+
+   :param file_name: The name of the file
+   :param nuc_file_path: The path of nucleotide file
+   :param organism_name: Name of the organism
+   :raises FileNotEmptyError: If the given file to write is not empty
+
+
