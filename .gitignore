@@ -10,8 +10,9 @@
 /lib/
 /.venv/
 /temp/
-/_docs/
+/_docs_1/
 /_venv/
 /docs/source/
 
 /docs_1/
+/_docs/
