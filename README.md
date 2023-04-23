@@ -41,6 +41,8 @@ Supported calculations are:
     - COA using amino acid frequency with scale set to gravy score
     - COA using amino acid frequency with scale set to aromaticity score
 
+Phylogenetic analysis and tree building now can be done.
+
 Detailed instructions on how to use the functions can be found in
 the [examples](https://github.com/SouradiptoC/CodonU/tree/master/Examples)
 
@@ -68,7 +70,8 @@ Examples for other plots cans be found in the [images](https://github.com/Sourad
 
 # Future Plans
 
-Currently, am implementing phylogenetic tree construction
+None. If you would like recommend one, please mail
+at ![sourochaudhuri@gmail.com](mailto:sourochaudhuri@gmail.com)
 
 # Citation
 
