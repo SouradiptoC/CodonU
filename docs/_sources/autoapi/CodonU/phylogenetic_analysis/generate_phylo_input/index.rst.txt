@@ -1,0 +1,38 @@
+:py:mod:`CodonU.phylogenetic_analysis.generate_phylo_input`
+===========================================================
+
+.. py:module:: CodonU.phylogenetic_analysis.generate_phylo_input
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   CodonU.phylogenetic_analysis.generate_phylo_input._is_file_writeable
+   CodonU.phylogenetic_analysis.generate_phylo_input.generate_phylo_input
+
+
+
+.. py:function:: _is_file_writeable(path: str) -> bool
+
+   Checks if provided file exists and is writable
+
+   :param path: Path to the file
+   :raise FileNotEmptyError: If user doesn't want to append the fasta sequence
+   :return: True if user wants to, False otherwise
+
+
+.. py:function:: generate_phylo_input(file_lst: list[str], file_name: str = 'phylo_input', folder_path: str = 'Report')
+
+   Generates the alignment input file
+
+   :param file_lst: List containing paths of fasta file
+   :param file_name: Output filename
+   :param folder_path: Folder name
+
+

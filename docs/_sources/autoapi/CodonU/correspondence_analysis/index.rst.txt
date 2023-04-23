@@ -1,0 +1,67 @@
+:py:mod:`CodonU.correspondence_analysis`
+========================================
+
+.. py:module:: CodonU.correspondence_analysis
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   mca_aa_freq/index.rst
+   mca_codon_freq/index.rst
+   mca_codon_rscu/index.rst
+
+
+Package Contents
+----------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   CodonU.correspondence_analysis.mca_codon_freq
+   CodonU.correspondence_analysis.mca_codon_rscu
+   CodonU.correspondence_analysis.mca_aa_freq
+
+
+
+.. py:function:: mca_codon_freq(handle: str, genetic_table_num: int, min_len_threshold: int = 200, n_components: int = 59) -> tuple[pandas.DataFrame, numpy.ndarray]
+
+   Calculates the contingency table and the inertia from codon frequency of gene
+
+   :param handle: Handle to the file, or the filename as a string
+   :param genetic_table_num: Genetic table number for codon table
+   :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene (optional)
+   :param n_components: The number of principal components to compute (optional)
+   :return: The contingency table and inertia [inertia values lying between 0 and 1]
+
+
+.. py:function:: mca_codon_rscu(handle: str, genetic_table_num: int, min_len_threshold: int = 200, n_components: int = 59) -> tuple[pandas.DataFrame, numpy.ndarray]
+
+   Calculates the contingency table and the inertia from RSCU of every codon of every genes
+
+   :param handle: Handle to the file, or the filename as a string
+   :param genetic_table_num: Genetic table number for codon table
+   :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene (optional)
+   :param n_components: The number of principal components to compute (optional)
+   :return: The contingency table and inertia [inertia values lying between 0 and 1]
+
+
+.. py:function:: mca_aa_freq(handle: str, genetic_table_num: int, min_len_threshold: int = 66, n_components: int = 20) -> tuple[pandas.DataFrame, numpy.ndarray]
+
+   Calculates the contingency table and the inertia from amino acid frequency of gene
+
+   **NOTE**: The fasta file must contain protein sequences in single letter format
+
+   :param handle: Handle to the file, or the filename as a string
+   :param genetic_table_num: Genetic table number for codon table
+   :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene (optional)
+   :param n_components: The number of principal components to compute (optional)
+   :return: The contingency table and inertia [inertia values lying between 0 and 1]
+
+

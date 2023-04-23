@@ -1,0 +1,94 @@
+:py:mod:`CodonU.file_handler`
+=============================
+
+.. py:module:: CodonU.file_handler
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   get_gb/index.rst
+   internal_comp/index.rst
+   make_dir/index.rst
+   read_file/index.rst
+   set_entrez_param/index.rst
+   write_exome_fasta/index.rst
+   write_nucleotide_fasta/index.rst
+   write_protein_fasta/index.rst
+
+
+Package Contents
+----------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   CodonU.file_handler.set_entrez_param
+   CodonU.file_handler.get_gb
+   CodonU.file_handler.make_dir
+   CodonU.file_handler.read_file
+   CodonU.file_handler.write_nucleotide_fasta
+   CodonU.file_handler.write_protein_fasta
+
+
+
+.. py:function:: set_entrez_param(email: str | None = None, api_key: str | None = None) -> None
+
+   Sets entrez parameters
+
+   :param email: Email of the user (optional)
+   :param api_key: API key of the user (optional)
+   :raises EmailWarning: If no email is provided
+   :raises ApiWarning: If no API key is provided
+
+
+.. py:function:: get_gb(accession_id: str) -> Bio.SeqRecord.SeqRecord
+
+   Gets the Sequence Record object from a given accession number
+
+   :param accession_id: Provided accession number
+   :return: The Sequence Record object
+
+
+.. py:function:: make_dir(path: str) -> None
+
+   Makes a directory if not present already
+
+   :param path: Path of the directory
+
+
+.. py:function:: read_file(file_name: str) -> pandas.DataFrame
+
+   Returns a dataframe from given csv file
+
+   :param file_name: Name or path to csv file
+   :return: The data frame object
+
+
+.. py:function:: write_nucleotide_fasta(file_name: str, cds_lst: tuple, record: Bio.SeqRecord.SeqRecord, organism_name: str) -> None
+
+   Creates a fasta file of nucleotides if not exists previously or is empty
+
+   :param file_name: The name of the file
+   :param cds_lst: The tuple of FeatureLocation objects
+   :param record: The SeqRecord object containing whole sequence
+   :param organism_name: Name of the organism
+   :raises FileNotEmptyError: If the given file to write is not empty
+
+
+.. py:function:: write_protein_fasta(file_name: str, cds_lst: tuple, organism_name: str) -> None
+
+   Creates a fasta file of proteins if not exists previously or is empty
+
+   :param file_name: The name of the file
+   :param cds_lst: The tuple of FeatureLocation objects
+   :param organism_name: Name of the organism
+   :raises FileNotEmptyError: If the given file to write is not empty
+
+
