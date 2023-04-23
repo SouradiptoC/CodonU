@@ -6,6 +6,6 @@
 /share/
 /.venv/
 /temp/
-/_docs_1/
 /_venv/
+/dist/
 /_docs/
