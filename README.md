@@ -71,7 +71,7 @@ Examples for other plots cans be found in the [images](https://github.com/Sourad
 # Future Plans
 
 None. If you would like recommend one, please mail
-at ![sourochaudhuri@gmail.com](mailto:sourochaudhuri@gmail.com)
+at [sourochaudhuri@gmail.com](mailto:sourochaudhuri@gmail.com)
 
 # Citation
 
