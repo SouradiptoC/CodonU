@@ -28,7 +28,7 @@ def read_requirements(path):
 PACK_NAME = 'CodonU'
 AUTHOR_NAME = 'Souradipto Choudhuri'
 AUTHOR_EMAIL = 'sourochaudhuri@gmail.com'
-VERSION = '0.0.2'
+VERSION = '1.0.1'
 DESC = 'This package is designed for helping in genomic analysis'
 
 setup(
