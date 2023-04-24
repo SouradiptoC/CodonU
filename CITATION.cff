@@ -1,7 +1,7 @@
 # This CITATION.cff file was generated with cffinit.
 # Visit https://bit.ly/cffinit to generate yours today!
 
-cff-version: 1.2.0
+cff-version: 1.0.2
 title: CodonU
 message: 'If you use this software, please cite it as below.'
 type: software
@@ -15,20 +15,16 @@ authors:
     orcid: 'https://orcid.org/0000-0002-4927-6556'
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.7658828
-    description: Initial Release
+    value: 10.5281/zenodo.7857924
+    description: Stable second release
 repository-code: 'https://github.com/SouradiptoC/codon_usage'
 abstract: >-
-  The package can easily can help in various ways from
-  fetching genebank files from NCBI with the help of
-  accession id to calculating cai, cbi, rscu, enc values and
-  also can generate good quality graphics such as enc plot,
-  or correspondence analysis plot .
+  An integrated package for codon bias analysis and performing multivariate analysis, phylogenetic analysis etc on it.
 keywords:
   - Bioinformatics-tools
   - genome-analysis
   - CodonW
 license: MIT
 commit: Inital Release
-version: 0.0.1
-date-released: '2023-02-20'
+version: 1.0.2
+date-released: '2023-04-24'
