@@ -43,7 +43,7 @@ setup(
     author=AUTHOR_NAME,
     author_email=AUTHOR_EMAIL,
     description=DESC,
-    long_description=read("README.md"),
+    long_description=read("README_pypi.md"),
     long_description_content_type="text/markdown",
     license='MIT License',
     packages=find_packages(exclude=["tests", ".github"]),
