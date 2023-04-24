@@ -88,9 +88,3 @@ Please cite the work as
       url          = {https://doi.org/10.5281/zenodo.7657797}
     }
 
----
-**NOTE**
-
-This package is under heavy development now. Soon more functionalities and examples will be added!!
-
----
