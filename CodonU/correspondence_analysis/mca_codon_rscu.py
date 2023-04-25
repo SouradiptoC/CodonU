@@ -17,9 +17,8 @@ def mca_codon_rscu(handle: str, genetic_table_num: int, min_len_threshold: int =
     :param n_components: The number of principal components to compute (optional)
     :return: The contingency table and inertia [inertia values lying between 0 and 1]
     """
-    records = parse(handle, 'fasta')
     codons = [codon for codon, _ in unambiguous_dna_by_id[genetic_table_num].forward_table.items()]
-    rscu_dict = calculate_rscu(records, genetic_table_num, min_len_threshold, gene_analysis=True)
+    rscu_dict = calculate_rscu(handle, genetic_table_num, min_len_threshold, gene_analysis=True)
     gene_names = list(rscu_dict.keys())
     contingency_table = pd.DataFrame(index=gene_names, columns=codons)
     for gene in gene_names:
