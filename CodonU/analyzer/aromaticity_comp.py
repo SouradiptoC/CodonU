@@ -1,5 +1,6 @@
 from CodonU.analyzer.internal_comp import filter_reference, aromaticity
-from CodonU.file_handler.internal_comp import is_file_empty
+from CodonU.file_handler.internal_comp import is_file_writeable
+from CodonU.file_handler import make_dir
 from Bio.SeqIO import parse
 import pandas as pd
 from os.path import join, abspath
@@ -28,9 +29,10 @@ def calculate_aromaticity(handle: str, min_len_threshold: int = 66, gene_analysi
             aroma_dict.update({f'prot_seq{i + 1}': aromaticity(seq)})
         if save_file:
             name = file_name + '.xlsx'
+            make_dir(folder_path)
             file_path = join(folder_path, name)
-            if is_file_empty(file_path):
-                df = pd.DataFrame(aroma_dict, columns=['Protein_name', 'Aroma_score'])
+            if is_file_writeable(file_path):
+                df = pd.DataFrame(aroma_dict.items(), columns=['Protein_name', 'Aroma_score'])
                 df.to_excel(file_path, float_format='%.4f', columns=df.columns)
             print(f'The Aromaticity score file can be found at: {abspath(file_path)}')
         return aroma_dict
@@ -38,9 +40,10 @@ def calculate_aromaticity(handle: str, min_len_threshold: int = 66, gene_analysi
         seq = ''.join([str(_seq) for _seq in references])
         if save_file:
             name = file_name + '.xlsx'
+            make_dir(folder_path)
             file_path = join(folder_path, name)
-            if is_file_empty(file_path):
-                df = pd.DataFrame({'Prot_seq': aromaticity(seq)}, columns=['Protein_name', 'Aroma_score'])
+            if is_file_writeable(file_path):
+                df = pd.DataFrame({'Prot_seq': aromaticity(seq)}.items(), columns=['Protein_name', 'Aroma_score'])
                 df.to_excel(file_path, float_format='%.4f', columns=df.columns)
             print(f'The Aromaticity score file can be found at: {abspath(file_path)}')
         return aromaticity(seq)

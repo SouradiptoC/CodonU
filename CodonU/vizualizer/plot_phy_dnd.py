@@ -1,7 +1,8 @@
 from Bio.Phylo import draw, read
-from CodonU.file_handler.internal_comp import is_file_empty
 from os.path import join, abspath
 import matplotlib.pyplot as plt
+from CodonU.file_handler import make_dir
+from CodonU.file_handler.internal_comp import is_file_writeable
 
 
 def plot_phy_dnd(handle: str, title: str = 'Phylogenetic Tree', save_image: bool = False, folder_path: str = 'Report'):
@@ -18,10 +19,10 @@ def plot_phy_dnd(handle: str, title: str = 'Phylogenetic Tree', save_image: bool
     fig.suptitle(title)
     draw(tree, axes=ax)
     if save_image:
+        make_dir(folder_path)
         file_name = '_'.join(title.split()) + '_dnd.png'
         file_path = join(folder_path, file_name)
-        if is_file_empty(file_path):
-            pass
-        fig.savefig(file_path, dpi=500)
-        print(f'Saved file can be found as {abspath(file_path)}')
+        if is_file_writeable(file_path):
+            fig.savefig(file_path, dpi=500)
+            print(f'Saved file can be found as {abspath(file_path)}')
     plt.close(fig)

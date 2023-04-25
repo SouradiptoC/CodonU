@@ -2,7 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from os.path import join, abspath
 from scipy.stats import linregress
-from CodonU.file_handler.internal_comp import is_file_empty
+from CodonU.file_handler.internal_comp import is_file_writeable
+from CodonU.file_handler import make_dir
 
 
 def _enc(x: int) -> float:
@@ -46,18 +47,18 @@ def _plot_enc(enc_val_lst: list, gc_val_lst: list, organism_name: None | str = N
     c_bar = plt.colorbar()
     c_bar.set_label(r'$EN_c values$')
     if save_image:
+        make_dir(folder_path)
         name = 'ENc_plot.png' if organism_name is None else f"ENc_plot_{organism_name}.png"
         file_name = join(folder_path, name)
-        if is_file_empty(file_name):
-            pass
-        plt.savefig(file_name, dpi=500)
-        print(f'Saved file can be found as {abspath(file_name)}')
+        if is_file_writeable(file_name):
+            plt.savefig(file_name, dpi=500)
+            print(f'Saved file can be found as {abspath(file_name)}')
     plt.show()
     plt.close()
 
 
 def _plot_pr2(gc_val_lst: list, at_val_lst: list, g3_val_lst: list, a3_val_lst: list, organism_name: str | None = None,
-              save_image: bool = False, folder_path: str = '', gene_analysis: bool = True):
+              save_image: bool = False, folder_path: str = 'Report', gene_analysis: bool = True):
     """
     Plots A3/AT3 values against G3/GC3 values
 
@@ -134,18 +135,18 @@ def _plot_pr2(gc_val_lst: list, at_val_lst: list, g3_val_lst: list, a3_val_lst: 
     title = f'Total genes: {N}' if gene_analysis else f'Total genome: {N}'
     plt.title(title, fontsize=12)
     if save_image:
+        make_dir(folder_path)
         name = 'PR2_plot.png' if organism_name is None else f"PR2_plot_{organism_name}.png"
         file_name = join(folder_path, name)
-        if is_file_empty(file_name):
-            pass
-        plt.savefig(file_name, dpi=500)
-        print(f'Saved file can be found as {abspath(file_name)}')
+        if is_file_writeable(file_name):
+            plt.savefig(file_name, dpi=500)
+            print(f'Saved file can be found as {abspath(file_name)}')
     plt.show()
     plt.close()
 
 
 def _plot_neutrality(gc12_lst: list, gc3_lst: list, organism_name: None | str = None, save_image: bool = False,
-                     folder_path: str = '', gene_analysis: bool = True):
+                     folder_path: str = 'Report', gene_analysis: bool = True):
     """
     Plots the neutrality plot
 
@@ -184,11 +185,11 @@ def _plot_neutrality(gc12_lst: list, gc3_lst: list, organism_name: None | str = 
     title = f'Total genes: {N}, $R^2$ value: {round(r ** 2, 4)}' if gene_analysis else f'Total genome: {N}, $R^2$ value: {round(r ** 2, 4)}'
     plt.title(title, fontsize=14)
     if save_image:
+        make_dir(folder_path)
         name = 'Neutrality_plot.png' if organism_name is None else f"Neutrality_plot_{organism_name}.png"
         file_name = join(folder_path, name)
-        if is_file_empty(file_name):
-            pass
-        plt.savefig(file_name, dpi=500)
-        print(f'Saved file can be found as {abspath(file_name)}')
+        if is_file_writeable(file_name):
+            plt.savefig(file_name, dpi=500)
+            print(f'Saved file can be found as {abspath(file_name)}')
     plt.show()
     plt.close()

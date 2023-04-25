@@ -1,13 +1,14 @@
 from warnings import filterwarnings
 from CodonU.analyzer.internal_comp import filter_reference, gravy
 from Bio.SeqIO import parse
-from CodonU.file_handler.internal_comp import is_file_empty
+from CodonU.file_handler.internal_comp import is_file_writeable
+from CodonU.file_handler import make_dir
 import pandas as pd
 from os.path import join, abspath
 
 
 def calculate_gravy(handle: str, min_len_threshold: int = 66, gene_analysis: bool = False, save_file: bool = False,
-                    file_name: str = 'ENc_report', folder_path: str = 'Report') -> dict[str, float] | float:
+                    file_name: str = 'GRAVY_report', folder_path: str = 'Report') -> dict[str, float] | float:
     """
     Calculates the gravy score for a given protein sequence
 
@@ -29,9 +30,10 @@ def calculate_gravy(handle: str, min_len_threshold: int = 66, gene_analysis: boo
             gravy_dict.update({f'prot_seq{i + 1}': gravy(seq)})
         if save_file:
             name = file_name + '.xlsx'
+            make_dir(folder_path)
             file_path = join(folder_path, name)
-            if is_file_empty(file_path):
-                df = pd.DataFrame(gravy_dict, columns=['Protein_name', 'Gravy_score'])
+            if is_file_writeable(file_path):
+                df = pd.DataFrame(gravy_dict.items(), columns=['Protein_name', 'Gravy_score'])
                 df.to_excel(file_path, float_format='%.4f', columns=df.columns)
             print(f'The GRAVY score file can be found at: {abspath(file_path)}')
         return gravy_dict
@@ -39,9 +41,10 @@ def calculate_gravy(handle: str, min_len_threshold: int = 66, gene_analysis: boo
         seq = ''.join([str(_seq) for _seq in references])
         if save_file:
             name = file_name + '.xlsx'
+            make_dir(folder_path)
             file_path = join(folder_path, name)
-            if is_file_empty(file_path):
-                df = pd.DataFrame({'Prot_seq': gravy(seq)}, columns=['Protein_name', 'Aroma_score'])
+            if is_file_writeable(file_path):
+                df = pd.DataFrame({'Prot_seq': gravy(seq)}.items(), columns=['Protein_name', 'Gravy_score'])
                 df.to_excel(file_path, float_format='%.4f', columns=df.columns)
             print(f'The GRAVY score file can be found at: {abspath(file_path)}')
         return gravy(seq)

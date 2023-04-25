@@ -2,10 +2,11 @@ from cai2 import CAI
 from warnings import filterwarnings
 from Bio.Data.CodonTable import unambiguous_dna_by_id
 from Bio.SeqIO import parse
-from .internal_comp import filter_reference
+from CodonU.analyzer.internal_comp import filter_reference
 import pandas as pd
 from os.path import join, abspath
-from CodonU.file_handler.internal_comp import is_file_empty
+from CodonU.file_handler.internal_comp import is_file_writeable
+from CodonU.file_handler import make_dir
 
 
 def calculate_cai(handle: str, genetic_code_num: int, min_len_threshold: int = 200, gene_analysis: bool = False,
@@ -37,9 +38,17 @@ def calculate_cai(handle: str, genetic_code_num: int, min_len_threshold: int = 2
             cai_dict.update({f'gene_{i + 1}': cai_val_dict})
         if save_file:
             name = file_name + '.xlsx'
+            make_dir(folder_path)
             file_path = join(folder_path, name)
-            if is_file_empty(file_path):
-                df = pd.DataFrame(cai_dict, columns=['Gene', 'Codon', 'CAI_val'])
+            if is_file_writeable(file_path):
+                df = pd.DataFrame.from_records(
+                    [
+                        (gene, codon, cai_val)
+                        for gene, cai_vals in cai_dict.items()
+                        for codon, cai_val in cai_vals.items()
+                    ],
+                    columns=['Gene', 'Codon', 'CAI_vals']
+                )
                 df.to_excel(file_path, float_format='%.4f', columns=df.columns)
             print(f'The CAI score file can be found at: {abspath(file_path)}')
     else:
@@ -48,9 +57,10 @@ def calculate_cai(handle: str, genetic_code_num: int, min_len_threshold: int = 2
             cai_dict.update({codon: cai_val})
         if save_file:
             name = file_name + '.xlsx'
+            make_dir(folder_path)
             file_path = join(folder_path, name)
-            if is_file_empty(file_path):
-                df = pd.DataFrame(cai_dict, columns=['Codon', 'CAI_val'])
+            if is_file_writeable(file_path):
+                df = pd.DataFrame(cai_dict.items(), columns=['Codon', 'CAI_vals'])
                 df.to_excel(file_path, float_format='%.4f', columns=df.columns)
             print(f'The CAI score file can be found at: {abspath(file_path)}')
     return cai_dict

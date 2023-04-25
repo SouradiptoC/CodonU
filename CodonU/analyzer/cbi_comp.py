@@ -1,10 +1,11 @@
-from .internal_comp import filter_reference, cbi
+from CodonU.analyzer.internal_comp import filter_reference, cbi
 from warnings import filterwarnings
 from Bio.Data.CodonTable import unambiguous_dna_by_id
 from Bio.SeqIO import parse
 import pandas as pd
 from os.path import join, abspath
-from CodonU.file_handler.internal_comp import is_file_empty
+from CodonU.file_handler.internal_comp import is_file_writeable
+from CodonU.file_handler import make_dir
 
 
 def calculate_cbi(handle: str, genetic_code_num: int, min_len_threshold: int = 66, gene_analysis: bool = False,
@@ -37,9 +38,17 @@ def calculate_cbi(handle: str, genetic_code_num: int, min_len_threshold: int = 6
             cbi_dict.update({f'gene_{i + 1}': cbi_val_dict})
         if save_file:
             name = file_name + '.xlsx'
+            make_dir(folder_path)
             file_path = join(folder_path, name)
-            if is_file_empty(file_path):
-                df = pd.DataFrame(cbi_dict, columns=['Gene', 'Codon', 'CBI_val'])
+            if is_file_writeable(file_path):
+                df = pd.DataFrame.from_records(
+                    [
+                        (gene, aa, cbi_val[0], cbi_val[1])
+                        for gene, cbi_vals in cbi_dict.items()
+                        for aa, cbi_val in cbi_vals.items()
+                    ],
+                    columns=['Gene', 'AA', 'CBI_vals', 'Preferred_Codon']
+                )
                 df.to_excel(file_path, float_format='%.4f', columns=df.columns)
             print(f'The CBI score file can be found at: {abspath(file_path)}')
     else:
@@ -48,9 +57,16 @@ def calculate_cbi(handle: str, genetic_code_num: int, min_len_threshold: int = 6
             cbi_dict.update({aa: cbi_val})
         if save_file:
             name = file_name + '.xlsx'
+            make_dir(folder_path)
             file_path = join(folder_path, name)
-            if is_file_empty(file_path):
-                df = pd.DataFrame(cbi_dict, columns=['Codon', 'CBI_val'])
+            if is_file_writeable(file_path):
+                df = pd.DataFrame.from_records(
+                    [
+                        (aa, cbi_vals[0], cbi_vals[1])
+                        for aa, cbi_vals in cbi_dict.items()
+                    ],
+                    columns=['AA', 'CBI_vals', 'Preferred_Codon']
+                )
                 df.to_excel(file_path, float_format='%.4f', columns=df.columns)
             print(f'The CBI score file can be found at: {abspath(file_path)}')
     return cbi_dict

@@ -4,10 +4,12 @@ from prince import PCA
 from CodonU.analyzer.internal_comp import filter_reference
 import matplotlib.pyplot as plt
 from CodonU.correspondence_analysis.mca_codon_rscu import mca_codon_rscu
+from CodonU.file_handler import make_dir
+from CodonU.file_handler.internal_comp import is_file_writeable
 
 
 def plot_mca_rscu(handle: str, genetic_table_num: int, min_len_threshold: int = 200, n_components: int = 59,
-                  organism_name: str | None = None, save_image: bool = False, folder_path: str = ''):
+                  organism_name: str | None = None, save_image: bool = False, folder_path: str = 'Report'):
     """
     Plots the principal component analysis based on codon RSCU value
 
@@ -43,8 +45,10 @@ def plot_mca_rscu(handle: str, genetic_table_num: int, min_len_threshold: int = 
     sup_title = f'Multivariate analysis of Codon RSCU of {organism_name}' if organism_name else 'Multivariate analysis of Codon RSCU'
     plt.suptitle(sup_title)
     if save_image:
+        make_dir(folder_path)
         name = f'Multivariate_analysis_rscu_{organism_name}.png' if organism_name else 'Multivariate_analysis_rscu.png'
         file_name = join(folder_path, name)
-        plt.savefig(file_name, dpi=500)
+        if is_file_writeable(file_name):
+            plt.savefig(file_name, dpi=500)
     plt.show()
     plt.close()

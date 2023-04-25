@@ -5,10 +5,12 @@ from prince import PCA
 from Bio.SeqIO import parse
 from CodonU.analyzer.internal_comp import filter_reference
 from CodonU.correspondence_analysis.mca_aa_freq import mca_aa_freq
+from CodonU.file_handler import make_dir
+from CodonU.file_handler.internal_comp import is_file_writeable
 
 
 def plot_mca_aa_gravy(handle: str, genetic_table_num: int, min_len_threshold: int = 66, n_components: int = 20,
-                      organism_name: str | None = None, save_image: bool = False, folder_path: str = ''):
+                      organism_name: str | None = None, save_image: bool = False, folder_path: str = 'Report'):
     """
     Plots the principal component analysis based on amino acid frequency with GRAVY score scale
 
@@ -43,8 +45,10 @@ def plot_mca_aa_gravy(handle: str, genetic_table_num: int, min_len_threshold: in
     sup_title = f'Multivariate analysis of Amino Acid Frequency of {organism_name}' if organism_name else 'Multivariate analysis of Amino Acid Frequency'
     plt.suptitle(sup_title)
     if save_image:
+        make_dir(folder_path)
         name = f'Multivariate_analysis_aa_gravy_{organism_name}.png' if organism_name else 'Multivariate_analysis_aa_gravy.png'
         file_name = join(folder_path, name)
-        plt.savefig(file_name, dpi=500)
+        if is_file_writeable(file_name):
+            plt.savefig(file_name, dpi=500)
     plt.show()
     plt.close()

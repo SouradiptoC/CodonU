@@ -60,3 +60,14 @@ def is_file(path: str) -> bool:
     :return: True if exists else False
     """
     return os.path.isfile(path)
+
+
+def is_file_writeable(path: str):
+    if is_file(path) and os.stat(path).st_size != 0:
+        flg = input(
+            'Provided file not empty! Your action will result into completely changing the content of the file. Proceed [y/n]?: ')
+        if flg in ['y', 'Y']:
+            return True
+        raise FileNotEmptyError(path)
+    else:
+        return True
