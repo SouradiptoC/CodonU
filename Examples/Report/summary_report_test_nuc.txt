@@ -1,0 +1,168 @@
+The report is generated with the help of package CodonU created by Souradipto C.
+________________________________________________________________________________
+Value Ranges:
+    RSCU:
+        - > 1: There is a positive codon usage bias
+        - < 1: There is a negative codon usage bias
+    CAI:
+        - 0: The usage is highly biased
+        - 1: The usage is completely random
+        - nan: There are no synonymous codons
+    CBI:
+        - 0: The usage is highly biased
+        - 1: The usage is completely random
+        - nan: There are no synonymous codons
+    ENc:
+        - 61: The usage is completely random
+        - 20: The usage is highly biased
+
+RSCU Details
+    TTT: 1.0
+    TTC: 1.0
+    TTA: 1.0
+    TTG: 1.0
+    TCT: 1.0
+    TCC: 1.0
+    TCA: 1.0
+    TCG: 1.0
+    TAT: 1.0
+    TAC: 1.0
+    TGT: 1.0
+    TGC: 1.0
+    TGG: 1.0
+    CTT: 1.0
+    CTC: 1.0
+    CTA: 1.0
+    CTG: 1.0
+    CCT: 1.0
+    CCC: 1.0
+    CCA: 1.0
+    CCG: 1.0
+    CAT: 1.0
+    CAC: 1.0
+    CAA: 1.0
+    CAG: 1.0
+    CGT: 1.0
+    CGC: 1.0
+    CGA: 1.0
+    CGG: 1.0
+    ATT: 1.0
+    ATC: 1.0
+    ATA: 1.0
+    ATG: 1.0
+    ACT: 1.0
+    ACC: 1.0
+    ACA: 1.0
+    ACG: 1.0
+    AAT: 1.0
+    AAC: 1.0
+    AAA: 1.0
+    AAG: 1.0
+    AGT: 1.0
+    AGC: 1.0
+    AGA: 1.0
+    AGG: 1.0
+    GTT: 1.0
+    GTC: 1.0
+    GTA: 1.0
+    GTG: 1.0
+    GCT: 1.0
+    GCC: 1.0
+    GCA: 1.0
+    GCG: 1.0
+    GAT: 1.0
+    GAC: 1.0
+    GAA: 1.0
+    GAG: 1.0
+    GGT: 1.0
+    GGC: 1.0
+    GGA: 1.0
+    GGG: 1.0
+
+CAI Details
+    TTT: 1.0
+    TTC: 0.3333333333333333
+    TTA: 1.0
+    TTG: 0.4
+    TCT: 0.8235294117647057
+    TCC: 0.38235294117647056
+    TCA: 1.0
+    TCG: 0.02941176470588235
+    TAT: 1.0
+    TAC: 0.5
+    TGT: 1.0
+    TGC: 1.0
+    TGG: nan
+    CTT: 0.2
+    CTC: 0.10000000000000002
+    CTA: 0.05000000000000001
+    CTG: 0.10000000000000002
+    CCT: 1.0
+    CCC: 0.16666666666666669
+    CCA: 0.3333333333333333
+    CCG: 1.0
+    CAT: 1.0
+    CAC: 0.25
+    CAA: 1.0
+    CAG: 0.0625
+    CGT: 1.0
+    CGC: 0.5
+    CGA: 0.08333333333333333
+    CGG: 0.3333333333333333
+    ATT: 1.0
+    ATC: 0.2857142857142857
+    ATA: 0.5714285714285714
+    ATG: nan
+    ACT: 0.85
+    ACC: 0.15
+    ACA: 1.0
+    ACG: 0.7499999999999999
+    AAT: 1.0
+    AAC: 0.5
+    AAA: 1.0
+    AAG: 0.3211009174311927
+    AGT: 0.20588235294117643
+    AGC: 0.014705882352941173
+    AGA: 0.8333333333333333
+    AGG: 0.16666666666666669
+    GTT: 1.0
+    GTC: 0.09999999999999998
+    GTA: 1.0
+    GTG: 0.39999999999999997
+    GCT: 1.0
+    GCC: 0.11111111111111109
+    GCA: 0.4444444444444444
+    GCG: 0.5555555555555556
+    GAT: 1.0
+    GAC: 0.7045454545454546
+    GAA: 1.0
+    GAG: 0.4387755102040816
+    GGT: 1.0
+    GGC: 0.6666666666666666
+    GGA: 0.8333333333333334
+    GGG: 0.5
+
+CBI Details
+    Ala: 0.2982456140350877 (Most used codon GCT)
+    Cys: nan (Most used codon None)
+    Asp: 0.17333333333333334 (Most used codon GAT)
+    Glu: 0.3900709219858156 (Most used codon GAA)
+    Phe: 0.5 (Most used codon TTT)
+    Gly: 0.1111111111111111 (Most used codon GGT)
+    His: 0.6 (Most used codon CAT)
+    Ile: 0.3076923076923077 (Most used codon ATT)
+    Lys: 0.5138888888888888 (Most used codon AAA)
+    Leu: 0.4666666666666667 (Most used codon TTA)
+    Met: nan (Most used codon ATG)
+    Asn: 0.3333333333333333 (Most used codon AAT)
+    Pro: 0.23809523809523808 (Most used codon CCT)
+    Gln: 0.8823529411764706 (Most used codon CAA)
+    Arg: 0.2235294117647059 (Most used codon CGT)
+    Ser: 0.2915662650602409 (Most used codon TCA)
+    Thr: 0.15151515151515152 (Most used codon ACA)
+    Val: 0.2222222222222222 (Most used codon GTT)
+    Trp: nan (Most used codon TGG)
+    Tyr: 1.0 (Most used codon TAT)
+
+ENc Details
+    ENc Value: 45.59355469644335

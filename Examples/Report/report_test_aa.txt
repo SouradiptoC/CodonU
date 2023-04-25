@@ -1,0 +1,20 @@
+The report is generated with the help of package CodonU created by Souradipto C.
+________________________________________________________________________________
+Total gene count: 2
+Value Ranges:
+    GRAVY:
+        - > 0: The protein is relatively hydrophobic
+        - < 0: The protein is relatively hydrophilic
+        - nan: There are no synonymous codons
+    Aromaticity:
+        - 0: The protein consists 0 aromatic residues
+        - > 0: The protein consists aromatic residues
+        - Higher the value is, higher are the number of aromatics residues in the protein
+
+GRAVY Details
+    prot_seq1: -2.2782716049382694
+    prot_seq2: -1.718727915194343
+
+Aromaticity Details
+    prot_seq1: 0.0049382716049382715
+    prot_seq2: 0.03180212014134275

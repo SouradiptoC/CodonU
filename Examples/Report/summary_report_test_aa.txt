@@ -1,0 +1,17 @@
+The report is generated with the help of package CodonU created by Souradipto C.
+________________________________________________________________________________
+Value Ranges:
+    GRAVY:
+        - > 0: The protein is relatively hydrophobic
+        - < 0: The protein is relatively hydrophilic
+        - nan: There are no synonymous codons
+    Aromaticity:
+        - 0: The protein consists 0 aromatic residues
+        - > 0: The protein consists aromatic residues
+        - Higher the value is, higher are the number of aromatics residues in the protein
+
+GRAVY Details
+    Total GRAVY Value: -2.0481104651162876
+
+Aromaticity Details
+    Total Aromaticity Value: 0.015988372093023256

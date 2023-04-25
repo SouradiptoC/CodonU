@@ -1,0 +1,318 @@
+The report is generated with the help of package CodonU created by Souradipto C.
+________________________________________________________________________________
+Total gene count: 2
+Value Ranges:
+    RSCU:
+        - > 1: There is a positive codon usage bias
+        - < 1: There is a negative codon usage bias
+    CAI:
+        - 0: The usage is highly biased
+        - 1: The usage is completely random
+        - nan: There are no synonymous codons
+    CBI:
+        - 0: The usage is highly biased
+        - 1: The usage is completely random
+        - nan: There are no synonymous codons
+    ENc:
+        - 61: The usage is completely random
+        - 20: The usage is highly biased
+
+RSCU Details
+    gene_1:
+        TTT: 1.3333333333333333
+        TTC: 0.6666666666666666
+        TTA: 1.5
+        TTG: 0.75
+        TCT: 1.7943925233644862
+        TCC: 1.1214953271028039
+        TCA: 2.579439252336449
+        TCG: 0.11214953271028039
+        TAT: 1.0
+        TAC: 1.0
+        TGT: 1.0
+        TGC: 1.0
+        TGG: 1.0
+        CTT: 0.75
+        CTC: 0.75
+        CTA: 0.75
+        CTG: 1.5
+        CCT: 1.7777777777777777
+        CCC: 0.4444444444444444
+        CCA: 0.8888888888888888
+        CCG: 0.8888888888888888
+        CAT: 1.3333333333333333
+        CAC: 0.6666666666666666
+        CAA: 1.8823529411764706
+        CAG: 0.11764705882352941
+        CGT: 2.5263157894736845
+        CGC: 0.6315789473684211
+        CGA: 0.31578947368421056
+        CGG: 0.31578947368421056
+        ATT: 0.75
+        ATC: 1.5
+        ATA: 0.75
+        ATG: 1.0
+        ACT: 1.6216216216216217
+        ACC: 0.32432432432432434
+        ACA: 1.5135135135135136
+        ACG: 0.5405405405405406
+        AAT: 1.5555555555555556
+        AAC: 0.4444444444444444
+        AAA: 1.7627118644067796
+        AAG: 0.23728813559322035
+        AGT: 0.33644859813084116
+        AGC: 0.05607476635514019
+        AGA: 1.8947368421052633
+        AGG: 0.31578947368421056
+        GTT: 1.8823529411764706
+        GTC: 0.23529411764705882
+        GTA: 1.411764705882353
+        GTG: 0.47058823529411764
+        GCT: 2.074074074074074
+        GCC: 0.2962962962962963
+        GCA: 0.8888888888888888
+        GCG: 0.7407407407407407
+        GAT: 1.037037037037037
+        GAC: 0.9629629629629629
+        GAA: 1.4444444444444444
+        GAG: 0.5555555555555556
+        GGT: 1.3333333333333333
+        GGC: 1.3333333333333333
+        GGA: 0.6666666666666666
+        GGG: 0.6666666666666666
+    gene_2:
+        TTT: 1.4285714285714286
+        TTC: 0.5714285714285714
+        TTA: 3.1764705882352944
+        TTG: 1.411764705882353
+        TCT: 2.3225806451612905
+        TCC: 0.5806451612903226
+        TCA: 2.1290322580645165
+        TCG: 0.09677419354838711
+        TAT: 1.3333333333333333
+        TAC: 0.6666666666666666
+        TGT: 1.0
+        TGC: 1.0
+        TGG: 1.0
+        CTT: 0.7058823529411765
+        CTC: 0.35294117647058826
+        CTA: 0.17647058823529413
+        CTG: 0.17647058823529413
+        CCT: 1.0
+        CCC: 0.5
+        CCA: 0.5
+        CCG: 2.0
+        CAT: 1.5
+        CAC: 0.5
+        CAA: 1.7777777777777777
+        CAG: 0.2222222222222222
+        CGT: 1.2631578947368423
+        CGC: 1.2631578947368423
+        CGA: 0.31578947368421056
+        CGG: 1.2631578947368423
+        ATT: 1.8947368421052633
+        ATC: 0.15789473684210528
+        ATA: 0.9473684210526316
+        ATG: 1.0
+        ACT: 0.43243243243243246
+        ACC: 0.10810810810810811
+        ACA: 1.2972972972972974
+        ACG: 2.1621621621621623
+        AAT: 1.2222222222222223
+        AAC: 0.7777777777777778
+        AAA: 1.3411764705882352
+        AAG: 0.6588235294117647
+        AGT: 0.7741935483870969
+        AGC: 0.09677419354838711
+        AGA: 1.2631578947368423
+        AGG: 0.6315789473684211
+        GTT: 0.8888888888888888
+        GTC: 0.4444444444444444
+        GTA: 1.7777777777777777
+        GTG: 0.8888888888888888
+        GCT: 1.391304347826087
+        GCC: 0.17391304347826086
+        GCA: 0.6956521739130435
+        GCG: 1.7391304347826086
+        GAT: 1.5238095238095237
+        GAC: 0.47619047619047616
+        GAA: 0.9333333333333333
+        GAG: 1.0666666666666667
+        GGT: 1.25
+        GGC: 0.75
+        GGA: 1.25
+        GGG: 0.75
+
+CAI Details
+    gene_1:
+        TTT: 1.0
+        TTC: 0.5
+        TTA: 1.0
+        TTG: 0.5
+        TCT: 0.6956521739130435
+        TCC: 0.43478260869565216
+        TCA: 1.0
+        TCG: 0.043478260869565216
+        TAT: 1.0
+        TAC: 1.0
+        TGT: 1.0
+        TGC: 1.0
+        TGG: nan
+        CTT: 0.5
+        CTC: 0.5
+        CTA: 0.5
+        CTG: 1.0
+        CCT: 1.0
+        CCC: 0.25
+        CCA: 0.5
+        CCG: 0.5
+        CAT: 1.0
+        CAC: 0.5
+        CAA: 1.0
+        CAG: 0.0625
+        CGT: 1.0
+        CGC: 0.25
+        CGA: 0.12500000000000003
+        CGG: 0.12500000000000003
+        ATT: 0.5
+        ATC: 1.0
+        ATA: 0.5
+        ATG: nan
+        ACT: 1.0
+        ACC: 0.2
+        ACA: 0.9333333333333333
+        ACG: 0.3333333333333333
+        AAT: 1.0
+        AAC: 0.2857142857142857
+        AAA: 1.0
+        AAG: 0.1346153846153846
+        AGT: 0.13043478260869565
+        AGC: 0.021739130434782608
+        AGA: 0.75
+        AGG: 0.12500000000000003
+        GTT: 1.0
+        GTC: 0.12500000000000003
+        GTA: 0.7500000000000001
+        GTG: 0.25
+        GCT: 1.0
+        GCC: 0.14285714285714285
+        GCA: 0.42857142857142855
+        GCG: 0.3571428571428572
+        GAT: 1.0
+        GAC: 0.9285714285714286
+        GAA: 1.0
+        GAG: 0.38461538461538464
+        GGT: 1.0
+        GGC: 1.0
+        GGA: 0.5
+        GGG: 0.5
+    gene_2:
+        TTT: 1.0
+        TTC: 0.39999999999999997
+        TTA: 1.0
+        TTG: 0.4444444444444444
+        TCT: 1.0
+        TCC: 0.25
+        TCA: 0.9166666666666667
+        TCG: 0.04166666666666668
+        TAT: 1.0
+        TAC: 0.5
+        TGT: 1.0
+        TGC: 1.0
+        TGG: nan
+        CTT: 0.2222222222222222
+        CTC: 0.11111111111111109
+        CTA: 0.05555555555555554
+        CTG: 0.05555555555555554
+        CCT: 0.5
+        CCC: 0.25
+        CCA: 0.25
+        CCG: 1.0
+        CAT: 1.0
+        CAC: 0.3333333333333333
+        CAA: 1.0
+        CAG: 0.12500000000000003
+        CGT: 1.0
+        CGC: 1.0
+        CGA: 0.25
+        CGG: 1.0
+        ATT: 1.0
+        ATC: 0.08333333333333333
+        ATA: 0.5
+        ATG: nan
+        ACT: 0.2
+        ACC: 0.05000000000000001
+        ACA: 0.6
+        ACG: 1.0
+        AAT: 1.0
+        AAC: 0.6363636363636364
+        AAA: 1.0
+        AAG: 0.4912280701754386
+        AGT: 0.33333333333333337
+        AGC: 0.04166666666666668
+        AGA: 1.0
+        AGG: 0.5
+        GTT: 0.5
+        GTC: 0.25
+        GTA: 1.0
+        GTG: 0.5
+        GCT: 0.8
+        GCC: 0.10000000000000002
+        GCA: 0.4
+        GCG: 1.0
+        GAT: 1.0
+        GAC: 0.3125
+        GAA: 0.875
+        GAG: 1.0
+        GGT: 1.0
+        GGC: 0.6
+        GGA: 1.0
+        GGG: 0.6
+
+CBI Details
+    gene_1:
+        Ala: 0.35802469135802467 (Most used codon GCT)
+        Cys: nan (Most used codon None)
+        Asp: 0.037037037037037035 (Most used codon GAT)
+        Glu: 0.4444444444444444 (Most used codon GAA)
+        Phe: 1.0 (Most used codon TTT)
+        Gly: 0.3333333333333333 (Most used codon GGT)
+        His: 1.0 (Most used codon CAT)
+        Ile: 0.25 (Most used codon ATC)
+        Lys: 0.7627118644067796 (Most used codon AAA)
+        Leu: 0.4 (Most used codon TTA)
+        Met: nan (Most used codon ATG)
+        Asn: 0.5555555555555556 (Most used codon AAT)
+        Pro: 0.3333333333333333 (Most used codon CCT)
+        Gln: 1.0 (Most used codon CAA)
+        Arg: 0.4 (Most used codon CGT)
+        Ser: 0.32075471698113206 (Most used codon TCA)
+        Thr: 0.2072072072072072 (Most used codon ACT)
+        Val: 0.3333333333333333 (Most used codon GTT)
+        Trp: nan (Most used codon TGG)
+        Tyr: nan (Most used codon None)
+    gene_2:
+        Ala: 0.2727272727272727 (Most used codon GCG)
+        Cys: nan (Most used codon None)
+        Asp: 0.5238095238095238 (Most used codon GAT)
+        Glu: 0.06666666666666667 (Most used codon GAG)
+        Phe: 0.42857142857142855 (Most used codon TTT)
+        Gly: 0.08333333333333333 (Most used codon GGT)
+        His: 0.5 (Most used codon CAT)
+        Ile: 0.5 (Most used codon ATT)
+        Lys: 0.3411764705882353 (Most used codon AAA)
+        Leu: 0.47500000000000003 (Most used codon TTA)
+        Met: nan (Most used codon ATG)
+        Asn: 0.2222222222222222 (Most used codon AAT)
+        Pro: 0.5555555555555556 (Most used codon CCG)
+        Gln: 0.7777777777777778 (Most used codon CAA)
+        Arg: 0.06666666666666667 (Most used codon CGT)
+        Ser: 0.28 (Most used codon TCT)
+        Thr: 0.4074074074074074 (Most used codon ACG)
+        Val: 0.3333333333333333 (Most used codon GTA)
+        Trp: nan (Most used codon TGG)
+        Tyr: 1.0 (Most used codon TAT)
+
+ENc Details
+    gene_1: 52.08838655503453
+    gene_2: 48.18721859443946
