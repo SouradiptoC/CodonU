@@ -77,15 +77,15 @@ at [sourochaudhuri@gmail.com](mailto:sourochaudhuri@gmail.com)
 
 Please cite the work as
 
-    @software{souradipto_choudhuri_2023_7657797,
-      author       = {Souradipto Choudhuri},
-      title        = {CodonU},
-      month        = apr,
-      year         = 2023,
-      publisher    = {Zenodo},
-      version      = {v1.0.2},
-      doi          = {10.5281/zenodo.7857924},
-      url          = {https://doi.org/10.5281/zenodo.7857924}
+    @software{choudhuri_souradipto_2023_7868197,
+        author={Choudhuri, Souradipto},
+        title={CodonU},
+        month=apr,
+        year=2023,
+        publisher={Zenodo},
+        version={v1.0.4},
+        doi={10.5281/zenodo.7868197},
+        url={https://doi.org/10.5281/zenodo.7868197}
     }
 
 # Reference
