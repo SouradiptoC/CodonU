@@ -10,6 +10,7 @@ from CodonU.file_handler.internal_comp import is_file_writeable
 def plot_phy_fas(handle: str, title: str = 'Phylogenetic Tree', save_image: bool = False, folder_path: str = 'Report'):
     """
     Plots phylogenetic tree from fasta file
+
     :param handle: Handle to the fasta file
     :param title: Title of the plot
     :param save_image: Options for saving the image (optional)
