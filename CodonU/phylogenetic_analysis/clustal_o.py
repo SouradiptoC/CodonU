@@ -15,11 +15,11 @@ def phy_clustal_o(bin_path: str, handle: str, res_folder_path: str = 'Report'):
     """
     make_dir(res_folder_path)
     identifier = handle.split('/')[-1].split('.')[0]
-    report_file_name = f'{identifier}_aligned_o.nex'
+    report_file_name = f'{identifier}_aligned_o.fasta'
     report_file_path = join(res_folder_path, report_file_name)
     if not is_file(report_file_path) or is_file_empty(report_file_path):
         clustalO_cline = ClustalOmegaCommandline(bin_path, infile=handle, infmt='fasta', outfile=report_file_path,
                                                  outfmt='fasta', seqtype='DNA')
         cmd = clustalO_cline.__str__()
         subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-    print(f'The alignment file can be can be found at: {abspath(report_file_path)}')
+        print(f'The alignment file can be can be found at: {abspath(report_file_path)}')

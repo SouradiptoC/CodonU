@@ -22,4 +22,4 @@ def phy_clustal_w(bin_path: str, handle: str, res_folder_path: str = 'Report'):
                                              outputtree='nexus')
         cmd = clustalW_cline.__str__()
         subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-    print(f'The alignment file can be can be found at: {abspath(report_file_path)}')
+        print(f'The alignment file can be can be found at: {abspath(report_file_path)}')
