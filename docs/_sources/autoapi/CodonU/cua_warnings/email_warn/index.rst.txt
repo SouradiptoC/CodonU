@@ -7,17 +7,7 @@
 Module Contents
 ---------------
 
-Classes
-~~~~~~~
-
-.. autoapisummary::
-
-   CodonU.cua_warnings.email_warn.EmailWarning
-
-
-
-
-.. py:class:: EmailWarning
+.. py:exception:: EmailWarning
 
    Bases: :py:obj:`CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning`
 

@@ -7,18 +7,10 @@
 Module Contents
 ---------------
 
-Classes
-~~~~~~~
-
-.. autoapisummary::
-
-   CodonU.cua_errors.unsupported_type.UnsupportedType
-
-
-
-
-.. py:class:: UnsupportedType
+.. py:exception:: UnsupportedType
 
    Bases: :py:obj:`CodonU.cua_errors.codon_usage_err.CodonUsageError`
+
+   Accounts for all error that can happen during executing the files
 
 

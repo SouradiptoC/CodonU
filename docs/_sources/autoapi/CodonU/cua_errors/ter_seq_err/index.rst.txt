@@ -7,17 +7,7 @@
 Module Contents
 ---------------
 
-Classes
-~~~~~~~
-
-.. autoapisummary::
-
-   CodonU.cua_errors.ter_seq_err.TerSeqError
-
-
-
-
-.. py:class:: TerSeqError(code)
+.. py:exception:: TerSeqError(code)
 
    Bases: :py:obj:`CodonU.cua_errors.codon_usage_err.CodonUsageError`
 

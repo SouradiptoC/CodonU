@@ -7,17 +7,7 @@
 Module Contents
 ---------------
 
-Classes
-~~~~~~~
-
-.. autoapisummary::
-
-   CodonU.cua_errors.nucleotide_err.NucleotideError
-
-
-
-
-.. py:class:: NucleotideError(code, position)
+.. py:exception:: NucleotideError(code, position)
 
    Bases: :py:obj:`CodonU.cua_errors.codon_usage_err.CodonUsageError`
 

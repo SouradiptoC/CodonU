@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CodonU.cua_warnings &mdash; CodonU 1.0.1 documentation</title>
+  <title>CodonU.cua_warnings &mdash; CodonU 1.0.4 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -105,21 +105,6 @@
 </section>
 <section id="package-contents">
 <h2>Package Contents<a class="headerlink" href="#package-contents" title="Permalink to this heading"></a></h2>
-<section id="classes">
-<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading"></a></h3>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#CodonU.cua_warnings.ApiWarning" title="CodonU.cua_warnings.ApiWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ApiWarning</span></code></a></p></td>
-<td><p>Occurs when no API key is provided</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#CodonU.cua_warnings.EmailWarning" title="CodonU.cua_warnings.EmailWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EmailWarning</span></code></a></p></td>
-<td><p>Occurs when no email id is provided</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#CodonU.cua_warnings.NoCodonWarning" title="CodonU.cua_warnings.NoCodonWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NoCodonWarning</span></code></a></p></td>
-<td><p>Occurs when a codon is not present in a given sequence</p></td>
-</tr>
-</tbody>
-</table>
 <dl class="py exception">
 <dt class="sig sig-object py" id="CodonU.cua_warnings.NoSynonymousCodonWarning">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.cua_warnings.</span></span><span class="sig-name descname"><span class="pre">NoSynonymousCodonWarning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aa</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CodonU.cua_warnings.NoSynonymousCodonWarning" title="Permalink to this definition"></a></dt>
@@ -144,9 +129,9 @@
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="py exception">
 <dt class="sig sig-object py" id="CodonU.cua_warnings.ApiWarning">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.cua_warnings.</span></span><span class="sig-name descname"><span class="pre">ApiWarning</span></span><a class="headerlink" href="#CodonU.cua_warnings.ApiWarning" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.cua_warnings.</span></span><span class="sig-name descname"><span class="pre">ApiWarning</span></span><a class="headerlink" href="#CodonU.cua_warnings.ApiWarning" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="codon_usage_warns/index.html#CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning" title="CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning</span></code></a></p>
 <p>Occurs when no API key is provided</p>
 <dl class="py method">
@@ -156,9 +141,9 @@
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="py exception">
 <dt class="sig sig-object py" id="CodonU.cua_warnings.EmailWarning">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.cua_warnings.</span></span><span class="sig-name descname"><span class="pre">EmailWarning</span></span><a class="headerlink" href="#CodonU.cua_warnings.EmailWarning" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.cua_warnings.</span></span><span class="sig-name descname"><span class="pre">EmailWarning</span></span><a class="headerlink" href="#CodonU.cua_warnings.EmailWarning" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="codon_usage_warns/index.html#CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning" title="CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning</span></code></a></p>
 <p>Occurs when no email id is provided</p>
 <dl class="py method">
@@ -168,9 +153,9 @@
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="py exception">
 <dt class="sig sig-object py" id="CodonU.cua_warnings.NoCodonWarning">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.cua_warnings.</span></span><span class="sig-name descname"><span class="pre">NoCodonWarning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">codon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CodonU.cua_warnings.NoCodonWarning" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.cua_warnings.</span></span><span class="sig-name descname"><span class="pre">NoCodonWarning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">codon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CodonU.cua_warnings.NoCodonWarning" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="codon_usage_warns/index.html#CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning" title="CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning</span></code></a></p>
 <p>Occurs when a codon is not present in a given sequence</p>
 <dl class="py method">
@@ -180,7 +165,6 @@
 
 </dd></dl>
 
-</section>
 </section>
 </section>
 

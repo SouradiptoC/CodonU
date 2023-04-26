@@ -18,6 +18,7 @@ Submodules
    plot_mca_rscu/index.rst
    plot_neutrality/index.rst
    plot_phy_dnd/index.rst
+   plot_phy_fas/index.rst
    plot_phy_nex/index.rst
    plot_pr2/index.rst
 
@@ -40,10 +41,11 @@ Functions
    CodonU.vizualizer.plot_mca_rscu
    CodonU.vizualizer.plot_phy_dnd
    CodonU.vizualizer.plot_phy_nex
+   CodonU.vizualizer.plot_phy_fas
 
 
 
-.. py:function:: plot_enc(handle: str | Any, genetic_table_num: int, min_len_threshold: int = 200, organism_name: None | str = None, save_image: bool = False, folder_path: str = '', gene_analysis: bool = True)
+.. py:function:: plot_enc(handle: str | Any, genetic_table_num: int, min_len_threshold: int = 200, organism_name: None | str = None, save_image: bool = False, folder_path: str = 'Report', gene_analysis: bool = True)
 
    Plots ENc curve from given fasta file
 
@@ -80,7 +82,7 @@ Functions
    :param gene_analysis: Option if gene analysis (True) or genome analysis (False) (optional)
 
 
-.. py:function:: plot_mca_aa_aroma(handle: str, genetic_table_num: int, min_len_threshold: int = 66, n_components: int = 20, organism_name: str | None = None, save_image: bool = False, folder_path: str = '')
+.. py:function:: plot_mca_aa_aroma(handle: str, genetic_table_num: int, min_len_threshold: int = 66, n_components: int = 20, organism_name: str | None = None, save_image: bool = False, folder_path: str = 'Report')
 
    Plots the principal component analysis based on amino acid frequency with aromaticity score scale
 
@@ -93,7 +95,7 @@ Functions
    :param folder_path: Folder path where image should be saved (optional)
 
 
-.. py:function:: plot_mca_aa_gravy(handle: str, genetic_table_num: int, min_len_threshold: int = 66, n_components: int = 20, organism_name: str | None = None, save_image: bool = False, folder_path: str = '')
+.. py:function:: plot_mca_aa_gravy(handle: str, genetic_table_num: int, min_len_threshold: int = 66, n_components: int = 20, organism_name: str | None = None, save_image: bool = False, folder_path: str = 'Report')
 
    Plots the principal component analysis based on amino acid frequency with GRAVY score scale
 
@@ -106,7 +108,7 @@ Functions
    :param folder_path: Folder path where image should be saved (optional)
 
 
-.. py:function:: plot_mca_codon_freq(handle: str, genetic_table_num: int, min_len_threshold: int = 200, n_components: int = 59, organism_name: str | None = None, save_image: bool = False, folder_path: str = '')
+.. py:function:: plot_mca_codon_freq(handle: str, genetic_table_num: int, min_len_threshold: int = 200, n_components: int = 59, organism_name: str | None = None, save_image: bool = False, folder_path: str = 'Report')
 
    Plots the principal component analysis based on codon frequency
 
@@ -119,7 +121,7 @@ Functions
    :param folder_path: Folder path where image should be saved (optional)
 
 
-.. py:function:: plot_mca_rscu(handle: str, genetic_table_num: int, min_len_threshold: int = 200, n_components: int = 59, organism_name: str | None = None, save_image: bool = False, folder_path: str = '')
+.. py:function:: plot_mca_rscu(handle: str, genetic_table_num: int, min_len_threshold: int = 200, n_components: int = 59, organism_name: str | None = None, save_image: bool = False, folder_path: str = 'Report')
 
    Plots the principal component analysis based on codon RSCU value
 
@@ -135,6 +137,7 @@ Functions
 .. py:function:: plot_phy_dnd(handle: str, title: str = 'Phylogenetic Tree', save_image: bool = False, folder_path: str = 'Report')
 
    Plots phylogenetic tree from dnd file
+
    :param handle: Handle to the dnd file
    :param title: Title of the plot
    :param save_image: Options for saving the image (optional)
@@ -143,8 +146,19 @@ Functions
 
 .. py:function:: plot_phy_nex(handle: str, title: str = 'Phylogenetic Tree', save_image: bool = False, folder_path: str = 'Report')
 
-   Plots phylogenetic tree from dnd file
-   :param handle: Handle to the dnd file
+   Plots phylogenetic tree from nexus file
+
+   :param handle: Handle to the nexus file
+   :param title: Title of the plot
+   :param save_image: Options for saving the image (optional)
+   :param folder_path: Folder path where image should be saved (optional)
+
+
+.. py:function:: plot_phy_fas(handle: str, title: str = 'Phylogenetic Tree', save_image: bool = False, folder_path: str = 'Report')
+
+   Plots phylogenetic tree from fasta file
+
+   :param handle: Handle to the fasta file
    :param title: Title of the plot
    :param save_image: Options for saving the image (optional)
    :param folder_path: Folder path where image should be saved (optional)

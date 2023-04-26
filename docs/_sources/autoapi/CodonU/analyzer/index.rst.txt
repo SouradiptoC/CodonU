@@ -56,7 +56,7 @@ Functions
    dictionary containing gene name and corresponding codon and cai value pairs
 
 
-.. py:function:: calculate_rscu(handle: str, genetic_code_num: int, min_len_threshold: int = 200, gene_analysis: bool = False) -> dict[str, float | dict[str, float]]
+.. py:function:: calculate_rscu(handle: str, genetic_code_num: int, min_len_threshold: int = 200, gene_analysis: bool = False, save_file: bool = False, file_name: str = 'RSCU_report', folder_path: str = 'Report') -> dict[str, float | dict[str, float]]
 
    Calculates rscu values for each codon
 
@@ -64,6 +64,9 @@ Functions
    :param genetic_code_num: Genetic table number for codon table
    :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
    :param gene_analysis: Option if gene analysis (True) or genome analysis (False) (optional)
+   :param save_file: Option for saving the values in xlsx format (Optional)
+   :param file_name: Intended file name (Optional)
+   :param folder_path: Folder path where image should be saved (optional)
    :return: The dictionary containing codon and rscu value pairs if gene_analysis is false, otherwise the dictionary containing the gene name and the codon & rscu value pairs
 
 
@@ -98,7 +101,7 @@ Functions
    :return: The ENc value if gene_analysis is false, else a dictionary containing gene number and corresponding ENc value
 
 
-.. py:function:: calculate_gravy(handle: str, min_len_threshold: int = 66, gene_analysis: bool = False, save_file: bool = False, file_name: str = 'ENc_report', folder_path: str = 'Report') -> dict[str, float] | float
+.. py:function:: calculate_gravy(handle: str, min_len_threshold: int = 66, gene_analysis: bool = False, save_file: bool = False, file_name: str = 'GRAVY_report', folder_path: str = 'Report') -> dict[str, float] | float
 
    Calculates the gravy score for a given protein sequence
 

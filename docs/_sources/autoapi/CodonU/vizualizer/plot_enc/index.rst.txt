@@ -17,7 +17,7 @@ Functions
 
 
 
-.. py:function:: plot_enc(handle: str | Any, genetic_table_num: int, min_len_threshold: int = 200, organism_name: None | str = None, save_image: bool = False, folder_path: str = '', gene_analysis: bool = True)
+.. py:function:: plot_enc(handle: str | Any, genetic_table_num: int, min_len_threshold: int = 200, organism_name: None | str = None, save_image: bool = False, folder_path: str = 'Report', gene_analysis: bool = True)
 
    Plots ENc curve from given fasta file
 

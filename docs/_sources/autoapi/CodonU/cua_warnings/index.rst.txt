@@ -21,18 +21,6 @@ Submodules
 Package Contents
 ----------------
 
-Classes
-~~~~~~~
-
-.. autoapisummary::
-
-   CodonU.cua_warnings.ApiWarning
-   CodonU.cua_warnings.EmailWarning
-   CodonU.cua_warnings.NoCodonWarning
-
-
-
-
 .. py:exception:: NoSynonymousCodonWarning(aa)
 
    Bases: :py:obj:`CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning`
@@ -53,7 +41,7 @@ Classes
 
 
 
-.. py:class:: ApiWarning
+.. py:exception:: ApiWarning
 
    Bases: :py:obj:`CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning`
 
@@ -63,7 +51,7 @@ Classes
 
 
 
-.. py:class:: EmailWarning
+.. py:exception:: EmailWarning
 
    Bases: :py:obj:`CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning`
 
@@ -73,7 +61,7 @@ Classes
 
 
 
-.. py:class:: NoCodonWarning(codon: str)
+.. py:exception:: NoCodonWarning(codon: str)
 
    Bases: :py:obj:`CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning`
 

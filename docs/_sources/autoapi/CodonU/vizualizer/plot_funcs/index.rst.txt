@@ -40,7 +40,7 @@ Functions
    :param gene_analysis: Option if gene analysis (True) or genome analysis (False) (optional)
 
 
-.. py:function:: _plot_pr2(gc_val_lst: list, at_val_lst: list, g3_val_lst: list, a3_val_lst: list, organism_name: str | None = None, save_image: bool = False, folder_path: str = '', gene_analysis: bool = True)
+.. py:function:: _plot_pr2(gc_val_lst: list, at_val_lst: list, g3_val_lst: list, a3_val_lst: list, organism_name: str | None = None, save_image: bool = False, folder_path: str = 'Report', gene_analysis: bool = True)
 
    Plots A3/AT3 values against G3/GC3 values
 
@@ -54,7 +54,7 @@ Functions
    :param gene_analysis: Option if gene analysis (True) or genome analysis (False) (optional)
 
 
-.. py:function:: _plot_neutrality(gc12_lst: list, gc3_lst: list, organism_name: None | str = None, save_image: bool = False, folder_path: str = '', gene_analysis: bool = True)
+.. py:function:: _plot_neutrality(gc12_lst: list, gc3_lst: list, organism_name: None | str = None, save_image: bool = False, folder_path: str = 'Report', gene_analysis: bool = True)
 
    Plots the neutrality plot
 

@@ -17,7 +17,7 @@ Functions
 
 
 
-.. py:function:: plot_mca_codon_freq(handle: str, genetic_table_num: int, min_len_threshold: int = 200, n_components: int = 59, organism_name: str | None = None, save_image: bool = False, folder_path: str = '')
+.. py:function:: plot_mca_codon_freq(handle: str, genetic_table_num: int, min_len_threshold: int = 200, n_components: int = 59, organism_name: str | None = None, save_image: bool = False, folder_path: str = 'Report')
 
    Plots the principal component analysis based on codon frequency
 

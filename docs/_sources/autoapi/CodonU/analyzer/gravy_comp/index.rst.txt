@@ -17,7 +17,7 @@ Functions
 
 
 
-.. py:function:: calculate_gravy(handle: str, min_len_threshold: int = 66, gene_analysis: bool = False, save_file: bool = False, file_name: str = 'ENc_report', folder_path: str = 'Report') -> dict[str, float] | float
+.. py:function:: calculate_gravy(handle: str, min_len_threshold: int = 66, gene_analysis: bool = False, save_file: bool = False, file_name: str = 'GRAVY_report', folder_path: str = 'Report') -> dict[str, float] | float
 
    Calculates the gravy score for a given protein sequence
 

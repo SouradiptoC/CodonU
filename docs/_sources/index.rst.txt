@@ -1,4 +1,8 @@
-.. CodonU documentation master file, created by Souradipto Choudhuri
+.. CodonU documentation master file, created by
+   sphinx-quickstart on Thu Apr 27 01:12:36 2023.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
 Welcome to CodonU's documentation!
 ==================================
 Introduction
@@ -7,6 +11,12 @@ CodonU is an integrated package for Codon Usage Analysis. This is written by Sou
 final year project in Biotechnology major. This is only the documentation of the project.
 
 Please find the examples in the git repo of the project if you want one.
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   autoapi/index
 
 Installation
 ------------
@@ -23,14 +33,6 @@ References
 * J. R. Lobry, Multivariate Analyses of Codon Usage Biases. ISTE Press - Elsevier, 2018. doi: `10.1016/C2018-0-02165-9 <https://doi.org/10.1016/C2018-0-02165-9>`_.
 * F. Sievers and D. G. Higgins, “Clustal Omega for making accurate alignments of many protein sequences,” Protein Science, vol. 27, no. 1, pp. 135–145, Jan. 2018, doi: `10.1002/pro.3290 <https://doi.org/10.1002/pro.3290>`_.
 * M. A. Larkin et al., “Clustal W and Clustal X version 2.0,” Bioinformatics, vol. 23, no. 21, pp. 2947–2948, Nov. 2007, doi: `10.1093/bioinformatics/btm404 <https://doi.org/10.1093/bioinformatics/btm404>`_.
-
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-   autoapi/index
-
 
 
 Indices and tables

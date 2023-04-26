@@ -17,6 +17,7 @@ Functions
    CodonU.file_handler.internal_comp.set_entrez_api_key
    CodonU.file_handler.internal_comp.is_file_empty
    CodonU.file_handler.internal_comp.is_file
+   CodonU.file_handler.internal_comp.is_file_writeable
 
 
 
@@ -51,5 +52,8 @@ Functions
 
    :param path: Path to the file
    :return: True if exists else False
+
+
+.. py:function:: is_file_writeable(path: str)
 
 

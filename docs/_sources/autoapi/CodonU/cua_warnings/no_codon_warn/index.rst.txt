@@ -7,17 +7,7 @@
 Module Contents
 ---------------
 
-Classes
-~~~~~~~
-
-.. autoapisummary::
-
-   CodonU.cua_warnings.no_codon_warn.NoCodonWarning
-
-
-
-
-.. py:class:: NoCodonWarning(codon: str)
+.. py:exception:: NoCodonWarning(codon: str)
 
    Bases: :py:obj:`CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning`
 

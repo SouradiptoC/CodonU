@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CodonU.cua_errors &mdash; CodonU 1.0.1 documentation</title>
+  <title>CodonU.cua_errors &mdash; CodonU 1.0.4 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -106,72 +106,48 @@
 </section>
 <section id="package-contents">
 <h2>Package Contents<a class="headerlink" href="#package-contents" title="Permalink to this heading"></a></h2>
-<section id="classes">
-<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading"></a></h3>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#CodonU.cua_errors.FileNotEmptyError" title="CodonU.cua_errors.FileNotEmptyError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FileNotEmptyError</span></code></a></p></td>
-<td><p>Occurs when a given file to write is not empty</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#CodonU.cua_errors.NoProteinError" title="CodonU.cua_errors.NoProteinError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NoProteinError</span></code></a></p></td>
-<td><p>Occurs when a complete category of amino acid based on sf values is not translated by the provided sequence</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#CodonU.cua_errors.NucleotideError" title="CodonU.cua_errors.NucleotideError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NucleotideError</span></code></a></p></td>
-<td><p>Occurs when an ambiguous or invalid nucleotide is present in genome</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#CodonU.cua_errors.InternalStopCodonError" title="CodonU.cua_errors.InternalStopCodonError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InternalStopCodonError</span></code></a></p></td>
-<td><p>Occurs when internal stop codon is present in the genome</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#CodonU.cua_errors.TerSeqError" title="CodonU.cua_errors.TerSeqError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TerSeqError</span></code></a></p></td>
-<td><p>Occurs when terminal codons are not valid</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#CodonU.cua_errors.UnsupportedType" title="CodonU.cua_errors.UnsupportedType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnsupportedType</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-<dl class="py class">
+<dl class="py exception">
 <dt class="sig sig-object py" id="CodonU.cua_errors.FileNotEmptyError">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.cua_errors.</span></span><span class="sig-name descname"><span class="pre">FileNotEmptyError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CodonU.cua_errors.FileNotEmptyError" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.cua_errors.</span></span><span class="sig-name descname"><span class="pre">FileNotEmptyError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CodonU.cua_errors.FileNotEmptyError" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="codon_usage_err/index.html#CodonU.cua_errors.codon_usage_err.CodonUsageError" title="CodonU.cua_errors.codon_usage_err.CodonUsageError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CodonU.cua_errors.codon_usage_err.CodonUsageError</span></code></a></p>
 <p>Occurs when a given file to write is not empty</p>
 </dd></dl>
 
-<dl class="py class">
+<dl class="py exception">
 <dt class="sig sig-object py" id="CodonU.cua_errors.NoProteinError">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.cua_errors.</span></span><span class="sig-name descname"><span class="pre">NoProteinError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CodonU.cua_errors.NoProteinError" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.cua_errors.</span></span><span class="sig-name descname"><span class="pre">NoProteinError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CodonU.cua_errors.NoProteinError" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="codon_usage_err/index.html#CodonU.cua_errors.codon_usage_err.CodonUsageError" title="CodonU.cua_errors.codon_usage_err.CodonUsageError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CodonU.cua_errors.codon_usage_err.CodonUsageError</span></code></a></p>
 <p>Occurs when a complete category of amino acid based on sf values is not translated by the provided sequence</p>
 </dd></dl>
 
-<dl class="py class">
+<dl class="py exception">
 <dt class="sig sig-object py" id="CodonU.cua_errors.NucleotideError">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.cua_errors.</span></span><span class="sig-name descname"><span class="pre">NucleotideError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CodonU.cua_errors.NucleotideError" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.cua_errors.</span></span><span class="sig-name descname"><span class="pre">NucleotideError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CodonU.cua_errors.NucleotideError" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="codon_usage_err/index.html#CodonU.cua_errors.codon_usage_err.CodonUsageError" title="CodonU.cua_errors.codon_usage_err.CodonUsageError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CodonU.cua_errors.codon_usage_err.CodonUsageError</span></code></a></p>
 <p>Occurs when an ambiguous or invalid nucleotide is present in genome</p>
 </dd></dl>
 
-<dl class="py class">
+<dl class="py exception">
 <dt class="sig sig-object py" id="CodonU.cua_errors.InternalStopCodonError">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.cua_errors.</span></span><span class="sig-name descname"><span class="pre">InternalStopCodonError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">position</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CodonU.cua_errors.InternalStopCodonError" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.cua_errors.</span></span><span class="sig-name descname"><span class="pre">InternalStopCodonError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">position</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CodonU.cua_errors.InternalStopCodonError" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="codon_usage_err/index.html#CodonU.cua_errors.codon_usage_err.CodonUsageError" title="CodonU.cua_errors.codon_usage_err.CodonUsageError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CodonU.cua_errors.codon_usage_err.CodonUsageError</span></code></a></p>
 <p>Occurs when internal stop codon is present in the genome</p>
 </dd></dl>
 
-<dl class="py class">
+<dl class="py exception">
 <dt class="sig sig-object py" id="CodonU.cua_errors.TerSeqError">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.cua_errors.</span></span><span class="sig-name descname"><span class="pre">TerSeqError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CodonU.cua_errors.TerSeqError" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.cua_errors.</span></span><span class="sig-name descname"><span class="pre">TerSeqError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CodonU.cua_errors.TerSeqError" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="codon_usage_err/index.html#CodonU.cua_errors.codon_usage_err.CodonUsageError" title="CodonU.cua_errors.codon_usage_err.CodonUsageError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CodonU.cua_errors.codon_usage_err.CodonUsageError</span></code></a></p>
 <p>Occurs when terminal codons are not valid</p>
 </dd></dl>
 
-<dl class="py class">
+<dl class="py exception">
 <dt class="sig sig-object py" id="CodonU.cua_errors.UnsupportedType">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.cua_errors.</span></span><span class="sig-name descname"><span class="pre">UnsupportedType</span></span><a class="headerlink" href="#CodonU.cua_errors.UnsupportedType" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.cua_errors.</span></span><span class="sig-name descname"><span class="pre">UnsupportedType</span></span><a class="headerlink" href="#CodonU.cua_errors.UnsupportedType" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="codon_usage_err/index.html#CodonU.cua_errors.codon_usage_err.CodonUsageError" title="CodonU.cua_errors.codon_usage_err.CodonUsageError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CodonU.cua_errors.codon_usage_err.CodonUsageError</span></code></a></p>
+<p>Accounts for all error that can happen during executing the files</p>
 </dd></dl>
 
-</section>
 </section>
 </section>
 
