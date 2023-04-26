@@ -1,7 +1,7 @@
 # This CITATION.cff file was generated with cffinit.
 # Visit https://bit.ly/cffinit to generate yours today!
 
-cff-version: 1.0.2
+cff-version: 1.0.4
 title: CodonU
 message: 'If you use this software, please cite it as below.'
 type: software
@@ -15,7 +15,7 @@ authors:
     orcid: 'https://orcid.org/0000-0002-4927-6556'
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.7857924
+    value: 10.5281/zenodo.7868197
     description: Stable second release
 repository-code: 'https://github.com/SouradiptoC/codon_usage'
 abstract: >-
@@ -26,5 +26,5 @@ keywords:
   - CodonW
 license: MIT
 commit: Inital Release
-version: 1.0.2
-date-released: '2023-04-24'
+version: 1.0.4
+date-released: '2023-04-26'
