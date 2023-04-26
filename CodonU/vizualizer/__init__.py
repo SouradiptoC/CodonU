@@ -7,3 +7,4 @@ from .plot_mca_codon_freq import plot_mca_codon_freq
 from .plot_mca_rscu import plot_mca_rscu
 from .plot_phy_dnd import plot_phy_dnd
 from .plot_phy_nex import plot_phy_nex
+from .plot_phy_fas import plot_phy_fas
