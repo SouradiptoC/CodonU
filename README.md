@@ -3,7 +3,7 @@
 ![CodonU](https://github.com/SouradiptoC/CodonU/blob/master/images/CODON_U_Background.png)
 
 [![PyPI - License](https://img.shields.io/pypi/l/CodonU)](https://opensource.org/licenses/MIT)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7857924.svg)](https://doi.org/10.5281/zenodo.7857924)
+[![DOI](https://zenodo.org/badge/536583655.svg)](https://zenodo.org/badge/latestdoi/536583655)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/CodonU)](https://pypi.org/project/CodonU)
 [![PyPI](https://img.shields.io/pypi/v/CodonU)](https://pypi.org/project/CodonU)
 [![PyPI - Format](https://img.shields.io/pypi/format/CodonU)](https://pypi.org/project/CodonU)
