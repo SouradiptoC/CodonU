@@ -32,8 +32,3 @@ def plot_phy_fas(handle: str, title: str = 'Phylogenetic Tree', save_image: bool
             fig.savefig(file_path, dpi=500)
             print(f'Saved file can be found as {abspath(file_path)}')
     plt.close(fig)
-
-
-if __name__ == '__main__':
-    in_file = '/home/souro/Projects/CodonU/Examples/Report/phylo_input_test_aligned_o.fasta'
-    plot_phy_fas(in_file)
