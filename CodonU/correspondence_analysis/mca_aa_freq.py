@@ -10,7 +10,7 @@ from CodonU.analyzer.internal_comp import filter_reference
 def mca_aa_freq(handle: str, genetic_table_num: int, min_len_threshold: int = 66, n_components: int = 20) -> \
         tuple[pd.DataFrame, np.ndarray]:
     """
-    Calculates the contingency table and the inertia from amino acid frequency of gene
+    Calculates the contingency table and the inertia from amino acid frequency of protein
 
     **NOTE**: The fasta file must contain protein sequences in single letter format
 

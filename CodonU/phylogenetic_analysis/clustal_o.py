@@ -7,9 +7,9 @@ import subprocess
 
 def phy_clustal_o(bin_path: str, handle: str, res_folder_path: str = 'Report'):
     """
-    Makes the multiple sequence alignment with ClustalW. For details visit http://www.clustal.org/omega
+    Makes the multiple sequence alignment with ClustalO. For details visit http://www.clustal.org/omega
 
-    :param bin_path: Path to the binary file of ClustalW
+    :param bin_path: Path to the binary file of ClustalO
     :param handle: Handle to the file, or the filename as a string
     :param res_folder_path: The path of folder where the file will be saved
     """
