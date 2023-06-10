@@ -39,7 +39,7 @@ def calculate_rscu(handle: str, genetic_code_num: int, min_len_threshold: int = 
                         for gene, rscu_vals in rscu_dict.items()
                         for codon, rscu_val in rscu_vals.items()
                     ],
-                    columns=['Gene', 'Codon', 'CAI_vals']
+                    columns=['Gene', 'Codon', 'RSCU_vals']
                 )
                 df.to_excel(file_path, float_format='%.4f', columns=df.columns)
             print(f'The RSCU score file can be found at: {abspath(file_path)}')
@@ -56,7 +56,7 @@ def calculate_rscu(handle: str, genetic_code_num: int, min_len_threshold: int = 
                         (codon, rscu_val)
                         for codon, rscu_val in rscu_dict.items()
                     ],
-                    columns=['Codon', 'CAI_vals']
+                    columns=['Codon', 'RSCU_vals']
                 )
                 df.to_excel(file_path, float_format='%.4f', columns=df.columns)
             print(f'The RSCU score file can be found at: {abspath(file_path)}')
