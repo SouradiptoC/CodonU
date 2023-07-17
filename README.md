@@ -15,7 +15,7 @@
 
 Welcome to CodonU!
 
-This is an integrated package for codon usage analysis.
+This is an integrated package for codon usage analysis. For knowing more about motivation and workflow, please read the [Thesis](https://doi.org/10.5281/zenodo.8154433).
 
 # Functionalities
 
