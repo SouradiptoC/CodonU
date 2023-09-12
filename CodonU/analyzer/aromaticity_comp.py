@@ -10,7 +10,7 @@ def calculate_aromaticity(handle: str, min_len_threshold: int = 66, gene_analysi
                           save_file: bool = False, file_name: str = 'Aroma_report', folder_path: str = 'Report') -> \
         dict[str, float] | float:
     """
-    Calculates the aromaticity score for a given protein sequence
+    Calculates the aromaticity score for a given protein sequence according to Lobry (1994)
 
     :param handle: Handle to the file, or the filename as a string
     :param min_len_threshold: Minimum length of protein sequence to be considered as gene
@@ -22,11 +22,11 @@ def calculate_aromaticity(handle: str, min_len_threshold: int = 66, gene_analysi
     gene number and corresponding GRAVY score
     """
     records = parse(handle, 'fasta')
-    references = filter_reference(records, min_len_threshold)
+    filtered_records = filter_reference(records, min_len_threshold)
     if gene_analysis:
         aroma_dict = dict()
-        for i, seq in enumerate(references):
-            aroma_dict.update({f'prot_seq{i + 1}': aromaticity(seq)})
+        for record in filtered_records:
+            aroma_dict.update({record.description: aromaticity(record.seq)})
         if save_file:
             name = file_name + '.xlsx'
             make_dir(folder_path)
@@ -37,7 +37,7 @@ def calculate_aromaticity(handle: str, min_len_threshold: int = 66, gene_analysi
             print(f'The Aromaticity score file can be found at: {abspath(file_path)}')
         return aroma_dict
     else:
-        seq = ''.join([str(_seq) for _seq in references])
+        seq = ''.join([str(record.seq) for record in filtered_records])
         if save_file:
             name = file_name + '.xlsx'
             make_dir(folder_path)
