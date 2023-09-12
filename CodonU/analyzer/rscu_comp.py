@@ -1,5 +1,4 @@
-from cai2 import RSCU
-from CodonU.analyzer.internal_comp import filter_reference
+from CodonU.analyzer.internal_comp import filter_reference, rscu
 from Bio.SeqIO import parse
 from os.path import join, abspath
 from CodonU.file_handler.internal_comp import is_file_writeable
@@ -23,11 +22,11 @@ def calculate_rscu(handle: str, genetic_code_num: int, min_len_threshold: int = 
     :return: The dictionary containing codon and rscu value pairs if gene_analysis is false, otherwise the dictionary containing the gene name and the codon & rscu value pairs
     """
     records = parse(handle, 'fasta')
-    references = filter_reference(records, min_len_threshold)
+    filtered_records = filter_reference(records, min_len_threshold)
     if gene_analysis:
         rscu_dict = dict()
-        for i, seq in enumerate(references):
-            rscu_dict.update({f'gene_{i + 1}': RSCU([seq], genetic_code_num)})
+        for record in filtered_records:
+            rscu_dict.update({record.description: rscu([record.seq], genetic_code_num)})
         if save_file:
             name = file_name + '.xlsx'
             make_dir(folder_path)
@@ -44,8 +43,8 @@ def calculate_rscu(handle: str, genetic_code_num: int, min_len_threshold: int = 
                 df.to_excel(file_path, float_format='%.4f', columns=df.columns)
             print(f'The RSCU score file can be found at: {abspath(file_path)}')
     else:
-        reference = filter_reference(records, min_len_threshold)
-        rscu_dict = RSCU(reference, genetic_code_num)
+        sequences = [record.seq for record in filtered_records]
+        rscu_dict = rscu(sequences, genetic_code_num)
         if save_file:
             name = file_name + '.xlsx'
             make_dir(folder_path)
