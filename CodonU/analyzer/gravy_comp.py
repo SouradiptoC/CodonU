@@ -10,7 +10,7 @@ from os.path import join, abspath
 def calculate_gravy(handle: str, min_len_threshold: int = 66, gene_analysis: bool = False, save_file: bool = False,
                     file_name: str = 'GRAVY_report', folder_path: str = 'Report') -> dict[str, float] | float:
     """
-    Calculates the gravy score for a given protein sequence
+    Calculates the gravy score for a given protein sequence according to Kyte and Doolittle (1982)
 
     :param handle: Handle to the file, or the filename as a string
     :param min_len_threshold: Minimum length of protein sequence to be considered as gene
@@ -18,16 +18,15 @@ def calculate_gravy(handle: str, min_len_threshold: int = 66, gene_analysis: boo
     :param save_file: Option for saving the values in xlsx format (Optional)
     :param file_name: Intended file name (Optional)
     :param folder_path: Folder path where image should be saved (optional)
-    :return: The GRAVY score of given sequence if gene_analysis is false, else the dictionary containing gene number and
-    corresponding GRAVY score
+    :return: The GRAVY score of given sequence if gene_analysis is false, else the dictionary containing gene number and corresponding GRAVY score
     """
     records = parse(handle, 'fasta')
-    references = filter_reference(records, min_len_threshold)
+    filtered_records = filter_reference(records, min_len_threshold)
     filterwarnings('ignore')
     if gene_analysis:
         gravy_dict = dict()
-        for i, seq in enumerate(references):
-            gravy_dict.update({f'prot_seq{i + 1}': gravy(seq)})
+        for record in filtered_records:
+            gravy_dict.update({record.description: gravy(record.seq)})
         if save_file:
             name = file_name + '.xlsx'
             make_dir(folder_path)
@@ -38,7 +37,7 @@ def calculate_gravy(handle: str, min_len_threshold: int = 66, gene_analysis: boo
             print(f'The GRAVY score file can be found at: {abspath(file_path)}')
         return gravy_dict
     else:
-        seq = ''.join([str(_seq) for _seq in references])
+        seq = ''.join([str(record.seq) for record in filtered_records])
         if save_file:
             name = file_name + '.xlsx'
             make_dir(folder_path)
