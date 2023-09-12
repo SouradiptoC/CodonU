@@ -1,8 +1,7 @@
-from cai2 import CAI
 from warnings import filterwarnings
 from Bio.Data.CodonTable import unambiguous_dna_by_id
 from Bio.SeqIO import parse
-from CodonU.analyzer.internal_comp import filter_reference
+from CodonU.analyzer.internal_comp import filter_reference, cai
 import pandas as pd
 from os.path import join, abspath
 from CodonU.file_handler.internal_comp import is_file_writeable
@@ -28,14 +27,14 @@ def calculate_cai(handle: str, genetic_code_num: int, min_len_threshold: int = 2
     filterwarnings('ignore')
     cai_dict = dict()
     records = parse(handle, 'fasta')
-    reference = filter_reference(records, min_len_threshold)
+    filtered_records = filter_reference(records, min_len_threshold)
     if gene_analysis:
-        for i, seq in enumerate(reference):
+        for record in filtered_records:
             cai_val_dict = dict()
             for codon in unambiguous_dna_by_id[genetic_code_num].forward_table:
-                cai_val = CAI(codon, reference=[seq], genetic_code=genetic_code_num)
+                cai_val = cai(codon, references=[record.seq], genetic_code=genetic_code_num)
                 cai_val_dict.update({codon: cai_val})
-            cai_dict.update({f'gene_{i + 1}': cai_val_dict})
+            cai_dict.update({record.description: cai_val_dict})
         if save_file:
             name = file_name + '.xlsx'
             make_dir(folder_path)
@@ -53,7 +52,7 @@ def calculate_cai(handle: str, genetic_code_num: int, min_len_threshold: int = 2
             print(f'The CAI score file can be found at: {abspath(file_path)}')
     else:
         for codon in unambiguous_dna_by_id[genetic_code_num].forward_table:
-            cai_val = CAI(codon, reference=reference, genetic_code=genetic_code_num)
+            cai_val = cai(codon, references=[record.seq for record in filtered_records], genetic_code=genetic_code_num)
             cai_dict.update({codon: cai_val})
         if save_file:
             name = file_name + '.xlsx'
