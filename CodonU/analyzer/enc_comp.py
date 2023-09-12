@@ -45,7 +45,8 @@ def calculate_enc(handle: str, genetic_code_num: int, min_len_threshold=200, gen
             make_dir(folder_path)
             file_path = join(folder_path, name)
             if is_file_writeable(file_path):
-                df = pd.DataFrame({'Genome': enc(sequences, genetic_code_num)}.items(), columns=['Genome', 'ENc_vals'])
+                df = pd.DataFrame({'Whole Genome': enc(sequences, genetic_code_num)}.items(),
+                                  columns=['Genome', 'ENc_vals'])
                 df.to_excel(file_path, float_format='%.4f', columns=df.columns)
             print(f'The ENc score file can be found at: {abspath(file_path)}')
         return enc(sequences, genetic_code_num)

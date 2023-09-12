@@ -12,7 +12,7 @@ def calculate_cbi(handle: str, genetic_code_num: int, min_len_threshold: int = 6
                   save_file: bool = False, file_name: str = 'CBI_report', folder_path: str = 'Report') -> \
         dict[str, tuple[float, str] | dict[str, tuple[float, str]]]:
     """
-    Calculates cbi values for each amino acid
+    Calculates cbi values for each amino acid based on Bennetzen and Hall (1982)
 
     :param handle: Handle to the file, or the filename as a string
     :param genetic_code_num: Genetic table number for codon table
@@ -26,16 +26,16 @@ def calculate_cbi(handle: str, genetic_code_num: int, min_len_threshold: int = 6
     optimal codon pairs
      """
     records = parse(handle, 'fasta')
-    reference = filter_reference(records, min_len_threshold)
+    filtered_records = filter_reference(records, min_len_threshold)
     filterwarnings('ignore')
     cbi_dict = dict()
     if gene_analysis:
-        for i, seq in enumerate(reference):
+        for record in filtered_records:
             cbi_val_dict = dict()
             for aa in unambiguous_dna_by_id[genetic_code_num].protein_alphabet:
-                cbi_val = cbi(aa, reference=[seq], genetic_code=genetic_code_num)
+                cbi_val = cbi(aa, references=[record.seq], genetic_code=genetic_code_num)
                 cbi_val_dict.update({aa: cbi_val})
-            cbi_dict.update({f'gene_{i + 1}': cbi_val_dict})
+            cbi_dict.update({record.description: cbi_val_dict})
         if save_file:
             name = file_name + '.xlsx'
             make_dir(folder_path)
@@ -52,8 +52,9 @@ def calculate_cbi(handle: str, genetic_code_num: int, min_len_threshold: int = 6
                 df.to_excel(file_path, float_format='%.4f', columns=df.columns)
             print(f'The CBI score file can be found at: {abspath(file_path)}')
     else:
+        sequences = [record.seq for record in filtered_records]
         for aa in unambiguous_dna_by_id[genetic_code_num].protein_alphabet:
-            cbi_val = cbi(aa, reference, genetic_code_num)
+            cbi_val = cbi(aa, sequences, genetic_code_num)
             cbi_dict.update({aa: cbi_val})
         if save_file:
             name = file_name + '.xlsx'
