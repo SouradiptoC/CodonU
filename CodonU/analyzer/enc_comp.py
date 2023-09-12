@@ -23,12 +23,12 @@ def calculate_enc(handle: str, genetic_code_num: int, min_len_threshold=200, gen
     :return: The ENc value if gene_analysis is false, else a dictionary containing gene number and corresponding ENc value
     """
     records = parse(handle, 'fasta')
-    references = filter_reference(records, min_len_threshold)
+    filtered_records = filter_reference(records, min_len_threshold)
     filterwarnings('ignore')
     if gene_analysis:
         enc_dict = dict()
-        for i, seq in enumerate(references):
-            enc_dict.update({f'gene_{i + 1}': enc([seq], genetic_code_num)})
+        for record in filtered_records:
+            enc_dict.update({record.description: enc([record.seq], genetic_code_num)})
         if save_file:
             name = file_name + '.xlsx'
             make_dir(folder_path)
@@ -39,12 +39,13 @@ def calculate_enc(handle: str, genetic_code_num: int, min_len_threshold=200, gen
             print(f'The ENc score file can be found at: {abspath(file_path)}')
         return enc_dict
     else:
+        sequences = [record.seq for record in filtered_records]
         if save_file:
             name = file_name + '.xlsx'
             make_dir(folder_path)
             file_path = join(folder_path, name)
             if is_file_writeable(file_path):
-                df = pd.DataFrame({'Genome': enc(references, genetic_code_num)}.items(), columns=['Genome', 'ENc_vals'])
+                df = pd.DataFrame({'Genome': enc(sequences, genetic_code_num)}.items(), columns=['Genome', 'ENc_vals'])
                 df.to_excel(file_path, float_format='%.4f', columns=df.columns)
             print(f'The ENc score file can be found at: {abspath(file_path)}')
-        return enc(references, genetic_code_num)
+        return enc(sequences, genetic_code_num)
