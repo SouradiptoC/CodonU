@@ -2,14 +2,15 @@ from collections import Counter
 from itertools import chain
 from math import nan, isnan
 from statistics import mean
-from Bio.Data.CodonTable import NCBICodonTableDNA, unambiguous_dna_by_id
+from typing import Optional
+from Bio.Data.CodonTable import NCBICodonTableDNA, unambiguous_dna_by_id, unambiguous_dna_by_name, register_ncbi_table
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqUtils import seq3, GC123
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
 from scipy.stats import gmean
 from CodonU.cua_warnings import NoSynonymousCodonWarning, MissingCodonWarning
-from CodonU.cua_errors import NoProteinError
+from CodonU.cua_errors import NoProteinError, CodonTableExistsError, BadSequenceError
 
 
 def g3(seq: Seq | str) -> float:
@@ -67,6 +68,45 @@ def at_123(seq: Seq | str) -> tuple[float, float | int, float | int, float | int
     return 100 - gc_tot, 100 - gc_1, 100 - gc_2, 100 - gc_3
 
 
+def is_not_bad_seq(seq: Seq | str) -> bool:
+    """
+    Checks if the sequence is bad i.e. length of the sequence is not divisible by 3
+
+    :param seq: The nucleotide sequence
+    :return: True if seq is not bad
+    :raises BadSequenceError: If the seq is bad
+    """
+    if len(seq) % 3 == 0:
+        return True
+    else:
+        raise BadSequenceError(seq)
+
+
+def custom_codon_table(name: str, alt_name: Optional[str], genetic_code_id: int, forward_table: dict[str, str],
+                       start_codons: list[str], stop_codons: list[str]) -> None:
+    """
+    Registers a new Codon Table as provided by the user. \n
+    **Note**: The scope of the newly registered table is limited to the working file only
+
+    :param name: Name for the table
+    :param alt_name: Short name for the table
+    :param genetic_code_id: Genetic code number for the table
+    :param forward_table: A dict containing mapping of codons to proteins [excluding stop codons]
+    :param start_codons: A list of possible start codons
+    :param stop_codons: A list of possible stop codons
+    :raises CodonTableExistsError: If the name, alt_name or genetic_code_id already exists
+    """
+    if genetic_code_id in unambiguous_dna_by_id.keys():
+        raise CodonTableExistsError(1, genetic_code_id)
+    if name in unambiguous_dna_by_name.keys():
+        raise CodonTableExistsError(2, name)
+    if alt_name in unambiguous_dna_by_name.keys():
+        raise CodonTableExistsError(3, alt_name)
+
+    register_ncbi_table(name=name, alt_name=alt_name, id=genetic_code_id, table=forward_table,
+                        start_codons=start_codons, stop_codons=stop_codons)
+
+
 def filter_reference(records, min_len_threshold: int) -> list[SeqRecord]:
     """
     Filters the list of reference based on given threshold of length
@@ -81,7 +121,8 @@ def filter_reference(records, min_len_threshold: int) -> list[SeqRecord]:
 
 def reverse_table(codon_table: NCBICodonTableDNA) -> dict[str, list[str]]:
     """
-    Creates the protein, codon dictionary where protein is key
+    Creates the protein, codon dictionary where protein is key \n
+    e.g. 'L': ['TTA', 'TTG', 'CTT', 'CTC', 'CTA', 'CTG']
 
     :param codon_table: The codon table
     :return: The dict having protein as key
@@ -96,8 +137,8 @@ def reverse_table(codon_table: NCBICodonTableDNA) -> dict[str, list[str]]:
 
 def syn_codons(codon_table: NCBICodonTableDNA) -> dict[str, list[str]]:
     """
-    Creates the codon, synonymous codon family dictionary where codon is the key
-    e.g. TTA ['TTA', 'TTG', 'CTT', 'CTC', 'CTA', 'CTG']
+    Creates the codon, synonymous codon family dictionary where codon is the key \n
+    e.g. 'TTA': ['TTA', 'TTG', 'CTT', 'CTC', 'CTA', 'CTG']
 
     :param codon_table: The codon table
     :return: The dict having individual codons as keys
@@ -108,7 +149,8 @@ def syn_codons(codon_table: NCBICodonTableDNA) -> dict[str, list[str]]:
 
 def sf_vals(codon_table: NCBICodonTableDNA) -> dict[int, list[str]]:
     """
-    Creates the sf value and protein dictionary where sf value is key
+    Creates the sf value and protein dictionary where sf value is key \n
+    e.g. 6: ['L', 'S', 'R']
 
     :param codon_table: The codon table
     :return: The dict having sf values as key
@@ -132,8 +174,9 @@ def rscu(references: list[Seq | str], genetic_code: int) -> dict[str, float]:
     :param genetic_code: Genetic table number for codon table
     :return: A dictionary containing codons and their respective RSCU values
     """
-    sequences = ((sequence[i:i + 3].upper() for i in range(0, len(sequence), 3)) for sequence in references)
-    codons = chain.from_iterable(sequences)
+    sequences = ((sequence[i:i + 3].upper() for i in range(0, len(sequence), 3)) for sequence in references if
+                 is_not_bad_seq(sequence))
+    codons = chain.from_iterable(sequences)  # flat list for Counter
     counts = dict(Counter(codons))  # Counters can not handle float values, hence dict
 
     # "Note that if a certain codon is never used in the reference set then the CAI for any other gene in which that
@@ -173,16 +216,16 @@ def weights_for_cai(references: list[Seq | str], genetic_code: int) -> dict[str,
     return weights
 
 
-def cai(nuc_seq: Seq, references: list[Seq | str], genetic_code: int) -> float:
+def cai(nuc_seq: Seq | str, references: list[Seq | str], genetic_code: int) -> float:
     """
     Calculates Codon Adaptive Index (CAI) value for a given nucleotide sequence according to Sharp and Li (1987)
 
     :param nuc_seq: The Nucleotide Sequence
     :param references: List of reference nucleotide sequences
-    :param genetic_code: The CAI value for given sequence
-    :return:
+    :param genetic_code: Genetic table number for codon table
+    :return: The CAI value for given sequence
     """
-    sequences = [nuc_seq[i: i + 3].upper() for i in range(0, len(nuc_seq), 3)]
+    sequences = [nuc_seq[i: i + 3].upper() for i in range(0, len(nuc_seq), 3) if is_not_bad_seq(nuc_seq)]
     weights_dict = weights_for_cai(references, genetic_code)
     seq_weights = list()
     non_syn_codons = [codon for codon in syn_codons(unambiguous_dna_by_id[genetic_code]).keys() if
@@ -206,7 +249,8 @@ def cbi(prot_seq: Seq | str, references: list[Seq | str], genetic_code: int) -> 
     :raises NoSynonymousCodonWarning: When there is no synonymous codons
     :raises MissingCodonWarning: When no codons translate to provided Amino acid
     """
-    sequences = ((sequence[i:i + 3].upper() for i in range(0, len(sequence), 3)) for sequence in references)
+    sequences = ((sequence[i:i + 3].upper() for i in range(0, len(sequence), 3)) for sequence in references if
+                 is_not_bad_seq(sequence))
     codons = chain.from_iterable(sequences)
     counts = Counter(codons)
     syn_codon_dict = reverse_table(unambiguous_dna_by_id[genetic_code])
@@ -245,7 +289,8 @@ def enc(references: list[Seq | str], genetic_code: int) -> float:
     :raises MissingCodonWarning: If there is no codon for a certain amino acid
     :raises NoProteinError: If there is no codon for a certain set of amino acid
     """
-    sequences = ((sequence[i: i + 3].upper() for i in range(0, len(sequence), 3)) for sequence in references)
+    sequences = ((sequence[i: i + 3].upper() for i in range(0, len(sequence), 3)) for sequence in references if
+                 is_not_bad_seq(sequence))
     codons = chain.from_iterable(sequences)
     counts = Counter(codons)
     syn_dct = reverse_table(unambiguous_dna_by_id[genetic_code])
@@ -290,6 +335,7 @@ def enc(references: list[Seq | str], genetic_code: int) -> float:
         else:
             F_val_avg_lst.append(nan)
     if F_val_avg_lst[2] in [0, nan]:
+        # correction based on Fuglsang (2004)
         f_2, f_4, f_6 = F_val_avg_lst[3], F_val_avg_lst[1], F_val_avg_lst[0]
         if 0 not in [f_2, f_4, f_6]:
             f_3 = ((((2 / f_2) - 1) ** -1) + (((2 / (3 * f_4)) + (1 / 3)) ** -1) + (
