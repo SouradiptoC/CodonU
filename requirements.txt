@@ -4,3 +4,4 @@ pandas>=2.0.0
 matplotlib~=3.6.3
 scipy~=1.10.0
 prince~=0.7.1
+gtAI~=1.0.4
