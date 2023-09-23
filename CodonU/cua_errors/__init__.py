@@ -6,3 +6,4 @@ from .ter_seq_err import TerSeqError
 from .unsupported_type import UnsupportedType
 from .codon_table_exist_err import CodonTableExistsError
 from .bad_seq_err import BadSequenceError
+from .unsupported_db import UnsupportedDatabase
