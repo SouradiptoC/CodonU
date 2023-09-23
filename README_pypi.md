@@ -20,6 +20,7 @@ Various functionalities can be found below. For gene/genome analysis, this packa
     - Calculate CAI
     - Calculate CBI
     - Calculate ENc
+    - Calculate tAI
 - For Protein sequences
     - Calculate Aromaticity
     - Calculate gravy

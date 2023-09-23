@@ -15,7 +15,12 @@
 
 Welcome to CodonU!
 
-This is an integrated package for codon usage analysis. For knowing more about motivation and workflow, please read the [Thesis](https://doi.org/10.5281/zenodo.8154433).
+This is an integrated package for codon usage analysis. For knowing more about motivation and workflow, please read
+the [Thesis](https://doi.org/10.5281/zenodo.8154433).
+
+# What's New (As of September 23rd, 2023)
+
+Now you can analyze tRNA adaptation index
 
 # Functionalities
 
@@ -26,6 +31,7 @@ Various functionalities can be found below. For gene/genome analysis, this packa
     - Calculate CAI
     - Calculate CBI
     - Calculate ENc
+    - Calculate tAI
 - For Protein sequences
     - Calculate Aromaticity
     - Calculate gravy
@@ -112,3 +118,6 @@ Please cite the work as
   Science, vol. 27, no. 1, pp. 135–145, Jan. 2018, doi: [10.1002/pro.3290](https://doi.org/10.1002/pro.3290).
 * M. A. Larkin et al., “Clustal W and Clustal X version 2.0,” Bioinformatics, vol. 23, no. 21, pp. 2947–2948, Nov. 2007,
   doi: [10.1093/bioinformatics/btm404](https://doi.org/10.1093/bioinformatics/btm404).
+* Anwar et al., "gtAI: an improved species-specific tRNA adaptation index using the genetic algorithm", Frontiers in
+  Molecular Biosciences, vol. 10, Jul. 2023,
+  doi: [10.3389/fmolb.2023.1218518](https://doi.org/10.3389/fmolb.2023.1218518)
