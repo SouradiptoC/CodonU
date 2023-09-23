@@ -10,7 +10,35 @@ from Bio.SeqUtils import seq3, GC123
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
 from scipy.stats import gmean
 from CodonU.cua_warnings import NoSynonymousCodonWarning, MissingCodonWarning
-from CodonU.cua_errors import NoProteinError, CodonTableExistsError, BadSequenceError
+from CodonU.cua_errors import NoProteinError, CodonTableExistsError, BadSequenceError, NucleotideError
+
+
+def is_not_bad_seq(seq: Seq | str) -> bool:
+    """
+    Checks if the sequence is bad i.e. length of the sequence is not divisible by 3
+
+    :param seq: The nucleotide sequence
+    :return: True if seq is not badpass
+    :raises BadSequenceError: If the seq is bad
+    """
+    if len(seq) % 3 == 0:
+        return True
+    else:
+        raise BadSequenceError(seq)
+
+
+def not_contains_amb_letter(seq: Seq | str) -> bool:
+    """
+    Checks if provided sequence contains ambiguous DNA letters
+
+    :param seq: Provided sequence
+    :return: True if sequence does not contain ambiguous letter
+    :raise NucleotideError: If sequence contain ambiguous letter
+    """
+    amb_letters = "BDHKMNRVXY"
+    if any(letter in amb_letters for letter in seq):
+        raise NucleotideError(1)
+    return True
 
 
 def g3(seq: Seq | str) -> float:
@@ -66,20 +94,6 @@ def at_123(seq: Seq | str) -> tuple[float, float | int, float | int, float | int
     """
     gc_tot, gc_1, gc_2, gc_3 = gc_123(seq)
     return 100 - gc_tot, 100 - gc_1, 100 - gc_2, 100 - gc_3
-
-
-def is_not_bad_seq(seq: Seq | str) -> bool:
-    """
-    Checks if the sequence is bad i.e. length of the sequence is not divisible by 3
-
-    :param seq: The nucleotide sequence
-    :return: True if seq is not bad
-    :raises BadSequenceError: If the seq is bad
-    """
-    if len(seq) % 3 == 0:
-        return True
-    else:
-        raise BadSequenceError(seq)
 
 
 def custom_codon_table(name: str, alt_name: Optional[str], genetic_code_id: int, forward_table: dict[str, str],
