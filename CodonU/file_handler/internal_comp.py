@@ -1,10 +1,11 @@
 import os
+from typing import Optional
 from Bio import Entrez
 from CodonU.cua_errors import FileNotEmptyError
 from CodonU.cua_warnings import EmailWarning, ApiWarning
 
 
-def set_entrez_email(email: str | None) -> None:
+def set_entrez_email(email: Optional[str]) -> None:
     """
     Sets Bio.Entrez.email parameter to given email
 
@@ -19,7 +20,7 @@ def set_entrez_email(email: str | None) -> None:
         warning.warn()
 
 
-def set_entrez_api_key(api_key: str | None) -> None:
+def set_entrez_api_key(api_key: Optional[str]) -> None:
     """
     Sets Bio.Entrez.api_key parameter to given api_key
 
