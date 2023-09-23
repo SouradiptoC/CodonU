@@ -17,6 +17,6 @@ def write_nucleotide_fasta(file_name: str, cds_lst: tuple, record: SeqRecord, or
     if not is_file(file_name) or is_file_empty(file_name):
         with open(file_name, 'w') as out_file:
             for i in range(len(cds_lst)):
-                cds = extract_cds(record, cds_lst[i], i + 1)
+                cds = extract_cds(record, cds_lst[i])
                 write(cds, out_file, 'fasta')
     print(f"Nucleotide file for {organism_name} created successfully")
