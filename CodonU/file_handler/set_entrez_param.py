@@ -1,7 +1,8 @@
 from .internal_comp import set_entrez_email, set_entrez_api_key
+from typing import Optional
 
 
-def set_entrez_param(email: str | None = None, api_key: str | None = None) -> None:
+def set_entrez_param(email: Optional[str] = None, api_key: Optional[str] = None) -> None:
     """
     Sets entrez parameters
 
