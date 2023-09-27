@@ -22,7 +22,7 @@ def calculate_rscu(handle: str, genetic_code_num: int, min_len_threshold: int = 
     :return: The dictionary containing codon and rscu value pairs if gene_analysis is false, otherwise the dictionary containing the gene name and the codon & rscu value pairs
     """
     records = parse(handle, 'fasta')
-    filtered_records = filter_reference(records, min_len_threshold)
+    filtered_records = filter_reference(records, min_len_threshold, 'nuc')
     if gene_analysis:
         rscu_dict = dict()
         for record in filtered_records:
