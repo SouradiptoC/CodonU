@@ -22,7 +22,7 @@ def calculate_aromaticity(handle: str, min_len_threshold: int = 66, gene_analysi
     gene number and corresponding GRAVY score
     """
     records = parse(handle, 'fasta')
-    filtered_records = filter_reference(records, min_len_threshold)
+    filtered_records = filter_reference(records, min_len_threshold, 'aa')
     if gene_analysis:
         aroma_dict = dict()
         for record in filtered_records:
