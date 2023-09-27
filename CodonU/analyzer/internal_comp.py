@@ -13,18 +13,23 @@ from CodonU.cua_warnings import NoSynonymousCodonWarning, MissingCodonWarning
 from CodonU.cua_errors import NoProteinError, CodonTableExistsError, BadSequenceError, NucleotideError
 
 
-def is_not_bad_seq(seq: Seq | str) -> bool:
+def is_not_bad_seq(seq: Seq | str, code: int, _type: str) -> bool:
     """
     Checks if the sequence is bad i.e. length of the sequence is not divisible by 3
 
     :param seq: The nucleotide sequence
-    :return: True if seq is not badpass
+    :param code: The code to call BadSequenceError (1 or 2)
+    :param _type: Type of sequence, i.e. 'nuc'
+    :return: True if seq is not bad
     :raises BadSequenceError: If the seq is bad
     """
-    if len(seq) % 3 == 0:
+    if _type == 'nuc':
+        if len(seq) % 3 == 0:
+            return True
+        else:
+            raise BadSequenceError(seq, code)
+    elif _type == 'aa':
         return True
-    else:
-        raise BadSequenceError(seq)
 
 
 def not_contains_amb_letter(seq: Seq | str) -> bool:
@@ -121,15 +126,17 @@ def custom_codon_table(name: str, alt_name: Optional[str], genetic_code_id: int,
                         start_codons=start_codons, stop_codons=stop_codons)
 
 
-def filter_reference(records, min_len_threshold: int) -> list[SeqRecord]:
+def filter_reference(records, min_len_threshold: int, _type: str) -> list[SeqRecord]:
     """
     Filters the list of reference based on given threshold of length
 
     :param records: A generator object holding the sequence objects
     :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
+    :param _type: Type of sequence, i.e. 'nuc' or 'aa
     :return: The list of usable sequences
     """
-    filtered_lst = [record for record in records if len(record.seq) >= min_len_threshold]
+    filtered_lst = [record for record in records if
+                    len(record.seq) >= min_len_threshold and is_not_bad_seq(record, 2, _type)]
     return filtered_lst
 
 
@@ -189,7 +196,7 @@ def rscu(references: list[Seq | str], genetic_code: int) -> dict[str, float]:
     :return: A dictionary containing codons and their respective RSCU values
     """
     sequences = ((sequence[i:i + 3].upper() for i in range(0, len(sequence), 3)) for sequence in references if
-                 is_not_bad_seq(sequence))
+                 is_not_bad_seq(sequence, 1, 'nuc'))
     codons = chain.from_iterable(sequences)  # flat list for Counter
     counts = dict(Counter(codons))  # Counters can not handle float values, hence dict
 
@@ -239,7 +246,7 @@ def cai(nuc_seq: Seq | str, references: list[Seq | str], genetic_code: int) -> f
     :param genetic_code: Genetic table number for codon table
     :return: The CAI value for given sequence
     """
-    sequences = [nuc_seq[i: i + 3].upper() for i in range(0, len(nuc_seq), 3) if is_not_bad_seq(nuc_seq)]
+    sequences = [nuc_seq[i: i + 3].upper() for i in range(0, len(nuc_seq), 3) if is_not_bad_seq(nuc_seq, 1, 'nuc')]
     weights_dict = weights_for_cai(references, genetic_code)
     seq_weights = list()
     non_syn_codons = [codon for codon in syn_codons(unambiguous_dna_by_id[genetic_code]).keys() if
@@ -264,7 +271,7 @@ def cbi(prot_seq: Seq | str, references: list[Seq | str], genetic_code: int) -> 
     :raises MissingCodonWarning: When no codons translate to provided Amino acid
     """
     sequences = ((sequence[i:i + 3].upper() for i in range(0, len(sequence), 3)) for sequence in references if
-                 is_not_bad_seq(sequence))
+                 is_not_bad_seq(sequence, 1, 'nuc'))
     codons = chain.from_iterable(sequences)
     counts = Counter(codons)
     syn_codon_dict = reverse_table(unambiguous_dna_by_id[genetic_code])
@@ -304,7 +311,7 @@ def enc(references: list[Seq | str], genetic_code: int) -> float:
     :raises NoProteinError: If there is no codon for a certain set of amino acid
     """
     sequences = ((sequence[i: i + 3].upper() for i in range(0, len(sequence), 3)) for sequence in references if
-                 is_not_bad_seq(sequence))
+                 is_not_bad_seq(sequence, 1, 'nuc'))
     codons = chain.from_iterable(sequences)
     counts = Counter(codons)
     syn_dct = reverse_table(unambiguous_dna_by_id[genetic_code])
