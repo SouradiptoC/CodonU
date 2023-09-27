@@ -19,11 +19,11 @@ def plot_neutrality(handle: str | Any, min_len_threshold: int, organism_name: st
     """
     filterwarnings('ignore')
     records = parse(handle, 'fasta')
-    reference = filter_reference(records, min_len_threshold)
+    reference = filter_reference(records, min_len_threshold, _type='nuc')
     gc_12_lst = []
     gc_3_lst = []
-    for seq in reference:
-        _, gc_1, gc_2, gc_3 = gc_123(seq)
+    for record in reference:
+        _, gc_1, gc_2, gc_3 = gc_123(record.seq)
         # taking avg of gc_1 and gc_2
         gc_12_lst.append((gc_1 + gc_2) / 2 / 100)
         gc_3_lst.append(gc_3 / 100)

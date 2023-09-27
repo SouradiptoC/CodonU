@@ -19,16 +19,16 @@ def plot_pr2(handle: str | Any, min_len_threshold: int, organism_name: str | Non
     """
     filterwarnings('ignore')
     records = parse(handle, 'fasta')
-    reference = filter_reference(records, min_len_threshold)
+    reference = filter_reference(records, min_len_threshold, _type='nuc')
     gc3_val_lst = []
     g3_val_lst = []
     at3_val_lst = []
     a3_val_lst = []
-    for seq in reference:
-        _, _, _, gc3 = gc_123(seq)
-        _, _, _, at3 = at_123(seq)
-        g_3 = g3(seq)
-        a_3 = a3(seq)
+    for record in reference:
+        _, _, _, gc3 = gc_123(record.seq)
+        _, _, _, at3 = at_123(record.seq)
+        g_3 = g3(record.seq)
+        a_3 = a3(record.seq)
         gc3_val_lst.append(gc3 / 100)
         at3_val_lst.append(at3 / 100)
         g3_val_lst.append(g_3 / 100)

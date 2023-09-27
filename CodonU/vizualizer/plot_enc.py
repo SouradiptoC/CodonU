@@ -20,11 +20,11 @@ def plot_enc(handle: str | Any, genetic_table_num: int, min_len_threshold: int =
     """
     filterwarnings('ignore')
     records = parse(handle, 'fasta')
-    reference = filter_reference(records, min_len_threshold)
+    reference = filter_reference(records, min_len_threshold, _type='nuc')
     enc_val_lst = []
     gc3_val_lst = []
-    for seq in reference:
-        enc_val_lst.append(enc([seq], genetic_table_num))
-        gc3_val_lst.append(gc_123(seq)[-1] / 100)
+    for record in reference:
+        enc_val_lst.append(enc([record.seq], genetic_table_num))
+        gc3_val_lst.append(gc_123(record.seq)[-1] / 100)
 
     _plot_enc(enc_val_lst, gc3_val_lst, organism_name, save_image, folder_path, gene_analysis)
