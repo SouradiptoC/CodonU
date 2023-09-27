@@ -4,3 +4,4 @@ from .no_codon_warn import NoCodonWarning
 from .api_warn import ApiWarning
 from .email_warn import EmailWarning
 from .no_codon_warn import NoCodonWarning
+from .ca_component_warn import CAComponentWarn
