@@ -26,7 +26,7 @@ def calculate_cbi(handle: str, genetic_code_num: int, min_len_threshold: int = 6
     optimal codon pairs
      """
     records = parse(handle, 'fasta')
-    filtered_records = filter_reference(records, min_len_threshold)
+    filtered_records = filter_reference(records, min_len_threshold, 'nuc')
     filterwarnings('ignore')
     cbi_dict = dict()
     if gene_analysis:

@@ -27,7 +27,7 @@ def calculate_cai(handle: str, genetic_code_num: int, min_len_threshold: int = 2
     filterwarnings('ignore')
     cai_dict = dict()
     records = parse(handle, 'fasta')
-    filtered_records = filter_reference(records, min_len_threshold)
+    filtered_records = filter_reference(records, min_len_threshold, 'nuc')
     if gene_analysis:
         for record in filtered_records:
             cai_val_dict = dict()

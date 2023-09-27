@@ -23,7 +23,7 @@ def calculate_enc(handle: str, genetic_code_num: int, min_len_threshold=200, gen
     :return: The ENc value if gene_analysis is false, else a dictionary containing gene number and corresponding ENc value
     """
     records = parse(handle, 'fasta')
-    filtered_records = filter_reference(records, min_len_threshold)
+    filtered_records = filter_reference(records, min_len_threshold, 'nuc')
     filterwarnings('ignore')
     if gene_analysis:
         enc_dict = dict()

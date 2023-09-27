@@ -21,7 +21,7 @@ def calculate_gravy(handle: str, min_len_threshold: int = 66, gene_analysis: boo
     :return: The GRAVY score of given sequence if gene_analysis is false, else the dictionary containing gene number and corresponding GRAVY score
     """
     records = parse(handle, 'fasta')
-    filtered_records = filter_reference(records, min_len_threshold)
+    filtered_records = filter_reference(records, min_len_threshold, 'aa')
     filterwarnings('ignore')
     if gene_analysis:
         gravy_dict = dict()
