@@ -1,0 +1,28 @@
+:py:mod:`CodonU.extractor.extract_cds`
+======================================
+
+.. py:module:: CodonU.extractor.extract_cds
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   CodonU.extractor.extract_cds.extract_cds
+
+
+
+.. py:function:: extract_cds(record: Bio.SeqRecord.SeqRecord, feature_location: Bio.SeqFeature.FeatureLocation) -> Bio.SeqRecord.SeqRecord
+
+   Returns the CDS as a Sequence Record object
+
+   :param record: Original Sequence Record object from where the CDS is to be extracted
+   :param feature_location: The location of CDS
+   :return: The new Sequence Record object containing the CDS
+
+

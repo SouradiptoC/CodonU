@@ -1,0 +1,34 @@
+:py:mod:`CodonU.correspondence_analysis.ca_codon`
+=================================================
+
+.. py:module:: CodonU.correspondence_analysis.ca_codon
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   CodonU.correspondence_analysis.ca_codon.ca_codon
+
+
+
+.. py:function:: ca_codon(contingency_table: pandas.DataFrame, n_components: int = 59, single_syn_codons: Optional[list[str]] = None, save_file: bool = False, file_name: str = 'CA_codon', folder_path: str = 'Report') -> prince.CA
+
+   Performs CA on codon frequency or RSCU contingency table
+
+   **Note** Gene descriptions must be index headings and codons must column headings of the table
+
+   :param contingency_table: The contingency table (pandas DataFrame object)
+   :param n_components: Components for CA
+   :param single_syn_codons: List of codons belonging to SF1
+   :param save_file: Option for saving the values in xlsx format (Optional)
+   :param file_name: Intended file name (Optional)
+   :param folder_path: Folder path where image should be saved (optional)
+   :return: The CA object
+
+

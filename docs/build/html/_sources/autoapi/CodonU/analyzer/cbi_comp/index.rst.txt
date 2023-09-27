@@ -1,0 +1,36 @@
+:py:mod:`CodonU.analyzer.cbi_comp`
+==================================
+
+.. py:module:: CodonU.analyzer.cbi_comp
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   CodonU.analyzer.cbi_comp.calculate_cbi
+
+
+
+.. py:function:: calculate_cbi(handle: str, genetic_code_num: int, min_len_threshold: int = 66, gene_analysis: bool = False, save_file: bool = False, file_name: str = 'CBI_report', folder_path: str = 'Report') -> dict[str, tuple[float, str] | dict[str, tuple[float, str]]]
+
+   Calculates cbi values for each amino acid based on Bennetzen and Hall (1982)
+
+   :param handle: Handle to the file, or the filename as a string
+   :param genetic_code_num: Genetic table number for codon table
+   :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
+   :param gene_analysis: Option if gene analysis (True) or genome analysis (False) (optional)
+   :param save_file: Option for saving the values in xlsx format (Optional)
+   :param file_name: Intended file name (Optional)
+   :param folder_path: Folder path where image should be saved (optional)
+   :return: The dictionary containing amino acid and cbi value, optimal codon pairs if gene_analysis is false,
+   otherwise returns the dictionary containing gene name and dictionary containing amino acid and cbi value,
+   optimal codon pairs
+    
+
+

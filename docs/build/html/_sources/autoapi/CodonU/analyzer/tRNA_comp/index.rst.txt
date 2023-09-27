@@ -1,0 +1,60 @@
+:py:mod:`CodonU.analyzer.tRNA_comp`
+===================================
+
+.. py:module:: CodonU.analyzer.tRNA_comp
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   CodonU.analyzer.tRNA_comp.get_anticodon_count_dict
+   CodonU.analyzer.tRNA_comp.calculate_gtai
+
+
+
+.. py:function:: get_anticodon_count_dict(url: str, database: str) -> dict[str, int]
+
+   Retrieves the anticodon table from given link
+
+   **NOTE:** The *database* can have only two values, i.e. "*tRNADB_CE*" and "*GtRNAdb*"
+       * For using *tRNADB_CE*, please visit http://trna.ie.niigata-u.ac.jp/cgi-bin/trnadb/index.cgi
+       * For using *GtRNAdb*, please visit http://gtrnadb.ucsc.edu/
+
+   :param url: URL to anticodon table
+   :param database: Type of database from the above options
+   :return: The dictionary containing anticodon as key and count as val
+   :raise UnsupportedDatabase: If *database* has other values than mentioned
+
+
+.. py:function:: calculate_gtai(handle: str, anticodon_dict: dict, genetic_code_num: int, reference: Optional[str] = None, size_pop: int = 60, generation_num: int = 100, save_file: bool = False, file_name: str = 'tAI_report', folder_path: str = 'Report') -> tuple[pandas.DataFrame, pandas.DataFrame, pandas.DataFrame]
+
+       Calculates the gtAI value for each gene according to Anwar et al., 2023
+
+       The function returns following dataframes:
+           * tai_df: The dataframe contains gene description and tAI values
+           * abs_wi_df: The dataframe contains each anticodon and absolute weights according to the paper
+           * rel_wi_df: The dataframe contains each anticodon and relative weights according to the paper
+       
+   **Note:** The function will generate a file named 'best_fit.py'
+
+       :param handle: Path to the fasta file as a string
+       :param anticodon_dict: The dictionary containing anticodon as key and count as value
+       :param genetic_code_num: Genetic table number for codon table
+       :param reference: Path to the reference fasta file as a string (Optional)
+       :param size_pop: A parameter for the genetic algorithm to identify the population size (Optional)
+       :param generation_num: A parameter for the genetic algorithm to identify the generation number (Optional)
+       :param save_file: Option for saving the values in xlsx format (Optional)
+       :param file_name: Intended file name (Optional)
+       :param folder_path: Folder path where image should be saved (optional)
+       :return: A tuple of 3 dataframes, as discussed earlier
+       :raises FileExistsError: If re-write permission is not given for the file `best_fit.py`
+       :raises ImportError: If `best_fit.py` is not created or deleted after creation
+       
+
+

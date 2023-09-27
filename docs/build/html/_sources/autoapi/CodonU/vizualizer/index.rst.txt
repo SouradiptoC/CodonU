@@ -1,0 +1,203 @@
+:py:mod:`CodonU.vizualizer`
+===========================
+
+.. py:module:: CodonU.vizualizer
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   plot_ca_aa_freq_aa/index.rst
+   plot_ca_aa_freq_gene/index.rst
+   plot_ca_codon_freq_codon/index.rst
+   plot_ca_codon_freq_gene/index.rst
+   plot_ca_codon_rscu_codon/index.rst
+   plot_ca_codon_rscu_gene/index.rst
+   plot_enc/index.rst
+   plot_funcs/index.rst
+   plot_neutrality/index.rst
+   plot_phy_dnd/index.rst
+   plot_phy_fas/index.rst
+   plot_phy_nex/index.rst
+   plot_pr2/index.rst
+
+
+Package Contents
+----------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   CodonU.vizualizer.plot_enc
+   CodonU.vizualizer.plot_pr2
+   CodonU.vizualizer.plot_neutrality
+   CodonU.vizualizer.plot_phy_dnd
+   CodonU.vizualizer.plot_phy_nex
+   CodonU.vizualizer.plot_phy_fas
+   CodonU.vizualizer.plot_ca_codon_freq_codon
+   CodonU.vizualizer.plot_ca_codon_freq_gene
+   CodonU.vizualizer.plot_ca_codon_rscu_codon
+   CodonU.vizualizer.plot_ca_codon_rscu_gene
+   CodonU.vizualizer.plot_ca_aa_freq_aa
+   CodonU.vizualizer.plot_ca_aa_freq_gene
+
+
+
+.. py:function:: plot_enc(handle: str | Any, genetic_table_num: int, min_len_threshold: int = 200, organism_name: None | str = None, save_image: bool = False, folder_path: str = 'Report', gene_analysis: bool = True)
+
+   Plots ENc curve from given fasta file
+
+   :param handle: Handle to the file, or the filename as a string
+   :param genetic_table_num: Genetic table number for codon table
+   :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
+   :param organism_name: Name of organism (optional)
+   :param save_image: Options for saving the image (optional)
+   :param folder_path: Folder path where image should be saved (optional)
+   :param gene_analysis: Option if gene analysis (True) or genome analysis (False) (optional)
+
+
+.. py:function:: plot_pr2(handle: str | Any, min_len_threshold: int, organism_name: str | None = None, save_image: bool = False, folder_path: str = '', gene_analysis: bool = True)
+
+   Plots A3/AT3 values against G3/GC3 values from given fasta file
+
+   :param handle: Handle to the file, or the filename as a string
+   :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
+   :param organism_name: Name of organism (optional)
+   :param save_image: Options for saving the image (optional)
+   :param folder_path: Folder path where image should be saved (optional)
+   :param gene_analysis: Option if gene analysis (True) or genome analysis (False) (optional)
+
+
+.. py:function:: plot_neutrality(handle: str | Any, min_len_threshold: int, organism_name: str | None = None, save_image: bool = False, folder_path: str = '', gene_analysis: bool = True)
+
+   Plots neutrality plot from given fasta file
+
+   :param handle: Handle to the file, or the filename as a string
+   :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene
+   :param organism_name: Name of organism (optional)
+   :param save_image: Options for saving the image (optional)
+   :param folder_path: Folder path where image should be saved (optional)
+   :param gene_analysis: Option if gene analysis (True) or genome analysis (False) (optional)
+
+
+.. py:function:: plot_phy_dnd(handle: str, title: str = 'Phylogenetic Tree', save_image: bool = False, folder_path: str = 'Report')
+
+   Plots phylogenetic tree from dnd file
+
+   :param handle: Handle to the dnd file
+   :param title: Title of the plot
+   :param save_image: Options for saving the image (optional)
+   :param folder_path: Folder path where image should be saved (optional)
+
+
+.. py:function:: plot_phy_nex(handle: str, title: str = 'Phylogenetic Tree', save_image: bool = False, folder_path: str = 'Report')
+
+   Plots phylogenetic tree from nexus file
+
+   :param handle: Handle to the nexus file
+   :param title: Title of the plot
+   :param save_image: Options for saving the image (optional)
+   :param folder_path: Folder path where image should be saved (optional)
+
+
+.. py:function:: plot_phy_fas(handle: str, title: str = 'Phylogenetic Tree', save_image: bool = False, folder_path: str = 'Report')
+
+   Plots phylogenetic tree from fasta file
+
+   :param handle: Handle to the fasta file
+   :param title: Title of the plot
+   :param save_image: Options for saving the image (optional)
+   :param folder_path: Folder path where image should be saved (optional)
+
+
+.. py:function:: plot_ca_codon_freq_codon(handle: str, genetic_table_num: int, min_len_threshold: int = 200, n_components: int = 2, single_syn_codons: Optional[list] = None, organism_name: Optional[str] = None, save_image: bool = False, folder_path: str = 'Report')
+
+   Plots CA of codon frequency for codons with frequency as scale
+
+   :param handle: Handle to the file, or the filename as a string
+   :param genetic_table_num: Genetic table number for codon table
+   :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene (optional)
+   :param n_components: Components for CA (Optional)
+   :param single_syn_codons: List of codons belonging to SF1 (optional)
+   :param organism_name: Name of organism (optional)
+   :param save_image: Options for saving the image (optional)
+   :param folder_path: Folder path where image should be saved (optional)
+
+
+.. py:function:: plot_ca_codon_freq_gene(handle: str, genetic_table_num: int, min_len_threshold: int = 200, n_components: int = 2, single_syn_codons: Optional[list] = None, organism_name: Optional[str] = None, save_image: bool = False, folder_path: str = 'Report')
+
+   Plots CA of codon frequency for genes with gene length as scale
+
+   :param handle: Handle to the file, or the filename as a string
+   :param genetic_table_num: Genetic table number for codon table
+   :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene (optional)
+   :param n_components: Components for CA (Optional)
+   :param single_syn_codons: List of codons belonging to SF1 (optional)
+   :param organism_name: Name of organism (optional)
+   :param save_image: Options for saving the image (optional)
+   :param folder_path: Folder path where image should be saved (optional)
+
+
+.. py:function:: plot_ca_codon_rscu_codon(handle: str, genetic_table_num: int, min_len_threshold: int = 200, n_components: int = 2, single_syn_codons: Optional[list] = None, organism_name: Optional[str] = None, save_image: bool = False, folder_path: str = 'Report')
+
+   Plots CA of codon RSCU for codons with frequency as scale
+
+   :param handle: Handle to the file, or the filename as a string
+   :param genetic_table_num: Genetic table number for codon table
+   :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene (optional)
+   :param n_components: Components for CA (Optional)
+   :param single_syn_codons: List of codons belonging to SF1 (optional)
+   :param organism_name: Name of organism (optional)
+   :param save_image: Options for saving the image (optional)
+   :param folder_path: Folder path where image should be saved (optional)
+
+
+.. py:function:: plot_ca_codon_rscu_gene(handle: str, genetic_table_num: int, min_len_threshold: int = 200, n_components: int = 2, single_syn_codons: Optional[list] = None, organism_name: Optional[str] = None, save_image: bool = False, folder_path: str = 'Report')
+
+   Plots CA of codon RSCU for codons with frequency as scale
+
+   :param handle: Handle to the file, or the filename as a string
+   :param genetic_table_num: Genetic table number for codon table
+   :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene (optional)
+   :param n_components: Components for CA (Optional)
+   :param single_syn_codons: List of codons belonging to SF1 (optional)
+   :param organism_name: Name of organism (optional)
+   :param save_image: Options for saving the image (optional)
+   :param folder_path: Folder path where image should be saved (optional)
+
+
+.. py:function:: plot_ca_aa_freq_aa(handle: str, genetic_table_num: int, min_len_threshold: int = 66, n_components: int = 2, organism_name: Optional[str] = None, save_image: bool = False, folder_path: str = 'Report')
+
+   Plots CA of codon frequency for codons with frequency as scale
+
+   :param handle: Handle to the file, or the filename as a string
+   :param genetic_table_num: Genetic table number for codon table
+   :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene (optional)
+   :param n_components: Components for CA (Optional)
+   :param organism_name: Name of organism (optional)
+   :param save_image: Options for saving the image (optional)
+   :param folder_path: Folder path where image should be saved (optional)
+
+
+.. py:function:: plot_ca_aa_freq_gene(handle: str, genetic_table_num: int, scale: str, min_len_threshold: int = 66, n_components: int = 2, organism_name: Optional[str] = None, save_image: bool = False, folder_path: str = 'Report')
+
+   Plots CA of codon frequency for codons with provided scale
+
+   **NOTE** Values of `scale` supported are `'gravy'`, `'aroma'`
+
+   :param handle: Handle to the file, or the filename as a string
+   :param genetic_table_num: Genetic table number for codon table
+   :param scale: Scale for gene colors
+   :param min_len_threshold: Minimum length of nucleotide sequence to be considered as gene (optional)
+   :param n_components: Components for CA (Optional)
+   :param organism_name: Name of organism (optional)
+   :param save_image: Options for saving the image (optional)
+   :param folder_path: Folder path where image should be saved (optional)
+
+

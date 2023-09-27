@@ -1,0 +1,72 @@
+:py:mod:`CodonU.extractor`
+==========================
+
+.. py:module:: CodonU.extractor
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   extract_cds/index.rst
+   extract_cds_lst/index.rst
+   extract_exome/index.rst
+   extract_prot/index.rst
+   internal_comp/index.rst
+
+
+Package Contents
+----------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   CodonU.extractor.extract_cds_lst
+   CodonU.extractor.extract_cds
+   CodonU.extractor.extract_prot
+   CodonU.extractor.extract_exome
+
+
+
+.. py:function:: extract_cds_lst(record: Bio.SeqRecord.SeqRecord) -> tuple[Any, Ellipsis]
+
+   Extracts the list of features if their type is CDS
+
+   :param record: Original Sequence Record object from where the CDS is to be extracted
+   :return: A tuple of FeatureLocation objects
+
+
+.. py:function:: extract_cds(record: Bio.SeqRecord.SeqRecord, feature_location: Bio.SeqFeature.FeatureLocation) -> Bio.SeqRecord.SeqRecord
+
+   Returns the CDS as a Sequence Record object
+
+   :param record: Original Sequence Record object from where the CDS is to be extracted
+   :param feature_location: The location of CDS
+   :return: The new Sequence Record object containing the CDS
+
+
+.. py:function:: extract_prot(feature: Bio.SeqFeature.SeqFeature, organism_name: str, cds_no: int = 0) -> Bio.SeqRecord.SeqRecord
+
+   Extracts protein sequences and return them for writing
+
+   :param feature: The CDS
+   :param organism_name: Name of the organism
+   :param cds_no: Number of the CDS
+   :return: The protein sequence suitable for being written is fasta format
+
+
+.. py:function:: extract_exome(nuc_file_path: str, organism_name: str, exclude_stops: bool = True) -> Bio.SeqRecord.SeqRecord
+
+   Extracts the exome from given nucleotides
+
+   :param nuc_file_path: The path to the nucleotide file
+   :param organism_name: Name of the organism
+   :param exclude_stops: If true, intermediate stops codons are excluded from exome
+   :return: The exome
+
+

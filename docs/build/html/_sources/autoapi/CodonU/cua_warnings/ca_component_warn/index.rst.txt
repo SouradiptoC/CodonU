@@ -1,0 +1,19 @@
+:py:mod:`CodonU.cua_warnings.ca_component_warn`
+===============================================
+
+.. py:module:: CodonU.cua_warnings.ca_component_warn
+
+
+Module Contents
+---------------
+
+.. py:exception:: CAComponentWarn(comp, dim)
+
+   Bases: :py:obj:`CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning`
+
+   Occurs when CA component is greater than data dimension
+
+   .. py:method:: warn()
+
+
+

@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodonU.analyzer &mdash; CodonU 1.1.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="CodonU.analyzer.aromaticity_comp" href="aromaticity_comp/index.html" />
+    <link rel="prev" title="CodonU" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            CodonU
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CodonU</span></code></a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CodonU.analyzer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../correspondence_analysis/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CodonU.correspondence_analysis</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cua_errors/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CodonU.cua_errors</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cua_warnings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CodonU.cua_warnings</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extractor/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CodonU.extractor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../file_handler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CodonU.file_handler</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../phylogenetic_analysis/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CodonU.phylogenetic_analysis</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vizualizer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CodonU.vizualizer</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">CodonU</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CodonU</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CodonU.analyzer</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/autoapi/CodonU/analyzer/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-CodonU.analyzer">
+<span id="codonu-analyzer"></span><h1><a class="reference internal" href="#module-CodonU.analyzer" title="CodonU.analyzer"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CodonU.analyzer</span></code></a><a class="headerlink" href="#module-CodonU.analyzer" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aromaticity_comp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CodonU.analyzer.aromaticity_comp</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="cai_comp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CodonU.analyzer.cai_comp</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="cbi_comp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CodonU.analyzer.cbi_comp</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="enc_comp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CodonU.analyzer.enc_comp</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="generate_report/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CodonU.analyzer.generate_report</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="generate_report_summary/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CodonU.analyzer.generate_report_summary</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="gravy_comp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CodonU.analyzer.gravy_comp</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="internal_comp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CodonU.analyzer.internal_comp</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="rscu_comp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CodonU.analyzer.rscu_comp</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="tRNA_comp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CodonU.analyzer.tRNA_comp</span></code></a></li>
+</ul>
+</div>
+</section>
+<section id="package-contents">
+<h2>Package Contents<a class="headerlink" href="#package-contents" title="Permalink to this heading"></a></h2>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#CodonU.analyzer.calculate_cai" title="CodonU.analyzer.calculate_cai"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_cai</span></code></a>(→ dict[str, float | dict[str, float]])</p></td>
+<td><p>Calculates cai values for each codon</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#CodonU.analyzer.calculate_rscu" title="CodonU.analyzer.calculate_rscu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_rscu</span></code></a>(→ dict[str, float | dict[str, float]])</p></td>
+<td><p>Calculates rscu values for each codon</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#CodonU.analyzer.calculate_cbi" title="CodonU.analyzer.calculate_cbi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_cbi</span></code></a>(→ dict[str, tuple[float, ...)</p></td>
+<td><p>Calculates cbi values for each amino acid based on Bennetzen and Hall (1982)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#CodonU.analyzer.calculate_enc" title="CodonU.analyzer.calculate_enc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_enc</span></code></a>(→ float or dict[str, float])</p></td>
+<td><p>Calculates ENc value for a given sequences</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#CodonU.analyzer.calculate_gravy" title="CodonU.analyzer.calculate_gravy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_gravy</span></code></a>(→ dict[str, float] | float)</p></td>
+<td><p>Calculates the gravy score for a given protein sequence according to Kyte and Doolittle (1982)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#CodonU.analyzer.calculate_aromaticity" title="CodonU.analyzer.calculate_aromaticity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_aromaticity</span></code></a>(→ dict[str, float] | float)</p></td>
+<td><p>Calculates the aromaticity score for a given protein sequence according to Lobry (1994)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#CodonU.analyzer.get_anticodon_count_dict" title="CodonU.analyzer.get_anticodon_count_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_anticodon_count_dict</span></code></a>(→ dict[str, int])</p></td>
+<td><p>Retrieves the anticodon table from given link</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#CodonU.analyzer.calculate_gtai" title="CodonU.analyzer.calculate_gtai"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_gtai</span></code></a>(→ tuple[pandas.DataFrame, ...)</p></td>
+<td><p>Calculates the gtAI value for each gene according to Anwar et al., 2023</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#CodonU.analyzer.generate_report_summary" title="CodonU.analyzer.generate_report_summary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_report_summary</span></code></a>(handle, _type, ...[, ...])</p></td>
+<td><p>Generate the report for given sequence <strong>[best for genome analysis]</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#CodonU.analyzer.generate_report" title="CodonU.analyzer.generate_report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_report</span></code></a>(handle, _type, genetic_code_num, ...)</p></td>
+<td><p>Generate the report for given sequence <strong>[best for gene analysis]</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#CodonU.analyzer.is_not_bad_seq" title="CodonU.analyzer.is_not_bad_seq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_not_bad_seq</span></code></a>(→ bool)</p></td>
+<td><p>Checks if the sequence is bad i.e. length of the sequence is not divisible by 3</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#CodonU.analyzer.not_contains_amb_letter" title="CodonU.analyzer.not_contains_amb_letter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">not_contains_amb_letter</span></code></a>(→ bool)</p></td>
+<td><p>Checks if provided sequence contains ambiguous DNA letters</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#CodonU.analyzer.g3" title="CodonU.analyzer.g3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">g3</span></code></a>(→ float)</p></td>
+<td><p>Calculates percentage of G content for third position</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#CodonU.analyzer.a3" title="CodonU.analyzer.a3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">a3</span></code></a>(→ float)</p></td>
+<td><p>Calculates percentage of A content for third position</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#CodonU.analyzer.gc_123" title="CodonU.analyzer.gc_123"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gc_123</span></code></a>(→ tuple[float, float | int, float | int, ...)</p></td>
+<td><p>Calculate G+C content: total, for first, second and third positions</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#CodonU.analyzer.at_123" title="CodonU.analyzer.at_123"><code class="xref py py-obj docutils literal notranslate"><span class="pre">at_123</span></code></a>(→ tuple[float, float | int, float | int, ...)</p></td>
+<td><p>Calculate G+C content: total, for first, second and third positions</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#CodonU.analyzer.custom_codon_table" title="CodonU.analyzer.custom_codon_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">custom_codon_table</span></code></a>(→ None)</p></td>
+<td><p>Registers a new Codon Table as provided by the user.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#CodonU.analyzer.filter_reference" title="CodonU.analyzer.filter_reference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_reference</span></code></a>(→ list[Bio.SeqRecord.SeqRecord])</p></td>
+<td><p>Filters the list of reference based on given threshold of length</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#CodonU.analyzer.reverse_table" title="CodonU.analyzer.reverse_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reverse_table</span></code></a>(→ dict[str, list[str]])</p></td>
+<td><p>Creates the protein, codon dictionary where protein is key</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#CodonU.analyzer.syn_codons" title="CodonU.analyzer.syn_codons"><code class="xref py py-obj docutils literal notranslate"><span class="pre">syn_codons</span></code></a>(→ dict[str, list[str]])</p></td>
+<td><p>Creates the codon, synonymous codon family dictionary where codon is the key</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#CodonU.analyzer.sf_vals" title="CodonU.analyzer.sf_vals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sf_vals</span></code></a>(→ dict[int, list[str]])</p></td>
+<td><p>Creates the sf value and protein dictionary where sf value is key</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#CodonU.analyzer.rscu" title="CodonU.analyzer.rscu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rscu</span></code></a>(→ dict[str, float])</p></td>
+<td><p>Calculates relative synonymous codon usage (RSCU) value for a given nucleotide sequence according to Sharp and Li (1987)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#CodonU.analyzer.weights_for_cai" title="CodonU.analyzer.weights_for_cai"><code class="xref py py-obj docutils literal notranslate"><span class="pre">weights_for_cai</span></code></a>(→ dict[str, float])</p></td>
+<td><p>Calculates relative adaptiveness/weight value for a given nucleotide sequence according to Sharp and Li (1987)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#CodonU.analyzer.cai" title="CodonU.analyzer.cai"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cai</span></code></a>(→ float)</p></td>
+<td><p>Calculates Codon Adaptive Index (CAI) value for a given nucleotide sequence according to Sharp and Li (1987)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#CodonU.analyzer.cbi" title="CodonU.analyzer.cbi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cbi</span></code></a>(→ tuple[float, str])</p></td>
+<td><p>Calculates codon bias index (CBI) for a given protein seq based on Bennetzen and Hall (1982)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#CodonU.analyzer.enc" title="CodonU.analyzer.enc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enc</span></code></a>(→ float)</p></td>
+<td><p>Calculates Effective number of codons (Enc) based on Wright (1989) and Fuglsang (2004)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#CodonU.analyzer.gravy" title="CodonU.analyzer.gravy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gravy</span></code></a>(→ float)</p></td>
+<td><p>Computes the GRAVY score according to Kyte and Doolittle (1982)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#CodonU.analyzer.aromaticity" title="CodonU.analyzer.aromaticity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aromaticity</span></code></a>(→ float)</p></td>
+<td><p>Calculate the aromaticity score according to Lobry (1994).</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.calculate_cai">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">calculate_cai</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genetic_code_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_len_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_analysis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'CAI_report'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Report'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#CodonU.analyzer.calculate_cai" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates cai values for each codon</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> – Handle to the file, or the filename as a string</p></li>
+<li><p><strong>genetic_code_num</strong> – Genetic table number for codon table</p></li>
+<li><p><strong>min_len_threshold</strong> – Minimum length of nucleotide sequence to be considered as gene</p></li>
+<li><p><strong>gene_analysis</strong> – Option if gene analysis (True) or genome analysis (False) (optional)</p></li>
+<li><p><strong>save_file</strong> – Option for saving the values in xlsx format (Optional)</p></li>
+<li><p><strong>file_name</strong> – Intended file name (Optional)</p></li>
+<li><p><strong>folder_path</strong> – Folder path where image should be saved (optional)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The dictionary containing codon and cai value pairs if gene_analysis is False, otherwise returns the</p>
+</dd>
+</dl>
+<p>dictionary containing gene name and corresponding codon and cai value pairs</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.calculate_rscu">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">calculate_rscu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genetic_code_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_len_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_analysis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'RSCU_report'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Report'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#CodonU.analyzer.calculate_rscu" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates rscu values for each codon</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> – Handle to the file, or the filename as a string</p></li>
+<li><p><strong>genetic_code_num</strong> – Genetic table number for codon table</p></li>
+<li><p><strong>min_len_threshold</strong> – Minimum length of nucleotide sequence to be considered as gene</p></li>
+<li><p><strong>gene_analysis</strong> – Option if gene analysis (True) or genome analysis (False) (optional)</p></li>
+<li><p><strong>save_file</strong> – Option for saving the values in xlsx format (Optional)</p></li>
+<li><p><strong>file_name</strong> – Intended file name (Optional)</p></li>
+<li><p><strong>folder_path</strong> – Folder path where image should be saved (optional)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The dictionary containing codon and rscu value pairs if gene_analysis is false, otherwise the dictionary containing the gene name and the codon &amp; rscu value pairs</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.calculate_cbi">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">calculate_cbi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genetic_code_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_len_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">66</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_analysis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'CBI_report'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Report'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#CodonU.analyzer.calculate_cbi" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates cbi values for each amino acid based on Bennetzen and Hall (1982)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> – Handle to the file, or the filename as a string</p></li>
+<li><p><strong>genetic_code_num</strong> – Genetic table number for codon table</p></li>
+<li><p><strong>min_len_threshold</strong> – Minimum length of nucleotide sequence to be considered as gene</p></li>
+<li><p><strong>gene_analysis</strong> – Option if gene analysis (True) or genome analysis (False) (optional)</p></li>
+<li><p><strong>save_file</strong> – Option for saving the values in xlsx format (Optional)</p></li>
+<li><p><strong>file_name</strong> – Intended file name (Optional)</p></li>
+<li><p><strong>folder_path</strong> – Folder path where image should be saved (optional)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The dictionary containing amino acid and cbi value, optimal codon pairs if gene_analysis is false,</p>
+</dd>
+</dl>
+<p>otherwise returns the dictionary containing gene name and dictionary containing amino acid and cbi value,
+optimal codon pairs</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.calculate_enc">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">calculate_enc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genetic_code_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_len_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_analysis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ENc_report'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Report'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span> <span class="pre">or</span> <span class="pre">dict[str,</span> <span class="pre">float]</span></span></span><a class="headerlink" href="#CodonU.analyzer.calculate_enc" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates ENc value for a given sequences</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> – Handle to the file, or the filename as a string</p></li>
+<li><p><strong>genetic_code_num</strong> – Genetic table number for codon table</p></li>
+<li><p><strong>min_len_threshold</strong> – Minimum length of nucleotide sequence to be considered as gene</p></li>
+<li><p><strong>gene_analysis</strong> – Option if gene analysis (True) or genome analysis (False) (optional)</p></li>
+<li><p><strong>save_file</strong> – Option for saving the values in xlsx format (Optional)</p></li>
+<li><p><strong>file_name</strong> – Intended file name (Optional)</p></li>
+<li><p><strong>folder_path</strong> – Folder path where image should be saved (optional)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The ENc value if gene_analysis is false, else a dictionary containing gene number and corresponding ENc value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.calculate_gravy">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">calculate_gravy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_len_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">66</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_analysis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'GRAVY_report'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Report'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></span><a class="headerlink" href="#CodonU.analyzer.calculate_gravy" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the gravy score for a given protein sequence according to Kyte and Doolittle (1982)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> – Handle to the file, or the filename as a string</p></li>
+<li><p><strong>min_len_threshold</strong> – Minimum length of protein sequence to be considered as gene</p></li>
+<li><p><strong>gene_analysis</strong> – Option if gene analysis (True) or genome analysis (False) (optional)</p></li>
+<li><p><strong>save_file</strong> – Option for saving the values in xlsx format (Optional)</p></li>
+<li><p><strong>file_name</strong> – Intended file name (Optional)</p></li>
+<li><p><strong>folder_path</strong> – Folder path where image should be saved (optional)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The GRAVY score of given sequence if gene_analysis is false, else the dictionary containing gene number and corresponding GRAVY score</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.calculate_aromaticity">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">calculate_aromaticity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_len_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">66</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_analysis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Aroma_report'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Report'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></span><a class="headerlink" href="#CodonU.analyzer.calculate_aromaticity" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the aromaticity score for a given protein sequence according to Lobry (1994)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> – Handle to the file, or the filename as a string</p></li>
+<li><p><strong>min_len_threshold</strong> – Minimum length of protein sequence to be considered as gene</p></li>
+<li><p><strong>gene_analysis</strong> – Option if gene analysis (True) or genome analysis (False) (optional)</p></li>
+<li><p><strong>save_file</strong> – Option for saving the values in xlsx format (Optional)</p></li>
+<li><p><strong>file_name</strong> – Intended file name (Optional)</p></li>
+<li><p><strong>folder_path</strong> – Folder path where image should be saved (optional)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The aromaticity score of given sequence if gene_analysis is false, else the dictionary containing</p>
+</dd>
+</dl>
+<p>gene number and corresponding GRAVY score</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.get_anticodon_count_dict">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">get_anticodon_count_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#CodonU.analyzer.get_anticodon_count_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieves the anticodon table from given link</p>
+<dl class="simple">
+<dt><strong>NOTE:</strong> The <em>database</em> can have only two values, i.e. “<em>tRNADB_CE</em>” and “<em>GtRNAdb</em>”</dt><dd><ul class="simple">
+<li><p>For using <em>tRNADB_CE</em>, please visit <a class="reference external" href="http://trna.ie.niigata-u.ac.jp/cgi-bin/trnadb/index.cgi">http://trna.ie.niigata-u.ac.jp/cgi-bin/trnadb/index.cgi</a></p></li>
+<li><p>For using <em>GtRNAdb</em>, please visit <a class="reference external" href="http://gtrnadb.ucsc.edu/">http://gtrnadb.ucsc.edu/</a></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> – URL to anticodon table</p></li>
+<li><p><strong>database</strong> – Type of database from the above options</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The dictionary containing anticodon as key and count as val</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../cua_errors/index.html#CodonU.cua_errors.UnsupportedDatabase" title="CodonU.cua_errors.UnsupportedDatabase"><strong>UnsupportedDatabase</strong></a> – If <em>database</em> has other values than mentioned</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.calculate_gtai">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">calculate_gtai</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anticodon_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genetic_code_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_pop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">60</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generation_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'tAI_report'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Report'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#CodonU.analyzer.calculate_gtai" title="Permalink to this definition"></a></dt>
+<dd><blockquote>
+<div><p>Calculates the gtAI value for each gene according to Anwar et al., 2023</p>
+<dl class="simple">
+<dt>The function returns following dataframes:</dt><dd><ul class="simple">
+<li><p>tai_df: The dataframe contains gene description and tAI values</p></li>
+<li><p>abs_wi_df: The dataframe contains each anticodon and absolute weights according to the paper</p></li>
+<li><p>rel_wi_df: The dataframe contains each anticodon and relative weights according to the paper</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<p><strong>Note:</strong> The function will generate a file named ‘best_fit.py’</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param handle<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Path to the fasta file as a string</p>
+</dd>
+<dt class="field-even">param anticodon_dict<span class="colon">:</span></dt>
+<dd class="field-even"><p>The dictionary containing anticodon as key and count as value</p>
+</dd>
+<dt class="field-odd">param genetic_code_num<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Genetic table number for codon table</p>
+</dd>
+<dt class="field-even">param reference<span class="colon">:</span></dt>
+<dd class="field-even"><p>Path to the reference fasta file as a string (Optional)</p>
+</dd>
+<dt class="field-odd">param size_pop<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A parameter for the genetic algorithm to identify the population size (Optional)</p>
+</dd>
+<dt class="field-even">param generation_num<span class="colon">:</span></dt>
+<dd class="field-even"><p>A parameter for the genetic algorithm to identify the generation number (Optional)</p>
+</dd>
+<dt class="field-odd">param save_file<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Option for saving the values in xlsx format (Optional)</p>
+</dd>
+<dt class="field-even">param file_name<span class="colon">:</span></dt>
+<dd class="field-even"><p>Intended file name (Optional)</p>
+</dd>
+<dt class="field-odd">param folder_path<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Folder path where image should be saved (optional)</p>
+</dd>
+<dt class="field-even">return<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple of 3 dataframes, as discussed earlier</p>
+</dd>
+<dt class="field-odd">raises FileExistsError<span class="colon">:</span></dt>
+<dd class="field-odd"><p>If re-write permission is not given for the file <cite>best_fit.py</cite></p>
+</dd>
+<dt class="field-even">raises ImportError<span class="colon">:</span></dt>
+<dd class="field-even"><p>If <cite>best_fit.py</cite> is not created or deleted after creation</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.generate_report_summary">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">generate_report_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genetic_code_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_len_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">res_folder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Report'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CodonU.analyzer.generate_report_summary" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the report for given sequence <strong>[best for genome analysis]</strong></p>
+<dl class="simple">
+<dt>For nucleotide sequence, this generates reports of:</dt><dd><ul class="simple">
+<li><p>RSCU</p></li>
+<li><p>CAI</p></li>
+<li><p>CBI</p></li>
+<li><p>ENc</p></li>
+</ul>
+</dd>
+<dt>For protein sequence, this generates reports of:</dt><dd><ul class="simple">
+<li><p>GRAVY score</p></li>
+<li><p>Aromaticity score</p></li>
+</ul>
+</dd>
+<dt><strong>NOTE</strong> Possible types are</dt><dd><ul class="simple">
+<li><p>nuc: For nucleotide sequence</p></li>
+<li><p>aa: For protein sequence</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> – Handle to the file, or the filename as a string</p></li>
+<li><p><strong>_type</strong> – Type of the sequence [nuc or aa]</p></li>
+<li><p><strong>genetic_code_num</strong> – Genetic table number for codon table</p></li>
+<li><p><strong>min_len_threshold</strong> – Minimum length of sequence to be considered as gene</p></li>
+<li><p><strong>res_folder_path</strong> – The path of folder where the file will be saved</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.generate_report">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">generate_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genetic_code_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_len_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">res_folder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Report'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CodonU.analyzer.generate_report" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the report for given sequence <strong>[best for gene analysis]</strong></p>
+<dl class="simple">
+<dt>For nucleotide sequence, this generates reports of:</dt><dd><ul class="simple">
+<li><p>RSCU</p></li>
+<li><p>CAI</p></li>
+<li><p>CBI</p></li>
+<li><p>ENc</p></li>
+</ul>
+</dd>
+<dt>For protein sequence, this generates reports of:</dt><dd><ul class="simple">
+<li><p>GRAVY score</p></li>
+<li><p>Aromaticity score</p></li>
+</ul>
+</dd>
+<dt><strong>NOTE</strong> Possible types are</dt><dd><ul class="simple">
+<li><p>nuc: For nucleotide sequence</p></li>
+<li><p>aa: For protein sequence</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> – Handle to the file, or the filename as a string</p></li>
+<li><p><strong>_type</strong> – Type of the sequence [nuc or aa]</p></li>
+<li><p><strong>genetic_code_num</strong> – Genetic table number for codon table</p></li>
+<li><p><strong>min_len_threshold</strong> – Minimum length of sequence to be considered as gene</p></li>
+<li><p><strong>res_folder_path</strong> – The path of folder where the file will be saved</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="CodonU.analyzer.NoSynonymousCodonWarning">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">NoSynonymousCodonWarning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aa</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CodonU.analyzer.NoSynonymousCodonWarning" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../cua_warnings/codon_usage_warns/index.html#CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning" title="CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning</span></code></a></p>
+<p>Occurs when only one codon in the given reference sequence list translates to a certain amino acid</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="CodonU.analyzer.NoSynonymousCodonWarning.warn">
+<span class="sig-name descname"><span class="pre">warn</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CodonU.analyzer.NoSynonymousCodonWarning.warn" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="CodonU.analyzer.MissingCodonWarning">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">MissingCodonWarning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CodonU.analyzer.MissingCodonWarning" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../cua_warnings/codon_usage_warns/index.html#CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning" title="CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CodonU.cua_warnings.codon_usage_warns.CodonUsageWarning</span></code></a></p>
+<p>Occurs when no codon in the given reference sequence list translates to a certain amino acid</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="CodonU.analyzer.MissingCodonWarning.warn">
+<span class="sig-name descname"><span class="pre">warn</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CodonU.analyzer.MissingCodonWarning.warn" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="CodonU.analyzer.NoProteinError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">NoProteinError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CodonU.analyzer.NoProteinError" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../cua_errors/codon_usage_err/index.html#CodonU.cua_errors.codon_usage_err.CodonUsageError" title="CodonU.cua_errors.codon_usage_err.CodonUsageError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CodonU.cua_errors.codon_usage_err.CodonUsageError</span></code></a></p>
+<p>Occurs when a complete category of amino acid based on sf values is not translated by the provided sequence</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="CodonU.analyzer.CodonTableExistsError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">CodonTableExistsError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CodonU.analyzer.CodonTableExistsError" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../cua_errors/codon_usage_err/index.html#CodonU.cua_errors.codon_usage_err.CodonUsageError" title="CodonU.cua_errors.codon_usage_err.CodonUsageError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CodonU.cua_errors.codon_usage_err.CodonUsageError</span></code></a></p>
+<p>Occurs when id, name or alt_name of a new table is same with existing tables</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="CodonU.analyzer.BadSequenceError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">BadSequenceError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CodonU.analyzer.BadSequenceError" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../cua_errors/codon_usage_err/index.html#CodonU.cua_errors.codon_usage_err.CodonUsageError" title="CodonU.cua_errors.codon_usage_err.CodonUsageError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CodonU.cua_errors.codon_usage_err.CodonUsageError</span></code></a></p>
+<p>Occurs when the sequence is bad i.e. length of the sequence is not divisible by 3</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="CodonU.analyzer.NucleotideError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">NucleotideError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CodonU.analyzer.NucleotideError" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../cua_errors/codon_usage_err/index.html#CodonU.cua_errors.codon_usage_err.CodonUsageError" title="CodonU.cua_errors.codon_usage_err.CodonUsageError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CodonU.cua_errors.codon_usage_err.CodonUsageError</span></code></a></p>
+<p>Occurs when an ambiguous or invalid nucleotide is present in genome</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.is_not_bad_seq">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">is_not_bad_seq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Seq</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#CodonU.analyzer.is_not_bad_seq" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if the sequence is bad i.e. length of the sequence is not divisible by 3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seq</strong> – The nucleotide sequence</p></li>
+<li><p><strong>code</strong> – The code to call BadSequenceError (1 or 2)</p></li>
+<li><p><strong>_type</strong> – Type of sequence, i.e. ‘nuc’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if seq is not bad</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#CodonU.analyzer.BadSequenceError" title="CodonU.analyzer.BadSequenceError"><strong>BadSequenceError</strong></a> – If the seq is bad</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.not_contains_amb_letter">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">not_contains_amb_letter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Seq</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#CodonU.analyzer.not_contains_amb_letter" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if provided sequence contains ambiguous DNA letters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>seq</strong> – Provided sequence</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if sequence does not contain ambiguous letter</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#CodonU.analyzer.NucleotideError" title="CodonU.analyzer.NucleotideError"><strong>NucleotideError</strong></a> – If sequence contain ambiguous letter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.g3">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">g3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Seq</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#CodonU.analyzer.g3" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates percentage of G content for third position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>seq</strong> – Provided sequence</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Percentage of G content</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.a3">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">a3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Seq</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#CodonU.analyzer.a3" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates percentage of A content for third position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>seq</strong> – Provided sequence</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Percentage of A content</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.gc_123">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">gc_123</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Seq</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#CodonU.analyzer.gc_123" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate G+C content: total, for first, second and third positions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>seq</strong> – Provided sequence</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The G+C percentage for the entire sequence, and the three codon positions</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.at_123">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">at_123</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Seq</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#CodonU.analyzer.at_123" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate G+C content: total, for first, second and third positions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>seq</strong> – Provided sequence</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The A+T percentage for the entire sequence, and the three codon positions</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.custom_codon_table">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">custom_codon_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alt_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genetic_code_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forward_table</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_codons</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop_codons</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#CodonU.analyzer.custom_codon_table" title="Permalink to this definition"></a></dt>
+<dd><p>Registers a new Codon Table as provided by the user.</p>
+<p><strong>Note</strong>: The scope of the newly registered table is limited to the working file only</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Name for the table</p></li>
+<li><p><strong>alt_name</strong> – Short name for the table</p></li>
+<li><p><strong>genetic_code_id</strong> – Genetic code number for the table</p></li>
+<li><p><strong>forward_table</strong> – A dict containing mapping of codons to proteins [excluding stop codons]</p></li>
+<li><p><strong>start_codons</strong> – A list of possible start codons</p></li>
+<li><p><strong>stop_codons</strong> – A list of possible stop codons</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#CodonU.analyzer.CodonTableExistsError" title="CodonU.analyzer.CodonTableExistsError"><strong>CodonTableExistsError</strong></a> – If the name, alt_name or genetic_code_id already exists</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.filter_reference">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">filter_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">records</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_len_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Bio.SeqRecord.SeqRecord</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#CodonU.analyzer.filter_reference" title="Permalink to this definition"></a></dt>
+<dd><p>Filters the list of reference based on given threshold of length</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>records</strong> – A generator object holding the sequence objects</p></li>
+<li><p><strong>min_len_threshold</strong> – Minimum length of nucleotide sequence to be considered as gene</p></li>
+<li><p><strong>_type</strong> – Type of sequence, i.e. ‘nuc’ or ‘aa</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of usable sequences</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.reverse_table">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">reverse_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">codon_table</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Bio.Data.CodonTable.NCBICodonTableDNA</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#CodonU.analyzer.reverse_table" title="Permalink to this definition"></a></dt>
+<dd><p>Creates the protein, codon dictionary where protein is key</p>
+<p>e.g. ‘L’: [‘TTA’, ‘TTG’, ‘CTT’, ‘CTC’, ‘CTA’, ‘CTG’]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>codon_table</strong> – The codon table</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The dict having protein as key</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.syn_codons">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">syn_codons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">codon_table</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Bio.Data.CodonTable.NCBICodonTableDNA</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#CodonU.analyzer.syn_codons" title="Permalink to this definition"></a></dt>
+<dd><p>Creates the codon, synonymous codon family dictionary where codon is the key</p>
+<p>e.g. ‘TTA’: [‘TTA’, ‘TTG’, ‘CTT’, ‘CTC’, ‘CTA’, ‘CTG’]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>codon_table</strong> – The codon table</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The dict having individual codons as keys</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.sf_vals">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">sf_vals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">codon_table</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Bio.Data.CodonTable.NCBICodonTableDNA</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#CodonU.analyzer.sf_vals" title="Permalink to this definition"></a></dt>
+<dd><p>Creates the sf value and protein dictionary where sf value is key</p>
+<p>e.g. 6: [‘L’, ‘S’, ‘R’]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>codon_table</strong> – The codon table</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The dict having sf values as key</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.rscu">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">rscu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">references</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Seq</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genetic_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#CodonU.analyzer.rscu" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates relative synonymous codon usage (RSCU) value for a given nucleotide sequence according to Sharp and Li (1987)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>references</strong> – List of reference nucleotide sequences</p></li>
+<li><p><strong>genetic_code</strong> – Genetic table number for codon table</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing codons and their respective RSCU values</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.weights_for_cai">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">weights_for_cai</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">references</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Seq</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genetic_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#CodonU.analyzer.weights_for_cai" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates relative adaptiveness/weight value for a given nucleotide sequence according to Sharp and Li (1987)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>references</strong> – List of reference nucleotide sequences</p></li>
+<li><p><strong>genetic_code</strong> – Genetic table number for codon table</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing codons and their respective weights</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.cai">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">cai</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nuc_seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Seq</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">references</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Seq</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genetic_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#CodonU.analyzer.cai" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates Codon Adaptive Index (CAI) value for a given nucleotide sequence according to Sharp and Li (1987)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nuc_seq</strong> – The Nucleotide Sequence</p></li>
+<li><p><strong>references</strong> – List of reference nucleotide sequences</p></li>
+<li><p><strong>genetic_code</strong> – Genetic table number for codon table</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The CAI value for given sequence</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.cbi">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">cbi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prot_seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Seq</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">references</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Seq</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genetic_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#CodonU.analyzer.cbi" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates codon bias index (CBI) for a given protein seq based on Bennetzen and Hall (1982)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prot_seq</strong> – The Protein Sequence</p></li>
+<li><p><strong>references</strong> – List of reference nucleotide sequences</p></li>
+<li><p><strong>genetic_code</strong> – Genetic table number for codon table</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple of CBI val and the optimal codon</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="#CodonU.analyzer.NoSynonymousCodonWarning" title="CodonU.analyzer.NoSynonymousCodonWarning"><strong>NoSynonymousCodonWarning</strong></a> – When there is no synonymous codons</p></li>
+<li><p><a class="reference internal" href="#CodonU.analyzer.MissingCodonWarning" title="CodonU.analyzer.MissingCodonWarning"><strong>MissingCodonWarning</strong></a> – When no codons translate to provided Amino acid</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.enc">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">enc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">references</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Seq</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genetic_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#CodonU.analyzer.enc" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates Effective number of codons (Enc) based on Wright (1989) and Fuglsang (2004)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>references</strong> – List of reference nucleotide sequences</p></li>
+<li><p><strong>genetic_code</strong> – Genetic table number for codon table</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Calculated Enc value for the sequence(s)</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="#CodonU.analyzer.MissingCodonWarning" title="CodonU.analyzer.MissingCodonWarning"><strong>MissingCodonWarning</strong></a> – If there is no codon for a certain amino acid</p></li>
+<li><p><a class="reference internal" href="#CodonU.analyzer.NoProteinError" title="CodonU.analyzer.NoProteinError"><strong>NoProteinError</strong></a> – If there is no codon for a certain set of amino acid</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.gravy">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">gravy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Seq</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#CodonU.analyzer.gravy" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the GRAVY score according to Kyte and Doolittle (1982)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>seq</strong> – Protein sequence</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The GRAVY score</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="CodonU.analyzer.aromaticity">
+<span class="sig-prename descclassname"><span class="pre">CodonU.analyzer.</span></span><span class="sig-name descname"><span class="pre">aromaticity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Seq</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#CodonU.analyzer.aromaticity" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the aromaticity score according to Lobry (1994).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>seq</strong> – Protein sequence</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The aromaticity score</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="CodonU" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="aromaticity_comp/index.html" class="btn btn-neutral float-right" title="CodonU.analyzer.aromaticity_comp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Souradipto Choudhuri.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
