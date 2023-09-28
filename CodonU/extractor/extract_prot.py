@@ -1,10 +1,10 @@
 from Bio.SeqFeature import SeqFeature
 from Bio.SeqRecord import SeqRecord
 
-from .internal_comp import extract_prot_seq
+from CodonU.extractor.internal_comp import extract_prot_seq
 
 
-def extract_prot(feature: SeqFeature, organism_name: str, cds_no: int = 0) -> SeqRecord:
+def extract_prot(feature: SeqFeature, organism_name: str) -> SeqRecord:
     """
     Extracts protein sequences and return them for writing
 
@@ -14,9 +14,9 @@ def extract_prot(feature: SeqFeature, organism_name: str, cds_no: int = 0) -> Se
     :return: The protein sequence suitable for being written is fasta format
     """
     if 'product' in feature.qualifiers.keys():
-        description = f"{feature.qualifiers['product'][0]} CDS_{cds_no}"
+        description = f"{feature.qualifiers['product'][0]}"
     else:
-        description = f"{feature.qualifiers['note'][0]} CDS_{cds_no}"
+        description = f"{feature.qualifiers['note'][0]}"
     prot = SeqRecord(
         seq=extract_prot_seq(feature),
         id=f"{feature.qualifiers['protein_id'][0]}",
