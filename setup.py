@@ -28,7 +28,7 @@ def read_requirements(path):
 PACK_NAME = 'CodonU'
 AUTHOR_NAME = 'Souradipto Choudhuri'
 AUTHOR_EMAIL = 'sourochaudhuri@gmail.com'
-VERSION = '1.0.4'
+VERSION = '1.1.0'
 DESC = 'This package is designed for helping in genomic analysis'
 
 setup(
@@ -37,7 +37,7 @@ setup(
     url='https://github.com/SouradiptoC/codon_usage',
     project_urls={
         "Bug Tracker": "https://github.com/SouradiptoC/codon_usage/issues",
-        "Documentation": "https://souradiptoc.github.io/CodonU/",
+        "Documentation": "https://codonu.readthedocs.io/en/latest/?badge=latest",
         "Source Code": "https://github.com/SouradiptoC/codon_usage"
     },
     author=AUTHOR_NAME,
