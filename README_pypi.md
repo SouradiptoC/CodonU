@@ -3,7 +3,7 @@
 [![PyPI - License](https://img.shields.io/pypi/l/CodonU)](https://opensource.org/licenses/MIT)
 [![Downloads](https://static.pepy.tech/personalized-badge/codonu?period=total&units=international_system&left_color=grey&right_color=blue&left_text=Downloads)](https://pepy.tech/project/codonu)
 [![CodeFactor](https://www.codefactor.io/repository/github/souradiptoc/codonu/badge/master)](https://www.codefactor.io/repository/github/souradiptoc/codonu/overview/master)
-[![Docs](https://img.shields.io/badge/docs-passing-brightgreen)](https://souradiptoc.github.io/CodonU/)
+[![Documentation Status](https://readthedocs.org/projects/codonu/badge/?version=latest)](https://codonu.readthedocs.io/en/latest/?badge=latest)
 
 # Introduction
 

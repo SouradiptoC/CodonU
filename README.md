@@ -9,14 +9,15 @@
 [![PyPI - Format](https://img.shields.io/pypi/format/CodonU)](https://pypi.org/project/CodonU)
 [![Downloads](https://static.pepy.tech/personalized-badge/codonu?period=total&units=international_system&left_color=grey&right_color=blue&left_text=Downloads)](https://pepy.tech/project/codonu)
 [![CodeFactor](https://www.codefactor.io/repository/github/souradiptoc/codonu/badge/master)](https://www.codefactor.io/repository/github/souradiptoc/codonu/overview/master)
-[![Docs](https://img.shields.io/badge/docs-passing-brightgreen)](https://souradiptoc.github.io/CodonU/)
+[![Documentation Status](https://readthedocs.org/projects/codonu/badge/?version=latest)](https://codonu.readthedocs.io/en/latest/?badge=latest)
 
 # Introduction
 
 Welcome to CodonU!
 
 This is an integrated package for codon usage analysis. For knowing more about motivation and workflow, please read
-the [Thesis](https://doi.org/10.5281/zenodo.8154433).
+the [Thesis](https://doi.org/10.5281/zenodo.8154433). The documentation is
+available [here](https://codonu.readthedocs.io/en/latest/?badge=latest).
 
 # What's New (As of September 23rd, 2023)
 
