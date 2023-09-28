@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "CodonU"
+version = "1.1.0"
+requires-python = ">=3.11"
+readme = "README.md"
+license = {file="LICENSE.MD"}
+authors = [
+    { name = "Souradipto", email = "sourochaudhuri@gmail.com" },
+]
+description = "An integrated package for codon usage analysis"
+classifiers=[
+        "Development Status :: 5 - Production/Stable",
+        "Natural Language :: English",
+        "Topic :: Scientific/Engineering :: Bio-Informatics",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3",
+        "Operating System :: Unix",
+        "Operating System :: MacOS :: MacOS X",
+        "Operating System :: Microsoft :: Windows",
+        "Intended Audience :: Developers",
+        "Intended Audience :: Education",
+        "Intended Audience :: Healthcare Industry",
+        "Intended Audience :: Science/Research"
+    ]
+keywords=['bioinformatics', 'bioinformatics-analysis', 'bioinformatics-tool', 'codon-usage', 'codon', 'codon-bias',
+              'genomic-analysis', 'genome', 'codonW']
+dependencies=[
+    "biopython~=1.79", "numpy~=1.24.2", "pandas~=2.1.1",
+    "matplotlib>=3.6.3", "scipy~=1.10.0",
+    "prince~=0.12.1", "gtAI~=1.0.4"
+]
+
+[project.urls]
+"Bug Tracker" = "https://github.com/SouradiptoC/codon_usage/issues"
+"Documentation" = "https://codonu.readthedocs.io/en/latest/?badge=latest",
+"Source Code" = "https://github.com/SouradiptoC/codon_usage"
