@@ -21,8 +21,9 @@
       <excludeFolder url="file://$MODULE_DIR$/_docs" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
       <excludeFolder url="file://$MODULE_DIR$/build/bdist.linux-x86_64" />
+      <excludeFolder url="file://$MODULE_DIR$/test_venv" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.11 (CodonU)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.11 (CodonU) (2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="ReSTService">

@@ -29,27 +29,30 @@ PACK_NAME = 'CodonU'
 AUTHOR_NAME = 'Souradipto Choudhuri'
 AUTHOR_EMAIL = 'sourochaudhuri@gmail.com'
 VERSION = '1.1.0'
-DESC = 'This package is designed for helping in genomic analysis'
+DESC = 'An integrated package for codon usage analysis'
 
 setup(
     name='CodonU',
     version=VERSION,
+    description=DESC,
+    long_description=read("README_pypi.md"),
+    long_description_content_type="text/markdown",
+    author=AUTHOR_NAME,
+    author_email=AUTHOR_EMAIL,
     url='https://github.com/SouradiptoC/codon_usage',
     project_urls={
         "Bug Tracker": "https://github.com/SouradiptoC/codon_usage/issues",
         "Documentation": "https://codonu.readthedocs.io/en/latest/?badge=latest",
         "Source Code": "https://github.com/SouradiptoC/codon_usage"
     },
-    author=AUTHOR_NAME,
-    author_email=AUTHOR_EMAIL,
-    description=DESC,
-    long_description=read("README_pypi.md"),
-    long_description_content_type="text/markdown",
+
     license='MIT License',
     packages=find_packages(exclude=["tests", ".github"]),
-    install_requirements=read_requirements('requirements.txt'),
+    install_requires=["biopython~=1.79", "numpy~=1.24.2", "pandas~=2.1.1",
+                      "matplotlib>=3.6.3", "scipy~=1.10.0",
+                      "prince~=0.12.1", "gtAI~=1.0.4"],
     keywords=['bioinformatics', 'bioinformatics-analysis', 'bioinformatics-tool', 'codon-usage', 'codon', 'codon-bias',
-              'genomic-analysis', 'genome', 'codonW'],
+              'genomic-analysis', 'genome', 'codonW', 'tAI'],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Natural Language :: English",
