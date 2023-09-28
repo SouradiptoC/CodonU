@@ -1,34 +1,29 @@
 from Bio.Seq import MutableSeq
-from Bio.SeqIO import parse
 from Bio.SeqRecord import SeqRecord
 
 
-def extract_exome(nuc_file_path: str, organism_name: str, exclude_stops: bool = True) -> SeqRecord:
+def extract_exome(records: list[SeqRecord], exclude_stops: bool = True) -> SeqRecord:
     """
     Extracts the exome from given nucleotides
-
-    :param nuc_file_path: The path to the nucleotide file
-    :param organism_name: Name of the organism
+    :param records: List of SeqRecord objects containing each CDS
     :param exclude_stops: If true, intermediate stops codons are excluded from exome
     :return: The exome
     """
-    records = parse(nuc_file_path, 'fasta')
     m_seq = MutableSeq('')
+    tot_len = len(records)
     if exclude_stops:
-        for record in records:
+        for idx, record in enumerate(records, start=1):
             m_seq += record.seq[:-3]
-        records = parse(nuc_file_path, 'fasta')
-        *_, lst_record = records
-        m_seq += lst_record.seq[-3:]
+            if idx == tot_len:
+                m_seq += record.seq[-3:]
     else:
         for record in records:
             m_seq += record.seq
-        records = parse(nuc_file_path, 'fasta')
-        *_, lst_record = records
+
     exome = SeqRecord(
         seq=m_seq,
-        id=lst_record.id,
-        name=organism_name,
-        description=f'whole exome of {organism_name}'
+        id=f"{records[0].id}",
+        name=f"{records[0].id.split('|')[-1]}",
+        description=f"{records[0].id.split('|')[-1]} complete genome"
     )
     return exome
