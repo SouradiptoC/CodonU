@@ -13,7 +13,6 @@ def write_exome_fasta(accession_id: str, file_path: str, exclude_stops: bool = T
     :param accession_id: Accession id of organism
     :param file_path: Intended file path
     :param exclude_stops: If true, intermediate stops codons are excluded from exome
-    :return:
     """
     records = get_gb(accession_id)
     cds_feature_lst = extract_cds_lst(records)

@@ -1,22 +1,22 @@
 from Bio.SeqIO import write
-from Bio.SeqRecord import SeqRecord
-from .internal_comp import is_file, is_file_empty
-from CodonU.extractor import extract_cds
+from CodonU.file_handler.internal_comp import is_file, is_file_empty
+from CodonU.extractor import extract_cds, extract_cds_lst
+from CodonU.file_handler import get_gb
+from os.path import abspath
 
 
-def write_nucleotide_fasta(file_name: str, cds_lst: tuple, record: SeqRecord, organism_name: str) -> None:
+def write_nucleotide_fasta(accession_id: str, file_path: str):
     """
     Creates a fasta file of nucleotides if not exists previously or is empty
 
-    :param file_name: The name of the file
-    :param cds_lst: The tuple of FeatureLocation objects
-    :param record: The SeqRecord object containing whole sequence
-    :param organism_name: Name of the organism
-    :raises FileNotEmptyError: If the given file to write is not empty
+    :param accession_id: Accession id of organism
+    :param file_path: Intended file path
     """
-    if not is_file(file_name) or is_file_empty(file_name):
-        with open(file_name, 'w') as out_file:
-            for i in range(len(cds_lst)):
-                cds = extract_cds(record, cds_lst[i])
-                write(cds, out_file, 'fasta')
-    print(f"Nucleotide file for {organism_name} created successfully")
+    records = get_gb(accession_id)
+    cds_feature_lst = extract_cds_lst(records)
+
+    if not is_file(file_path) or is_file_empty(file_path):
+        with open(file_path, 'w') as out_file:
+            cds_lst = [extract_cds(records, cds_feature) for cds_feature in cds_feature_lst]
+            write(cds_lst, out_file, 'fasta')
+            print(f"Nucleotide file can be found at: {abspath(file_path)}")
