@@ -28,7 +28,7 @@ def read_requirements(path):
 PACK_NAME = 'CodonU'
 AUTHOR_NAME = 'Souradipto Choudhuri'
 AUTHOR_EMAIL = 'sourochaudhuri@gmail.com'
-VERSION = '1.1.0'
+VERSION = '1.1.2'
 DESC = 'An integrated package for codon usage analysis'
 
 setup(

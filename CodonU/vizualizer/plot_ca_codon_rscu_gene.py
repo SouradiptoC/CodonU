@@ -12,7 +12,7 @@ def plot_ca_codon_rscu_gene(handle: str, genetic_table_num: int, min_len_thresho
                             single_syn_codons: Optional[list] = None, organism_name: Optional[str] = None,
                             save_image: bool = False, folder_path: str = 'Report'):
     """
-    Plots CA of codon RSCU for codons with frequency as scale
+    Plots CA of codon RSCU for genes with frequency as scale
 
     :param handle: Handle to the file, or the filename as a string
     :param genetic_table_num: Genetic table number for codon table
@@ -34,7 +34,8 @@ def plot_ca_codon_rscu_gene(handle: str, genetic_table_num: int, min_len_thresho
     cont_table = cont_table.astype('float64')
     genes = ca.row_coordinates(cont_table)
 
-    gene_lengths = [len(record.seq) for record in filter_reference(parse(handle, 'fasta'), min_len_threshold, 'nuc')]
+    gene_lengths = tuple(
+        len(record.seq) for record in filter_reference(parse(handle, 'fasta'), min_len_threshold, 'nuc'))
 
     x = genes.iloc[:, 0]
     y = genes.iloc[:, 1]
@@ -61,3 +62,7 @@ def plot_ca_codon_rscu_gene(handle: str, genetic_table_num: int, min_len_thresho
 
     plt.show()
     plt.close(fig)
+
+
+if __name__ == '__main__':
+    plot_ca_codon_rscu_gene('/home/souro/Projects/CodonU/tests/results/nuc_seq_100.fasta', 11)

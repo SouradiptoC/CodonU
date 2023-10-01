@@ -5,7 +5,7 @@ from .plot_funcs import _plot_neutrality
 from CodonU.analyzer.internal_comp import gc_123, filter_reference
 
 
-def plot_neutrality(handle: str | Any, min_len_threshold: int, organism_name: str | None = None,
+def plot_neutrality(handle: str | Any, min_len_threshold: int = 200, organism_name: str | None = None,
                     save_image: bool = False, folder_path: str = '', gene_analysis: bool = True):
     """
     Plots neutrality plot from given fasta file

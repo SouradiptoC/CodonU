@@ -10,7 +10,7 @@ def plot_ca_aa_freq_aa(handle: str, genetic_table_num: int, min_len_threshold: i
                        organism_name: Optional[str] = None, save_image: bool = False,
                        folder_path: str = 'Report'):
     """
-    Plots CA of codon frequency for codons with frequency as scale
+    Plots CA of aa frequency for genes with frequency as scale.
 
     :param handle: Handle to the file, or the filename as a string
     :param genetic_table_num: Genetic table number for codon table

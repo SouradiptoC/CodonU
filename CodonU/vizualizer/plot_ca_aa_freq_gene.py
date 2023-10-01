@@ -13,7 +13,7 @@ def plot_ca_aa_freq_gene(handle: str, genetic_table_num: int, scale: str, min_le
                          n_components: int = 2, organism_name: Optional[str] = None, save_image: bool = False,
                          folder_path: str = 'Report'):
     """
-    Plots CA of codon frequency for codons with provided scale\n
+    Plots CA for genes with aromaticity or gravy score as scale.\n
     **NOTE** Values of `scale` supported are `'gravy'`, `'aroma'`
 
     :param handle: Handle to the file, or the filename as a string
@@ -53,7 +53,7 @@ def plot_ca_aa_freq_gene(handle: str, genetic_table_num: int, scale: str, min_le
     c_bar = plt.colorbar()
     c_bar.set_label(label)
     plt.title(f'Total genes: {len(cont_table.iloc[:, 0])}')
-    sup_title = f'CA of AA Frequency of {organism_name} [AAs]' if organism_name else 'CA of AA Frequency [AAs]'
+    sup_title = f'CA of AA Frequency of {organism_name} [genes]' if organism_name else 'CA of AA Frequency [genes]'
     plt.suptitle(sup_title)
 
     if save_image:

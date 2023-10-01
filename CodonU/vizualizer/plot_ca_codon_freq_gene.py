@@ -12,7 +12,7 @@ def plot_ca_codon_freq_gene(handle: str, genetic_table_num: int, min_len_thresho
                             single_syn_codons: Optional[list] = None, organism_name: Optional[str] = None,
                             save_image: bool = False, folder_path: str = 'Report'):
     """
-    Plots CA of codon frequency for genes with gene length as scale
+    Plots CA for genes with gene length as scale
 
     :param handle: Handle to the file, or the filename as a string
     :param genetic_table_num: Genetic table number for codon table
