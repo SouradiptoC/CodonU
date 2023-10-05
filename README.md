@@ -42,8 +42,8 @@ easily.
 Supported calculations are:
 
 - For Nucleotide sequences
-    - COA using codon frequency with scale set to length of gene
-    - COA using codon RSCU values with scale set to length of gene
+    - COA using codon frequency for codons and genes
+    - COA using codon RSCU values for codons and genes
 - For Protein sequences
     - COA using amino acid frequency with scale set to gravy score
     - COA using amino acid frequency with scale set to aromaticity score
@@ -65,9 +65,17 @@ Neutrality plot for human chromosome 2
 
 ![Neutrality plot for human chromosome 2](https://github.com/SouradiptoC/CodonU/blob/master/images/Neutrality_plot_Human%20Cr%202.png)
 
-Correspondence analysis of protein frequency using gravy score
+COA of Codon frequency for codons
+![COA of Codon frequency for codons](https://github.com/SouradiptoC/CodonU/blob/master/images/CA_codon_freq_codon_Staphylococcus_aureus.png)
 
-![Correspondence analysis of protein frequency using gravy score](https://github.com/SouradiptoC/CodonU/blob/master/images/Multivariate_analysis_aa_gravy_agnetis.png)
+COA of Codon frequency for genes
+![COA of Codon frequency for genes](https://github.com/SouradiptoC/CodonU/blob/master/images/CA_codon_freq_gene_Staphylococcus_aureus.png)
+
+Comparative analysis of codon COA
+![Comparative analysis of codon COA](https://github.com/SouradiptoC/CodonU/blob/master/images/gene_coa_compare.png)
+
+COA of aa frequency for genes with scale set to GRAVY
+![COA of aa frequency for genes with scale set to GRAVY](https://github.com/SouradiptoC/CodonU/blob/master/images/CA_aa_freq_aa_Staphylococcus_aureus.png)
 
 Examples for other plots cans be found in the [images](https://github.com/SouradiptoC/CodonU/tree/master/images)
 
