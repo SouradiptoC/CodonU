@@ -7,7 +7,7 @@ from CodonU.analyzer.internal_comp import filter_reference, gc_123, at_123, g3, 
 
 def plot_pr2(handle: str | Any, min_len_threshold: int = 200, organism_name: str | None = None,
              save_image: bool = False,
-             folder_path: str = '', gene_analysis: bool = True):
+             folder_path: str = 'Report', gene_analysis: bool = True):
     """
     Plots A3/AT3 values against G3/GC3 values from given fasta file
 

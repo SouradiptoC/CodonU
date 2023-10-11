@@ -17,7 +17,7 @@ def _enc(x: int) -> float:
 
 
 def _plot_enc(enc_val_lst: list, gc_val_lst: list, organism_name: None | str = None, save_image: bool = False,
-              folder_path: str = '', gene_analysis: bool = True):
+              folder_path: str = 'Report', gene_analysis: bool = True):
     """
     Plots ENc value against GC3 values
 

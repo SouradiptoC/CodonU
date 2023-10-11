@@ -62,7 +62,3 @@ def plot_ca_codon_rscu_gene(handle: str, genetic_table_num: int, min_len_thresho
 
     plt.show()
     plt.close(fig)
-
-
-if __name__ == '__main__':
-    plot_ca_codon_rscu_gene('/home/souro/Projects/CodonU/tests/results/nuc_seq_100.fasta', 11)
