@@ -15,8 +15,8 @@
 
 Welcome to CodonU!
 
-This is an integrated package for codon usage analysis. For knowing more about motivation and workflow, please read
-the [Thesis](https://doi.org/10.5281/zenodo.8154433). The documentation is
+This is an integrated package for codon usage analysis. To know more about motivation and workflow, please read
+the [Thesis](https://doi.org/10.5281/zenodo.8154433) or the [Paper](https://doi.org/10.1109/TCBB.2023.3335823). The documentation is
 available [here](https://codonu.readthedocs.io/en/latest/?badge=latest).
 
 # What's New (As of September 23rd, 2023)
@@ -37,7 +37,7 @@ Various functionalities can be found below. For gene/genome analysis, this packa
     - Calculate Aromaticity
     - Calculate gravy
 
-One can also can calculate the multivariate analysis, popularly known as correspondence analysis (COA) for the codons
+One can also calculate the multivariate analysis, popularly known as correspondence analysis (COA) for the codons
 easily.
 Supported calculations are:
 
@@ -55,7 +55,7 @@ the [examples](https://github.com/SouradiptoC/CodonU/tree/master/Examples)
 
 # Graphics!!
 
-Also, can generate beautiful graphics for publication purpose or otherwise. Some plots are:
+Also, can generate beautiful graphics for publication purposes or otherwise. Some plots are:
 
 ENc plot for human chromosome 2
 
@@ -77,7 +77,7 @@ Comparative analysis of codon COA
 COA of aa frequency for genes with scale set to GRAVY
 ![COA of aa frequency for genes with scale set to GRAVY](https://github.com/SouradiptoC/CodonU/blob/master/images/CA_aa_freq_aa_Staphylococcus_aureus.png)
 
-Examples for other plots cans be found in the [images](https://github.com/SouradiptoC/CodonU/tree/master/images)
+Examples of other plots can be found in the [images](https://github.com/SouradiptoC/CodonU/tree/master/images)
 
 # Installation
 
@@ -85,12 +85,27 @@ Examples for other plots cans be found in the [images](https://github.com/Sourad
 
 # Future Plans
 
-None. If you would like recommend one, please mail
+None. If you would like to recommend one, please mail
 at [sourochaudhuri@gmail.com](mailto:sourochaudhuri@gmail.com)
 
 # Citation
 
-Please cite the work as
+Please cite the article as
+
+    @ARTICLE{10330762,
+        author={Choudhuri, Souradipto and Sau, Keya},
+        journal={IEEE/ACM Transactions on Computational Biology and Bioinformatics}, 
+        title={CodonU: A Python Package for Codon Usage Analysis}, 
+        year={2024},
+        volume={21},
+        number={1},
+        pages={36-44},
+        keywords={Amino acids;Indexes;Bioinformatics;Software;Web servers;Proteins;Phylogeny;Codon bias;codon usage;codon usage analysis;CodonW;correspondence analysis;phylogenetic analysis;tRNA analysis},
+        doi={10.1109/TCBB.2023.3335823}
+    }
+
+
+Please cite the software as
 
     @software{choudhuri_souradipto_2023_7868197,
         author={Choudhuri, Souradipto},
