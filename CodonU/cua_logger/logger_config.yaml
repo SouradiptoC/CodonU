@@ -1,0 +1,41 @@
+version: 1
+formatters:
+  console:
+    format: "%(asctime)s - %(levelname)s - %(message)s"
+    datefmt: '%Y-%m-%d %H:%M:%S'
+
+  file:
+    format: "%(asctime)s - %(module)s - %(funcName)s - %(levelname)s - %(message)s"
+    datefmt: '%Y-%m-%d %H:%M:%S'
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: INFO
+    formatter: console
+    stream: ext://sys.stdout
+
+  file:
+    class: logging.FileHandler
+    level: DEBUG
+    formatter: file
+    filename: app.log
+    mode: a
+
+loggers:
+  console_logger:
+    level: DEBUG
+    handlers: [ console ]
+  file_logger:
+    level: DEBUG
+    handlers: [ file ]
+    propagate: no
+
+#root:
+#  level: DEBUG
+#  handlers: [ console ]
+
+
+
+
+
