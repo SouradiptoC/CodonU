@@ -11,4 +11,5 @@
 /_docs/
 /build/
 /tests/
-cmd
+*/*/__pycache__/
+/git_token.txt
