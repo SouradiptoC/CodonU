@@ -4,7 +4,7 @@
 
 [![PyPI - License](https://img.shields.io/pypi/l/CodonU)](https://opensource.org/licenses/MIT)
 [![DOI](https://zenodo.org/badge/536583655.svg)](https://zenodo.org/badge/latestdoi/536583655)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/CodonU)](https://pypi.org/project/CodonU)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/codonu)](https://pypi.org/project/CodonU)
 [![PyPI](https://img.shields.io/pypi/v/CodonU)](https://pypi.org/project/CodonU)
 [![PyPI - Format](https://img.shields.io/pypi/format/CodonU)](https://pypi.org/project/CodonU)
 [![Downloads](https://static.pepy.tech/personalized-badge/codonu?period=total&units=international_system&left_color=grey&right_color=blue&left_text=Downloads)](https://pepy.tech/project/codonu)
