@@ -13,6 +13,7 @@ if not os.path.isdir('logs'):
 if not os.path.isfile('CodonU_logger_config.yaml'):
     config_yaml_dict = \
         {'version': 1,
+         'Author': 'SouradiptoC',
          'formatters': {
              'console': {'format': '%(asctime)s - %(levelname)s - %(message)s',
                          'datefmt': '%Y-%m-%d %H:%M:%S'},
@@ -21,12 +22,10 @@ if not os.path.isfile('CodonU_logger_config.yaml'):
          'handlers': {
              'console':
                  {'class': 'logging.StreamHandler',
-                  'level': 'INFO',
                   'formatter': 'console',
                   'stream': 'ext://sys.stdout'},
              'rotating_file_handler':
                  {'class': 'logging.handlers.TimedRotatingFileHandler',
-                  'level': 'INFO',
                   'formatter': 'file',
                   'filename': 'logs/CodonU_log',
                   'when': 'midnight',
@@ -36,16 +35,17 @@ if not os.path.isfile('CodonU_logger_config.yaml'):
                   'delay': True,
                   }},
          'loggers': {
-             'console_logger': {'handlers': ['console']},
-             'file_logger': {'handlers': ['rotating_file_handler'],
+             'console_logger': {'handlers': ['console'], 'level': 'INFO'},
+             'file_logger': {'handlers': ['rotating_file_handler'], 'level': 'INFO',
                              'propagate': False}}}
     with open('CodonU_logger_config.yaml', 'w') as wf:
-        yaml.dump(config_yaml_dict, wf, default_flow_style=False)
+        yaml.dump(config_yaml_dict, wf, default_flow_style=False, sort_keys=False)
 
 # Reading data from CodonU_logger_config.yaml file
 with open('CodonU_logger_config.yaml', 'r') as f:
     dic = yaml.safe_load(f)
     logging.config.dictConfig(dic)
+    print("I've been here")
 
 # Creating the loggers
 file_log = logging.getLogger('file_logger')
