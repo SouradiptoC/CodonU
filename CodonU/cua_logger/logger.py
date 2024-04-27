@@ -45,7 +45,6 @@ if not os.path.isfile('CodonU_logger_config.yaml'):
 with open('CodonU_logger_config.yaml', 'r') as f:
     dic = yaml.safe_load(f)
     logging.config.dictConfig(dic)
-    print("I've been here")
 
 # Creating the loggers
 file_log = logging.getLogger('file_logger')
