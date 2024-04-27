@@ -14,3 +14,5 @@
 */*/__pycache__/
 /git_token.txt
 /logger_config.yaml
+/CodonU/tests/CodonU_logger_config.yaml
+/CodonU/tests/logs/
