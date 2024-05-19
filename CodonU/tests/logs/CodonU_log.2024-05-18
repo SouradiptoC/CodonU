@@ -1,0 +1,74 @@
+2024-05-18 18:13:02 - network_speed - test_speed - INFO - Initiating network speed testing
+2024-05-18 18:13:25 - network_speed - test_speed - INFO - download speed is 18.78720039507175 MBPS
+2024-05-18 18:13:25 - network_speed - test_speed - INFO - upload speed is 46.617750276548435 MBPS
+2024-05-18 18:13:25 - get_gb - get_gb - INFO - Retrieval started
+2024-05-18 18:14:02 - get_gb - get_gb - INFO - Genbank file of Staphylococcus aureus subsp. aureus str. Newman retrieved successfully
+2024-05-18 18:14:34 - network_speed - test_speed - INFO - Initiating network speed testing
+2024-05-18 18:14:56 - network_speed - test_speed - INFO - download speed is 29.60221976777749 MBPS
+2024-05-18 18:14:56 - network_speed - test_speed - INFO - upload speed is 29.87219319484031 MBPS
+2024-05-18 18:14:56 - get_gbs - get_gbs - INFO - Retrieval started
+2024-05-18 18:15:00 - get_gbs - get_gbs - INFO - Genbank file of ['NC_007047', 'NC_007051', 'NC_007061', 'NC_007054'] retrieved successfully
+2024-05-18 22:53:40 - network_speed - test_speed - INFO - Initiating network speed testing
+2024-05-18 22:54:09 - network_speed - test_speed - INFO - download speed is 21.804625588082374 MBPS
+2024-05-18 22:54:09 - network_speed - test_speed - INFO - upload speed is 46.61864506410339 MBPS
+2024-05-18 22:54:09 - get_gb - get_gb - INFO - Retrieval started
+2024-05-18 22:54:48 - get_gb - get_gb - INFO - Genbank file of accession id: AP009351 retrieved successfully
+2024-05-18 22:59:10 - network_speed - test_speed - INFO - Initiating network speed testing
+2024-05-18 22:59:36 - network_speed - test_speed - INFO - download speed is 20.552245224280686 MBPS
+2024-05-18 22:59:36 - network_speed - test_speed - INFO - upload speed is 46.1758366040966 MBPS
+2024-05-18 22:59:36 - get_gb - get_gb - INFO - Retrieval started
+2024-05-18 23:00:16 - get_gb - get_gb - INFO - Genbank file of accession id: AP009351 retrieved successfully
+2024-05-18 23:01:57 - network_speed - test_speed - INFO - Initiating network speed testing
+2024-05-18 23:02:20 - network_speed - test_speed - INFO - download speed is 18.342741352524932 MBPS
+2024-05-18 23:02:20 - network_speed - test_speed - INFO - upload speed is 41.7992852348326 MBPS
+2024-05-18 23:02:20 - get_gb - get_gb - INFO - Retrieval started
+2024-05-18 23:02:54 - get_gb - get_gb - INFO - Genbank file of accession id: AP009351 retrieved successfully
+2024-05-18 23:02:54 - make_dir - make_dir - INFO - Exome created successfully
+2024-05-18 23:02:54 - write_exome - write_exome - INFO - Started writing exome file of AP009351
+2024-05-18 23:02:55 - write_exome - write_exome - INFO - Exome file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Exome/AP009351.1.fna
+2024-05-18 23:02:55 - network_speed - test_speed - INFO - Initiating network speed testing
+2024-05-18 23:03:17 - network_speed - test_speed - INFO - download speed is 13.004680532043553 MBPS
+2024-05-18 23:03:17 - network_speed - test_speed - INFO - upload speed is 30.025838718945778 MBPS
+2024-05-18 23:03:17 - get_gb - get_gb - INFO - Retrieval started
+2024-05-18 23:03:48 - get_gb - get_gb - INFO - Genbank file of accession id: AP009351 retrieved successfully
+2024-05-18 23:08:51 - network_speed - test_speed - INFO - Initiating network speed testing
+2024-05-18 23:09:13 - network_speed - test_speed - INFO - download speed is 21.628745449944805 MBPS
+2024-05-18 23:09:13 - network_speed - test_speed - INFO - upload speed is 45.484960221482616 MBPS
+2024-05-18 23:09:13 - get_gb - get_gb - INFO - Retrieval started
+2024-05-18 23:09:47 - get_gb - get_gb - INFO - Genbank file of accession id: AP009351 retrieved successfully
+2024-05-18 23:09:47 - write_exome - write_exome - INFO - Started writing exome file of AP009351
+2024-05-18 23:09:47 - write_exome - write_exome - ERROR - pytest: reading from stdin while output is captured!  Consider using `-s`.
+Traceback (most recent call last):
+  File "/home/souro/Projects/CodonU/CodonU/file_handler/write_exome.py", line 28, in write_exome
+    if not is_file(file_path) or is_file_empty(file_path):
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/souro/Projects/CodonU/CodonU/file_handler/internal_comp.py", line 51, in is_file_empty
+    dec = input(f"{name[-1]} already exists. Want to re-write (y/n): ")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/souro/Projects/CodonU/.venv/lib/python3.11/site-packages/_pytest/capture.py", line 207, in read
+    raise OSError(
+OSError: pytest: reading from stdin while output is captured!  Consider using `-s`.
+2024-05-18 23:11:18 - network_speed - test_speed - INFO - Initiating network speed testing
+2024-05-18 23:11:42 - network_speed - test_speed - INFO - download speed is 24.599758804330587 MBPS
+2024-05-18 23:11:42 - network_speed - test_speed - INFO - upload speed is 31.64299919957662 MBPS
+2024-05-18 23:11:42 - get_gb - get_gb - INFO - Retrieval started
+2024-05-18 23:12:26 - get_gb - get_gb - INFO - Genbank file of accession id: AP009351 retrieved successfully
+2024-05-18 23:12:26 - write_exome - write_exome - INFO - Started writing exome file of AP009351
+2024-05-18 23:12:27 - write_exome - write_exome - INFO - Exome file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Exome/AP009351.1.fna
+2024-05-18 23:12:27 - network_speed - test_speed - INFO - Initiating network speed testing
+2024-05-18 23:12:49 - network_speed - test_speed - INFO - download speed is 29.072273481261487 MBPS
+2024-05-18 23:12:49 - network_speed - test_speed - INFO - upload speed is 48.70429615402351 MBPS
+2024-05-18 23:12:49 - get_gb - get_gb - INFO - Retrieval started
+2024-05-18 23:13:31 - get_gb - get_gb - INFO - Genbank file of accession id: AP009351 retrieved successfully
+2024-05-18 23:15:07 - network_speed - test_speed - INFO - Initiating network speed testing
+2024-05-18 23:15:33 - network_speed - test_speed - INFO - download speed is 4.9723563211241215 MBPS
+2024-05-18 23:15:33 - network_speed - test_speed - INFO - upload speed is 6.807480944329816 MBPS
+2024-05-18 23:15:33 - get_gb - get_gb - INFO - Retrieval started
+2024-05-18 23:16:15 - get_gb - get_gb - INFO - Genbank file of accession id: AP009351 retrieved successfully
+2024-05-18 23:16:16 - write_exome - write_exome - INFO - Started writing exome file of AP009351
+2024-05-18 23:16:16 - write_exome - write_exome - INFO - Exome file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Exome/AP009351.1.fna
+2024-05-18 23:16:16 - network_speed - test_speed - INFO - Initiating network speed testing
+2024-05-18 23:16:39 - network_speed - test_speed - INFO - download speed is 25.55091562979987 MBPS
+2024-05-18 23:16:39 - network_speed - test_speed - INFO - upload speed is 30.42185697648196 MBPS
+2024-05-18 23:16:39 - get_gb - get_gb - INFO - Retrieval started
+2024-05-18 23:17:14 - get_gb - get_gb - INFO - Genbank file of accession id: AP009351 retrieved successfully

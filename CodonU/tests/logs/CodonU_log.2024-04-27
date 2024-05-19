@@ -1,0 +1,94 @@
+2024-04-27 14:32:48 - network_speed - test_speed - INFO - Initiating network speed testing
+2024-04-27 14:32:49 - network_speed - test_speed - ERROR - HTTP Error 403: Forbidden
+Traceback (most recent call last):
+  File "/home/souro/Projects/CodonU/CodonU/file_handler/network_speed.py", line 12, in test_speed
+    speed_test = speedtest.Speedtest()
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/souro/Projects/CodonU/.venv/lib/python3.11/site-packages/speedtest.py", line 1095, in __init__
+    self.get_config()
+  File "/home/souro/Projects/CodonU/.venv/lib/python3.11/site-packages/speedtest.py", line 1127, in get_config
+    raise ConfigRetrievalError(e)
+speedtest.ConfigRetrievalError: HTTP Error 403: Forbidden
+2024-04-27 14:32:49 - get_gb - get_gb - INFO - Retrieval started
+2024-04-27 14:33:13 - get_gb - get_gb - INFO - Genbank file of Staphylococcus aureus subsp. aureus str. Newman retrieved successfully
+2024-04-27 14:42:24 - network_speed - test_speed - INFO - Initiating network speed testing
+2024-04-27 14:42:52 - network_speed - test_speed - INFO - download speed is 3.744033650500639 MBPS
+2024-04-27 14:42:52 - network_speed - test_speed - INFO - upload speed is 40.266214399464964 MBPS
+2024-04-27 14:42:52 - get_gb - get_gb - INFO - Retrieval started
+2024-04-27 14:43:21 - get_gb - get_gb - INFO - Genbank file of Staphylococcus aureus subsp. aureus str. Newman retrieved successfully
+2024-04-27 14:46:28 - network_speed - test_speed - INFO - Initiating network speed testing
+2024-04-27 14:46:55 - network_speed - test_speed - INFO - download speed is 7.201729486464098 MBPS
+2024-04-27 14:46:55 - network_speed - test_speed - INFO - upload speed is 37.07744849591002 MBPS
+2024-04-27 14:46:55 - get_gb - get_gb - INFO - Retrieval started
+2024-04-27 14:47:37 - get_gb - get_gb - INFO - Genbank file of Staphylococcus aureus subsp. aureus str. Newman retrieved successfully
+2024-04-27 14:49:28 - network_speed - test_speed - INFO - Initiating network speed testing
+2024-04-27 14:49:51 - network_speed - test_speed - INFO - download speed is 21.682458521802864 MBPS
+2024-04-27 14:49:51 - network_speed - test_speed - INFO - upload speed is 41.368585697670746 MBPS
+2024-04-27 14:49:51 - get_gb - get_gb - INFO - Retrieval started
+2024-04-27 14:49:53 - get_gb - get_gb - ERROR - HTTP Error 400: Bad Request
+Traceback (most recent call last):
+  File "/home/souro/Projects/CodonU/CodonU/file_handler/get_gb.py", line 20, in get_gb
+    handle = Entrez.efetch(db='nucleotide', id=accession_id, rettype='gb', retmode='text')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/souro/Projects/CodonU/.venv/lib64/python3.11/site-packages/Bio/Entrez/__init__.py", line 196, in efetch
+    return _open(request)
+           ^^^^^^^^^^^^^^
+  File "/home/souro/Projects/CodonU/.venv/lib64/python3.11/site-packages/Bio/Entrez/__init__.py", line 594, in _open
+    handle = urlopen(request)
+             ^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/urllib/request.py", line 525, in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/urllib/request.py", line 634, in http_response
+    response = self.parent.error(
+               ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/urllib/request.py", line 563, in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/lib64/python3.11/urllib/request.py", line 643, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 400: Bad Request
+2024-04-27 14:51:38 - network_speed - test_speed - INFO - Initiating network speed testing
+2024-04-27 14:52:01 - network_speed - test_speed - INFO - download speed is 4.199188898661072 MBPS
+2024-04-27 14:52:01 - network_speed - test_speed - INFO - upload speed is 21.42087494401093 MBPS
+2024-04-27 14:52:01 - get_gb - get_gb - INFO - Retrieval started
+2024-04-27 14:52:02 - get_gb - get_gb - ERROR - HTTP Error 400: Bad Request
+Traceback (most recent call last):
+  File "/home/souro/Projects/CodonU/CodonU/file_handler/get_gb.py", line 20, in get_gb
+    handle = Entrez.efetch(db='nucleotide', id=accession_id, rettype='gb', retmode='text')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/souro/Projects/CodonU/.venv/lib64/python3.11/site-packages/Bio/Entrez/__init__.py", line 196, in efetch
+    return _open(request)
+           ^^^^^^^^^^^^^^
+  File "/home/souro/Projects/CodonU/.venv/lib64/python3.11/site-packages/Bio/Entrez/__init__.py", line 594, in _open
+    handle = urlopen(request)
+             ^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/urllib/request.py", line 525, in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/urllib/request.py", line 634, in http_response
+    response = self.parent.error(
+               ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/urllib/request.py", line 563, in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/lib64/python3.11/urllib/request.py", line 643, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 400: Bad Request
+2024-04-27 14:53:11 - network_speed - test_speed - INFO - Initiating network speed testing
+2024-04-27 14:53:35 - network_speed - test_speed - INFO - download speed is 2.3989532402255502 MBPS
+2024-04-27 14:53:35 - network_speed - test_speed - INFO - upload speed is 11.898321098535254 MBPS
+2024-04-27 14:53:35 - get_gb - get_gb - INFO - Retrieval started
+2024-04-27 14:54:15 - get_gb - get_gb - INFO - Genbank file of Staphylococcus aureus subsp. aureus str. Newman retrieved successfully

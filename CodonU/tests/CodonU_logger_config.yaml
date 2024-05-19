@@ -1,0 +1,33 @@
+version: 1
+Author: SouradiptoC
+formatters:
+  console:
+    format: '%(asctime)s - %(levelname)s - %(message)s'
+    datefmt: '%Y-%m-%d %H:%M:%S'
+  file:
+    format: '%(asctime)s - %(module)s - %(funcName)s - %(levelname)s - %(message)s'
+    datefmt: '%Y-%m-%d %H:%M:%S'
+handlers:
+  console:
+    class: logging.StreamHandler
+    formatter: console
+    stream: ext://sys.stdout
+  rotating_file_handler:
+    class: logging.handlers.TimedRotatingFileHandler
+    formatter: file
+    filename: logs/CodonU_log
+    when: midnight
+    interval: 1
+    backupCount: 6
+    encoding: utf-8
+    delay: true
+loggers:
+  console_logger:
+    handlers:
+    - console
+    level: INFO
+  file_logger:
+    handlers:
+    - rotating_file_handler
+    level: INFO
+    propagate: false
