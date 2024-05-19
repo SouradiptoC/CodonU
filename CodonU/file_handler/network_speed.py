@@ -1,12 +1,31 @@
 import speedtest
 import sys
+import time
+import os
+import yaml
+from datetime import datetime, timezone
+
 from CodonU.cua_logger import *
 
+# File to store the last execution time
+LAST_EXECUTION_FILE = 'last_execution.yaml'
 
-def test_speed():
-    """
-    Tests network speed
-    """
+
+def read_last_execution_time():
+    if os.path.exists(LAST_EXECUTION_FILE):
+        with open(LAST_EXECUTION_FILE, 'r') as file:
+            data = yaml.safe_load(file)
+            if data and 'last_execution_time' in data:
+                return datetime.fromisoformat(data['last_execution_time'])
+    return None
+
+
+def write_last_execution_time(timestamp):
+    with open(LAST_EXECUTION_FILE, 'w') as file:
+        yaml.dump({'last_execution_time': timestamp.isoformat()}, file)
+
+
+def _test_speed():
     try:
         console_log.info("Initiating network speed testing")
         file_log.info("Initiating network speed testing")
@@ -25,3 +44,17 @@ def test_speed():
         console_log.error("Some error occurred. Check log file for details.")
         file_log.exception(e)
         sys.exit(-1)
+
+
+def test_speed():
+    """
+    Tests network speed on a span of 10 minutes creates a file named last_execution_time for capturing the last exec time
+    """
+    current_time = datetime.now(timezone.utc)
+    last_execution_time = read_last_execution_time()
+
+    if last_execution_time is None or (current_time - last_execution_time).total_seconds() >= 600:
+        _test_speed()
+        write_last_execution_time(current_time)
+    else:
+        pass
