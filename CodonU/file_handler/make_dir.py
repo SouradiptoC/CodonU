@@ -1,4 +1,5 @@
 import os
+from CodonU.cua_logger import *
 
 
 def make_dir(path: str) -> None:
@@ -10,4 +11,5 @@ def make_dir(path: str) -> None:
     if not os.path.isdir(path):
         os.mkdir(path)
         name = path.split('/')
-        print(f"{name[-1]} created successfully")
+        console_log.info(f"{name[-1]} created successfully")
+        file_log.info(f"{name[-1]} created successfully")
