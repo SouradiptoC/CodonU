@@ -63,3 +63,23 @@ def test_write_nucleotides():
         all([os.path.isfile(f'Nuc/{file_name}') for file_name in file_names]),
         all([filecmp.cmp(f'Nuc/{file_name}', f'Nuc/test_{file_name}') for file_name in file_names])
     ])
+
+
+def test_write_protein():
+    write_protein(ACCESSION_ID)
+    res = get_gb(ACCESSION_ID)
+    file_name = f'{res[ACCESSION_ID].id}.faa'
+    assert all([
+        os.path.isfile(f'Prot/{file_name}'),
+        filecmp.cmp(f'Prot/{file_name}', 'Prot/test_AP009351.1.faa')
+    ]), 'write_protein not working properly'
+
+
+def test_write_proteins():
+    write_proteins(ACCESSION_ID_LST)
+    res = get_gbs(ACCESSION_ID_LST)
+    file_names = [f'{res[acs_id].id}.faa' for acs_id in ACCESSION_ID_LST]
+    assert all([
+        all([os.path.isfile(f'Prot/{file_name}') for file_name in file_names]),
+        all([filecmp.cmp(f'Prot/{file_name}', f'Prot/test_{file_name}') for file_name in file_names])
+    ])

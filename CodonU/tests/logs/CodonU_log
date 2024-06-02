@@ -1,51 +1,34 @@
-2024-05-19 17:37:13 - network_speed - _test_speed - INFO - Initiating network speed testing
-2024-05-19 17:38:00 - network_speed - _test_speed - INFO - Initiating network speed testing
-2024-05-19 17:38:22 - network_speed - _test_speed - INFO - download speed is 16.875590781023057 MBPS
-2024-05-19 17:38:22 - network_speed - _test_speed - INFO - upload speed is 56.20103075448057 MBPS
-2024-05-19 17:38:22 - get_gbs - get_gbs - INFO - Retrieval started
-2024-05-19 17:38:25 - get_gbs - get_gbs - INFO - Genbank file of ['NC_007047', 'NC_007051', 'NC_007061', 'NC_007054'] retrieved successfully
-2024-05-19 17:38:25 - write_exomes - write_exomes - INFO - Exome file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Exome/NC_007047.1.fna
-2024-05-19 17:38:25 - write_exomes - write_exomes - INFO - Exome file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Exome/NC_007051.1.fna
-2024-05-19 17:38:25 - write_exomes - write_exomes - INFO - Exome file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Exome/NC_007054.1.fna
-2024-05-19 17:38:25 - write_exomes - write_exomes - INFO - Exome file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Exome/NC_007061.1.fna
-2024-05-19 17:38:25 - get_gbs - get_gbs - INFO - Retrieval started
-2024-05-19 17:38:28 - get_gbs - get_gbs - INFO - Genbank file of ['NC_007047', 'NC_007051', 'NC_007061', 'NC_007054'] retrieved successfully
-2024-05-19 18:38:57 - network_speed - _test_speed - INFO - Initiating network speed testing
-2024-05-19 18:39:52 - network_speed - _test_speed - INFO - download speed is 18.412225343907938 MBPS
-2024-05-19 18:39:52 - network_speed - _test_speed - INFO - upload speed is 40.55408402668609 MBPS
-2024-05-19 18:39:52 - get_gb - get_gb - INFO - Retrieval started
-2024-05-19 18:40:21 - get_gb - get_gb - INFO - Genbank file of accession id: AP009351 retrieved successfully
-2024-05-19 18:41:25 - get_gbs - get_gbs - INFO - Retrieval started
-2024-05-19 18:42:02 - get_gbs - get_gbs - INFO - Genbank file of ['CP045927.1', 'FR821777.2', 'CP000253.1', 'CP065712.1', 'AP018587.1'] retrieved successfully
-2024-05-19 18:44:12 - get_gbs - get_gbs - INFO - Retrieval started
-2024-05-19 18:44:37 - get_gbs - get_gbs - INFO - Genbank file of ['CP045927.1', 'FR821777.2', 'CP000253.1', 'CP065712.1', 'AP018587.1'] retrieved successfully
-2024-05-19 18:44:39 - write_exomes - write_exomes - INFO - Exome file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Exome/CP065712.1.fna
-2024-05-19 18:44:40 - write_exomes - write_exomes - INFO - Exome file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Exome/CP045927.1.fna
-2024-05-19 18:44:40 - write_exomes - write_exomes - INFO - Exome file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Exome/FR821777.2.fna
-2024-05-19 18:44:40 - write_exomes - write_exomes - INFO - Exome file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Exome/AP018587.1.fna
-2024-05-19 18:44:40 - write_exomes - write_exomes - INFO - Exome file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Exome/CP000253.1.fna
-2024-05-19 18:44:40 - get_gbs - get_gbs - INFO - Retrieval started
-2024-05-19 18:45:09 - get_gbs - get_gbs - INFO - Genbank file of ['CP045927.1', 'FR821777.2', 'CP000253.1', 'CP065712.1', 'AP018587.1'] retrieved successfully
-2024-05-19 20:25:59 - network_speed - _test_speed - INFO - Initiating network speed testing
-2024-05-19 20:26:24 - network_speed - _test_speed - INFO - download speed is 31.906367019239934 MBPS
-2024-05-19 20:26:24 - network_speed - _test_speed - INFO - upload speed is 53.41446771394001 MBPS
-2024-05-19 20:26:24 - get_gbs - get_gbs - INFO - Retrieval started
-2024-05-19 20:26:49 - get_gbs - get_gbs - INFO - Genbank file of ['CP045927.1', 'FR821777.2', 'CP000253.1', 'CP065712.1', 'AP018587.1'] retrieved successfully
-2024-05-19 20:26:49 - write_nucleotides - write_nucleotides - INFO - Started writing nucleotide file of ['CP045927.1', 'FR821777.2', 'CP000253.1', 'CP065712.1', 'AP018587.1']
-2024-05-19 20:26:50 - write_nucleotides - write_nucleotides - INFO - Nucleotide file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Nuc/AP018587.1.ffn
-2024-05-19 20:26:50 - write_nucleotides - write_nucleotides - INFO - Nucleotide file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Nuc/CP065712.1.ffn
-2024-05-19 20:26:50 - write_nucleotides - write_nucleotides - INFO - Nucleotide file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Nuc/CP000253.1.ffn
-2024-05-19 20:26:50 - write_nucleotides - write_nucleotides - INFO - Nucleotide file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Nuc/CP045927.1.ffn
-2024-05-19 20:26:50 - write_nucleotides - write_nucleotides - INFO - Nucleotide file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Nuc/FR821777.2.ffn
-2024-05-19 20:26:50 - get_gbs - get_gbs - INFO - Retrieval started
-2024-05-19 20:27:15 - get_gbs - get_gbs - INFO - Genbank file of ['CP045927.1', 'FR821777.2', 'CP000253.1', 'CP065712.1', 'AP018587.1'] retrieved successfully
-2024-05-19 20:27:58 - get_gbs - get_gbs - INFO - Retrieval started
-2024-05-19 20:28:27 - get_gbs - get_gbs - INFO - Genbank file of ['CP045927.1', 'FR821777.2', 'CP000253.1', 'CP065712.1', 'AP018587.1'] retrieved successfully
-2024-05-19 20:28:27 - write_nucleotides - write_nucleotides - INFO - Started writing nucleotide file of ['CP045927.1', 'FR821777.2', 'CP000253.1', 'CP065712.1', 'AP018587.1']
-2024-05-19 20:28:28 - write_nucleotides - write_nucleotides - INFO - Nucleotide file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Nuc/AP018587.1.ffn
-2024-05-19 20:28:28 - write_nucleotides - write_nucleotides - INFO - Nucleotide file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Nuc/CP065712.1.ffn
-2024-05-19 20:28:28 - write_nucleotides - write_nucleotides - INFO - Nucleotide file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Nuc/CP045927.1.ffn
-2024-05-19 20:28:28 - write_nucleotides - write_nucleotides - INFO - Nucleotide file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Nuc/FR821777.2.ffn
-2024-05-19 20:28:28 - write_nucleotides - write_nucleotides - INFO - Nucleotide file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Nuc/CP000253.1.ffn
-2024-05-19 20:28:28 - get_gbs - get_gbs - INFO - Retrieval started
-2024-05-19 20:29:00 - get_gbs - get_gbs - INFO - Genbank file of ['CP045927.1', 'FR821777.2', 'CP000253.1', 'CP065712.1', 'AP018587.1'] retrieved successfully
+2024-06-02 16:47:38 - write_protein - write_protein - INFO - Started writing protein file of AP009351
+2024-06-02 16:47:38 - network_speed - _test_speed - INFO - Initiating network speed testing
+2024-06-02 16:47:59 - network_speed - _test_speed - INFO - download speed is 65.7172557192468 MBPS
+2024-06-02 16:47:59 - network_speed - _test_speed - INFO - upload speed is 73.7574514067547 MBPS
+2024-06-02 16:47:59 - get_gb - get_gb - INFO - Retrieval started
+2024-06-02 16:48:35 - write_protein - write_protein - INFO - Started writing protein file of AP009351
+2024-06-02 16:48:35 - get_gb - get_gb - INFO - Retrieval started
+2024-06-02 16:49:05 - get_gb - get_gb - INFO - Genbank file of accession id: AP009351 retrieved successfully
+2024-06-02 16:49:05 - write_protein - write_protein - INFO - Protein file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Prot/AP009351.1.faa
+2024-06-02 16:49:05 - get_gb - get_gb - INFO - Retrieval started
+2024-06-02 16:49:40 - get_gb - get_gb - INFO - Genbank file of accession id: AP009351 retrieved successfully
+2024-06-02 17:01:41 - network_speed - _test_speed - INFO - Initiating network speed testing
+2024-06-02 17:02:02 - network_speed - _test_speed - INFO - download speed is 70.17604765523372 MBPS
+2024-06-02 17:02:02 - network_speed - _test_speed - INFO - upload speed is 79.14956341065202 MBPS
+2024-06-02 17:02:02 - get_gbs - get_gbs - INFO - Retrieval started
+2024-06-02 17:02:27 - get_gbs - get_gbs - INFO - Genbank file of ['CP045927.1', 'FR821777.2', 'CP000253.1', 'CP065712.1', 'AP018587.1'] retrieved successfully
+2024-06-02 17:02:27 - write_proteins - write_proteins - INFO - Started writing protein file of ['CP045927.1', 'FR821777.2', 'CP000253.1', 'CP065712.1', 'AP018587.1']
+2024-06-02 17:02:27 - write_proteins - write_proteins - INFO - Protein file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Prot/CP065712.1.faa
+2024-06-02 17:02:27 - write_proteins - write_proteins - INFO - Protein file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Prot/CP045927.1.faa
+2024-06-02 17:02:27 - write_proteins - write_proteins - INFO - Protein file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Prot/AP018587.1.faa
+2024-06-02 17:02:27 - write_proteins - write_proteins - INFO - Protein file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Prot/CP000253.1.faa
+2024-06-02 17:02:27 - write_proteins - write_proteins - INFO - Protein file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Prot/FR821777.2.faa
+2024-06-02 17:02:27 - get_gbs - get_gbs - INFO - Retrieval started
+2024-06-02 17:03:03 - get_gbs - get_gbs - INFO - Genbank file of ['CP045927.1', 'FR821777.2', 'CP000253.1', 'CP065712.1', 'AP018587.1'] retrieved successfully
+2024-06-02 17:03:42 - get_gbs - get_gbs - INFO - Retrieval started
+2024-06-02 17:04:12 - get_gbs - get_gbs - INFO - Genbank file of ['CP045927.1', 'FR821777.2', 'CP000253.1', 'CP065712.1', 'AP018587.1'] retrieved successfully
+2024-06-02 17:04:12 - write_proteins - write_proteins - INFO - Started writing protein file of ['CP045927.1', 'FR821777.2', 'CP000253.1', 'CP065712.1', 'AP018587.1']
+2024-06-02 17:04:12 - write_proteins - write_proteins - INFO - Protein file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Prot/CP045927.1.faa
+2024-06-02 17:04:12 - write_proteins - write_proteins - INFO - Protein file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Prot/CP065712.1.faa
+2024-06-02 17:04:12 - write_proteins - write_proteins - INFO - Protein file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Prot/FR821777.2.faa
+2024-06-02 17:04:12 - write_proteins - write_proteins - INFO - Protein file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Prot/AP018587.1.faa
+2024-06-02 17:04:12 - write_proteins - write_proteins - INFO - Protein file can be found at: /home/souro/Projects/CodonU/CodonU/tests/Prot/CP000253.1.faa
+2024-06-02 17:04:12 - get_gbs - get_gbs - INFO - Retrieval started
+2024-06-02 17:04:36 - get_gbs - get_gbs - INFO - Genbank file of ['CP045927.1', 'FR821777.2', 'CP000253.1', 'CP065712.1', 'AP018587.1'] retrieved successfully
