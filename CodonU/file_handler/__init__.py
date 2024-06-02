@@ -5,6 +5,7 @@ from .make_dir import make_dir
 from .read_file import read_file
 from .write_nucleotide import write_nucleotide
 from .write_nucleotides import write_nucleotides
-from .write_protein_fasta import write_protein_fasta
+from .write_protein import write_protein
+from .write_proteins import write_proteins
 from .write_exome import write_exome
 from .write_exomes import write_exomes
