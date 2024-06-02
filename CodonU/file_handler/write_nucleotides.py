@@ -3,7 +3,7 @@ import sys
 
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from CodonU.cua_logger import *
-from CodonU.file_handler import get_gbs
+from CodonU.file_handler import get_gbs, make_dir
 from CodonU.file_handler.internal_comp import _write_nucleotide
 
 
@@ -17,6 +17,7 @@ def write_nucleotides(accession_ids: list[str], folder_path: str = 'Nuc'):
     records = get_gbs(accession_ids)
     file_path_dict = {accession_id: os.path.join(folder_path, f'{records[accession_id].id}.ffn') for accession_id in
                       accession_ids}
+    make_dir(folder_path)
     console_log.info(f'Started writing nucleotide file of {accession_ids}')
     file_log.info(f'Started writing nucleotide file of {accession_ids}')
     with ThreadPoolExecutor(thread_name_prefix='codonu_write_nucleo') as executor:
