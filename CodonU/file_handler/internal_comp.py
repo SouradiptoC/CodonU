@@ -6,7 +6,7 @@ from Bio.SeqRecord import SeqRecord
 
 from CodonU.cua_errors import FileNotEmptyError
 from CodonU.cua_warnings import EmailWarning, ApiWarning
-from CodonU.extractor import extract_exome, extract_cds_lst, extract_cds
+from CodonU.extractor import extract_exome, extract_cds_lst, extract_cds, extract_prot
 from CodonU.cua_logger import *
 
 
@@ -71,7 +71,8 @@ def is_file(path: str) -> bool:
 def is_file_writeable(path: str):
     if is_file(path) and os.stat(path).st_size != 0:
         flg = input(
-            'Provided file not empty! Your action will result into completely changing the content of the file. Proceed [y/n]?: ')
+            'Provided file not empty! Your action will result into completely changing the content of the file. '
+            'Proceed [y/n]?: ')
         if flg in ['y', 'Y']:
             return True
         raise FileNotEmptyError(path)
@@ -136,6 +137,34 @@ def _write_nucleotide(file_path: str, record: SeqRecord, multi: bool = False):
                 cds_lst = [extract_cds(record, cds_feature) for cds_feature in cds_feature_lst]
                 write(cds_lst, out_file, 'fasta')
                 return f'Nucleotide file can be found at: {os.path.abspath(file_path)}'
+    except FileNotEmptyError as fne:
+        console_log.error(f'Following error occurred. See log files for details\n{fne}')
+        file_log.exception(fne)
+        raise RuntimeError('Bad file')
+    except Exception as exe:
+        console_log.error(f'Following error occurred. See log files for details\n{exe}')
+        file_log.exception(exe)
+        raise RuntimeError
+
+
+def _write_protein(file_path: str, record: SeqRecord, multi: bool = False):
+    """
+    Creates .faa file for genetic code
+    :param file_path: file path to write
+    :param record: SeqRecord obj
+    :param multi: If true, being called from multi-threading
+    :return: path to file
+    :raises RuntimeError: If file not empty or else
+    """
+    try:
+        cds_feature_lst = extract_cds_lst(record)
+
+        if multi or (not is_file(file_path) or is_file_empty(file_path)):
+            with open(file_path, 'w') as out_file:
+                prot_lst = [extract_prot(cds_feature, record.annotations['organism']) for cds_feature in
+                            cds_feature_lst]
+                write(prot_lst, out_file, 'fasta')
+                return f'Protein file can be found at: {os.path.abspath(file_path)}'
     except FileNotEmptyError as fne:
         console_log.error(f'Following error occurred. See log files for details\n{fne}')
         file_log.exception(fne)
