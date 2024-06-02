@@ -2,7 +2,7 @@ import os
 import sys
 
 from CodonU.cua_logger import *
-from CodonU.file_handler import get_gb
+from CodonU.file_handler import get_gb, make_dir
 from CodonU.file_handler.internal_comp import _write_nucleotide
 
 
@@ -17,6 +17,7 @@ def write_nucleotide(accession_id: str, folder_path: str = 'Nuc'):
         console_log.info(f'Started writing nucleotide file of {accession_id}')
         file_log.info(f'Started writing nucleotide file of {accession_id}')
         records = get_gb(accession_id)
+        make_dir(folder_path)
         file_path = os.path.join(folder_path, f'{records[accession_id].id}.ffn')
         msg = _write_nucleotide(file_path, records[accession_id], multi=False)
         console_log.info(msg)
