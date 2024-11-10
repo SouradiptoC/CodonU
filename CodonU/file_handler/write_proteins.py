@@ -29,8 +29,3 @@ def write_proteins(accession_ids: list[str], folder_path: str = 'Prot'):
                 console_log.error(f'Following exception occurred during writing file of {acs_id}.\n{e}')
                 file_log.exception(f'Exception occurred during writing file of {acs_id}.\n{e}')
                 sys.exit(-1)
-
-
-if __name__ == '__main__':
-    ACCESSION_ID_LST = ['CP045927.1', 'FR821777.2', 'CP000253.1', 'CP065712.1', 'AP018587.1']
-    write_proteins(ACCESSION_ID_LST)
